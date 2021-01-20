@@ -1,0 +1,17 @@
+.LeftMenu {
+    background: rgb(0, 160, 233);
+    margin: 0;
+    padding: 2em;
+    color: #fff;
+}
+
+.MenuItem {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.MenuItem:hover {
+    background: #fff;
+    color: rgb(0, 160, 233);
+    font-weight: bolder;
+}
