@@ -48,10 +48,11 @@ class MenuItem extends React.Component {
 
 
     renderMenuItemChild(data) {
-        return <Container style={{background: 'rgb(30,59,153)', borderRadius: '5px', paddingLeft: '2em', marginTop: '0.5em'}}>
+        return <Container
+            style={{background: 'rgb(30,59,153)', borderRadius: '1em', borderTopRightRadius: '1em', paddingLeft: '2em', marginTop: '0.5em'}}>
             {
                 data.child.map((child, id) => {
-                    return <Link style={{color: '#fff'}} to={child.route}>
+                    return <Link style={{textDecoration: 'none', color: '#fff'}} to={child.route}>
                         <Row style={{padding: 0, paddingTop: '0.5em', paddingBottom: '0.5em'}}>
                             <Col style={{padding: 0}} md={12}>
                                 <FontAwesomeIcon style={{fontSize: '0.5em'}} icon={child.icon}/> {child.title}

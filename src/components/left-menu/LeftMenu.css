@@ -1,5 +1,5 @@
 .LeftMenu {
-    background: rgb(36,66,164);
+    background: rgb(36, 66, 164);
     margin: 0;
     padding: 0;
     color: #fff;
@@ -8,47 +8,47 @@
 .MenuItem {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
-    color:#fff;
+    color: #fff;
 }
 
 .MenuItemSelected {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
     background: #fff;
-    color:#000;
+    color: #000;
     border-top-left-radius: 2em;
     border-bottom-left-radius: 2em;
 }
 
-.MenuItemNiberTop{
+.MenuItemNiberTop {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
-    background: rgb(36,66,164);
+    background: rgb(36, 66, 164);
     border-bottom-right-radius: 2em;
 }
 
 
-.MenuItemNiberBottom{
+.MenuItemNiberBottom {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
-    background: rgb(36,66,164);
+    background: rgb(36, 66, 164);
     border-top-right-radius: 2em;
 }
 
-.MaskClassNameDefault{
-   padding:0;
-    margin:0;
+.MaskClassNameDefault {
+    padding: 0;
+    margin: 0;
 }
 
-.MaskClassNameMask{
-    padding:0;
-    margin:0;
+.MaskClassNameMask {
+    padding: 0;
+    margin: 0;
     background: #fff;
 }
 
 .MenuItem:hover {
-    background: rgb(55,83,182);
-    color:#fff;
+    background: rgb(55, 83, 182);
+    color: #fff;
     border-top-left-radius: 2em;
     border-bottom-left-radius: 2em;
 }
