@@ -90,7 +90,7 @@ function App() {
         <Container className="App" style={{padding: 0}}>
             <Container style={{margin: 0, padding: 0}}>
                 <Row style={{margin: 0, padding: 0}}>
-                    <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '3em', paddingTop: '1em', background: 'transparent'}}>
+                    <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '1em', background: 'transparent'}}>
                         <Container>
                             <Image style={{width: '2em', height: '2em', display: 'inline-block'}}
                                    src={'http://midone.left4code.com/dist/images/logo.svg'}/>
@@ -106,7 +106,7 @@ function App() {
                         </Container>
                         <LeftMenu menu={menuData}/>
                     </Col>
-                    <Col md={10} style={{margin: 0, padding: 0, paddingRight: '1em', paddingTop: '1em'}}>
+                    <Col md={10} style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em'}}>
                         <Container style={{margin: 0, padding: '1em', background: '#fff', borderRadius: '2em',}}>
                             <Switch>
                                 <Route exact path={'/'} component={DashBoard}/>

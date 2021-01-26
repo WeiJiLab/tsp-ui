@@ -18,7 +18,7 @@ class MenuItem extends React.Component {
         return <Row>
             <Container className={this.props.maskClassName} style={{padding: 0, margin: 0}}>
                 <Col md={12} className={this.props.className}>
-                    <Row style={{paddingLeft: '2em'}}>
+                    <Row style={{paddingLeft: '0em'}}>
                         <Col md={8} onClick={this.showItemClick.bind(this)}>
                             <FontAwesomeIcon icon={data.icon}/> {data.title}
                         </Col>
