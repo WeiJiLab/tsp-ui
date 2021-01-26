@@ -1,5 +1,10 @@
 .App {
-    background: #fff;
+    background: rgb(36,66,164);
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: none !important;
 }

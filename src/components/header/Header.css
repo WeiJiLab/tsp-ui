@@ -1,6 +1,6 @@
 .Header {
-    background: #fff;
-    box-shadow: 0 0 10px 2px #eee;
+    background: rgb(36,66,164);
     height: 3em;
+    color: #fff;
     text-align: left;
 }

@@ -1,17 +1,54 @@
 .LeftMenu {
-    background: rgb(0, 160, 233);
+    background: rgb(36,66,164);
     margin: 0;
     padding: 2em;
     color: #fff;
 }
 
 .MenuItem {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    color:#fff;
+}
+
+.MenuItemSelected {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    background: #fff;
+    color:#000;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+}
+
+.MenuItemNiberTop{
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    background: rgb(36,66,164);
+    border-bottom-right-radius: 2em;
+}
+
+
+.MenuItemNiberBottom{
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    background: rgb(36,66,164);
+    border-top-right-radius: 2em;
+}
+
+.MaskClassNameDefault{
+   padding:0;
+    margin:0;
+}
+
+.MaskClassNameMask{
+    padding:0;
+    margin:0;
+    background: #fff;
 }
 
 .MenuItem:hover {
-    background: #fff;
-    color: rgb(0, 160, 233);
-    font-weight: bolder;
+    background: rgb(55,83,182);
+    color:#fff;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
 }
