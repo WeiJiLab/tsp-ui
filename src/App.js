@@ -1,5 +1,5 @@
 import './App.css';
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import LeftMenu from "./components/left-menu/LeftMenu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
@@ -91,9 +91,9 @@ function App() {
             <Container style={{margin: 0, padding: 0}}>
                 <Row style={{margin: 0, padding: 0}}>
                     <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '1em', background: 'transparent'}}>
-                        <Container>
-                            <Image style={{width: '2em', height: '2em', display: 'inline-block'}}
-                                   src={'http://midone.left4code.com/dist/images/logo.svg'}/>
+                        <Container style={{padding: 0, margin: 0}}>
+                            {/*<Image style={{width: '2em', height: '2em', display: 'inline-block'}}*/}
+                            {/*       src={'http://midone.left4code.com/dist/images/logo.svg'}/>*/}
                             <p style={{
                                 color: '#fff',
                                 display: 'inline-block',
@@ -101,8 +101,9 @@ function App() {
                                 lineHeight: '2em',
                                 padding: 0,
                                 margin: 0,
-                                marginLeft: '1em'
-                            }}>SCP</p>
+                                fontWeight: 'bolder',
+                                fontSize: '2em',
+                            }}>Αιγίς</p>
                         </Container>
                         <LeftMenu menu={menuData}/>
                     </Col>
