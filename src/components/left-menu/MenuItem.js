@@ -20,7 +20,7 @@ class MenuItem extends React.Component {
                 <Col md={12} className={this.props.className}>
                     <Row style={{paddingLeft: '2em'}}>
                         <Col md={8} onClick={this.showItemClick.bind(this)}>
-                            {data.title}
+                            <FontAwesomeIcon icon={data.icon}/> {data.title}
                         </Col>
                         <Col md={1} onClick={this.showMenu.bind(this)}>
                             {this.props.open ? <FontAwesomeIcon icon={faAngleUp}/> : <FontAwesomeIcon icon={faAngleDown}/>}
@@ -54,7 +54,7 @@ class MenuItem extends React.Component {
                     return <Link style={{color: '#fff'}} to={child.route}>
                         <Row style={{padding: 0, paddingTop: '0.5em', paddingBottom: '0.5em'}}>
                             <Col style={{padding: 0}} md={12}>
-                                {child.title}
+                                <FontAwesomeIcon style={{fontSize: '0.5em'}} icon={child.icon}/> {child.title}
                             </Col>
                         </Row>
                     </Link>
