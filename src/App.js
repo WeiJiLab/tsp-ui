@@ -91,7 +91,7 @@ function App() {
             <Container style={{margin: 0, padding: 0}}>
                 <Row style={{margin: 0, padding: 0}}>
                     <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '1em', background: 'transparent'}}>
-                        <Container style={{padding: 0, margin: 0}}>
+                        <Container style={{padding: 0, margin: 0, borderBottom: 'solid 1px rgb(55,83,182)', height: '4em'}}>
                             {/*<Image style={{width: '2em', height: '2em', display: 'inline-block'}}*/}
                             {/*       src={'http://midone.left4code.com/dist/images/logo.svg'}/>*/}
                             <p style={{
@@ -108,7 +108,19 @@ function App() {
                         <LeftMenu menu={menuData}/>
                     </Col>
                     <Col md={10} style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em'}}>
-                        <Container style={{margin: 0, padding: '1em', background: '#fff', borderRadius: '2em',}}>
+                        <Container style={{
+                            margin: 0,
+                            padding: '1em',
+                            height: '4em',
+                            borderBottom: 'solid 1px #eee',
+                            background: '#fff',
+                            borderTopLeftRadius: '2em',
+                            borderTopRightRadius: '2em'
+                        }}>
+                            <p style={{height: '3em', lineHeight: '3em'}}>Application > </p>
+                        </Container>
+                        <Container
+                            style={{margin: 0, padding: '1em', background: '#fff', borderBottomLeftRadius: '2em', borderBottomRightRadius: '2em'}}>
                             <Switch>
                                 <Route exact path={'/'} component={DashBoard}/>
                                 <Route exact path={'/ScanList'} component={ScanList}/>
