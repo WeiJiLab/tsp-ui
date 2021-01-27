@@ -33,7 +33,7 @@ class ModalWrapper extends Component {
             <Modal show={this.state.show} onHide={this.close.bind(this)}>
                 <Container className={'ModalContainer'}>
                     {this.props.title}
-                    <FontAwesomeIcon style={{fontSize: '1em', right: 0, float: 'right'}} onClick={this.close.bind(this)} icon={faTimes}/>
+                    <FontAwesomeIcon className={'CloseTime'} onClick={this.close.bind(this)} icon={faTimes}/>
                 </Container>
                 <Container className={'ModalContainer'}>
                     {this.props.children}

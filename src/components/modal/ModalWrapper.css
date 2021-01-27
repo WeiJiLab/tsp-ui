@@ -12,6 +12,21 @@
     padding: 1em;
 }
 
+.CloseTime {
+    float: right;
+}
+
+.CloseTime:hover {
+    transform: rotate(360deg) scale(1.5);
+    -webkit-transform: rotate(360deg) scale(1.5);
+    -moz-transform: rotate(360deg) scale(1.5);
+    -o-transform: rotate(360deg) scale(1.5);
+    -ms-transform: rotate(360deg) scale(1.5);
+    transition: all 0.5s;
+    color: rgb(36, 66, 164);
+    float: right;
+}
+
 .modal-content {
     border: none;
     border-radius: 1em;
