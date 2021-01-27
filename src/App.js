@@ -9,6 +9,7 @@ import DashBoard from "./pages/dashboard/DashBoard";
 import {faCheckCircle, faCircle, faDotCircle, faHome} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
+import Charts from "./pages/charts/Charts";
 
 const menuData = [
     {
@@ -170,7 +171,7 @@ class App extends Component {
                                     <Route exact path={'/component/list'} component={DashBoard}/>
                                     <Route exact path={'/component/table'} component={DashBoard}/>
                                     <Route exact path={'/form'} component={DashBoard}/>
-                                    <Route exact path={'/charts'} component={DashBoard}/>
+                                    <Route exact path={'/charts'} component={Charts}/>
                                 </Switch>
                             </Container>
                         </Col>
