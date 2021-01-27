@@ -123,6 +123,7 @@ class App extends Component {
                                     lineHeight: '1.5em',
                                     padding: 0,
                                     margin: 0,
+                                    paddingLeft:'0.5em',
                                     fontWeight: 'bolder',
                                     fontSize: '2em',
                                 }}>Αιγίς</p><span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;v0.0.1</span>
