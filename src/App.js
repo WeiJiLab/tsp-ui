@@ -132,7 +132,7 @@ class App extends Component {
                         <Col md={10} style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em'}}>
                             <Container style={{
                                 margin: 0,
-                                padding: '1em',
+                                padding: '1.5em',
                                 height: '4em',
                                 borderBottom: 'solid 1px #dedede',
                                 background: 'rgb(242, 245, 248)',
@@ -144,7 +144,7 @@ class App extends Component {
                             <Container
                                 style={{
                                     margin: 0,
-                                    padding: '1em',
+                                    padding: '1.5em',
                                     background: 'rgb(242, 245, 248)',
                                     borderBottomLeftRadius: '2em',
                                     borderBottomRightRadius: '2em'
