@@ -113,14 +113,14 @@ function App() {
                             padding: '1em',
                             height: '4em',
                             borderBottom: 'solid 1px #eee',
-                            background: '#fff',
+                            background: 'rgb(242, 245, 248)',
                             borderTopLeftRadius: '2em',
                             borderTopRightRadius: '2em'
                         }}>
                             <p style={{height: '3em', lineHeight: '3em'}}>Application > </p>
                         </Container>
                         <Container
-                            style={{margin: 0, padding: '1em', background: '#fff', borderBottomLeftRadius: '2em', borderBottomRightRadius: '2em'}}>
+                            style={{margin: 0, padding: '1em', background: 'rgb(242, 245, 248)', borderBottomLeftRadius: '2em', borderBottomRightRadius: '2em'}}>
                             <Switch>
                                 <Route exact path={'/'} component={DashBoard}/>
                                 <Route exact path={'/ScanList'} component={ScanList}/>
