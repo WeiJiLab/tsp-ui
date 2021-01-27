@@ -28,13 +28,19 @@ class DashBoard extends React.Component {
                     <PushButton>按钮</PushButton>
                 </Card>
                 <Card title={'一个弹框'} w={3}>
-                    <ModalWrapper show={this.state.modalShow} title={'这是个弹框'}>啦啦啦</ModalWrapper>
+                    <ModalWrapper show={this.state.modalShow} closeHook={this.modalClose.bind(this)} title={'这是个弹框'}>啦啦啦</ModalWrapper>
                     <PushButton onClick={this.showModal.bind(this)}>弹框</PushButton>
                 </Card>
                 <Card title={'卡片'} w={3}>这是个卡片</Card>
                 <Card title={'卡片'} w={3}>这是个卡片</Card>
             </Row>
         </Container>
+    }
+
+    modalClose() {
+        this.setState({
+            modalShow: false,
+        });
     }
 
     showModal() {

@@ -17,6 +17,7 @@ class ModalWrapper extends Component {
         this.setState({
             show: false,
         })
+        this.props.closeHook();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
