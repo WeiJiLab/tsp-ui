@@ -84,6 +84,20 @@ const menuData = [
                 routable: true,
             }
         ]
+    },
+    {
+        title: '图表',
+        route: '',
+        icon: faDotCircle,
+        routable: false,
+        child: [
+            {
+                title: '各种图表',
+                route: '/charts',
+                icon: faCircle,
+                routable: true,
+            }
+        ]
     }
 ];
 
@@ -121,10 +135,10 @@ class App extends Component {
                                     lineHeight: '1.5em',
                                     padding: 0,
                                     margin: 0,
-                                    paddingLeft:'0.5em',
+                                    paddingLeft: '0.5em',
                                     fontWeight: 'bolder',
                                     fontSize: '2em',
-                                }}>Αιγίς</p><span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;v0.0.1</span>
+                                }}>Aιγίς</p><span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;v0.0.1</span>
                             </Container>
                             <LeftMenu menu={menuData}/>
                         </Col>
@@ -156,6 +170,7 @@ class App extends Component {
                                     <Route exact path={'/component/list'} component={DashBoard}/>
                                     <Route exact path={'/component/table'} component={DashBoard}/>
                                     <Route exact path={'/form'} component={DashBoard}/>
+                                    <Route exact path={'/charts'} component={DashBoard}/>
                                 </Switch>
                             </Container>
                         </Col>
