@@ -114,8 +114,6 @@ class App extends Component {
                     <Row style={{margin: 0, padding: 0}}>
                         <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '1em', background: 'transparent'}}>
                             <Container style={{padding: 0, margin: 0, borderBottom: 'solid 1px rgb(55,83,182)', height: '4em'}}>
-                                {/*<Image style={{width: '2em', height: '2em', display: 'inline-block'}}*/}
-                                {/*       src={'http://midone.left4code.com/dist/images/logo.svg'}/>*/}
                                 <p style={{
                                     color: '#fff',
                                     display: 'inline-block',
