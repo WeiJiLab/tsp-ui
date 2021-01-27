@@ -47,17 +47,17 @@ class LeftMenu extends React.Component {
     }
 
     renderItem(data, index) {
-        var className = 'MenuItem';
-        var maskClassName = 'MaskClassNameDefault';
+        let className = 'MenuItem';
+        let maskClassName = 'MaskClassNameDefault';
 
         if (index === this.state.selectMenuIndex) {
             className = 'MenuItemSelected';
             maskClassName = 'MaskClassNameDefault';
         } else if (index === this.state.selectMenuIndex - 1) {
-            className = 'MenuItemNiberTop';
+            className = 'MenuItem MenuItemNiberTop';
             maskClassName = 'MaskClassNameMask';
         } else if ((index === this.state.selectMenuIndex + 1) && !this.state.open[this.state.selectMenuIndex]) {
-            className = 'MenuItemNiberBottom';
+            className = 'MenuItem MenuItemNiberBottom';
             maskClassName = 'MaskClassNameMask';
         }
         return <MenuItem maskClassName={maskClassName}

@@ -27,7 +27,6 @@
     border-bottom-right-radius: 2em;
 }
 
-
 .MenuItemNiberBottom {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
@@ -44,6 +43,8 @@
     padding: 0;
     margin: 0;
     background: #fff;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
 }
 
 .MenuItem:hover {
