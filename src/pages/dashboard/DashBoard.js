@@ -1,6 +1,6 @@
 import React from "react";
 import {Container, Row} from "react-bootstrap";
-import {Area, Pie} from "@ant-design/charts";
+import {Area, Column, Pie} from "@ant-design/charts";
 import './DashBoard.css'
 import Card from "../../components/card/Card";
 
@@ -430,6 +430,56 @@ var pieConfig = {
     interactions: [{type: 'element-active'}],
 };
 
+var columnConfig = {
+    data: [
+        {
+            type: '家具家电',
+            sales: 38,
+        },
+        {
+            type: '粮油副食',
+            sales: 52,
+        },
+        {
+            type: '生鲜水果',
+            sales: 61,
+        },
+        {
+            type: '美容洗护',
+            sales: 145,
+        },
+        {
+            type: '母婴用品',
+            sales: 48,
+        },
+        {
+            type: '进口食品',
+            sales: 38,
+        },
+        {
+            type: '食品饮料',
+            sales: 38,
+        },
+        {
+            type: '家庭清洁',
+            sales: 38,
+        },
+    ],
+    xField: 'type',
+    yField: 'sales',
+    label: {
+        position: 'middle',
+        style: {
+            fill: '#FFFFFF',
+            opacity: 0.6,
+        },
+    },
+    meta: {
+        type: {alias: '类别'},
+        sales: {alias: '销售额'},
+    },
+};
+
 class DashBoard extends React.Component {
     render() {
         return <Container className={'DashBoard'}>
@@ -437,8 +487,8 @@ class DashBoard extends React.Component {
                 <Card title={'圆圆的图表'} w={3}>
                     <Pie {...pieConfig}/>
                 </Card>
-                <Card title={'卡片'} w={3}>
-                    <p>这个卡片里面啥都没有</p>
+                <Card title={'方方的图'} w={3}>
+                    <Column {...columnConfig}/>
                 </Card>
                 <Card title={'线条的图表'} w={6}>
                     <Area {...config} />
