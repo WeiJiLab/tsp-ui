@@ -391,8 +391,8 @@ class DashBoard extends React.Component {
                 <Card title={'图表0'} w={3}>
                     <Area {...config} />
                 </Card>
-                <Card title={'图表1'} w={3}>
-                    <Area {...config} />
+                <Card title={'这是个卡片'} w={3}>
+                    <p>这个卡片里面啥都没有</p>
                 </Card>
                 <Card title={'图表2'} w={6}>
                     <Area {...config} />
