@@ -129,7 +129,7 @@ class App extends Component {
                             </Container>
                             <LeftMenu menu={menuData}/>
                         </Col>
-                        <Col md={10} style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em'}}>
+                        <Col md={10} style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em', paddingBottom: '1em'}}>
                             <Container style={{
                                 margin: 0,
                                 padding: '1.5em',
