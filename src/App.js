@@ -137,7 +137,7 @@ class App extends Component {
                                 borderBottom: 'solid 1px #dedede',
                                 background: 'rgb(242, 245, 248)',
                                 borderTopLeftRadius: '2em',
-                                borderTopRightRadius: '2em'
+                                borderTopRightRadius: '2em',
                             }}>
                                 <BreadCrumbMenu data={this.state.breadcrumb}/>
                             </Container>

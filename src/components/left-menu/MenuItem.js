@@ -19,7 +19,7 @@ class MenuItem extends React.Component {
             <Container className={this.props.maskClassName} style={{padding: 0, margin: 0}}>
                 <Col md={12} className={this.props.className}>
                     <Row style={{paddingLeft: '0em'}}>
-                        <Col md={8} onClick={this.showItemClick.bind(this)}>
+                        <Col md={9} onClick={this.showItemClick.bind(this)}>
                             <FontAwesomeIcon icon={data.icon}/> {data.title}
                         </Col>
                         <Col md={1} onClick={this.showMenu.bind(this)}>
