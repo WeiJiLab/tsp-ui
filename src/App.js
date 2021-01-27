@@ -46,40 +46,40 @@ const menuData = [
         ]
     },
     {
-        title: '测试',
+        title: '组件',
         route: '',
         icon: faDotCircle,
         routable: false,
         child: [
             {
-                title: '合规列表',
-                route: '/ScanList',
+                title: '卡片',
+                route: '/component/card',
                 icon: faCircle,
                 routable: true,
             },
             {
-                title: '检测结果',
-                route: '/ScanResult',
+                title: '列表',
+                route: '/component/list',
+                icon: faCircle,
+                routable: true,
+            },
+            {
+                title: '表格',
+                route: '/component/table',
                 icon: faCircle,
                 routable: true,
             }
         ]
     },
     {
-        title: '测试2',
+        title: '表单',
         route: '',
         icon: faDotCircle,
         routable: false,
         child: [
             {
-                title: '合规列表',
-                route: '/ScanList',
-                icon: faCircle,
-                routable: true,
-            },
-            {
-                title: '检测结果',
-                route: '/ScanResult',
+                title: '表单',
+                route: '/form',
                 icon: faCircle,
                 routable: true,
             }
@@ -125,7 +125,7 @@ class App extends Component {
                                     margin: 0,
                                     fontWeight: 'bolder',
                                     fontSize: '2em',
-                                }}>Αιγίς</p>
+                                }}>Αιγίς</p><span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;v0.0.1</span>
                             </Container>
                             <LeftMenu menu={menuData}/>
                         </Col>
@@ -153,6 +153,10 @@ class App extends Component {
                                     <Route exact path={'/'} component={DashBoard}/>
                                     <Route exact path={'/ScanList'} component={ScanList}/>
                                     <Route exact path={'/ScanResult'} component={ScanResult}/>
+                                    <Route exact path={'/component/card'} component={DashBoard}/>
+                                    <Route exact path={'/component/list'} component={DashBoard}/>
+                                    <Route exact path={'/component/table'} component={DashBoard}/>
+                                    <Route exact path={'/form'} component={DashBoard}/>
                                 </Switch>
                             </Container>
                         </Col>
