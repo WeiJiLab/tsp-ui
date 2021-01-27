@@ -11,3 +11,8 @@
     margin: 0;
     padding: 1em;
 }
+
+.modal-content {
+    border: none;
+    border-radius: 1em;
+}
