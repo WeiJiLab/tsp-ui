@@ -1,5 +1,8 @@
 .DashBoard {
     min-height: 60em;
-    padding: 0;
     margin: 0;
+    background: #fff;
+    border-radius: 1em;
+    padding: 1em;
+    box-shadow: 0 0 10px 2px #ededed;
 }

@@ -5,7 +5,7 @@ import './DashBoard.css'
 class DashBoard extends React.Component {
     render() {
         return <Container className={'DashBoard'}>
-                adasdasdadasdadadadadada
+            ddashboard
         </Container>
     }
 }
