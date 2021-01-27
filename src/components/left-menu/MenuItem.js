@@ -49,7 +49,7 @@ class MenuItem extends React.Component {
 
     renderMenuItemChild(data) {
         return <Container
-            style={{background: 'rgb(30,59,153)', borderRadius: '1em', borderTopRightRadius: '1em', paddingLeft: '2em', marginTop: '0.5em'}}>
+            style={{background: 'rgb(30,59,153)', borderRadius: '1em', borderTopRightRadius: '1.5em', paddingLeft: '2em'}}>
             {
                 data.child.map((child, id) => {
                     return <Link style={{textDecoration: 'none', color: '#fff'}} to={child.route}>
