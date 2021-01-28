@@ -11,7 +11,7 @@ class Card extends Component {
 
     render() {
         return <Col md={this.props.w} className={'CardContainer'}>
-            <h5 style={{color: '#668', fontWeight: 'normal'}}>{this.props.title}</h5>
+            {this.props.title ? <h5 style={{color: '#668', fontWeight: 'normal'}}>{this.props.title}</h5> : null}
             <Container className={'Card'}>
                 {this.props.children}
             </Container>

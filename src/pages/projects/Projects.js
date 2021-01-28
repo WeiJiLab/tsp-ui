@@ -38,7 +38,7 @@ class Projects extends React.Component {
             </Row>
             {
                 this.state.layout === 'list' ?
-                    <Row style={{padding: 0, margin: 0}}>
+                    <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                         {this.renderProjectRow()}
                         {this.renderProjectRow()}
                         {this.renderProjectRow()}
@@ -51,7 +51,7 @@ class Projects extends React.Component {
                         {this.renderProjectRow()}
                     </Row>
                     :
-                    <Row style={{padding: 0, margin: 0}}>
+                    <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                         {this.renderProjectCard()}
                         {this.renderProjectCard()}
                         {this.renderProjectCard()}
