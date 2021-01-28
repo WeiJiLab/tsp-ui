@@ -4,22 +4,16 @@ import LeftMenu from "./components/left-menu/LeftMenu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import ScanList from "./pages/scan-list/ScanList";
-import ScanResult from "./pages/scan-result/ScanResult";
 import DashBoard from "./pages/dashboard/DashBoard";
-import {
-    faAppleAlt, faBox, faBoxes,
-    faCheckCircle,
-    faCircle,
-    faDotCircle,
-    faFile,
-    faHome,
-    faMedal,
-    faProjectDiagram,
-    faShieldAlt
-} from "@fortawesome/free-solid-svg-icons";
+import {faBox, faBoxes, faCircle, faDotCircle, faHome, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import Charts from "./pages/charts/Charts";
+import Apps from "./pages/apps/Apps";
+import AppCreate from "./pages/app_create/AppCreate";
+import Projects from "./pages/projects/Projects";
+import ProjectCreate from "./pages/project_create/ProjectCreate";
+import Tools from "./pages/tools/Tools";
 
 const menuData = [
     {
@@ -44,13 +38,13 @@ const menuData = [
         child: [
             {
                 title: '项目列表',
-                route: '/',
+                route: '/projects',
                 icon: faCircle,
                 routable: true,
             },
             {
                 title: '创建项目',
-                route: '/',
+                route: '/project/create',
                 icon: faCircle,
                 routable: true,
             }
@@ -64,13 +58,13 @@ const menuData = [
         child: [
             {
                 title: '应用列表',
-                route: '/',
+                route: '/apps',
                 icon: faCircle,
                 routable: true,
             },
             {
                 title: '创建应用',
-                route: '/',
+                route: '/app/create',
                 icon: faCircle,
                 routable: true,
             }
@@ -83,48 +77,14 @@ const menuData = [
         routable: false,
         child: [
             {
+                title: '总览',
+                route: '/tools',
+                icon: faCircle,
+                routable: true,
+            },
+            {
                 title: '合规扫描',
                 route: '/ScanList',
-                icon: faCircle,
-                routable: true,
-            }
-        ]
-    },
-    {
-        title: '组件',
-        route: '',
-        icon: faDotCircle,
-        routable: false,
-        child: [
-            {
-                title: '卡片',
-                route: '/component/card',
-                icon: faCircle,
-                routable: true,
-            },
-            {
-                title: '列表',
-                route: '/component/list',
-                icon: faCircle,
-                routable: true,
-            },
-            {
-                title: '表格',
-                route: '/component/table',
-                icon: faCircle,
-                routable: true,
-            }
-        ]
-    },
-    {
-        title: '表单',
-        route: '',
-        icon: faDotCircle,
-        routable: false,
-        child: [
-            {
-                title: '表单',
-                route: '/form',
                 icon: faCircle,
                 routable: true,
             }
@@ -209,12 +169,14 @@ class App extends Component {
                                 }}>
                                 <Switch>
                                     <Route exact path={'/'} component={DashBoard}/>
+                                    <Route exact path={'/projects'} component={Projects}/>
+                                    <Route exact path={'/project/create'} component={ProjectCreate}/>
+                                    <Route exact path={'/apps'} component={Apps}/>
+                                    <Route exact path={'/app/create'} component={AppCreate}/>
+                                    <Route exact path={'/tools'} component={Tools}/>
+
+
                                     <Route exact path={'/ScanList'} component={ScanList}/>
-                                    <Route exact path={'/ScanResult'} component={ScanResult}/>
-                                    <Route exact path={'/component/card'} component={DashBoard}/>
-                                    <Route exact path={'/component/list'} component={DashBoard}/>
-                                    <Route exact path={'/component/table'} component={DashBoard}/>
-                                    <Route exact path={'/form'} component={DashBoard}/>
                                     <Route exact path={'/charts'} component={Charts}/>
                                 </Switch>
                             </Container>
