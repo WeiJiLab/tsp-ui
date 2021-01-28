@@ -10,6 +10,7 @@ class ModalWrapper extends Component {
 
         this.state = {
             show: this.props.show,
+            contentMargin: '-3em',
         }
     }
 
@@ -22,9 +23,17 @@ class ModalWrapper extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps !== this.props) {
-            this.setState({
-                show: this.props.show,
-            })
+            if (this.props.show) {
+                this.setState({
+                    show: this.props.show,
+                    contentMargin: '0'
+                });
+            } else {
+                this.setState({
+                    show: this.props.show,
+                    contentMargin: '-3em'
+                });
+            }
         }
     }
 
@@ -35,7 +44,7 @@ class ModalWrapper extends Component {
                     {this.props.title}
                     <FontAwesomeIcon className={'CloseTime'} onClick={this.close.bind(this)} icon={faTimes}/>
                 </Container>
-                <Container className={'ModalContentContainer'}>
+                <Container className={'ModalContentContainer'} style={{marginTop: this.state.contentMargin}}>
                     {this.props.children}
                 </Container>
             </Modal>
