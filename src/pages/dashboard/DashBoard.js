@@ -25,8 +25,10 @@ class DashBoard extends React.Component {
         return <Container className={'DashBoard'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Card title={'项目'} w={3}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faBox}/>
-                    <Link to={'/projects'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
+                    <Container>
+                        <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faBox}/>
+                        <Link to={'/projects'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
+                    </Container>
                 </Card>
                 <Card title={'应用'} w={3}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faBoxes}/>

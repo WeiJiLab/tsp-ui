@@ -5,7 +5,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import ScanList from "./pages/scan-list/ScanList";
 import DashBoard from "./pages/dashboard/DashBoard";
-import {faBox, faBoxes, faCircle, faDotCircle, faHome, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
+import {
+    faBox,
+    faBoxes, faChartArea,
+    faCircle,
+    faCogs,
+    faCube,
+    faCubes,
+    faDotCircle,
+    faHome,
+    faShieldAlt,
+    faTachometerAlt
+} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import Charts from "./pages/charts/Charts";
@@ -19,7 +30,7 @@ const menuData = [
     {
         title: '主页',
         route: '',
-        icon: faHome,
+        icon: faTachometerAlt,
         routable: false,
         child: [
             {
@@ -33,7 +44,7 @@ const menuData = [
     {
         title: '项目',
         route: '',
-        icon: faBox,
+        icon: faCubes,
         routable: false,
         child: [
             {
@@ -53,7 +64,7 @@ const menuData = [
     {
         title: '应用',
         route: '',
-        icon: faBoxes,
+        icon: faCogs,
         routable: false,
         child: [
             {
@@ -93,7 +104,7 @@ const menuData = [
     {
         title: '图表',
         route: '',
-        icon: faDotCircle,
+        icon: faChartArea,
         routable: false,
         child: [
             {
