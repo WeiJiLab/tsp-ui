@@ -1,6 +1,6 @@
 import React from "react";
 import {Container, Row} from "react-bootstrap";
-import {Area, Column, Pie} from "@ant-design/charts";
+import {Area, Column, Pie, TinyArea, TinyColumn, TinyLine} from "@ant-design/charts";
 import './Charts.css'
 import Card from "../../components/card/Card";
 
@@ -480,6 +480,196 @@ var columnConfig = {
     },
 };
 
+var tinyAreaConfig = {
+    height: 60,
+    width: 300,
+    autoFit: false,
+    data: [
+        264,
+        417,
+        438,
+        887,
+        309,
+        397,
+        550,
+        575,
+        563,
+        430,
+        525,
+        592,
+        492,
+        467,
+        513,
+        546,
+        983,
+        340,
+        539,
+        243,
+        226,
+        192,
+    ],
+    smooth: true,
+    tooltip: false,
+    annotations: [
+        {
+            type: 'line',
+            start: ['min', 'mean'],
+            end: ['max', 'mean'],
+            text: {
+                content: '平均值',
+                offsetY: -2,
+                style: {
+                    textAlign: 'left',
+                    fontSize: 10,
+                    fill: 'rgba(44, 53, 66, 0.45)',
+                    textBaseline: 'bottom',
+                },
+            },
+            style: {stroke: 'rgba(0, 0, 0, 0.25)'},
+        },
+        {
+            type: 'line',
+            start: ['min', 800],
+            end: ['max', 800],
+            text: {
+                content: '目标值',
+                offsetY: -2,
+                style: {
+                    textAlign: 'left',
+                    fontSize: 10,
+                    fill: 'rgba(44, 53, 66, 0.45)',
+                    textBaseline: 'bottom',
+                },
+            },
+            style: {stroke: 'rgba(0, 0, 0, 0.55)'},
+        },
+    ],
+};
+
+var miniAreaConfig = {
+    height: 60,
+    width: 300,
+    autoFit: false,
+    data: [
+        264,
+        417,
+        438,
+        887,
+        309,
+        397,
+        550,
+        575,
+        563,
+        430,
+        525,
+        592,
+        492,
+        467,
+        513,
+        546,
+        983,
+        340,
+        539,
+        243,
+        226,
+        192,
+    ],
+    smooth: true,
+    areaStyle: {fill: '#d6e3fd'},
+};
+
+var tinyColumnConfig = {
+    height: 64,
+    width: 240,
+    autoFit: false,
+    data: [274, 337, 81, 497, 666, 219, 269],
+    tooltip: false,
+    annotations: [
+        {
+            type: 'line',
+            start: ['min', 'mean'],
+            end: ['max', 'mean'],
+            text: {
+                content: '平均值',
+                offsetY: -2,
+                style: {
+                    textAlign: 'left',
+                    fontSize: 10,
+                    fill: 'rgba(44, 53, 66, 0.45)',
+                    textBaseline: 'bottom',
+                },
+            },
+            style: {stroke: 'rgba(0, 0, 0, 0.25)'},
+        },
+    ],
+};
+
+var tinyLineConfig = {
+    height: 60,
+    width: 300,
+    autoFit: false,
+    data: [
+        264,
+        417,
+        438,
+        887,
+        309,
+        397,
+        550,
+        575,
+        563,
+        430,
+        525,
+        592,
+        492,
+        467,
+        513,
+        546,
+        983,
+        340,
+        539,
+        243,
+        226,
+        192,
+    ],
+    smooth: true,
+    tooltip: false,
+    annotations: [
+        {
+            type: 'line',
+            start: ['min', 'mean'],
+            end: ['max', 'mean'],
+            text: {
+                content: '平均值',
+                offsetY: -2,
+                style: {
+                    textAlign: 'left',
+                    fontSize: 10,
+                    fill: 'rgba(44, 53, 66, 0.45)',
+                    textBaseline: 'bottom',
+                },
+            },
+            style: {stroke: 'rgba(0, 0, 0, 0.25)'},
+        },
+        {
+            type: 'line',
+            start: ['min', 800],
+            end: ['max', 800],
+            text: {
+                content: '目标值',
+                offsetY: -2,
+                style: {
+                    textAlign: 'left',
+                    fontSize: 10,
+                    fill: 'rgba(44, 53, 66, 0.45)',
+                    textBaseline: 'bottom',
+                },
+            },
+            style: {stroke: 'rgba(0, 0, 0, 0.55)'},
+        },
+    ],
+};
+
 class Charts extends React.Component {
     render() {
         return <Container className={'Charts'}>
@@ -490,9 +680,25 @@ class Charts extends React.Component {
                 <Card title={'方方的图'} w={3}>
                     <Column {...columnConfig}/>
                 </Card>
-                <Card title={'线条的图表'} w={6}>
+                <Card title={'线线的图表'} w={6}>
                     <Area {...config} />
                 </Card>
+                <Card title={'细细的图表'} w={3}>
+                    <TinyArea {...tinyAreaConfig}/>
+                </Card>
+                <Card title={'细细的图表2'} w={3}>
+                    <TinyArea {...miniAreaConfig}/>
+                </Card>
+
+                <Card title={'方方的图表2'} w={3}>
+                    <TinyColumn {...tinyColumnConfig} />
+                </Card>
+
+                <Card title={'细细的图表3'} w={3}>
+                    <TinyLine {...tinyLineConfig} />
+                </Card>
+
+
             </Row>
         </Container>
     }
