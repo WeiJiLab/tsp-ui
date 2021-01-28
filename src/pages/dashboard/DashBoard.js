@@ -4,6 +4,9 @@ import './DashBoard.css'
 import Card from "../../components/card/Card";
 import PushButton from "../../components/button/PushButton";
 import ModalWrapper from "../../components/modal/ModalWrapper";
+import {bindActionCreators} from "redux";
+import {getProjects} from "../../actions/ProjectsAction";
+import {connect} from "react-redux";
 
 class DashBoard extends React.Component {
 
@@ -48,6 +51,19 @@ class DashBoard extends React.Component {
             modalShow: true,
         });
     }
+
+    componentDidMount() {
+        this.props.getProjects();
+    }
 }
 
-export default DashBoard;
+
+const mapStateToProps = state => ({
+    project: state.reduxResult.project
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    getProjects,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

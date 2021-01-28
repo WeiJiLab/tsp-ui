@@ -6,7 +6,17 @@ import {Route, Switch} from "react-router-dom";
 import ScanList from "./pages/scan-list/ScanList";
 import ScanResult from "./pages/scan-result/ScanResult";
 import DashBoard from "./pages/dashboard/DashBoard";
-import {faCheckCircle, faCircle, faDotCircle, faHome} from "@fortawesome/free-solid-svg-icons";
+import {
+    faAppleAlt, faBox, faBoxes,
+    faCheckCircle,
+    faCircle,
+    faDotCircle,
+    faFile,
+    faHome,
+    faMedal,
+    faProjectDiagram,
+    faShieldAlt
+} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import Charts from "./pages/charts/Charts";
@@ -27,20 +37,54 @@ const menuData = [
         ]
     },
     {
-        title: '合规',
+        title: '项目',
         route: '',
-        icon: faCheckCircle,
+        icon: faBox,
         routable: false,
         child: [
             {
-                title: '合规列表',
-                route: '/ScanList',
+                title: '项目列表',
+                route: '/',
                 icon: faCircle,
                 routable: true,
             },
             {
-                title: '检测结果',
-                route: '/ScanResult',
+                title: '创建项目',
+                route: '/',
+                icon: faCircle,
+                routable: true,
+            }
+        ]
+    },
+    {
+        title: '应用',
+        route: '',
+        icon: faBoxes,
+        routable: false,
+        child: [
+            {
+                title: '应用列表',
+                route: '/',
+                icon: faCircle,
+                routable: true,
+            },
+            {
+                title: '创建应用',
+                route: '/',
+                icon: faCircle,
+                routable: true,
+            }
+        ]
+    },
+    {
+        title: '安全工具',
+        route: '',
+        icon: faShieldAlt,
+        routable: false,
+        child: [
+            {
+                title: '合规扫描',
+                route: '/ScanList',
                 icon: faCircle,
                 routable: true,
             }

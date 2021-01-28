@@ -13,7 +13,7 @@ class BreadCrumbMenu extends Component {
         return <Breadcrumb className={'BC'}>
             {
                 this.props.data.map((item, index) => {
-                    return <Breadcrumb.Item active={!item.clickable} href={item.route}>{item.title}</Breadcrumb.Item>
+                    return <Breadcrumb.Item key={index} active={!item.clickable} href={item.route}>{item.title}</Breadcrumb.Item>
                 })
             }
         </Breadcrumb>

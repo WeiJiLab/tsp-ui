@@ -60,14 +60,16 @@ class LeftMenu extends React.Component {
             className = 'MenuItem MenuItemNiberBottom';
             maskClassName = 'MaskClassNameMask';
         }
-        return <MenuItem maskClassName={maskClassName}
-                         onClick={this.selectItem.bind(this, index)}
-                         index={index}
-                         className={className}
-                         data={data}
-                         open={this.state.open[index]}
-                         closeAll={this.closeAll.bind(this, index)}
-                         openItem={this.openItem.bind(this, index)}/>;
+        return <MenuItem
+            key={index}
+            maskClassName={maskClassName}
+            onClick={this.selectItem.bind(this, index)}
+            index={index}
+            className={className}
+            data={data}
+            open={this.state.open[index]}
+            closeAll={this.closeAll.bind(this, index)}
+            openItem={this.openItem.bind(this, index)}/>;
     }
 
     openItem(index) {
