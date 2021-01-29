@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Tools.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faEllipsisH, faTags, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faEllipsisH, faShieldVirus, faTags, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
@@ -63,7 +63,7 @@ class Tools extends React.Component {
             <Container>
                 <Row style={{marginTop: '0.5em'}}>
                     <Col md={1}>
-                        <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em'}} icon={faCube}/>
+                        <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em'}} icon={faShieldVirus}/>
                     </Col>
                     <Col md={11}>
                         <Row>
@@ -115,7 +115,7 @@ class Tools extends React.Component {
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis',
                             overflow: 'hidden'
-                        }}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{tool.name}</h3>
+                        }}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldVirus}/>&nbsp;{tool.name}</h3>
                     </Col>
                     <Col md={2} style={{textAlign: 'right'}}>
                         <FontAwesomeIcon icon={faEllipsisH}/>
