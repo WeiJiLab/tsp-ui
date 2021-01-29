@@ -6,21 +6,15 @@ import {Route, Switch} from "react-router-dom";
 import ScanList from "./pages/scan-list/ScanList";
 import DashBoard from "./pages/dashboard/DashBoard";
 import {
-    faBox,
-    faBoxes, faChartArea,
+    faChartArea,
     faCircle,
-    faCogs,
-    faCube,
     faCubes,
-    faDotCircle,
-    faHome,
     faShieldAlt,
     faTachometerAlt
 } from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import Charts from "./pages/charts/Charts";
-import Apps from "./pages/apps/Apps";
 import AppCreate from "./pages/app_create/AppCreate";
 import Projects from "./pages/projects/Projects";
 import ProjectCreate from "./pages/project_create/ProjectCreate";

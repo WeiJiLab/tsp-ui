@@ -1,4 +1,4 @@
-import {ProjectsActions} from "../actions/ProjectsAction";
+import {ProjectActions, ProjectsActions} from "../actions/ProjectsAction";
 import {combineReducers} from 'redux';
 import {ToolsActions} from "../actions/ToolsAction";
 
@@ -10,6 +10,11 @@ const initialState = {
     },
     apps: [],
     tools: {
+        status: false,
+        message: null,
+        data: []
+    },
+    project: {
         status: false,
         message: null,
         data: []
@@ -41,6 +46,14 @@ export function reduxResult(state = initialState, action) {
         case ToolsActions.API_TOOLS_FAILED:
             return Object.assign({}, state, {
                 tools: action.payload,
+            });
+        case ProjectActions.API_PROJECT_SUCCESS:
+            return Object.assign({}, state, {
+                project: action.payload,
+            });
+        case ProjectActions.API_PROJECT_FAILED:
+            return Object.assign({}, state, {
+                project: action.payload,
             });
         default:
             return state;

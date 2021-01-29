@@ -3,11 +3,10 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faEllipsisH} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faEllipsisH, faPlay} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
-import {getProjects} from "../../actions/ProjectsAction";
+import {getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import PushButton from "../../components/button/PushButton";
 
 class Project extends React.Component {
@@ -19,22 +18,71 @@ class Project extends React.Component {
         return <Container className={'Projects'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
-                    <PushButton>xxx</PushButton>
+                    <PushButton> <FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
                 </Col>
             </Row>
-            <Row style={{padding: 0, margin: 0}}>
-                {/*{this.renderApplicationCard()}*/}
+            <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                {this.renderProjectCard()}
+            </Row>
+            <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                <Card title={'应用'} w={6}>
+                    <Container>
+                        <Row>
+                            {
+                                this.props.project.applications ? this.props.project.applications.map((app, index) => {
+                                    return this.renderAppRow(app, index);
+                                }) : <span style={{color: '#668'}}>无</span>
+                            }
+                        </Row>
+                    </Container>
+                </Card>
+                <Card title={'扫描记录'} w={6}>
+                    <Container>
+                        <Row>
+                            <span style={{color: '#668'}}>无</span>
+                        </Row>
+                    </Container>
+                </Card>
             </Row>
         </Container>
     }
 
+    renderAppRow(app, index) {
+        return <Container key={index}>
+            <Row style={{marginTop: '0.5em'}}>
+                <Col md={2}>
+                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em'}} icon={faCube}/>
+                </Col>
+                <Col md={10}>
+                    <Row>
+                        <Col md={6}>
+                            <h3>{app.name}</h3>
+                        </Col>
+                        <Col md={6} style={{textAlign: 'right'}}>
+                            <FontAwesomeIcon
+                                icon={faEllipsisH}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={10}>
+                            <h6>{app.description}</h6>
+                        </Col>
+                        <Col md={2} style={{textAlign: 'right'}}>
+                            <FontAwesomeIcon icon={faChevronRight}/>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Container>;
+    }
 
-    renderApplicationCard(app, index) {
-        return <Card w={3} key={index}>
+
+    renderProjectCard() {
+        return <Card w={3}>
             <Container>
                 <Row>
                     <Col md={8}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{app.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.project.name}</h3>
                     </Col>
                     <Col md={4} style={{textAlign: 'right'}}>
                         <FontAwesomeIcon icon={faEllipsisH}/>
@@ -42,15 +90,7 @@ class Project extends React.Component {
                 </Row>
                 <Row style={{marginTop: '1em'}}>
                     <Col md={12}>
-                        <h6>{app.description}</h6>
-                    </Col>
-                </Row>
-                <Row style={{marginTop: '1em'}}>
-                    <Col md={6} style={{textAlign: 'right'}}>
-                        <Link to={{
-                            route: 'app',
-                            id: app.id
-                        }}> <FontAwesomeIcon icon={faChevronRight}/></Link>
+                        <h6>{this.props.project.description}</h6>
                     </Col>
                 </Row>
             </Container>
@@ -58,16 +98,16 @@ class Project extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getProjects();
+        this.props.getProject(this.props.match.params.id);
     }
 }
 
 const mapStateToProps = state => ({
-    projects: state.reduxResult.projects.data,
+    project: state.reduxResult.project.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getProjects,
+    getProject,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Project);
