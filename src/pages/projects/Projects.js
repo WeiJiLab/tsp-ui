@@ -161,7 +161,7 @@ class Projects extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps !== this.props) {
+        if (nextProps.deleteProjectResult !== this.props.deleteProjectResult) {
             this.props.getProjects();
         }
     }
@@ -169,7 +169,7 @@ class Projects extends React.Component {
 
 const mapStateToProps = state => ({
     projects: state.reduxResult.projects.data,
-    deleteProjectResult: state.reduxResult.deleteProjectResult.data,
+    deleteProjectResult: state.reduxResult.deleteProjectResult,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
