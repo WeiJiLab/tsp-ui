@@ -15,6 +15,11 @@ const initialState = {
         message: null,
         data: []
     },
+    tool: {
+        status: false,
+        message: null,
+        data: {}
+    },
     project: {
         status: false,
         message: null,
@@ -31,6 +36,11 @@ const initialState = {
         data: {}
     },
     createAppResult: {
+        status: false,
+        message: null,
+        data: {}
+    },
+    createCaseResult: {
         status: false,
         message: null,
         data: {}
@@ -76,6 +86,14 @@ export function reduxResult(state = initialState, action) {
             return Object.assign({}, state, {
                 tools: action.payload,
             });
+        case ToolsActions.API_TOOL_SUCCESS:
+            return Object.assign({}, state, {
+                tool: action.payload,
+            });
+        case ToolsActions.API_TOOL_FAILED:
+            return Object.assign({}, state, {
+                tool: action.payload,
+            });
         case ProjectActions.API_PROJECT_SUCCESS:
             return Object.assign({}, state, {
                 project: action.payload,
@@ -110,6 +128,15 @@ export function reduxResult(state = initialState, action) {
         case AppActions.API_APP_CREATE_FAILED:
             return Object.assign({}, state, {
                 createAppResult: action.payload,
+            });
+
+        case ToolsActions.API_CASE_ADD_SUCCESS:
+            return Object.assign({}, state, {
+                createCaseResult: action.payload,
+            });
+        case ToolsActions.API_CASE_ADD_FAILED:
+            return Object.assign({}, state, {
+                createCaseResult: action.payload,
             });
 
         case AppActions.API_APP_DELETE_SUCCESS:

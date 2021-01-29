@@ -19,6 +19,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setBreadCrumbMenu} from "./actions/BreadCrumbMenuAction";
 import Application from "./pages/app/Application";
+import Tool from "./pages/tool/Tool";
+import CaseCreate from "./pages/case_create/CaseCreate";
 
 const menuData = [
     {
@@ -164,6 +166,8 @@ class App extends Component {
                                     <Route exact path={'/project/:projectId/:appId'} component={Application}/>
                                     <Route exact path={'/app/create/:projectId'} component={AppCreate}/>
                                     <Route exact path={'/tools'} component={Tools}/>
+                                    <Route exact path={'/tool/:toolId'} component={Tool}/>
+                                    <Route exact path={'/tool/case/:toolId'} component={CaseCreate}/>
 
                                     <Route exact path={'/ScanList'} component={ScanList}/>
                                     <Route exact path={'/charts'} component={Charts}/>

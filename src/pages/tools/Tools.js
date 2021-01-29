@@ -97,7 +97,7 @@ class Tools extends React.Component {
                                 <span style={{color: '#668', margin: 0}}><FontAwesomeIcon style={{color: '#668'}} icon={faTags}/>&nbsp;{tool.metadata}</span>
                             </Col>
                             <Col md={2} style={{textAlign: 'right'}}>
-                                <FontAwesomeIcon icon={faChevronRight}/>
+                                <Link to={'tool/'+tool.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
                             </Col>
                         </Row>
                     </Col>
@@ -140,10 +140,7 @@ class Tools extends React.Component {
                             }}>{tool.category}</span>
                     </Col>
                     <Col md={6} style={{textAlign: 'right'}}>
-                        <Link to={{
-                            route: 'tool',
-                            id: tool.id
-                        }}> <FontAwesomeIcon icon={faChevronRight}/></Link>
+                        <Link to={'tool/'+tool.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
                     </Col>
                 </Row>
             </Container>
