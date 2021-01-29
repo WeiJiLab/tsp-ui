@@ -33,7 +33,7 @@ class DashBoard extends React.Component {
                 </Card>
                 <Card title={'应用'} w={3}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
-                    <Link to={'/apps'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
+                    <Link to={'/projects'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
                 </Card>
                 <Card title={'安全工具'} w={3}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faShieldVirus}/>
