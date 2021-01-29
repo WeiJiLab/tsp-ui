@@ -50,10 +50,10 @@ class Project extends React.Component {
     renderAppRow(app, index) {
         return <Container key={index}>
             <Row style={{marginTop: '0.5em'}}>
-                <Col md={2}>
-                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em'}} icon={faCube}/>
+                <Col md={1}>
+                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faCube}/>
                 </Col>
-                <Col md={10}>
+                <Col md={11}>
                     <Row>
                         <Col md={6}>
                             <h3>{app.name}</h3>
