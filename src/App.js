@@ -87,6 +87,24 @@ const menuData = [
     }
 ];
 
+const AnimatedSwitch = props => {
+    const {children} = props
+    return (
+        <Route
+            render={({location}) => (
+                <TransitionGroup>
+                    <CSSTransition
+                        key={location.key}
+                        classNames={props.type || 'fade'}
+                        timeout={props.duration || 300}>
+                        <Switch location={location}>{children}</Switch>
+                    </CSSTransition>
+                </TransitionGroup>
+            )}
+        />
+    )
+};
+
 class App extends Component {
 
     constructor(props) {
@@ -148,21 +166,17 @@ class App extends Component {
                                     borderBottomLeftRadius: '2em',
                                     borderBottomRightRadius: '2em'
                                 }}>
-                                <TransitionGroup>
-                                    <CSSTransition key={1} classNames={'fade'} timeout={1000}>
-                                        <Switch>
-                                            <Route exact path={'/'} component={DashBoard}/>
-                                            <Route exact path={'/projects'} component={Projects}/>
-                                            <Route exact path={'/project/create'} component={ProjectCreate}/>
-                                            <Route exact path={'/project/:id'} component={Project}/>
-                                            <Route exact path={'/app/create/:projectId'} component={AppCreate}/>
-                                            <Route exact path={'/tools'} component={Tools}/>
+                                <AnimatedSwitch>
+                                    <Route exact path={'/'} component={DashBoard}/>
+                                    <Route exact path={'/projects'} component={Projects}/>
+                                    <Route exact path={'/project/create'} component={ProjectCreate}/>
+                                    <Route exact path={'/project/:id'} component={Project}/>
+                                    <Route exact path={'/app/create/:projectId'} component={AppCreate}/>
+                                    <Route exact path={'/tools'} component={Tools}/>
 
-                                            <Route exact path={'/ScanList'} component={ScanList}/>
-                                            <Route exact path={'/charts'} component={Charts}/>
-                                        </Switch>
-                                    </CSSTransition>
-                                </TransitionGroup>
+                                    <Route exact path={'/ScanList'} component={ScanList}/>
+                                    <Route exact path={'/charts'} component={Charts}/>
+                                </AnimatedSwitch>
                             </Container>
                         </Col>
                     </Row>
