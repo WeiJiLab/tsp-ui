@@ -37,7 +37,7 @@ class AppCreate extends React.Component {
                         <FormLabel style={{color: 'rgb(36, 66, 84)'}}>项目</FormLabel>
                         <FormControl disabled={true} placeHolder={this.props.project.name}/>
                     </Row>
-                    <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
+                    <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
                         <FormLabel style={{color: 'rgb(36, 66, 84)'}}>应用名称</FormLabel>
                         <FormControl onChange={this.changeName.bind(this)} placeHolder={'输入应用名称'}/>
                     </Row>
