@@ -62,26 +62,6 @@ const menuData = [
         ]
     },
     {
-        title: '应用',
-        route: '',
-        icon: faCogs,
-        routable: false,
-        child: [
-            {
-                title: '应用列表',
-                route: '/apps',
-                icon: faCircle,
-                routable: true,
-            },
-            {
-                title: '创建应用',
-                route: '/app/create',
-                icon: faCircle,
-                routable: true,
-            }
-        ]
-    },
-    {
         title: '安全工具',
         route: '',
         icon: faShieldAlt,
