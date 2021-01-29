@@ -75,20 +75,20 @@ const menuData = [
             }
         ]
     },
-    {
-        title: '图表',
-        route: '',
-        icon: faChartArea,
-        routable: false,
-        child: [
-            {
-                title: '各种图表',
-                route: '/charts',
-                icon: faCircle,
-                routable: true,
-            }
-        ]
-    }
+    // {
+    //     title: '图表',
+    //     route: '',
+    //     icon: faChartArea,
+    //     routable: false,
+    //     child: [
+    //         {
+    //             title: '各种图表',
+    //             route: '/charts',
+    //             icon: faCircle,
+    //             routable: true,
+    //         }
+    //     ]
+    // }
 ];
 
 const AnimatedSwitch = props => {
