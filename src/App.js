@@ -25,6 +25,7 @@ import AppCreate from "./pages/app_create/AppCreate";
 import Projects from "./pages/projects/Projects";
 import ProjectCreate from "./pages/project_create/ProjectCreate";
 import Tools from "./pages/tools/Tools";
+import Project from "./pages/project/Project";
 
 const menuData = [
     {
@@ -162,10 +163,9 @@ class App extends Component {
                                     <Route exact path={'/'} component={DashBoard}/>
                                     <Route exact path={'/projects'} component={Projects}/>
                                     <Route exact path={'/project/create'} component={ProjectCreate}/>
-                                    <Route exact path={'/apps'} component={Apps}/>
+                                    <Route exact path={'/project/:id'} component={Project}/>
                                     <Route exact path={'/app/create'} component={AppCreate}/>
                                     <Route exact path={'/tools'} component={Tools}/>
-
 
                                     <Route exact path={'/ScanList'} component={ScanList}/>
                                     <Route exact path={'/charts'} component={Charts}/>

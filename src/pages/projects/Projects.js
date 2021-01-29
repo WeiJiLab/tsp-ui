@@ -7,6 +7,7 @@ import {faChevronRight, faCube, faCubes, faEllipsisH, faTh, faThList} from "@for
 import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class Projects extends React.Component {
     constructor(props) {
@@ -93,7 +94,11 @@ class Projects extends React.Component {
             <Container>
                 <Row>
                     <Col md={8}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{project.name}</h3>
+                        <h3 style={{
+                            whiteSpace: 'nowrap',
+                            textOverflow: 'ellipsis',
+                            overflow: 'hidden'
+                        }}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{project.name}</h3>
                     </Col>
                     <Col md={4} style={{textAlign: 'right'}}>
                         <FontAwesomeIcon icon={faEllipsisH}/>
@@ -109,7 +114,7 @@ class Projects extends React.Component {
                         <FontAwesomeIcon style={{color: '#668'}} icon={faCubes}/>&nbsp;<span>{project.applications.length}</span>
                     </Col>
                     <Col md={6} style={{textAlign: 'right'}}>
-                        <FontAwesomeIcon icon={faChevronRight}/>
+                        <Link to={'project/'+project.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
                     </Col>
                 </Row>
             </Container>
