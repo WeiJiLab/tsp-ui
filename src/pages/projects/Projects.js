@@ -1,11 +1,11 @@
 import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Dropdown, Row} from "react-bootstrap";
 import './Projects.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faCube, faCubes, faEllipsisH, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
-import {getProjects} from "../../actions/ProjectsAction";
+import {deleteProject, getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
@@ -71,8 +71,16 @@ class Projects extends React.Component {
                             </Col>
                             <Col md={6} style={{textAlign: 'right'}}>
                                 <FontAwesomeIcon style={{color: '#668'}} icon={faCubes}/>&nbsp;<span>{project.applications.length}</span>&nbsp;
-                                <FontAwesomeIcon
-                                    icon={faEllipsisH}/>
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="none" id="dropdown-basic">
+                                        <FontAwesomeIcon
+                                            icon={faEllipsisH}/>
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item onClick={this.deleteProject.bind(this, project.id)}>删除</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </Col>
                         </Row>
                         <Row>
@@ -89,6 +97,7 @@ class Projects extends React.Component {
         </Card>;
     }
 
+
     renderProjectCard(project, index) {
         return <Card w={3} key={index}>
             <Container>
@@ -101,7 +110,15 @@ class Projects extends React.Component {
                         }}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{project.name}</h3>
                     </Col>
                     <Col md={4} style={{textAlign: 'right'}}>
-                        <FontAwesomeIcon icon={faEllipsisH}/>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="none" id="dropdown-basic">
+                                <FontAwesomeIcon
+                                    icon={faEllipsisH}/>
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={this.deleteProject.bind(this, project.id)}>删除</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -124,14 +141,26 @@ class Projects extends React.Component {
     componentDidMount() {
         this.props.getProjects();
     }
+
+    deleteProject(projectId) {
+        this.props.deleteProject(projectId);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps !== this.props) {
+            this.props.getProjects();
+        }
+    }
 }
 
 const mapStateToProps = state => ({
     projects: state.reduxResult.projects.data,
+    deleteProjectResult: state.reduxResult.deleteProjectResult.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
+    deleteProject
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);

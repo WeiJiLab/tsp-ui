@@ -33,7 +33,11 @@ const initialState = {
         status: false,
         message: null,
         data: {}
-    },
+    }, deleteProjectResult: {
+        status: false,
+        message: null,
+        data: {}
+    }
 };
 
 export function reduxResult(state = initialState, action) {
@@ -96,6 +100,15 @@ export function reduxResult(state = initialState, action) {
         case AppActions.API_APP_DELETE_FAILED:
             return Object.assign({}, state, {
                 deleteAppResult: action.payload,
+            });
+
+        case AppActions.API_PROJECT_DELETE_SUCCESS:
+            return Object.assign({}, state, {
+                deleteProjectResult: action.payload,
+            });
+        case AppActions.API_PROJECT_DELETE_FAILED:
+            return Object.assign({}, state, {
+                deleteProjectResult: action.payload,
             });
 
         default:

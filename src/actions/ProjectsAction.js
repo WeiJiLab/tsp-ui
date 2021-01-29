@@ -18,6 +18,8 @@ export const AppActions = {
     API_APP_CREATE_FAILED: 'API_APP_CREATE_FAILED',
     API_APP_DELETE_SUCCESS: 'API_APP_DELETE_SUCCESS',
     API_APP_DELETE_FAILED: 'API_APP_DELETE_FAILED',
+    API_PROJECT_DELETE_SUCCESS: 'API_PROJECT_DELETE_SUCCESS',
+    API_PROJECT_DELETE_FAILED: 'API_PROJECT_DELETE_FAILED'
 };
 
 export const getProjects = (data) => (dispatch) => {
@@ -38,4 +40,9 @@ export const createApp = (projectId, data) => (dispatch) => {
 
 export const deleteApp = (projectId, appId, data) => (dispatch) => {
     deleteFromApi(API_PROJECTS + '/' + projectId + "/applications/" + appId, AppActions.API_APP_DELETE_SUCCESS, AppActions.API_APP_DELETE_FAILED, data, dispatch);
+};
+
+
+export const deleteProject = (projectId, data) => (dispatch) => {
+    deleteFromApi(API_PROJECTS + '/' + projectId, AppActions.API_PROJECT_DELETE_SUCCESS, AppActions.API_PROJECT_DELETE_FAILED, data, dispatch);
 };
