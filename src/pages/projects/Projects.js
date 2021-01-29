@@ -80,7 +80,7 @@ class Projects extends React.Component {
                                 <h6>{project.description}</h6>
                             </Col>
                             <Col md={2} style={{textAlign: 'right'}}>
-                                <FontAwesomeIcon icon={faChevronRight}/>
+                                <Link to={'project/' + project.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
                             </Col>
                         </Row>
                     </Col>
@@ -114,7 +114,7 @@ class Projects extends React.Component {
                         <FontAwesomeIcon style={{color: '#668'}} icon={faCubes}/>&nbsp;<span>{project.applications.length}</span>
                     </Col>
                     <Col md={6} style={{textAlign: 'right'}}>
-                        <Link to={'project/'+project.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
+                        <Link to={'project/' + project.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
                     </Col>
                 </Row>
             </Container>

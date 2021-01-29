@@ -82,7 +82,7 @@ class Project extends React.Component {
             <Container>
                 <Row>
                     <Col md={8}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;{this.props.project.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.project.name}</h3>
                     </Col>
                     <Col md={4} style={{textAlign: 'right'}}>
                         <FontAwesomeIcon icon={faEllipsisH}/>
