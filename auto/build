@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+cd $(dirname $0)/..
+
+source ./auto/set-env-vars
+
+docker build -t ${DOCKER_IMAGE} .
+
+docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:${TAG}
+docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:latest

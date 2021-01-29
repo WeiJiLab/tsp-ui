@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+cd $(dirname $0)/..
+
+source ./auto/set-env-vars
+
+./auto/build
+
+docker push ${DOCKER_IMAGE}:${TAG}
+docker push ${DOCKER_IMAGE}:latest
+echo ">>> Pushed docker image ${DOCKER_IMAGE} with tags ${TAG}, latest <<<"

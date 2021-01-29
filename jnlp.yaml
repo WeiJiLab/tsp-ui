@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: jnlp-slave
+  name: jnlp-slave
+spec:
+  serviceAccount: jenkins-agent
+  containers:
+  - name: kaniko-crane
+    image: weijilab/kaniko-crane
+    tty: true
+    command:
+    - cat
+  - name: argocd-auto-sync
+    image: 729601114034.dkr.ecr.ap-northeast-1.amazonaws.com/argocd-auto-sync
+    tty: true
+    command:
+    - cat
+  - name: trivy
+    image: aquasec/trivy
+    entrypoint: ""
+    tty: true
+    command:
+    - cat
