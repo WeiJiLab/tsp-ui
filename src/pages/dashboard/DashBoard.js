@@ -10,6 +10,7 @@ import {faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons"
 import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
+import {Pie} from "@ant-design/charts";
 
 class DashBoard extends React.Component {
 
@@ -22,8 +23,54 @@ class DashBoard extends React.Component {
     }
 
     render() {
+        let data = [];
+        let toolsData = {};
+        this.props.tools.map((tool, index) => {
+            if (toolsData[tool.category] == null) {
+                toolsData[tool.category] = {
+                    type: tool.category,
+                    value: 1,
+                }
+            } else {
+                toolsData[tool.category].value++;
+            }
+        });
+        for (let key in toolsData) {
+            data.push(toolsData[key]);
+        }
+
+        let toolsConfig = {
+            appendPadding: 20,
+            data: data,
+            angleField: 'value',
+            colorField: 'type',
+            radius: 1,
+            innerRadius: 0.618,
+            meta: {
+                value: {
+                    formatter: function formatter(v) {
+                        return ''.concat(v);
+                    },
+                },
+            },
+            label: {
+                type: 'inner',
+                offset: '-50%',
+                style: {textAlign: 'center'},
+                autoRotate: false,
+                content: '{value}',
+            },
+            interactions: [
+                {type: 'element-selected'},
+                {type: 'element-active'},
+                {type: 'pie-statistic-active'},
+            ],
+        };
         return <Container className={'DashBoard'}>
             <Row style={{padding: 0, margin: 0}}>
+                <Card title={'安全工具'} w={3}>
+                    <Pie style={{height:'12em'}} {...toolsConfig} />
+                </Card>
                 <Card title={'项目'} w={3}>
                     <Container>
                         <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
@@ -33,12 +80,8 @@ class DashBoard extends React.Component {
                 </Card>
                 <Card title={'应用'} w={3}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
-                    <Link to={'/projects'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
-                </Card>
-                <Card title={'安全工具'} w={3}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faShieldVirus}/>
-                    <Link to={'/tools'}><h1
-                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.tools.length}</h1></Link>
+                    <Link to={'/projects'}><h1
+                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
                 </Card>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
