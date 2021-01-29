@@ -62,15 +62,19 @@ class Projects extends React.Component {
             <Container>
                 <Row style={{marginTop: '0.5em'}}>
                     <Col md={1}>
-                        <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em'}} icon={faCube}/>
+                        <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em',marginTop:'0.1em'}} icon={faCube}/>
                     </Col>
                     <Col md={11}>
                         <Row>
                             <Col md={6}>
-                                <h3>{project.name}</h3>
+                                <h3 style={{
+                                    whiteSpace: 'nowrap',
+                                    textOverflow: 'ellipsis',
+                                    overflow: 'hidden',
+                                    display: 'inline-block'
+                                }}>{project.name}</h3>
                             </Col>
                             <Col md={6} style={{textAlign: 'right'}}>
-                                <FontAwesomeIcon style={{color: '#668'}} icon={faCubes}/>&nbsp;<span>{project.applications.length}</span>&nbsp;
                                 <Dropdown>
                                     <Dropdown.Toggle variant="none" id="dropdown-basic">
                                         <FontAwesomeIcon
@@ -85,7 +89,9 @@ class Projects extends React.Component {
                         </Row>
                         <Row>
                             <Col md={10}>
-                                <h6>{project.description}</h6>
+                                <FontAwesomeIcon style={{color: '#668'}} icon={faCubes}/>&nbsp;
+                                <span>{project.applications.length}</span>&nbsp;&nbsp;&nbsp;
+                                <span style={{fontSize:'1.1em'}}>{project.description}</span>
                             </Col>
                             <Col md={2} style={{textAlign: 'right'}}>
                                 <Link to={'project/' + project.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
