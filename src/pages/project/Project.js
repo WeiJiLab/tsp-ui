@@ -78,7 +78,7 @@ class Project extends React.Component {
 
 
     renderProjectCard() {
-        return <Card title={'应用信息'} w={3}>
+        return <Card title={'项目信息'} w={3}>
             <Container>
                 <Row>
                     <Col md={8}>
