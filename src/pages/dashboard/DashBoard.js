@@ -6,7 +6,7 @@ import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBox, faBoxes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
+import {faBox, faBoxes, faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
 class DashBoard extends React.Component {
@@ -24,12 +24,12 @@ class DashBoard extends React.Component {
             <Row style={{padding: 0, margin: 0}}>
                 <Card title={'项目'} w={3}>
                     <Container>
-                        <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faBox}/>
+                        <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
                         <Link to={'/projects'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
                     </Container>
                 </Card>
                 <Card title={'应用'} w={3}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faBoxes}/>
+                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
                     <Link to={'/apps'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
                 </Card>
                 <Card title={'安全工具'} w={3}>
