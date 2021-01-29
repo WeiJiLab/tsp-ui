@@ -48,10 +48,10 @@ class Project extends React.Component {
     }
 
     renderAppRow(app, index) {
-        return <Container key={index}>
+        return <Container className={'AppItem'} key={index}>
             <Row style={{marginTop: '0.5em'}}>
                 <Col md={1}>
-                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faCube}/>
+                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em',marginTop:'0.5em'}} icon={faCube}/>
                 </Col>
                 <Col md={11}>
                     <Row>

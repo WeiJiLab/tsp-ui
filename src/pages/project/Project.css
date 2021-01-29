@@ -3,3 +3,9 @@
     margin: 0;
     padding: 0;
 }
+
+.AppItem:hover {
+    border-left: solid 0.5em rgb(36, 66, 164);
+    transition: all 0.3s;
+    background: #eee;
+}
