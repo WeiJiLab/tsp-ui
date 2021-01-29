@@ -29,7 +29,7 @@ function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
                             payload: {
                                 status: false,
                                 message: data.message,
-                                data: null
+                                data: []
                             }
                         });
                     });
@@ -75,7 +75,7 @@ function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
                 payload: {
                     status: false,
                     message: error.message,
-                    data: null
+                    data: []
                 }
             })
         });
