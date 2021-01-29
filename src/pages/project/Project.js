@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faCubes, faEllipsisH, faPlay} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faEllipsisH, faPlay} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
@@ -29,7 +29,7 @@ class Project extends React.Component {
                     <Container>
                         <Row>
                             {
-                                this.props.project.applications ? this.props.project.applications.map((app, index) => {
+                                (this.props.project.applications && this.props.project.applications.length !== 0) ? this.props.project.applications.map((app, index) => {
                                     return this.renderAppRow(app, index);
                                 }) : <span style={{color: '#668'}}>无</span>
                             }
@@ -51,7 +51,7 @@ class Project extends React.Component {
         return <Container className={'AppItem'} key={index}>
             <Row style={{marginTop: '0.5em'}}>
                 <Col md={1}>
-                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em',marginTop:'0.5em'}} icon={faCube}/>
+                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em', marginTop: '0.5em'}} icon={faCube}/>
                 </Col>
                 <Col md={11}>
                     <Row>

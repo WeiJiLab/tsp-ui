@@ -5,13 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import ScanList from "./pages/scan-list/ScanList";
 import DashBoard from "./pages/dashboard/DashBoard";
-import {
-    faChartArea,
-    faCircle,
-    faCubes,
-    faShieldAlt,
-    faTachometerAlt
-} from "@fortawesome/free-solid-svg-icons";
+import {faChartArea, faCircle, faCubes, faShieldAlt, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import Charts from "./pages/charts/Charts";
@@ -20,6 +14,7 @@ import Projects from "./pages/projects/Projects";
 import ProjectCreate from "./pages/project_create/ProjectCreate";
 import Tools from "./pages/tools/Tools";
 import Project from "./pages/project/Project";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const menuData = [
     {
@@ -153,17 +148,21 @@ class App extends Component {
                                     borderBottomLeftRadius: '2em',
                                     borderBottomRightRadius: '2em'
                                 }}>
-                                <Switch>
-                                    <Route exact path={'/'} component={DashBoard}/>
-                                    <Route exact path={'/projects'} component={Projects}/>
-                                    <Route exact path={'/project/create'} component={ProjectCreate}/>
-                                    <Route exact path={'/project/:id'} component={Project}/>
-                                    <Route exact path={'/app/create'} component={AppCreate}/>
-                                    <Route exact path={'/tools'} component={Tools}/>
+                                <TransitionGroup>
+                                    <CSSTransition key={1} classNames={'fade'} timeout={1000}>
+                                        <Switch>
+                                            <Route exact path={'/'} component={DashBoard}/>
+                                            <Route exact path={'/projects'} component={Projects}/>
+                                            <Route exact path={'/project/create'} component={ProjectCreate}/>
+                                            <Route exact path={'/project/:id'} component={Project}/>
+                                            <Route exact path={'/app/create'} component={AppCreate}/>
+                                            <Route exact path={'/tools'} component={Tools}/>
 
-                                    <Route exact path={'/ScanList'} component={ScanList}/>
-                                    <Route exact path={'/charts'} component={Charts}/>
-                                </Switch>
+                                            <Route exact path={'/ScanList'} component={ScanList}/>
+                                            <Route exact path={'/charts'} component={Charts}/>
+                                        </Switch>
+                                    </CSSTransition>
+                                </TransitionGroup>
                             </Container>
                         </Col>
                     </Row>

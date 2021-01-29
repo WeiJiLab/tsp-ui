@@ -43,13 +43,10 @@ class DashBoard extends React.Component {
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
                 <Card title={'最近的扫描'} w={6}>
-                    {/*<PushButton>按钮</PushButton>*/}
                     <span style={{color: '#aaa'}}>无</span>
                 </Card>
                 <Card title={'待扫描的任务'} w={6}>
                     <span style={{color: '#aaa'}}>无</span>
-                    {/*<ModalWrapper show={this.state.modalShow} closeHook={this.modalClose.bind(this)} title={'这是个弹框'}>啦啦啦</ModalWrapper>*/}
-                    {/*<PushButton onClick={this.showModal.bind(this)}>弹框</PushButton>*/}
                 </Card>
             </Row>
         </Container>

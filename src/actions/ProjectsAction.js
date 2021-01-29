@@ -1,9 +1,11 @@
 import {API_PROJECTS} from "../api/ScpApi";
-import {getFromApi} from "../api/Fetch";
+import {getFromApi, postFromApi} from "../api/Fetch";
 
 export const ProjectsActions = {
     API_PROJECTS_SUCCESS: 'API_PROJECTS_SUCCESS',
     API_PROJECTS_FAILED: 'API_PROJECTS_FAILED',
+    API_PROJECT_CREATE_SUCCESS: 'API_PROJECT_CREATE_SUCCESS',
+    API_PROJECT_CREATE_FAILED: 'API_PROJECT_CREATE_FAILED',
 };
 
 export const ProjectActions = {
@@ -17,4 +19,8 @@ export const getProjects = (data) => (dispatch) => {
 
 export const getProject = (id, data) => (dispatch) => {
     getFromApi(API_PROJECTS + '/' + id, ProjectActions.API_PROJECT_SUCCESS, ProjectActions.API_PROJECT_SUCCESS, data, dispatch);
+};
+
+export const createProject = (data) => (dispatch) => {
+    postFromApi(API_PROJECTS, ProjectsActions.API_PROJECT_CREATE_SUCCESS, ProjectsActions.API_PROJECT_CREATE_FAILED, data, dispatch);
 };
