@@ -1,5 +1,5 @@
 import {API_PROJECTS} from "../api/ScpApi";
-import {getFromApi, postFromApi} from "../api/Fetch";
+import {deleteFromApi, getFromApi, postFromApi} from "../api/Fetch";
 
 export const ProjectsActions = {
     API_PROJECTS_SUCCESS: 'API_PROJECTS_SUCCESS',
@@ -16,6 +16,8 @@ export const ProjectActions = {
 export const AppActions = {
     API_APP_CREATE_SUCCESS: 'API_APP_CREATE_SUCCESS',
     API_APP_CREATE_FAILED: 'API_APP_CREATE_FAILED',
+    API_APP_DELETE_SUCCESS: 'API_APP_DELETE_SUCCESS',
+    API_APP_DELETE_FAILED: 'API_APP_DELETE_FAILED',
 };
 
 export const getProjects = (data) => (dispatch) => {
@@ -32,4 +34,8 @@ export const createProject = (data) => (dispatch) => {
 
 export const createApp = (projectId, data) => (dispatch) => {
     postFromApi(API_PROJECTS + '/' + projectId + "/applications", AppActions.API_APP_CREATE_SUCCESS, AppActions.API_APP_CREATE_FAILED, data, dispatch);
+};
+
+export const deleteApp = (projectId, appId, data) => (dispatch) => {
+    deleteFromApi(API_PROJECTS + '/' + projectId + "/applications/" + appId, AppActions.API_APP_DELETE_SUCCESS, AppActions.API_APP_DELETE_FAILED, data, dispatch);
 };

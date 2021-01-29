@@ -1,11 +1,11 @@
 import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Dropdown, Row} from "react-bootstrap";
 import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faCube, faEllipsisH, faPlay, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
-import {getProject} from "../../actions/ProjectsAction";
+import {deleteApp, getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 
@@ -61,8 +61,16 @@ class Project extends React.Component {
                             <h3>{app.name}</h3>
                         </Col>
                         <Col md={6} style={{textAlign: 'right'}}>
-                            <FontAwesomeIcon
-                                icon={faEllipsisH}/>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="none" id="dropdown-basic">
+                                    <FontAwesomeIcon
+                                        icon={faEllipsisH}/>
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={this.deleteApp.bind(this, app.id)}>删除</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </Col>
                     </Row>
                     <Row>
@@ -100,16 +108,28 @@ class Project extends React.Component {
     }
 
     gotoCreateApp() {
-        this.props.history.push('/app/create/'+this.props.match.params.id);
+        this.props.history.push('/app/create/' + this.props.match.params.id);
+    }
+
+    deleteApp(appId) {
+        this.props.deleteApp(this.props.match.params.id, appId);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps !== this.props) {
+            this.props.getProject(this.props.match.params.id);
+        }
     }
 }
 
 const mapStateToProps = state => ({
     project: state.reduxResult.project.data,
+    deleteAppResult: state.reduxResult.deleteAppResult.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProject,
+    deleteApp
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Project);
