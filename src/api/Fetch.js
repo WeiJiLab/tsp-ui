@@ -22,7 +22,7 @@ function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
         .then(response => {
             if (!response.ok) {
                 if (haveContent) {
-                    response.text().then(data => {
+                    response.json().then(data => {
                         console.log("!ok:", data);
                         dispatch({
                             type: failed,

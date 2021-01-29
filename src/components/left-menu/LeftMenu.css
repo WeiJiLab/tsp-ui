@@ -28,8 +28,8 @@
 }
 
 .MenuItemNiberBottom {
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
+    margin:0;
+    padding: 0.8em 0;
     background: rgb(36, 66, 164);
     border-top-right-radius: 2em;
 }

@@ -97,7 +97,11 @@ class ProjectCreate extends React.Component {
                     text: '创建项目'
                 }
             });
-            this.props.history.push('/project/' + nextProps.createProjectResult.id);
+            if (!nextProps.createProjectResult.status) {
+                this.showModal(nextProps.createProjectResult.message);
+            } else {
+                this.props.history.push('/project/' + nextProps.createProjectResult.id);
+            }
         }
     }
 

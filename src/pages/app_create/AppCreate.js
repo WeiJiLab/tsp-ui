@@ -101,7 +101,11 @@ class AppCreate extends React.Component {
                     text: '创建应用'
                 }
             });
-            this.props.history.push('/project/' + nextProps.createAppResult.projectId);
+            if (!nextProps.createAppResult.status) {
+                this.showModal(nextProps.createAppResult.message);
+            } else {
+                this.props.history.push('/project/' + nextProps.createAppResult.projectId);
+            }
         }
     }
 
