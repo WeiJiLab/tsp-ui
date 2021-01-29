@@ -18,7 +18,12 @@ const initialState = {
     project: {
         status: false,
         message: null,
-        data: []
+        data: {}
+    },
+    app: {
+        status: false,
+        message: null,
+        data: {}
     },
     createProjectResult: {
         status: false,
@@ -34,11 +39,13 @@ const initialState = {
         status: false,
         message: null,
         data: {}
-    }, deleteProjectResult: {
+    },
+    deleteProjectResult: {
         status: false,
         message: null,
         data: {}
-    }, breadCrumbMenus: {
+    },
+    breadCrumbMenus: {
         data: []
     }
 };
@@ -76,6 +83,15 @@ export function reduxResult(state = initialState, action) {
         case ProjectActions.API_PROJECT_FAILED:
             return Object.assign({}, state, {
                 project: action.payload,
+            });
+
+        case AppActions.API_APP_SUCCESS:
+            return Object.assign({}, state, {
+                app: action.payload,
+            });
+        case AppActions.API_APP_FAILED:
+            return Object.assign({}, state, {
+                app: action.payload,
             });
 
         case ProjectsActions.API_PROJECT_CREATE_SUCCESS:

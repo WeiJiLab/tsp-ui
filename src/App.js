@@ -18,6 +18,7 @@ import {CSSTransition, TransitionGroup} from "react-transition-group";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setBreadCrumbMenu} from "./actions/BreadCrumbMenuAction";
+import Application from "./pages/app/Application";
 
 const menuData = [
     {
@@ -160,6 +161,7 @@ class App extends Component {
                                     <Route exact path={'/projects'} component={Projects}/>
                                     <Route exact path={'/project/create'} component={ProjectCreate}/>
                                     <Route exact path={'/project/:id'} component={Project}/>
+                                    <Route exact path={'/project/:projectId/:appId'} component={Application}/>
                                     <Route exact path={'/app/create/:projectId'} component={AppCreate}/>
                                     <Route exact path={'/tools'} component={Tools}/>
 

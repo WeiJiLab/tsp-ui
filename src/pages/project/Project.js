@@ -9,6 +9,7 @@ import {deleteApp, getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
+import {Link} from "react-router-dom";
 
 class Project extends React.Component {
     constructor(props) {
@@ -79,7 +80,7 @@ class Project extends React.Component {
                             <h6>{app.description}</h6>
                         </Col>
                         <Col md={2} style={{textAlign: 'right'}}>
-                            <FontAwesomeIcon icon={faChevronRight}/>
+                            <Link to={'/project/' + this.props.project.id + '/' + app.id}><FontAwesomeIcon icon={faChevronRight}/></Link>
                         </Col>
                     </Row>
                 </Col>

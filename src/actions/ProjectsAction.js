@@ -14,6 +14,8 @@ export const ProjectActions = {
 };
 
 export const AppActions = {
+    API_APP_SUCCESS: 'API_APP_SUCCESS',
+    API_APP_FAILED: 'API_APP_FAILED',
     API_APP_CREATE_SUCCESS: 'API_APP_CREATE_SUCCESS',
     API_APP_CREATE_FAILED: 'API_APP_CREATE_FAILED',
     API_APP_DELETE_SUCCESS: 'API_APP_DELETE_SUCCESS',
@@ -28,6 +30,10 @@ export const getProjects = (data) => (dispatch) => {
 
 export const getProject = (id, data) => (dispatch) => {
     getFromApi(API_PROJECTS + '/' + id, ProjectActions.API_PROJECT_SUCCESS, ProjectActions.API_PROJECT_SUCCESS, data, dispatch);
+};
+
+export const getApp = (pid, aid, data) => (dispatch) => {
+    getFromApi(API_PROJECTS + '/' + pid + '/applications/' + aid, AppActions.API_APP_SUCCESS, AppActions.API_APP_SUCCESS, data, dispatch);
 };
 
 export const createProject = (data) => (dispatch) => {
