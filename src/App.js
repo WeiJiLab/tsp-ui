@@ -155,7 +155,7 @@ class App extends Component {
                                             <Route exact path={'/projects'} component={Projects}/>
                                             <Route exact path={'/project/create'} component={ProjectCreate}/>
                                             <Route exact path={'/project/:id'} component={Project}/>
-                                            <Route exact path={'/app/create'} component={AppCreate}/>
+                                            <Route exact path={'/app/create/:projectId'} component={AppCreate}/>
                                             <Route exact path={'/tools'} component={Tools}/>
 
                                             <Route exact path={'/ScanList'} component={ScanList}/>

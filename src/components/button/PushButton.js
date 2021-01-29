@@ -8,7 +8,7 @@ class PushButton extends Component {
     }
 
     render() {
-        return <Button disabled={this.props.disabled} onClick={this.props.onClick} className={'PushButton'}>{this.props.children}</Button>
+        return <Button style={this.props.style} disabled={this.props.disabled} onClick={this.props.onClick} className={'PushButton'}>{this.props.children}</Button>
     }
 }
 

@@ -1,4 +1,4 @@
-import {ProjectActions, ProjectsActions} from "../actions/ProjectsAction";
+import {AppActions, ProjectActions, ProjectsActions} from "../actions/ProjectsAction";
 import {combineReducers} from 'redux';
 import {ToolsActions} from "../actions/ToolsAction";
 
@@ -23,7 +23,12 @@ const initialState = {
         status: false,
         message: null,
         data: {}
-    }
+    },
+    createAppResult: {
+        status: false,
+        message: null,
+        data: {}
+    },
 };
 
 export function reduxResult(state = initialState, action) {
@@ -68,6 +73,15 @@ export function reduxResult(state = initialState, action) {
         case ProjectsActions.API_PROJECT_CREATE_FAILED:
             return Object.assign({}, state, {
                 createProjectResult: action.payload,
+            });
+
+        case AppActions.API_APP_CREATE_SUCCESS:
+            return Object.assign({}, state, {
+                createAppResult: action.payload,
+            });
+        case AppActions.API_APP_CREATE_FAILED:
+            return Object.assign({}, state, {
+                createAppResult: action.payload,
             });
         default:
             return state;

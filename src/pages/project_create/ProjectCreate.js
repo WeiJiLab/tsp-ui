@@ -38,7 +38,7 @@ class ProjectCreate extends React.Component {
                         <FormControl onChange={this.changeName.bind(this)} placeHolder={'输入项目名称'}/>
                     </Row>
                     <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
-                        <FormLabel style={{color: 'rgb(36, 66, 84)'}}>项目名称</FormLabel>
+                        <FormLabel style={{color: 'rgb(36, 66, 84)'}}>项目描述</FormLabel>
                         <FormControl onChange={this.changeDesc.bind(this)} as="textarea" placeHolder={'输入描述'}/>
                     </Row>
                     <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>

@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-import {getApps} from "../../actions/AppsAction";
 import {getTools} from "../../actions/ToolsAction";
 
 class DashBoard extends React.Component {

@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faEllipsisH, faPlay} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faEllipsisH, faPlay, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
@@ -19,6 +19,8 @@ class Project extends React.Component {
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
                     <PushButton> <FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
+                    <PushButton style={{marginLeft: '1em'}} onClick={this.gotoCreateApp.bind(this)}> <FontAwesomeIcon
+                        icon={faPlus}/> &nbsp;创建应用</PushButton>
                 </Col>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
@@ -76,16 +78,12 @@ class Project extends React.Component {
         </Container>;
     }
 
-
     renderProjectCard() {
         return <Card title={'项目信息'} w={3}>
             <Container>
                 <Row>
-                    <Col md={8}>
+                    <Col md={12}>
                         <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.project.name}</h3>
-                    </Col>
-                    <Col md={4} style={{textAlign: 'right'}}>
-                        <FontAwesomeIcon icon={faEllipsisH}/>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -99,6 +97,10 @@ class Project extends React.Component {
 
     componentDidMount() {
         this.props.getProject(this.props.match.params.id);
+    }
+
+    gotoCreateApp() {
+        this.props.history.push('/app/create/'+this.props.match.params.id);
     }
 }
 
