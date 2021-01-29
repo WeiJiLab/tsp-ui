@@ -6,8 +6,10 @@ import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBox, faBoxes, faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
+import {faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
+import {getApps} from "../../actions/AppsAction";
+import {getTools} from "../../actions/ToolsAction";
 
 class DashBoard extends React.Component {
 
@@ -25,16 +27,18 @@ class DashBoard extends React.Component {
                 <Card title={'项目'} w={3}>
                     <Container>
                         <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
-                        <Link to={'/projects'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
+                        <Link to={'/projects'}><h1
+                            style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.projects.length}</h1></Link>
                     </Container>
                 </Card>
                 <Card title={'应用'} w={3}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
-                    <Link to={'/apps'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
+                    <Link to={'/apps'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
                 </Card>
                 <Card title={'安全工具'} w={3}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faShieldVirus}/>
-                    <Link to={'/tools'}><h1 style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>0</h1></Link>
+                    <Link to={'/tools'}><h1
+                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.tools.length}</h1></Link>
                 </Card>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
@@ -65,16 +69,20 @@ class DashBoard extends React.Component {
 
     componentDidMount() {
         this.props.getProjects();
+        this.props.getTools();
     }
 }
 
 
 const mapStateToProps = state => ({
-    project: state.reduxResult.project
+    projects: state.reduxResult.projects.data,
+    apps: state.reduxResult.apps,
+    tools: state.reduxResult.tools.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
+    getTools,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);
