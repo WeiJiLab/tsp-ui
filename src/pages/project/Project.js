@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faEllipsisH, faPlay} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faCubes, faEllipsisH, faPlay} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
@@ -82,7 +82,7 @@ class Project extends React.Component {
             <Container>
                 <Row>
                     <Col md={8}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.project.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;{this.props.project.name}</h3>
                     </Col>
                     <Col md={4} style={{textAlign: 'right'}}>
                         <FontAwesomeIcon icon={faEllipsisH}/>
