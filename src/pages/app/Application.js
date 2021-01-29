@@ -19,7 +19,7 @@ class Application extends React.Component {
         return <Container className={'Application'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
-                    <PushButton> <FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
+                    <PushButton> <FontAwesomeIcon icon={faPlay}/>创建扫描任务</PushButton>
                 </Col>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
