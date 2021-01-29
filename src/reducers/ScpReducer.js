@@ -1,6 +1,7 @@
 import {AppActions, ProjectActions, ProjectsActions} from "../actions/ProjectsAction";
 import {combineReducers} from 'redux';
 import {ToolsActions} from "../actions/ToolsAction";
+import {BreadCrumbMenuActions} from "../actions/BreadCrumbMenuAction";
 
 const initialState = {
     projects: {
@@ -37,6 +38,8 @@ const initialState = {
         status: false,
         message: null,
         data: {}
+    }, breadCrumbMenus: {
+        data: []
     }
 };
 
@@ -109,6 +112,10 @@ export function reduxResult(state = initialState, action) {
         case AppActions.API_PROJECT_DELETE_FAILED:
             return Object.assign({}, state, {
                 deleteProjectResult: action.payload,
+            });
+        case BreadCrumbMenuActions.SET_BREAD_CRUMB_MEU:
+            return Object.assign({}, state, {
+                breadCrumbMenus: action.payload,
             });
 
         default:

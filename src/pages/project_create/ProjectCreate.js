@@ -9,6 +9,7 @@ import {bindActionCreators} from "redux";
 import {createProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import ModalWrapper from "../../components/modal/ModalWrapper";
+import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 
 class ProjectCreate extends React.Component {
 
@@ -99,6 +100,21 @@ class ProjectCreate extends React.Component {
             this.props.history.push('/project/' + nextProps.createProjectResult.id);
         }
     }
+
+    componentDidMount() {
+        this.props.setBreadCrumbMenu([
+            {
+                title: 'Projects',
+                clickable: true,
+                route: '/projects'
+            },
+            {
+                title: 'Create',
+                clickable: false,
+                route: ''
+            }
+        ]);
+    }
 }
 
 
@@ -108,6 +124,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     createProject,
+    setBreadCrumbMenu
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectCreate);

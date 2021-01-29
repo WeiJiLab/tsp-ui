@@ -9,6 +9,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
+import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 
 class DashBoard extends React.Component {
 
@@ -66,6 +67,18 @@ class DashBoard extends React.Component {
     componentDidMount() {
         this.props.getProjects();
         this.props.getTools();
+        this.props.setBreadCrumbMenu([
+            {
+                title: 'Home',
+                clickable: true,
+                route: '/'
+            },
+            {
+                title: 'Dashboard',
+                clickable: false,
+                route: ''
+            }
+        ]);
     }
 }
 
@@ -79,6 +92,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
     getTools,
+    setBreadCrumbMenu
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

@@ -8,6 +8,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
+import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 
 class Tools extends React.Component {
     constructor(props) {
@@ -150,6 +151,13 @@ class Tools extends React.Component {
     }
 
     componentDidMount() {
+        this.props.setBreadCrumbMenu([
+            {
+                title: 'Tools',
+                clickable: false,
+                route: ''
+            }
+        ]);
         this.props.getTools();
     }
 }
@@ -160,6 +168,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getTools,
+    setBreadCrumbMenu
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tools);

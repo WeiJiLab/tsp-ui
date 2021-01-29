@@ -8,6 +8,7 @@ import {bindActionCreators} from "redux";
 import {deleteProject, getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 
 class Projects extends React.Component {
     constructor(props) {
@@ -145,6 +146,13 @@ class Projects extends React.Component {
     }
 
     componentDidMount() {
+        this.props.setBreadCrumbMenu([
+            {
+                title: 'Projects',
+                clickable: false,
+                route: ''
+            }
+        ]);
         this.props.getProjects();
     }
 
@@ -166,7 +174,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
-    deleteProject
+    deleteProject,
+    setBreadCrumbMenu
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);

@@ -9,6 +9,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import ModalWrapper from "../../components/modal/ModalWrapper";
 import {createApp, getProject} from "../../actions/ProjectsAction";
+import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 
 class AppCreate extends React.Component {
 
@@ -106,6 +107,23 @@ class AppCreate extends React.Component {
 
     componentDidMount() {
         this.props.getProject(this.props.match.params.projectId);
+        this.props.setBreadCrumbMenu([
+            {
+                title: 'Projects',
+                clickable: true,
+                route: '/projects'
+            },
+            {
+                title: 'Project-' + this.props.match.params.projectId,
+                clickable: true,
+                route: '/project/' + this.props.match.params.projectId
+            },
+            {
+                title: 'Create',
+                clickable: false,
+                route: ''
+            },
+        ]);
     }
 }
 
@@ -117,7 +135,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     createApp,
-    getProject
+    getProject,
+    setBreadCrumbMenu
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppCreate);

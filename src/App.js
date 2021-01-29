@@ -15,6 +15,9 @@ import ProjectCreate from "./pages/project_create/ProjectCreate";
 import Tools from "./pages/tools/Tools";
 import Project from "./pages/project/Project";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {setBreadCrumbMenu} from "./actions/BreadCrumbMenuAction";
 
 const menuData = [
     {
@@ -109,20 +112,6 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            breadcrumb: [
-                {
-                    title: 'Application',
-                    clickable: false,
-                    route: '/'
-                },
-                {
-                    title: 'Application2',
-                    clickable: true,
-                    route: '/'
-                }
-            ]
-        };
     }
 
     render() {
@@ -156,7 +145,7 @@ class App extends Component {
                                 borderTopLeftRadius: '2em',
                                 borderTopRightRadius: '2em',
                             }}>
-                                <BreadCrumbMenu data={this.state.breadcrumb}/>
+                                <BreadCrumbMenu data={this.props.breadCrumbMenus}/>
                             </Container>
                             <Container
                                 style={{
@@ -184,6 +173,30 @@ class App extends Component {
             </Container>
         );
     }
+
+    componentDidMount() {
+        this.props.setBreadCrumbMenu([
+            {
+                title: 'Home',
+                clickable: true,
+                route: '/'
+            },
+            {
+                title: 'Dashboard',
+                clickable: false,
+                route: ''
+            }
+        ]);
+    }
 }
 
-export default App;
+
+const mapStateToProps = state => ({
+    breadCrumbMenus: state.reduxResult.breadCrumbMenus.data,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    setBreadCrumbMenu,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
