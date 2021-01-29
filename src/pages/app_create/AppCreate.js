@@ -101,10 +101,11 @@ class AppCreate extends React.Component {
                     text: '创建应用'
                 }
             });
+            console.log(9999,nextProps.createAppResult);
             if (!nextProps.createAppResult.status) {
                 this.showModal(nextProps.createAppResult.message);
             } else {
-                this.props.history.push('/project/' + nextProps.createAppResult.projectId);
+                this.props.history.push('/project/' + nextProps.createAppResult.data.projectId);
             }
         }
     }
@@ -133,7 +134,7 @@ class AppCreate extends React.Component {
 
 
 const mapStateToProps = state => ({
-    createAppResult: state.reduxResult.createAppResult.data,
+    createAppResult: state.reduxResult.createAppResult,
     project: state.reduxResult.project.data,
 });
 

@@ -100,7 +100,7 @@ class ProjectCreate extends React.Component {
             if (!nextProps.createProjectResult.status) {
                 this.showModal(nextProps.createProjectResult.message);
             } else {
-                this.props.history.push('/project/' + nextProps.createProjectResult.id);
+                this.props.history.push('/project/' + nextProps.createProjectResult.data.id);
             }
         }
     }
@@ -123,7 +123,7 @@ class ProjectCreate extends React.Component {
 
 
 const mapStateToProps = state => ({
-    createProjectResult: state.reduxResult.createProjectResult.data,
+    createProjectResult: state.reduxResult.createProjectResult,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
