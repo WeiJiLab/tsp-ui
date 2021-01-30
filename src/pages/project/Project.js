@@ -4,16 +4,10 @@ import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faCheckCircle,
     faChevronRight,
     faCube,
-    faCubes, faEject,
     faEllipsisH,
-    faFileSignature,
-    faPlayCircle,
-    faPlus,
-    faShieldAlt,
-    faSpinner, faStopCircle, faTimesCircle
+    faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {deleteApp, getProject} from "../../actions/ProjectsAction";

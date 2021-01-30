@@ -26,6 +26,7 @@ import CaseGroupCreate from "./pages/case_group_create/CaseGroupCreate";
 import Case from "./pages/case/Case";
 import TaskCreate from "./pages/task_create/TaskCreate";
 import Task from "./pages/task/Task";
+import NoMatch from "./pages/no-match/NoMatch";
 
 const menuData = [
     {
@@ -171,6 +172,7 @@ class App extends Component {
                                 }}>
                                 <AnimatedSwitch>
                                     <Route exact path={'/'} component={DashBoard}/>
+                                    <Route exact path={'/dashboard'} component={DashBoard}/>
                                     <Route exact path={'/projects'} component={Projects}/>
                                     <Route exact path={'/project/create'} component={ProjectCreate}/>
                                     <Route exact path={'/project/:id'} component={Project}/>
@@ -186,6 +188,7 @@ class App extends Component {
 
                                     <Route exact path={'/task/create'} component={TaskCreate}/>
                                     <Route exact path={'/task/:taskId'} component={Task}/>
+                                    <Route path="*" component={NoMatch}/>
                                 </AnimatedSwitch>
                             </Container>
                         </Col>
