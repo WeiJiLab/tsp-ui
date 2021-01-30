@@ -9,6 +9,7 @@ import {getApp, getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
+import {getTasks} from "../../actions/TasksAction";
 
 class Application extends React.Component {
     constructor(props) {
@@ -74,6 +75,9 @@ class Application extends React.Component {
     componentDidMount() {
         this.props.getProject(this.props.match.params.projectId);
         this.props.getApp(this.props.match.params.projectId, this.props.match.params.appId);
+        this.props.getTasks({
+            appId: this.props.match.params.appId
+        });
 
         this.props.setBreadCrumbMenu([
             {
@@ -98,11 +102,13 @@ class Application extends React.Component {
 const mapStateToProps = state => ({
     project: state.reduxResult.project.data,
     app: state.reduxResult.app.data,
+    tasks: state.reduxResult.tasks.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProject,
     getApp,
+    getTasks,
     setBreadCrumbMenu
 }, dispatch);
 

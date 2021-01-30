@@ -11,6 +11,7 @@ import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getTool} from "../../actions/ToolsAction";
 import {deleteCase, getCasesByToolId} from "../../actions/CasesAction";
 import {Link} from "react-router-dom";
+import {getTasks} from "../../actions/TasksAction";
 
 class Tool extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Tool extends React.Component {
         return <Container className={'Tool'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
-                    <PushButton><FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
+                    <PushButton onClick={this.gotoCreateScan.bind(this)}><FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
                     <PushButton style={{marginLeft: '1em'}} onClick={this.gotoCreateCase.bind(this)}> <FontAwesomeIcon
                         icon={faPlus}/> &nbsp;添加用例</PushButton>
                 </Col>
@@ -50,6 +51,15 @@ class Tool extends React.Component {
                 </Card>
             </Row>
         </Container>
+    }
+
+    gotoCreateScan() {
+        this.props.history.push({
+            pathname: '/task/create',
+            createInfo: {
+                toolId: this.props.match.params.toolId,
+            }
+        });
     }
 
     renderToolCard() {
@@ -108,6 +118,9 @@ class Tool extends React.Component {
 
     componentDidMount() {
         this.props.getTool(this.props.match.params.toolId);
+        this.props.getTasks({
+            toolId: this.props.match.params.toolId
+        });
         this.props.getCasesByToolId(this.props.match.params.toolId);
 
         this.props.setBreadCrumbMenu([
@@ -143,12 +156,14 @@ const mapStateToProps = state => ({
     tool: state.reduxResult.tool.data,
     toolCases: state.reduxResult.toolCases.data,
     deleteCaseResult: state.reduxResult.deleteCaseResult,
+    tasks: state.reduxResult.tasks.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     setBreadCrumbMenu,
     getTool,
     deleteCase,
+    getTasks,
     getCasesByToolId
 }, dispatch);
 

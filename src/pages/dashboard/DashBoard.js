@@ -118,7 +118,7 @@ class DashBoard extends React.Component {
         this.props.getProjects();
         this.props.getTools();
         this.props.getCases();
-        this.props.getTasks({appId: 1});
+        this.props.getTasks({});
         this.props.getResults(1);
 
         this.props.setBreadCrumbMenu([

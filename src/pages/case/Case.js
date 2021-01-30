@@ -10,6 +10,7 @@ import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Link} from "react-router-dom";
 import {getCase} from "../../actions/CasesAction";
+import {getTasks} from "../../actions/TasksAction";
 
 class Case extends React.Component {
     constructor(props) {
@@ -46,7 +47,9 @@ class Case extends React.Component {
                 <Card title={'扫描中的任务'} w={6}>
                     <Container>
                         <Row>
-                            <span style={{color: '#668'}}>无</span>
+                            {this.props.tasks.map((task,index)=>{
+                                return <span style={{color: '#668'}}>{task.id}</span>
+                            })}
                         </Row>
                     </Container>
                 </Card>
@@ -124,6 +127,9 @@ class Case extends React.Component {
 
     componentDidMount() {
         this.props.getCase(this.props.match.params.caseId);
+        this.props.getTasks({
+            useCaseId: this.props.match.params.caseId
+        });
         this.props.setBreadCrumbMenu([
             {
                 title: 'Cases',
@@ -152,10 +158,12 @@ class Case extends React.Component {
 const mapStateToProps = state => ({
     cas: state.reduxResult.cas.data,
     deleteAppResult: state.reduxResult.deleteAppResult,
+    tasks: state.reduxResult.tasks.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getCase,
+    getTasks,
     setBreadCrumbMenu
 }, dispatch);
 

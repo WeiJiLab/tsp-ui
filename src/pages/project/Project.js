@@ -3,13 +3,14 @@ import {Col, Container, Dropdown, Row} from "react-bootstrap";
 import './Project.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faEllipsisH, faPlay, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faEllipsisH, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {deleteApp, getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Link} from "react-router-dom";
+import {getTasks} from "../../actions/TasksAction";
 
 class Project extends React.Component {
     constructor(props) {
@@ -106,6 +107,9 @@ class Project extends React.Component {
 
     componentDidMount() {
         this.props.getProject(this.props.match.params.id);
+        this.props.getTasks({
+            projectId: this.props.match.params.id
+        });
         this.props.setBreadCrumbMenu([
             {
                 title: 'Projects',
@@ -137,12 +141,14 @@ class Project extends React.Component {
 
 const mapStateToProps = state => ({
     project: state.reduxResult.project.data,
+    tasks: state.reduxResult.tasks.data,
     deleteAppResult: state.reduxResult.deleteAppResult,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProject,
     deleteApp,
+    getTasks,
     setBreadCrumbMenu
 }, dispatch);
 

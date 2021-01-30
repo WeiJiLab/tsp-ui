@@ -12,7 +12,7 @@ import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {startTask} from "../../actions/TasksAction";
 import {getApp, getProject, getProjects} from "../../actions/ProjectsAction";
 import {getCase, getCasesByToolId} from "../../actions/CasesAction";
-import {getTools} from "../../actions/ToolsAction";
+import {getTool, getTools} from "../../actions/ToolsAction";
 
 class TaskCreate extends React.Component {
 
@@ -60,24 +60,41 @@ class TaskCreate extends React.Component {
                 <FormControl disabled={true} placeHolder={this.props.cas.name}/>
             </Row>;
         } else {
-            return <Container style={{padding: 0, margin: 0, marginTop: '2em'}}>
-                <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
-                    <FormLabel style={{color: 'rgb(36, 66, 84)'}}>安全工具</FormLabel>
-                    <FormControl onChange={this.selectTool.bind(this)} as="select">
-                        {this.props.tools.map((too, index) => {
-                            return <option>{too.name}</option>
-                        })}
-                    </FormControl>
-                </Row>
-                <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
-                    <FormLabel style={{color: 'rgb(36, 66, 84)'}}>用例</FormLabel>
-                    <FormControl onChange={this.selectCase.bind(this)} as="select">
-                        {this.props.toolCases.map((ca, index) => {
-                            return <option>{ca.name}</option>
-                        })}
-                    </FormControl>
-                </Row>
-            </Container>;
+            if (this.props.location.createInfo.toolId) {
+                return <Container style={{padding: 0, margin: 0, marginTop: '2em'}}>
+                    <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
+                        <FormLabel style={{color: 'rgb(36, 66, 84)'}}>安全工具</FormLabel>
+                        <FormControl disabled={true} placeHolder={this.props.tool.name}/>
+                    </Row>
+                    <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                        <FormLabel style={{color: 'rgb(36, 66, 84)'}}>用例</FormLabel>
+                        <FormControl onChange={this.selectCase.bind(this)} as="select">
+                            {this.props.toolCases.length !== 0 ? this.props.toolCases.map((ca, index) => {
+                                return <option>{ca.name}</option>
+                            }) : <option>无</option>}
+                        </FormControl>
+                    </Row>
+                </Container>;
+            } else {
+                return <Container style={{padding: 0, margin: 0, marginTop: '2em'}}>
+                    <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
+                        <FormLabel style={{color: 'rgb(36, 66, 84)'}}>安全工具</FormLabel>
+                        <FormControl onChange={this.selectTool.bind(this)} as="select">
+                            {this.props.tools.length !== 0 ? this.props.tools.map((too, index) => {
+                                return <option>{too.name}</option>
+                            }) : <option>无</option>}
+                        </FormControl>
+                    </Row>
+                    <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                        <FormLabel style={{color: 'rgb(36, 66, 84)'}}>用例</FormLabel>
+                        <FormControl onChange={this.selectCase.bind(this)} as="select">
+                            {this.props.toolCases.length !== 0 ? this.props.toolCases.map((ca, index) => {
+                                return <option>{ca.name}</option>
+                            }) : <option>无</option>}
+                        </FormControl>
+                    </Row>
+                </Container>;
+            }
         }
     }
 
@@ -108,17 +125,17 @@ class TaskCreate extends React.Component {
                 <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
                     <FormLabel style={{color: 'rgb(36, 66, 84)'}}>项目</FormLabel>
                     <FormControl onChange={this.selectProject.bind(this)} as="select">
-                        {this.props.projects.map((po, index) => {
+                        {this.props.projects.length !== 0 ? this.props.projects.map((po, index) => {
                             return <option>{po.name}</option>
-                        })}
+                        }) : <option>无</option>}
                     </FormControl>
                 </Row>
                 <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                     <FormLabel style={{color: 'rgb(36, 66, 84)'}}>应用</FormLabel>
                     <FormControl onChange={this.selectApp.bind(this)} as="select">
-                        {this.state.selectedProject.applications.map((ap, index) => {
+                        {this.state.selectedProject.applications.length !== 0 ? this.state.selectedProject.applications.map((ap, index) => {
                             return <option>{ap.name}</option>
-                        })}
+                        }) : <option>无</option>}
                     </FormControl>
                 </Row>
             </Container>;
@@ -185,6 +202,8 @@ class TaskCreate extends React.Component {
                     this.props.history.push('/case/' + this.props.location.createInfo.caseId);
                 } else if (this.props.location.createInfo.appId && this.props.location.createInfo.projectId) {
                     this.props.history.push('/project/' + this.props.location.createInfo.projectId + '/' + this.props.location.createInfo.appId);
+                } else if (this.props.location.createInfo.toolId){
+                    this.props.history.push('/tool/' + this.props.location.createInfo.toolId);
                 }
             }
         }
@@ -236,6 +255,26 @@ class TaskCreate extends React.Component {
             this.props.getProject(this.props.location.createInfo.projectId);
             this.props.getApp(this.props.location.createInfo.projectId, this.props.location.createInfo.appId);
             this.props.getTools();
+        } else {
+            this.props.setBreadCrumbMenu([
+                {
+                    title: 'Tools',
+                    clickable: true,
+                    route: '/tools',
+                },
+                {
+                    title: 'Tool-' + this.props.location.createInfo.toolId,
+                    clickable: true,
+                    route: '/tool/' + this.props.location.createInfo.toolId,
+                }, {
+                    title: 'CreateTask',
+                    clickable: false,
+                    route: '',
+                },
+            ]);
+            this.props.getTool(this.props.location.createInfo.toolId);
+            this.props.getCasesByToolId(this.props.location.createInfo.toolId);
+            this.props.getProject(this.props.location.createInfo.projectId);
         }
     }
 }
@@ -247,6 +286,7 @@ const mapStateToProps = state => ({
     project: state.reduxResult.project.data,
     projects: state.reduxResult.projects.data,
     tools: state.reduxResult.tools.data,
+    tool: state.reduxResult.tool.data,
     toolCases: state.reduxResult.toolCases.data,
     cas: state.reduxResult.cas.data,
 });
@@ -257,6 +297,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     getProject,
     getCase,
     getTools,
+    getTool,
     getCasesByToolId,
     getProjects,
     setBreadCrumbMenu
