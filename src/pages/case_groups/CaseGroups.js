@@ -44,7 +44,7 @@ class CaseGroups extends React.Component {
             {
                 this.state.layout === 'list' ?
                     <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
-                        {this.props.cases.map((cas, index) => {
+                        {this.props.caseGroups.map((cas, index) => {
                             return this.renderCaseRow(cas, index);
                         })}
                     </Row>
@@ -148,7 +148,7 @@ class CaseGroups extends React.Component {
     componentDidMount() {
         this.props.setBreadCrumbMenu([
             {
-                title: 'Cases',
+                title: 'CaseGroups',
                 clickable: false,
                 route: ''
             }
