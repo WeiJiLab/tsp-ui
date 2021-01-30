@@ -3,7 +3,6 @@ import {Col, Container, Row} from "react-bootstrap";
 import LeftMenu from "./components/left-menu/LeftMenu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
-import ScanList from "./pages/scan-list/ScanList";
 import DashBoard from "./pages/dashboard/DashBoard";
 import {faChartArea, faCircle, faCubes, faShieldAlt, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
@@ -66,12 +65,6 @@ const menuData = [
             {
                 title: '总览',
                 route: '/tools',
-                icon: faCircle,
-                routable: true,
-            },
-            {
-                title: '合规扫描',
-                route: '/ScanList',
                 icon: faCircle,
                 routable: true,
             }
@@ -168,8 +161,6 @@ class App extends Component {
                                     <Route exact path={'/tools'} component={Tools}/>
                                     <Route exact path={'/tool/:toolId'} component={Tool}/>
                                     <Route exact path={'/tool/case/:toolId'} component={CaseCreate}/>
-
-                                    <Route exact path={'/ScanList'} component={ScanList}/>
                                     <Route exact path={'/charts'} component={Charts}/>
                                 </AnimatedSwitch>
                             </Container>
