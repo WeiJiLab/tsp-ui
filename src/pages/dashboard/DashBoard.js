@@ -6,7 +6,7 @@ import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCube, faCubes} from "@fortawesome/free-solid-svg-icons";
+import {faCube, faCubes, faFileArchive, faHistory} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
@@ -118,15 +118,6 @@ class DashBoard extends React.Component {
         };
         return <Container className={'DashBoard'}>
             <Row style={{padding: 0, margin: 0}}>
-                <Card title={'安全工具'} w={3}>
-                    <Pie style={{height: '12em'}} {...toolsConfig} />
-                </Card>
-                <Card title={'用例'} w={5}>
-                    <Pie style={{height: '12em'}} {...casesConfig} />
-                    {/*<FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>*/}
-                    {/*<Link to={'/cases'}><h1*/}
-                    {/*    style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.cases.length}</h1></Link>*/}
-                </Card>
                 <Card title={'项目'} w={2}>
                     <Container>
                         <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
@@ -138,6 +129,24 @@ class DashBoard extends React.Component {
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
                     <Link to={'/projects'}><h1
                         style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
+                </Card>
+                <Card title={'扫描记录'} w={2}>
+                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faHistory}/>
+                    <Link to={'/dashboard'}><h1
+                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.tasks.length}</h1></Link>
+                </Card>
+                <Card title={'扫描结果'} w={2}>
+                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileArchive}/>
+                    <Link to={'/dashboard'}><h1
+                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.scanResults.length}</h1></Link>
+                </Card>
+            </Row>
+            <Row style={{padding: 0, margin: 0}}>
+                <Card title={'安全工具'} w={3}>
+                    <Pie style={{height: '12em'}} {...toolsConfig} />
+                </Card>
+                <Card title={'用例'} w={5}>
+                    <Pie style={{height: '12em'}} {...casesConfig} />
                 </Card>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
