@@ -1,4 +1,4 @@
-import {API_CASE_GROUP, API_CASES} from "../api/ScpApi";
+import {API_CASE_GROUP, API_CASES, API_TOOLS} from "../api/ScpApi";
 import {deleteFromApi, getFromApi, postFromApi} from "../api/Fetch";
 
 export const CasesActions = {
@@ -20,6 +20,9 @@ export const CasesActions = {
     API_CASE_GROUPS_SUCCESS: 'API_CASE_GROUPS_SUCCESS',
     API_CASE_GROUPS_FAILED: 'API_CASE_GROUPS_FAILED',
 
+    API_TOOL_CASES_SUCCESS: 'API_TOOL_CASES_SUCCESS',
+    API_TOOL_CASES_FAILED: 'API_TOOL_CASES_FAILED'
+
 };
 
 export const createCase = (data) => (dispatch) => {
@@ -28,6 +31,10 @@ export const createCase = (data) => (dispatch) => {
 
 export const getCases = (data) => (dispatch) => {
     getFromApi(API_CASES, CasesActions.API_CASES_SUCCESS, CasesActions.API_CASES_FAILED, data, dispatch);
+};
+
+export const getCasesByToolId = (toolId, data) => (dispatch) => {
+    getFromApi(API_TOOLS + '/' + toolId + '/useCases', CasesActions.API_TOOL_CASES_SUCCESS, CasesActions.API_TOOL_CASES_FAILED, data, dispatch);
 };
 
 export const getCase = (id, data) => (dispatch) => {

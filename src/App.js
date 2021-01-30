@@ -23,6 +23,7 @@ import CaseCreate from "./pages/case_create/CaseCreate";
 import Cases from "./pages/cases/Cases";
 import CaseGroups from "./pages/case_groups/CaseGroups";
 import CaseGroupCreate from "./pages/case_group_create/CaseGroupCreate";
+import Case from "./pages/case/Case";
 
 const menuData = [
     {
@@ -191,6 +192,7 @@ class App extends Component {
                                     <Route exact path={'/tool/:toolId'} component={Tool}/>
                                     <Route exact path={'/tool/case/:toolId'} component={CaseCreate}/>
                                     <Route exact path={'/cases'} component={Cases}/>
+                                    <Route exact path={'/case/:caseId'} component={Case}/>
                                     <Route exact path={'/case-groups'} component={CaseGroups}/>
                                     <Route exact path={'/case-groups/create'} component={CaseGroupCreate}/>
 

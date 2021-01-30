@@ -65,6 +65,11 @@ const initialState = {
         message: null,
         data: []
     },
+    toolCases: {
+        status: false,
+        message: null,
+        data: []
+    },
     cas: {
         status: false,
         message: null,
@@ -296,6 +301,15 @@ export function reduxResult(state = initialState, action) {
             return Object.assign({}, state, {
                 taskStartResult: action.payload,
             })
+
+        case CasesActions.API_TOOL_CASES_SUCCESS:
+            return Object.assign({}, state, {
+                toolCases: action.payload,
+            });
+        case CasesActions.API_TOOL_CASES_FAILED:
+            return Object.assign({}, state, {
+                toolCases: action.payload,
+            });
         default:
             return state;
     }
