@@ -178,10 +178,8 @@ class DashBoard extends React.Component {
                     <Container>
                         <Row>
                             {
-                                (this.props.tasks && this.props.tasks.length !== 0) ? this.props.tasks.map((task, index) => {
-                                    if (task.status === 'READY') {
-                                        return this.renderTaskRow(task, index);
-                                    }
+                                (this.props.tasks && this.tasksFilterByStatus('READY').length !== 0) ? this.props.tasks.map((task, index) => {
+                                    return this.renderTaskRow(task, index);
                                 }) : <span style={{color: '#668'}}>无</span>
                             }
                         </Row>
@@ -189,6 +187,16 @@ class DashBoard extends React.Component {
                 </Card>
             </Row>
         </Container>
+    }
+
+    tasksFilterByStatus(status) {
+        let data = [];
+        for (let i = 0; i < this.props.tasks.length; i++) {
+            if (this.props.tasks[i].status === status) {
+                data.push(this.props.tasks[i]);
+            }
+        }
+        return data;
     }
 
     renderTaskRow(task, index) {

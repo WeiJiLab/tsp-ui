@@ -81,18 +81,18 @@ const menuData = [
         icon: faFileSignature,
         routable: false,
         child: [
-            {
-                title: '创建用例组',
-                route: '/case-groups/create',
-                icon: faCircle,
-                routable: true,
-            },
-            {
-                title: '用例组',
-                route: '/case-groups',
-                icon: faCircle,
-                routable: true,
-            },
+            // {
+            //     title: '创建用例组',
+            //     route: '/case-groups/create',
+            //     icon: faCircle,
+            //     routable: true,
+            // },
+            // {
+            //     title: '用例组',
+            //     route: '/case-groups',
+            //     icon: faCircle,
+            //     routable: true,
+            // },
             {
                 title: '用例',
                 route: '/cases',
