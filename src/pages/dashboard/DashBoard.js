@@ -6,7 +6,7 @@ import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCube, faCubes, faFileSignature} from "@fortawesome/free-solid-svg-icons";
+import {faCube, faCubes} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
@@ -20,26 +20,78 @@ class DashBoard extends React.Component {
         super(props);
     }
 
+    getToolName(id) {
+        for (let i = 0; i < this.props.tools.length; i++) {
+            if (this.props.tools[i].id === id) {
+                return this.props.tools[i].name;
+            }
+        }
+    }
+
     render() {
-        let data = [];
-        let toolsData = {};
+        let toolsData = [];
+        let data = {};
         this.props.tools.map((tool, index) => {
-            if (toolsData[tool.category] == null) {
-                toolsData[tool.category] = {
+            if (data[tool.category] == null) {
+                data[tool.category] = {
                     type: tool.category,
                     value: 1,
                 }
             } else {
-                toolsData[tool.category].value++;
+                data[tool.category].value++;
             }
         });
-        for (let key in toolsData) {
-            data.push(toolsData[key]);
+        for (let key in data) {
+            toolsData.push(data[key]);
         }
 
         let toolsConfig = {
             appendPadding: 20,
-            data: data,
+            data: toolsData,
+            angleField: 'value',
+            colorField: 'type',
+            radius: 1,
+            innerRadius: 0.618,
+            meta: {
+                value: {
+                    formatter: function formatter(v) {
+                        return ''.concat(v);
+                    },
+                },
+            },
+            label: {
+                type: 'inner',
+                offset: '-50%',
+                style: {textAlign: 'center'},
+                autoRotate: false,
+                content: '{value}',
+            },
+            interactions: [
+                {type: 'element-selected'},
+                {type: 'element-active'},
+                {type: 'pie-statistic-active'},
+            ],
+        };
+
+        let casesData = [];
+        data = [];
+        this.props.cases.map((cas, index) => {
+            if (data[this.getToolName(cas.securityToolId)] == null) {
+                data[this.getToolName(cas.securityToolId)] = {
+                    type: this.getToolName(cas.securityToolId),
+                    value: 1,
+                }
+            } else {
+                data[this.getToolName(cas.securityToolId)].value++;
+            }
+        });
+        for (let key in data) {
+            casesData.push(data[key]);
+        }
+
+        let casesConfig = {
+            appendPadding: 20,
+            data: casesData,
             angleField: 'value',
             colorField: 'type',
             radius: 1,
@@ -69,22 +121,23 @@ class DashBoard extends React.Component {
                 <Card title={'安全工具'} w={3}>
                     <Pie style={{height: '12em'}} {...toolsConfig} />
                 </Card>
-                <Card title={'项目'} w={3}>
+                <Card title={'用例'} w={5}>
+                    <Pie style={{height: '12em'}} {...casesConfig} />
+                    {/*<FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>*/}
+                    {/*<Link to={'/cases'}><h1*/}
+                    {/*    style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.cases.length}</h1></Link>*/}
+                </Card>
+                <Card title={'项目'} w={2}>
                     <Container>
                         <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
                         <Link to={'/projects'}><h1
                             style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.projects.length}</h1></Link>
                     </Container>
                 </Card>
-                <Card title={'应用'} w={3}>
+                <Card title={'应用'} w={2}>
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
                     <Link to={'/projects'}><h1
                         style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
-                </Card>
-                <Card title={'用例'} w={3}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>
-                    <Link to={'/cases'}><h1
-                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.cases.length}</h1></Link>
                 </Card>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
