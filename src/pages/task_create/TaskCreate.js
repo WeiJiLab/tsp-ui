@@ -107,9 +107,11 @@ class TaskCreate extends React.Component {
     }
 
     selectCase(event) {
+        let caseList = [];
         for (let i = 0; i < this.props.toolCases.length; i++) {
             if (this.props.toolCases[i].name === event.target.value) {
-                this.createTaskRequest.useCaseIds.push(this.props.toolCases[i].id);
+                caseList.push(this.props.toolCases[i].id);
+                this.createTaskRequest.useCaseIds = caseList;
             }
         }
     }

@@ -11,7 +11,7 @@ import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getTool} from "../../actions/ToolsAction";
 import {deleteCase, getCasesByToolId} from "../../actions/CasesAction";
 import {Link} from "react-router-dom";
-import {getTasks} from "../../actions/TasksAction";
+import {getScanTasks} from "../../actions/TasksAction";
 
 class Tool extends React.Component {
     constructor(props) {
@@ -118,7 +118,7 @@ class Tool extends React.Component {
 
     componentDidMount() {
         this.props.getTool(this.props.match.params.toolId);
-        this.props.getTasks({
+        this.props.getScanTasks({
             toolId: this.props.match.params.toolId
         });
         this.props.getCasesByToolId(this.props.match.params.toolId);
@@ -163,7 +163,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     setBreadCrumbMenu,
     getTool,
     deleteCase,
-    getTasks,
+    getScanTasks,
     getCasesByToolId
 }, dispatch);
 

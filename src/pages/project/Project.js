@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Link} from "react-router-dom";
-import {getTasks} from "../../actions/TasksAction";
+import {getScanTasks} from "../../actions/TasksAction";
 
 class Project extends React.Component {
     constructor(props) {
@@ -107,7 +107,7 @@ class Project extends React.Component {
 
     componentDidMount() {
         this.props.getProject(this.props.match.params.id);
-        this.props.getTasks({
+        this.props.getScanTasks({
             projectId: this.props.match.params.id
         });
         this.props.setBreadCrumbMenu([
@@ -148,7 +148,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProject,
     deleteApp,
-    getTasks,
+    getScanTasks,
     setBreadCrumbMenu
 }, dispatch);
 

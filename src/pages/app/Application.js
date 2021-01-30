@@ -9,7 +9,7 @@ import {getApp, getProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
-import {getTasks} from "../../actions/TasksAction";
+import {getScanTasks} from "../../actions/TasksAction";
 
 class Application extends React.Component {
     constructor(props) {
@@ -75,7 +75,7 @@ class Application extends React.Component {
     componentDidMount() {
         this.props.getProject(this.props.match.params.projectId);
         this.props.getApp(this.props.match.params.projectId, this.props.match.params.appId);
-        this.props.getTasks({
+        this.props.getScanTasks({
             appId: this.props.match.params.appId
         });
 
@@ -108,7 +108,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProject,
     getApp,
-    getTasks,
+    getScanTasks,
     setBreadCrumbMenu
 }, dispatch);
 

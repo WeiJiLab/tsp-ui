@@ -10,7 +10,7 @@ import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Link} from "react-router-dom";
 import {getCase} from "../../actions/CasesAction";
-import {getTasks} from "../../actions/TasksAction";
+import {getScanTasks} from "../../actions/TasksAction";
 
 class Case extends React.Component {
     constructor(props) {
@@ -127,7 +127,7 @@ class Case extends React.Component {
 
     componentDidMount() {
         this.props.getCase(this.props.match.params.caseId);
-        this.props.getTasks({
+        this.props.getScanTasks({
             useCaseId: this.props.match.params.caseId
         });
         this.props.setBreadCrumbMenu([
@@ -163,7 +163,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getCase,
-    getTasks,
+    getScanTasks,
     setBreadCrumbMenu
 }, dispatch);
 

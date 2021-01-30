@@ -11,17 +11,13 @@ import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Pie} from "@ant-design/charts";
-import {getResults, getTasks} from "../../actions/TasksAction";
+import {getScanResults, getScanTasks} from "../../actions/TasksAction";
 import {getCases} from "../../actions/CasesAction";
 
 class DashBoard extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            modalShow: false,
-        };
     }
 
     render() {
@@ -102,24 +98,13 @@ class DashBoard extends React.Component {
         </Container>
     }
 
-    modalClose() {
-        this.setState({
-            modalShow: false,
-        });
-    }
-
-    showModal() {
-        this.setState({
-            modalShow: true,
-        });
-    }
-
     componentDidMount() {
         this.props.getProjects();
         this.props.getTools();
         this.props.getCases();
-        this.props.getTasks({});
-        this.props.getResults(1);
+
+        this.props.getScanTasks(1);
+        this.props.getScanResults(1);
 
         this.props.setBreadCrumbMenu([
             {
@@ -150,8 +135,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
     getTools,
     getCases,
-    getTasks,
-    getResults,
+    getScanTasks,
+    getScanResults,
     setBreadCrumbMenu
 }, dispatch);
 
