@@ -6,11 +6,12 @@ import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCube, faCubes, faShieldVirus} from "@fortawesome/free-solid-svg-icons";
+import {faCube, faCubes, faFileSignature} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Pie} from "@ant-design/charts";
+import {getCases} from "../../actions/CasesAction";
 
 class DashBoard extends React.Component {
 
@@ -69,7 +70,7 @@ class DashBoard extends React.Component {
         return <Container className={'DashBoard'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Card title={'安全工具'} w={3}>
-                    <Pie style={{height:'12em'}} {...toolsConfig} />
+                    <Pie style={{height: '12em'}} {...toolsConfig} />
                 </Card>
                 <Card title={'项目'} w={3}>
                     <Container>
@@ -82,6 +83,11 @@ class DashBoard extends React.Component {
                     <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
                     <Link to={'/projects'}><h1
                         style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
+                </Card>
+                <Card title={'用例'} w={3}>
+                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>
+                    <Link to={'/cases'}><h1
+                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.cases.length}</h1></Link>
                 </Card>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
@@ -110,6 +116,7 @@ class DashBoard extends React.Component {
     componentDidMount() {
         this.props.getProjects();
         this.props.getTools();
+        this.props.getCases();
         this.props.setBreadCrumbMenu([
             {
                 title: 'Home',
@@ -130,11 +137,13 @@ const mapStateToProps = state => ({
     projects: state.reduxResult.projects.data,
     apps: state.reduxResult.apps,
     tools: state.reduxResult.tools.data,
+    cases: state.reduxResult.cases.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
     getTools,
+    getCases,
     setBreadCrumbMenu
 }, dispatch);
 
