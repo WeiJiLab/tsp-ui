@@ -67,7 +67,7 @@ const menuData = [
         routable: false,
         child: [
             {
-                title: '总览',
+                title: '工具列表',
                 route: '/tools',
                 icon: faCircle,
                 routable: true,
