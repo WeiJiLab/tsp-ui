@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 import {getTools} from "../../actions/ToolsAction";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Pie} from "@ant-design/charts";
+import {getResults, getTasks} from "../../actions/TasksAction";
 import {getCases} from "../../actions/CasesAction";
 
 class DashBoard extends React.Component {
@@ -117,6 +118,9 @@ class DashBoard extends React.Component {
         this.props.getProjects();
         this.props.getTools();
         this.props.getCases();
+        this.props.getTasks({appId: 1});
+        this.props.getResults(1);
+
         this.props.setBreadCrumbMenu([
             {
                 title: 'Home',
@@ -138,12 +142,16 @@ const mapStateToProps = state => ({
     apps: state.reduxResult.apps,
     tools: state.reduxResult.tools.data,
     cases: state.reduxResult.cases.data,
+    tasks: state.reduxResult.tasks.data,
+    scanResults: state.reduxResult.scanResults.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getProjects,
     getTools,
     getCases,
+    getTasks,
+    getResults,
     setBreadCrumbMenu
 }, dispatch);
 

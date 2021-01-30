@@ -9,8 +9,9 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import ModalWrapper from "../../components/modal/ModalWrapper";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
-import {createCase, getTool} from "../../actions/ToolsAction";
+import {getTool} from "../../actions/ToolsAction";
 import Dropzone from 'react-dropzone';
+import {createCase} from "../../actions/CasesAction";
 
 class CaseCreate extends React.Component {
 
@@ -145,7 +146,7 @@ class CaseCreate extends React.Component {
                     text: '创建中...'
                 }
             });
-            this.props.createCase(this.props.match.params.toolId, this.createCaseRequest);
+            this.props.createCase(this.createCaseRequest);
         }
     }
 

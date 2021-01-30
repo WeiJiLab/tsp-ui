@@ -78,7 +78,7 @@ create table if not exists `scan_task`
 (
     `id`          int not null primary key auto_increment,
     `app_id`      int not null,
-    `engine_id`   int not null,
+    `tool_id`   int not null,
     `use_case_id` int not null,
     `status`      varchar(32) default 'READY',
     `create_time` timestamp   default current_timestamp,

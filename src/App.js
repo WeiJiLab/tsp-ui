@@ -22,6 +22,7 @@ import Tool from "./pages/tool/Tool";
 import CaseCreate from "./pages/case_create/CaseCreate";
 import Cases from "./pages/cases/Cases";
 import CaseGroups from "./pages/case_groups/CaseGroups";
+import CaseGroupCreate from "./pages/case_group_create/CaseGroupCreate";
 
 const menuData = [
     {
@@ -78,6 +79,12 @@ const menuData = [
         icon: faFileSignature,
         routable: false,
         child: [
+            {
+                title: '创建用例组',
+                route: '/case-groups/create',
+                icon: faCircle,
+                routable: true,
+            },
             {
                 title: '用例组',
                 route: '/case-groups',
@@ -185,7 +192,7 @@ class App extends Component {
                                     <Route exact path={'/tool/case/:toolId'} component={CaseCreate}/>
                                     <Route exact path={'/cases'} component={Cases}/>
                                     <Route exact path={'/case-groups'} component={CaseGroups}/>
-
+                                    <Route exact path={'/case-groups/create'} component={CaseGroupCreate}/>
 
                                     <Route exact path={'/charts'} component={Charts}/>
                                 </AnimatedSwitch>

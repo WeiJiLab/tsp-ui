@@ -3,6 +3,7 @@ import {combineReducers} from 'redux';
 import {ToolsActions} from "../actions/ToolsAction";
 import {BreadCrumbMenuActions} from "../actions/BreadCrumbMenuAction";
 import {CasesActions} from "../actions/CasesAction";
+import {TasksActions} from "../actions/TasksAction";
 
 const initialState = {
     projects: {
@@ -89,7 +90,26 @@ const initialState = {
         message: null,
         data: {}
     },
-
+    createCaseGroupResult: {
+        status: false,
+        message: null,
+        data: {}
+    },
+    tasks: {
+        status: false,
+        message: null,
+        data: []
+    },
+    scanResults: {
+        status: false,
+        message: null,
+        data: []
+    },
+    taskStartResult: {
+        status: false,
+        message: null,
+        data: {}
+    },
 };
 
 export function reduxResult(state = initialState, action) {
@@ -162,11 +182,11 @@ export function reduxResult(state = initialState, action) {
                 createAppResult: action.payload,
             });
 
-        case ToolsActions.API_CASE_ADD_SUCCESS:
+        case CasesActions.API_CASE_CREATE_SUCCESS:
             return Object.assign({}, state, {
                 createCaseResult: action.payload,
             });
-        case ToolsActions.API_CASE_ADD_FAILED:
+        case CasesActions.API_CASE_CREATE_FAILED:
             return Object.assign({}, state, {
                 createCaseResult: action.payload,
             });
@@ -242,6 +262,40 @@ export function reduxResult(state = initialState, action) {
             return Object.assign({}, state, {
                 caseGroups: action.payload,
             });
+
+        case CasesActions.API_CASE_CREATE_GROUPS_SUCCESS:
+            return Object.assign({}, state, {
+                createCaseGroupResult: action.payload,
+            });
+        case CasesActions.API_CASE_CREATE_GROUPS_FAILED:
+            return Object.assign({}, state, {
+                createCaseGroupResult: action.payload,
+            });
+
+        case TasksActions.API_TASKS_SUCCESS:
+            return Object.assign({}, state, {
+                tasks: action.payload,
+            });
+        case TasksActions.API_TASKS_FAILED:
+            return Object.assign({}, state, {
+                tasks: action.payload,
+            });
+        case TasksActions.API_TASKS_RESULT_SUCCESS:
+            return Object.assign({}, state, {
+                scanResults: action.payload,
+            });
+        case TasksActions.API_TASKS_RESULT_FAILED:
+            return Object.assign({}, state, {
+                scanResults: action.payload,
+            });
+        case TasksActions.API_TASKS_START_SUCCESS:
+            return Object.assign({}, state, {
+                taskStartResult: action.payload,
+            });
+        case TasksActions.API_TASKS_START_FAILED:
+            return Object.assign({}, state, {
+                taskStartResult: action.payload,
+            })
         default:
             return state;
     }
