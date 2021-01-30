@@ -25,6 +25,7 @@ import CaseGroups from "./pages/case_groups/CaseGroups";
 import CaseGroupCreate from "./pages/case_group_create/CaseGroupCreate";
 import Case from "./pages/case/Case";
 import TaskCreate from "./pages/task_create/TaskCreate";
+import Task from "./pages/task/Task";
 
 const menuData = [
     {
@@ -101,20 +102,6 @@ const menuData = [
             },
         ]
     },
-    // {
-    //     title: '图表',
-    //     route: '',
-    //     icon: faChartArea,
-    //     routable: false,
-    //     child: [
-    //         {
-    //             title: '各种图表',
-    //             route: '/charts',
-    //             icon: faCircle,
-    //             routable: true,
-    //         }
-    //     ]
-    // }
 ];
 
 const AnimatedSwitch = props => {
@@ -198,8 +185,7 @@ class App extends Component {
                                     <Route exact path={'/case-groups/create'} component={CaseGroupCreate}/>
 
                                     <Route exact path={'/task/create'} component={TaskCreate}/>
-
-                                    <Route exact path={'/charts'} component={Charts}/>
+                                    <Route exact path={'/task/:taskId'} component={Task}/>
                                 </AnimatedSwitch>
                             </Container>
                         </Col>

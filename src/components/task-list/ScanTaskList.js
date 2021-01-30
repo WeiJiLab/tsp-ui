@@ -3,7 +3,9 @@ import {Col, Container, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faCheckCircle,
-    faCubes, faEject,
+    faChevronRight,
+    faCubes,
+    faEject,
     faFileSignature,
     faPlayCircle,
     faShieldAlt,
@@ -21,7 +23,7 @@ class ScanTaskList extends Component {
         const index = this.props.key;
         return <Container className={'AppItem'} key={index}>
             <Row style={{paddingTop: '0.5em', paddingBottom: '0.5em', borderBottom: 'solid 1px #f3f3f3'}}>
-                <Col md={11}>
+                <Col md={10}>
                     <Row>
                         <Col md={6}>
                             <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;
@@ -49,6 +51,9 @@ class ScanTaskList extends Component {
                     <Row style={{marginTop: '0.3em'}}>
                         <span style={{fontSize: '0.77em'}}>{task.startTime ? task.startTime : '未开始'}</span>
                     </Row>
+                </Col>
+                <Col md={1} style={{paddingTop: '1em'}}>
+                    <Link to={'/task/' + task.id}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faChevronRight}/></Link>
                 </Col>
             </Row>
         </Container>;

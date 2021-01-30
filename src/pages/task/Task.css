@@ -1,0 +1,36 @@
+.Task {
+    min-height: 60em;
+    margin: 0;
+    padding: 0;
+}
+
+.AppItem:hover {
+    border-left: solid 0.5em rgb(36, 66, 164);
+    transition: all 0.3s;
+    background: #eee;
+}
+
+.dropdown > button {
+    background: transparent;
+    color: rgb(36, 66, 164);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown > button:hover {
+    background: transparent;
+    color: rgb(36, 66, 164);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown {
+    background: transparent;
+}
+
+.dropdown > button:after {
+    content: none;
+}
+

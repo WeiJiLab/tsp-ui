@@ -105,6 +105,11 @@ const initialState = {
         message: null,
         data: []
     },
+    task: {
+        status: false,
+        message: null,
+        data: {}
+    },
     scanResults: {
         status: false,
         message: null,
@@ -285,6 +290,16 @@ export function reduxResult(state = initialState, action) {
             return Object.assign({}, state, {
                 tasks: action.payload,
             });
+
+        case TasksActions.API_TASK_SUCCESS:
+            return Object.assign({}, state, {
+                task: action.payload,
+            });
+        case TasksActions.API_TASK_FAILED:
+            return Object.assign({}, state, {
+                task: action.payload,
+            });
+
         case TasksActions.API_TASKS_RESULT_SUCCESS:
             return Object.assign({}, state, {
                 scanResults: action.payload,
