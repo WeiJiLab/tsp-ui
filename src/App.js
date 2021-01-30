@@ -4,7 +4,7 @@ import LeftMenu from "./components/left-menu/LeftMenu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import DashBoard from "./pages/dashboard/DashBoard";
-import {faChartArea, faCircle, faCubes, faShieldAlt, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
+import {faCircle, faCubes, faFileSignature, faShieldAlt, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import Charts from "./pages/charts/Charts";
@@ -20,6 +20,8 @@ import {setBreadCrumbMenu} from "./actions/BreadCrumbMenuAction";
 import Application from "./pages/app/Application";
 import Tool from "./pages/tool/Tool";
 import CaseCreate from "./pages/case_create/CaseCreate";
+import Cases from "./pages/cases/Cases";
+import CaseGroups from "./pages/case_groups/CaseGroups";
 
 const menuData = [
     {
@@ -68,6 +70,26 @@ const menuData = [
                 icon: faCircle,
                 routable: true,
             }
+        ]
+    },
+    {
+        title: '安全用例',
+        route: '',
+        icon: faFileSignature,
+        routable: false,
+        child: [
+            {
+                title: '用例组',
+                route: '/case-groups',
+                icon: faCircle,
+                routable: true,
+            },
+            {
+                title: '用例',
+                route: '/cases',
+                icon: faCircle,
+                routable: true,
+            },
         ]
     },
     // {
@@ -161,6 +183,10 @@ class App extends Component {
                                     <Route exact path={'/tools'} component={Tools}/>
                                     <Route exact path={'/tool/:toolId'} component={Tool}/>
                                     <Route exact path={'/tool/case/:toolId'} component={CaseCreate}/>
+                                    <Route exact path={'/cases'} component={Cases}/>
+                                    <Route exact path={'/case-groups'} component={CaseGroups}/>
+
+
                                     <Route exact path={'/charts'} component={Charts}/>
                                 </AnimatedSwitch>
                             </Container>

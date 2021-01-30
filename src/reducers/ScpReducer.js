@@ -2,6 +2,7 @@ import {AppActions, ProjectActions, ProjectsActions} from "../actions/ProjectsAc
 import {combineReducers} from 'redux';
 import {ToolsActions} from "../actions/ToolsAction";
 import {BreadCrumbMenuActions} from "../actions/BreadCrumbMenuAction";
+import {CasesActions} from "../actions/CasesAction";
 
 const initialState = {
     projects: {
@@ -57,7 +58,38 @@ const initialState = {
     },
     breadCrumbMenus: {
         data: []
-    }
+    },
+    cases: {
+        status: false,
+        message: null,
+        data: []
+    },
+    cas: {
+        status: false,
+        message: null,
+        data: {}
+    },
+    caseGroups: {
+        status: false,
+        message: null,
+        data: []
+    },
+    caseGroup: {
+        status: false,
+        message: null,
+        data: {}
+    },
+    deleteCaseResult: {
+        status: false,
+        message: null,
+        data: {}
+    },
+    deleteCaseGroupResult: {
+        status: false,
+        message: null,
+        data: {}
+    },
+
 };
 
 export function reduxResult(state = initialState, action) {
@@ -161,6 +193,55 @@ export function reduxResult(state = initialState, action) {
                 breadCrumbMenus: action.payload,
             });
 
+
+        case CasesActions.API_CASE_DELETE_SUCCESS:
+            return Object.assign({}, state, {
+                deleteCaseResult: action.payload,
+            });
+        case CasesActions.API_CASE_DELETE_FAILED:
+            return Object.assign({}, state, {
+                deleteCaseResult: action.payload,
+            });
+        case CasesActions.API_CASE_SUCCESS:
+            return Object.assign({}, state, {
+                cas: action.payload,
+            });
+        case CasesActions.API_CASE_FAILED:
+            return Object.assign({}, state, {
+                cas: action.payload,
+            });
+        case CasesActions.API_CASES_SUCCESS:
+            return Object.assign({}, state, {
+                cases: action.payload,
+            });
+        case CasesActions.API_CASES_FAILED:
+            return Object.assign({}, state, {
+                cases: action.payload,
+            });
+        case CasesActions.API_CASE_GROUP_DELETE_SUCCESS:
+            return Object.assign({}, state, {
+                deleteCaseGroupResult: action.payload,
+            });
+        case CasesActions.API_CASE_GROUP_DELETE_FAILED:
+            return Object.assign({}, state, {
+                deleteCaseGroupResult: action.payload,
+            });
+        case CasesActions.API_CASE_GROUP_SUCCESS:
+            return Object.assign({}, state, {
+                caseGroup: action.payload,
+            });
+        case CasesActions.API_CASE_GROUP_FAILED:
+            return Object.assign({}, state, {
+                caseGroup: action.payload,
+            });
+        case CasesActions.API_CASE_GROUPS_SUCCESS:
+            return Object.assign({}, state, {
+                caseGroups: action.payload,
+            });
+        case CasesActions.API_CASE_GROUPS_FAILED:
+            return Object.assign({}, state, {
+                caseGroups: action.payload,
+            });
         default:
             return state;
     }
