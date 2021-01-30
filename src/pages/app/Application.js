@@ -19,7 +19,7 @@ class Application extends React.Component {
         return <Container className={'Application'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
-                    <PushButton><FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
+                    <PushButton onClick={this.gotoCreateScan.bind(this)}><FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
                 </Col>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
@@ -42,6 +42,16 @@ class Application extends React.Component {
                 </Card>
             </Row>
         </Container>
+    }
+
+    gotoCreateScan() {
+        this.props.history.push({
+            pathname: '/task/create',
+            createInfo: {
+                projectId: this.props.match.params.projectId,
+                appId: this.props.match.params.appId,
+            }
+        });
     }
 
     renderAppCard() {

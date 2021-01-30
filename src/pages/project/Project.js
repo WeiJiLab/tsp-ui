@@ -20,8 +20,7 @@ class Project extends React.Component {
         return <Container className={'Projects'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
-                    <PushButton> <FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
-                    <PushButton style={{marginLeft: '1em'}} onClick={this.gotoCreateApp.bind(this)}> <FontAwesomeIcon
+                    <PushButton onClick={this.gotoCreateApp.bind(this)}> <FontAwesomeIcon
                         icon={faPlus}/> &nbsp;创建应用</PushButton>
                 </Col>
             </Row>

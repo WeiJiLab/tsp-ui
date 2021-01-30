@@ -24,6 +24,7 @@ import Cases from "./pages/cases/Cases";
 import CaseGroups from "./pages/case_groups/CaseGroups";
 import CaseGroupCreate from "./pages/case_group_create/CaseGroupCreate";
 import Case from "./pages/case/Case";
+import TaskCreate from "./pages/task_create/TaskCreate";
 
 const menuData = [
     {
@@ -195,6 +196,8 @@ class App extends Component {
                                     <Route exact path={'/case/:caseId'} component={Case}/>
                                     <Route exact path={'/case-groups'} component={CaseGroups}/>
                                     <Route exact path={'/case-groups/create'} component={CaseGroupCreate}/>
+
+                                    <Route exact path={'/task/create'} component={TaskCreate}/>
 
                                     <Route exact path={'/charts'} component={Charts}/>
                                 </AnimatedSwitch>

@@ -20,7 +20,7 @@ class Case extends React.Component {
         return <Container className={'Case'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={12}>
-                    <PushButton> <FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
+                    <PushButton onClick={this.gotoCreateScan.bind(this)}> <FontAwesomeIcon icon={faPlay}/> &nbsp;创建扫描任务</PushButton>
                 </Col>
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
@@ -52,6 +52,15 @@ class Case extends React.Component {
                 </Card>
             </Row>
         </Container>
+    }
+
+    gotoCreateScan() {
+        this.props.history.push({
+            pathname: '/task/create',
+            createInfo: {
+                caseId: this.props.match.params.caseId,
+            }
+        });
     }
 
     renderAppRow(app, index) {
