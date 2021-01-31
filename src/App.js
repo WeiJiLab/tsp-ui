@@ -42,13 +42,13 @@ const menuData = [
     {
         title: '主页',
         route: '',
-        icon: faTachometerAlt,
+        icon: faHome,
         routable: false,
         child: [
             {
                 title: '平台总览',
                 route: '/',
-                icon: faHome,
+                icon: faTachometerAlt,
                 routable: true,
             }
         ]
