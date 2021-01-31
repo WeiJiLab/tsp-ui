@@ -5,7 +5,7 @@ ECR_ID="729601114034"
 
 DOCKER_IMAGE="${ECR_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/scp-web"
 BN=${BUILD_NUMBER:-0}
-TAG="${GITHASH}.${BN}"
+TAG="g.${GITHASH}.${BN}"
 IMAGE_TAR="image.tar"
 
 ARGOCD_AUTO_SYNC="${ECR_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/argocd-auto-sync"
