@@ -30,7 +30,7 @@ class MenuItem extends React.Component {
             </Container>
             <Container className={'MaskClassNameMask'}
                        style={{padding: 0, margin: 0, display: this.props.open ? 'block' : 'none'}}>
-                <Col md={12} className={'MenuItemNiberBottom'}>
+                <Col md={12} className={'MenuItemNiberBottom'} style={{paddingLeft: 0}}>
                     {this.renderMenuItemChild(data)}
                 </Col>
             </Container>
@@ -49,7 +49,7 @@ class MenuItem extends React.Component {
 
     renderMenuItemChild(data) {
         return <Container
-            style={{background: 'rgb(30,59,153)', borderRadius: '1em', borderTopRightRadius: '1.5em', paddingLeft: '1em', margin: 0}}>
+            style={{background: 'rgb(30,59,153)', borderRadius: '0.3em', borderTopRightRadius: '1.5em', paddingLeft: '1em', margin: 0}}>
             {
                 data.child.map((child, id) => {
                     return <Link key={id} style={{textDecoration: 'none', color: '#fff'}} to={child.route}>
