@@ -5,12 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import DashBoard from "./pages/dashboard/DashBoard";
 import {
-    faCircle,
     faCubes,
-    faEject, faFileImport,
+    faFileImport,
     faFileSignature,
     faHome,
-    faList, faListAlt,
+    faListAlt,
+    faListUl,
     faShieldAlt,
     faTachometerAlt,
     faUserShield
@@ -37,6 +37,7 @@ import TaskCreate from "./pages/task_create/TaskCreate";
 import Task from "./pages/task/Task";
 import NoMatch from "./pages/no-match/NoMatch";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PushButton from "./components/button/PushButton";
 
 const menuData = [
     {
@@ -137,6 +138,9 @@ class App extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            menuMode: 'full'
+        };
     }
 
     render() {
@@ -144,7 +148,8 @@ class App extends Component {
             <Container className="App" style={{padding: 0}}>
                 <Container style={{margin: 0, padding: 0}}>
                     <Row style={{margin: 0, padding: 0}}>
-                        <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '2em', background: 'transparent'}}>
+                        <Col md={this.state.menuMode === 'full' ? 2 : 1}
+                             style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '2em', background: 'transparent'}}>
                             <Container style={{padding: 0, margin: 0, height: '4em'}}>
                                 <p style={{
                                     color: '#fff',
@@ -156,12 +161,20 @@ class App extends Component {
                                     paddingLeft: '0.5em',
                                     fontWeight: 'bolder',
                                     fontSize: '2em',
-                                }}><FontAwesomeIcon style={{fontSize: '2em'}} icon={faUserShield}/>Aιγίς</p><span
-                                style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;V0.1.2</span>
+                                }}>
+                                    <FontAwesomeIcon style={{fontSize: '2em'}} icon={faUserShield}/>
+                                    {this.state.menuMode === 'full' ? 'Aιγίς' : ''}
+                                </p>
+                                <span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;V0.1.2</span>
                             </Container>
-                            <LeftMenu menu={menuData}/>
+                            <Container style={{paddingTop: '1   em'}}>
+                                <PushButton onClick={this.changeMenu.bind(this)}><FontAwesomeIcon icon={faListUl}/>&nbsp;{this.state.menuMode === 'full' ?'收起菜单':'展开'} </PushButton>
+                            </Container>
+                            <LeftMenu mode={this.state.menuMode} menu={menuData}/>
                         </Col>
-                        <Col md={10} style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em', paddingBottom: '1em'}}>
+
+                        <Col md={this.state.menuMode === 'full' ? 10 : 11}
+                             style={{margin: 0, padding: 0, paddingRight: '2em', paddingTop: '1em', paddingBottom: '1em'}}>
                             <Container style={{
                                 margin: 0,
                                 padding: '1.5em',
@@ -207,6 +220,18 @@ class App extends Component {
                 </Container>
             </Container>
         );
+    }
+
+    changeMenu() {
+        if (this.state.menuMode === 'full') {
+            this.setState({
+                menuMode: 'tiny'
+            });
+        } else {
+            this.setState({
+                menuMode: 'full'
+            });
+        }
     }
 
     componentDidMount() {

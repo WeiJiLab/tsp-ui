@@ -67,6 +67,7 @@ class LeftMenu extends React.Component {
             index={index}
             className={className}
             data={data}
+            mode={this.props.mode}
             open={this.state.open[index]}
             closeAll={this.closeAll.bind(this, index)}
             openItem={this.openItem.bind(this, index)}/>;

@@ -2,7 +2,7 @@ import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDown, faAngleRight, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 
 class MenuItem extends React.Component {
 
@@ -19,10 +19,11 @@ class MenuItem extends React.Component {
             <Container className={this.props.maskClassName} style={{padding: 0, margin: 0}}>
                 <Col md={12} className={this.props.className}>
                     <Row style={{paddingLeft: '0em'}}>
-                        <Col md={9} onClick={this.showItemClick.bind(this)}>
-                            <FontAwesomeIcon icon={data.icon}/> {data.title}
+                        <Col md={this.props.mode === 'full' ? 9 : 6} onClick={this.showItemClick.bind(this)}>
+                            <FontAwesomeIcon style={{fontSize: this.props.mode === 'full' ? '1em' : '2em'}}
+                                             icon={data.icon}/> {this.props.mode === 'full' ? data.title : ''}
                         </Col>
-                        <Col md={1} onClick={this.showMenu.bind(this)}>
+                        <Col md={this.props.mode === 'full' ? 1 : 6} onClick={this.showMenu.bind(this)}>
                             {this.props.open ? <FontAwesomeIcon icon={faAngleUp}/> : <FontAwesomeIcon icon={faAngleDown}/>}
                         </Col>
                     </Row>
@@ -54,8 +55,12 @@ class MenuItem extends React.Component {
                 data.child.map((child, id) => {
                     return <Link key={id} style={{textDecoration: 'none', color: '#fff'}} to={child.route}>
                         <Row style={{padding: 0, margin: 0, paddingTop: '0.5em', paddingBottom: '0.5em'}}>
-                            <Col style={{padding: 0}} md={12}>
-                                <FontAwesomeIcon style={{fontSize: '1em'}} icon={child.icon}/> {child.title}
+                            <Col md={this.props.mode === 'full' ? 9 : 6} style={{textAlign: 'left',padding:0}}>
+                                <FontAwesomeIcon style={{fontSize: this.props.mode === 'full' ? '1em' : '2em'}}
+                                                 icon={child.icon}/> {this.props.mode === 'full' ? child.title : ''}
+                            </Col>
+                            <Col md={this.props.mode === 'full' ? 1 : 6}>
+                                <FontAwesomeIcon icon={faAngleRight}/>
                             </Col>
                         </Row>
                     </Link>
