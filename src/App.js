@@ -5,12 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import DashBoard from "./pages/dashboard/DashBoard";
 import {
+    faBars,
     faCubes,
     faFileImport,
     faFileSignature,
     faHome,
     faListAlt,
-    faListUl,
     faShieldAlt,
     faTachometerAlt,
     faUserShield
@@ -37,7 +37,6 @@ import TaskCreate from "./pages/task_create/TaskCreate";
 import Task from "./pages/task/Task";
 import NoMatch from "./pages/no-match/NoMatch";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import PushButton from "./components/button/PushButton";
 
 const menuData = [
     {
@@ -165,11 +164,11 @@ class App extends Component {
                                     <FontAwesomeIcon style={{fontSize: '2em'}} icon={faUserShield}/>
                                     {this.state.menuMode === 'full' ? 'Aιγίς' : ''}
                                 </p>
-                                <span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;V0.1.2</span>
+                                {this.state.menuMode === 'full' ? <span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;V0.1.2</span> : null}
                             </Container>
-                            <Container style={{padding: 0}}>
-                                <PushButton onClick={this.changeMenu.bind(this)}><FontAwesomeIcon
-                                    icon={faListUl}/>&nbsp;{this.state.menuMode === 'full' ? '收起菜单' : '展开'} </PushButton>
+                            <Container style={{padding: 0, paddingLeft: '1em'}}>
+                                <span onClick={this.changeMenu.bind(this)} style={{color: '#fff'}}><FontAwesomeIcon
+                                    icon={faBars}/>&nbsp;{this.state.menuMode === 'full' ? '收起菜单' : '展开'} </span>
                             </Container>
                             <LeftMenu mode={this.state.menuMode} menu={menuData}/>
                         </Col>
