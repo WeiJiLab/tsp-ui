@@ -3,7 +3,18 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Task.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCube, faDownload, faFileSignature, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
+import {
+    faCheckCircle,
+    faCube,
+    faDownload,
+    faEject,
+    faFileSignature,
+    faPlayCircle,
+    faShieldAlt,
+    faSpinner,
+    faStopCircle,
+    faTimesCircle
+} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
@@ -20,9 +31,11 @@ class Task extends React.Component {
     render() {
         return <Container className={'Case'}>
             <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
-                <Card title={'扫描任务基本信息'} w={3}>
+                <Card title={'扫描任务基本信息'} w={6}>
                     <Container>
-                        TODO
+                        {this.renderStatus(this.props.task.status)}
+                        <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.endTime ? this.props.task.endTime : '未结束'}</span>
+                        <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.startTime ? this.props.task.startTime : '未开始-'}</span>
                     </Container>
                 </Card>
             </Row>
@@ -32,6 +45,23 @@ class Task extends React.Component {
                 {this.renderToolCard()}
             </Row>
         </Container>
+    }
+
+    renderStatus(status) {
+        switch (status) {
+            case 'READY':
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faPlayCircle}/>;
+            case 'RUNNING':
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faSpinner}/>;
+            case 'DONE':
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faCheckCircle}/>;
+            case 'FAILED':
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faTimesCircle}/>;
+            case 'ABORT':
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faStopCircle}/>;
+            default:
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faEject}/>;
+        }
     }
 
     renderCaseCard() {
@@ -78,7 +108,8 @@ class Task extends React.Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.project.name} &nbsp;/&nbsp; {this.props.app.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}}
+                                             icon={faCube}/>&nbsp;{this.props.project.name} &nbsp;/&nbsp; {this.props.app.name}</h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -96,10 +127,16 @@ class Task extends React.Component {
 
     componentDidMount() {
         this.props.getScanTask(this.props.match.params.taskId);
-        this.props.getCase(this.props.task.useCase.id);
-        this.props.getTool(this.props.task.securityTool.id);
-        this.props.getApp(this.props.task.application.projectId, this.props.task.application.id);
-        this.props.getProject(this.props.task.application.projectId);
+        if (this.props.task.useCase) {
+            this.props.getCase(this.props.task.useCase.id);
+        }
+        if (this.props.task.securityTool) {
+            this.props.getTool(this.props.task.securityTool.id);
+        }
+        if (this.props.task.application) {
+            this.props.getApp(this.props.task.application.projectId, this.props.task.application.id);
+            this.props.getProject(this.props.task.application.projectId);
+        }
         this.props.setBreadCrumbMenu([
             {
                 title: 'Task',
