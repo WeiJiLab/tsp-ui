@@ -4,8 +4,18 @@ import LeftMenu from "./components/left-menu/LeftMenu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import DashBoard from "./pages/dashboard/DashBoard";
-import {faCircle, faCubes, faFileSignature, faShieldAlt, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
-import {Component} from "react";
+import {
+    faCircle,
+    faCubes,
+    faEject, faFileImport,
+    faFileSignature,
+    faHome,
+    faList, faListAlt,
+    faShieldAlt,
+    faTachometerAlt,
+    faUserShield
+} from "@fortawesome/free-solid-svg-icons";
+import React, {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
 import AppCreate from "./pages/app_create/AppCreate";
 import Projects from "./pages/projects/Projects";
@@ -26,6 +36,7 @@ import Case from "./pages/case/Case";
 import TaskCreate from "./pages/task_create/TaskCreate";
 import Task from "./pages/task/Task";
 import NoMatch from "./pages/no-match/NoMatch";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const menuData = [
     {
@@ -35,9 +46,9 @@ const menuData = [
         routable: false,
         child: [
             {
-                title: 'Dashboard',
+                title: '平台总览',
                 route: '/',
-                icon: faCircle,
+                icon: faHome,
                 routable: true,
             }
         ]
@@ -51,13 +62,13 @@ const menuData = [
             {
                 title: '项目列表',
                 route: '/projects',
-                icon: faCircle,
+                icon: faListAlt,
                 routable: true,
             },
             {
                 title: '创建项目',
                 route: '/project/create',
-                icon: faCircle,
+                icon: faFileImport,
                 routable: true,
             }
         ]
@@ -71,7 +82,7 @@ const menuData = [
             {
                 title: '工具列表',
                 route: '/tools',
-                icon: faCircle,
+                icon: faListAlt,
                 routable: true,
             }
         ]
@@ -95,9 +106,9 @@ const menuData = [
             //     routable: true,
             // },
             {
-                title: '用例',
+                title: '用例列表',
                 route: '/cases',
-                icon: faCircle,
+                icon: faListAlt,
                 routable: true,
             },
         ]
@@ -133,8 +144,8 @@ class App extends Component {
             <Container className="App" style={{padding: 0}}>
                 <Container style={{margin: 0, padding: 0}}>
                     <Row style={{margin: 0, padding: 0}}>
-                        <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '1em', background: 'transparent'}}>
-                            <Container style={{padding: 0, margin: 0, borderBottom: 'solid 1px rgb(55,83,182)', height: '4em'}}>
+                        <Col md={2} style={{margin: 0, padding: 0, paddingLeft: '2em', paddingTop: '2em', background: 'transparent'}}>
+                            <Container style={{padding: 0, margin: 0, height: '4em'}}>
                                 <p style={{
                                     color: '#fff',
                                     display: 'inline-block',
@@ -145,7 +156,8 @@ class App extends Component {
                                     paddingLeft: '0.5em',
                                     fontWeight: 'bolder',
                                     fontSize: '2em',
-                                }}>Aιγίς</p><span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;v0.0.1</span>
+                                }}><FontAwesomeIcon style={{fontSize: '2em'}} icon={faUserShield}/>Aιγίς</p><span
+                                style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;V0.1.2</span>
                             </Container>
                             <LeftMenu menu={menuData}/>
                         </Col>

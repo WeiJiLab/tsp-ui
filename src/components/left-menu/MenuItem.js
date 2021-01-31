@@ -55,7 +55,7 @@ class MenuItem extends React.Component {
                     return <Link key={id} style={{textDecoration: 'none', color: '#fff'}} to={child.route}>
                         <Row style={{padding: 0, margin: 0, paddingTop: '0.5em', paddingBottom: '0.5em'}}>
                             <Col style={{padding: 0}} md={12}>
-                                <FontAwesomeIcon style={{fontSize: '0.5em'}} icon={child.icon}/> {child.title}
+                                <FontAwesomeIcon style={{fontSize: '1em'}} icon={child.icon}/> {child.title}
                             </Col>
                         </Row>
                     </Link>
