@@ -39,7 +39,7 @@ class ScanTaskList extends Component {
                         </Col>
                         <Col md={6}>
                             <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;
-                                <Link to={'/case/' + task.useCaseEntity.id}>{task.useCaseEntity.name}</Link>
+                                <Link to={'/case/' + task.useCase.id}>{task.useCase.name}</Link>
                             </h5>
                         </Col>
                     </Row>

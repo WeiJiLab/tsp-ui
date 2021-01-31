@@ -7,7 +7,6 @@ import DashBoard from "./pages/dashboard/DashBoard";
 import {faCircle, faCubes, faFileSignature, faShieldAlt, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
 import {Component} from "react";
 import BreadCrumbMenu from "./components/breadcrumb-menu/BreadCrumbMenu";
-import Charts from "./pages/charts/Charts";
 import AppCreate from "./pages/app_create/AppCreate";
 import Projects from "./pages/projects/Projects";
 import ProjectCreate from "./pages/project_create/ProjectCreate";

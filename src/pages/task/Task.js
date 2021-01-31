@@ -10,7 +10,7 @@ import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getCase} from "../../actions/CasesAction";
 import {getScanTask} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
-import {getApp} from "../../actions/ProjectsAction";
+import {getApp, getProject} from "../../actions/ProjectsAction";
 
 class Task extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class Task extends React.Component {
             <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
                 <Card title={'扫描任务基本信息'} w={3}>
                     <Container>
-                       TODO
+                        TODO
                     </Container>
                 </Card>
             </Row>
@@ -74,14 +74,17 @@ class Task extends React.Component {
     }
 
     renderAppCard() {
-        return <Card title={'应用信息'} w={3}>
+        return <Card title={'应用信息'} w={4}>
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.app.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;{this.props.project.name} &nbsp;/&nbsp; {this.props.app.name}</h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
+                    <Col md={12}>
+                        <span style={{fontSize: '1.1em'}}>{this.props.project.description}</span>
+                    </Col>
                     <Col md={12}>
                         <span style={{fontSize: '1.1em'}}>{this.props.app.description}</span>
                     </Col>
@@ -93,8 +96,10 @@ class Task extends React.Component {
 
     componentDidMount() {
         this.props.getScanTask(this.props.match.params.taskId);
-        this.props.getCase(this.props.task.useCaseEntity.id);
+        this.props.getCase(this.props.task.useCase.id);
         this.props.getTool(this.props.task.securityTool.id);
+        this.props.getApp(this.props.task.application.projectId, this.props.task.application.id);
+        this.props.getProject(this.props.task.application.projectId);
         this.props.setBreadCrumbMenu([
             {
                 title: 'Task',
@@ -109,6 +114,7 @@ const mapStateToProps = state => ({
     cas: state.reduxResult.cas.data,
     task: state.reduxResult.task.data,
     app: state.reduxResult.app.data,
+    project: state.reduxResult.project.data,
     tool: state.reduxResult.tool.data,
 });
 
@@ -117,6 +123,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     getTool,
     getScanTask,
     getApp,
+    getProject,
     setBreadCrumbMenu
 }, dispatch);
 
