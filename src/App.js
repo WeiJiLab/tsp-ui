@@ -158,7 +158,7 @@ class App extends Component {
                                     lineHeight: '1.5em',
                                     padding: 0,
                                     margin: 0,
-                                    paddingLeft: '0.5em',
+                                    paddingLeft: '0.2em',
                                     fontWeight: 'bolder',
                                     fontSize: '2em',
                                 }}>
@@ -167,8 +167,9 @@ class App extends Component {
                                 </p>
                                 <span style={{color: '#fff', fontSize: '0.7em'}}>&nbsp;V0.1.2</span>
                             </Container>
-                            <Container style={{paddingTop: '1   em'}}>
-                                <PushButton onClick={this.changeMenu.bind(this)}><FontAwesomeIcon icon={faListUl}/>&nbsp;{this.state.menuMode === 'full' ?'收起菜单':'展开'} </PushButton>
+                            <Container style={{padding: 0}}>
+                                <PushButton onClick={this.changeMenu.bind(this)}><FontAwesomeIcon
+                                    icon={faListUl}/>&nbsp;{this.state.menuMode === 'full' ? '收起菜单' : '展开'} </PushButton>
                             </Container>
                             <LeftMenu mode={this.state.menuMode} menu={menuData}/>
                         </Col>
