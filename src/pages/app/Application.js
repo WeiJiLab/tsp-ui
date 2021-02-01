@@ -44,7 +44,7 @@ class Application extends React.Component {
                         <Row>
                             {
                                 (this.props.tasks && this.tasksFilterByStatus('RUNNING').length !== 0) ? this.props.tasks.map((task, index) => {
-                                    return this.renderTaskRow(task, index);
+                                    return <ScanTaskList task={task} key={index}/>;
                                 }) : <span style={{color: '#668'}}>无</span>
                             }
                         </Row>
