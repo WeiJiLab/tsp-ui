@@ -34,9 +34,8 @@ class Task extends React.Component {
                 <Card title={'扫描状态'} w={6}>
                     <Container>
                         {this.renderStatus(this.props.task.status)}
-                        <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.endTime ? this.props.task.endTime : '未结束'}</span>
-                        <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.startTime ? this.props.task.startTime : '未开始-'}</span>
-                        <ProgressBar style={{marginTop: '1em'}} variant={this.getVariant.bind(this)} animated now={this.getProgressCount.bind(this)}/>
+                        <span style={{fontSize: '1em', float: 'right'}}>{this.renderTime()}</span>
+                        <ProgressBar style={{marginTop: '1em'}} variant={this.getVariant()} animated now={this.getProgressCount()}/>
                     </Container>
                 </Card>
             </Row>
@@ -46,6 +45,23 @@ class Task extends React.Component {
                 {this.renderToolCard()}
             </Row>
         </Container>
+    }
+
+    renderTime() {
+        switch (this.props.task.status) {
+            case 'READY':
+                return <span style={{fontSize: '0.77em'}}>未开始</span>;
+            case 'RUNNING':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-未结束'}</span>;
+            case 'DONE':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+            case 'FAILED':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+            case 'ABORT':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+            default:
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+        }
     }
 
 

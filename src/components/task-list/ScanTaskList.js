@@ -49,7 +49,7 @@ class ScanTaskList extends Component {
                         {this.renderStatus(task.status)}
                     </Row>
                     <Row style={{marginTop: '0.3em'}}>
-                        <span style={{fontSize: '0.77em'}}>{task.startTime ? task.startTime : '未开始'}</span>
+                        {this.renderTime()}
                     </Row>
                 </Col>
                 <Col md={1} style={{paddingTop: '1em'}}>
@@ -57,6 +57,23 @@ class ScanTaskList extends Component {
                 </Col>
             </Row>
         </Container>;
+    }
+
+    renderTime() {
+        switch (this.props.task.status) {
+            case 'READY':
+                return <span style={{fontSize: '0.77em'}}>未开始</span>;
+            case 'RUNNING':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-未结束'}</span>;
+            case 'DONE':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+            case 'FAILED':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+            case 'ABORT':
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+            default:
+                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+        }
     }
 
     renderStatus(status) {
