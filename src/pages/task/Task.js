@@ -31,7 +31,7 @@ class Task extends React.Component {
     render() {
         return <Container className={'Case'}>
             <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
-                <Card title={'扫描任务基本信息'} w={6}>
+                <Card title={'扫描状态'} w={6}>
                     <Container>
                         {this.renderStatus(this.props.task.status)}
                         <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.endTime ? this.props.task.endTime : '未结束'}</span>
