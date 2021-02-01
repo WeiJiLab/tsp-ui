@@ -3,22 +3,7 @@ import {Col, Container, Dropdown, Row} from "react-bootstrap";
 import './Case.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-    faCheckCircle,
-    faChevronRight,
-    faCube,
-    faCubes,
-    faDownload,
-    faEject,
-    faEllipsisH,
-    faFileSignature,
-    faPlay,
-    faPlayCircle,
-    faShieldAlt,
-    faSpinner,
-    faStopCircle,
-    faTimesCircle
-} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faDownload, faEllipsisH, faFileSignature, faPlay, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
@@ -171,9 +156,6 @@ class Case extends React.Component {
 
     componentDidMount() {
         this.props.getCase(this.props.match.params.caseId);
-        if(this.props.cas.securityToolId) {
-            this.props.getTool(this.props.cas.securityToolId);
-        }
         this.props.getScanTasks({
             useCaseId: this.props.match.params.caseId
         });
@@ -191,6 +173,10 @@ class Case extends React.Component {
         ]);
     }
 
+    componentWillUpdate(nextProps, nextState, nextContext) {
+
+    }
+
     deleteApp(appId) {
         this.props.deleteApp(this.props.match.params.id, appId);
     }
@@ -198,7 +184,12 @@ class Case extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.deleteAppResult !== this.props.deleteAppResult) {
             this.props.getProject(this.props.match.params.id);
+
         }
+        if (nextProps.cas !== this.props.cas) {
+            this.props.getTool(nextProps.cas.securityToolId);
+        }
+
     }
 }
 

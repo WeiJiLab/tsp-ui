@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, ProgressBar, Row} from "react-bootstrap";
 import './Task.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -36,6 +36,7 @@ class Task extends React.Component {
                         {this.renderStatus(this.props.task.status)}
                         <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.endTime ? this.props.task.endTime : '未结束'}</span>
                         <span style={{fontSize: '1em', float: 'right'}}>{this.props.task.startTime ? this.props.task.startTime : '未开始-'}</span>
+                        <ProgressBar style={{marginTop: '1em'}} variant={this.getVariant.bind(this)} animated now={this.getProgressCount.bind(this)}/>
                     </Container>
                 </Card>
             </Row>
@@ -45,6 +46,38 @@ class Task extends React.Component {
                 {this.renderToolCard()}
             </Row>
         </Container>
+    }
+
+
+    getVariant() {
+        if (this.props.status === 'READY' || this.props.status === 'RUNNING') {
+            return "";
+        } else if (this.props.status === 'DONE') {
+            return 'success'
+        } else if (this.props.status === 'ABORT') {
+            return 'warning';
+        } else if (this.props.status === 'FAILED') {
+            return 'danger';
+        } else {
+            return "";
+        }
+    }
+
+    getProgressCount() {
+        switch (this.props.task.status) {
+            case 'READY':
+                return 6.18;
+            case 'RUNNING':
+                return 61.8;
+            case 'DONE':
+                return 100;
+            case 'FAILED':
+                return 100;
+            case 'ABORT':
+                return 100;
+            default:
+                return 61.8;
+        }
     }
 
     renderStatus(status) {
@@ -127,16 +160,6 @@ class Task extends React.Component {
 
     componentDidMount() {
         this.props.getScanTask(this.props.match.params.taskId);
-        if (this.props.task.useCase) {
-            this.props.getCase(this.props.task.useCase.id);
-        }
-        if (this.props.task.securityTool) {
-            this.props.getTool(this.props.task.securityTool.id);
-        }
-        if (this.props.task.application) {
-            this.props.getApp(this.props.task.application.projectId, this.props.task.application.id);
-            this.props.getProject(this.props.task.application.projectId);
-        }
         this.props.setBreadCrumbMenu([
             {
                 title: 'Task',
@@ -144,6 +167,15 @@ class Task extends React.Component {
                 route: ''
             }
         ]);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.task !== this.props.task) {
+            this.props.getCase(nextProps.task.useCase.id);
+            this.props.getApp(nextProps.task.application.projectId, nextProps.task.application.id);
+            this.props.getProject(nextProps.task.application.projectId);
+            this.props.getTool(nextProps.cas.securityToolId);
+        }
     }
 }
 
