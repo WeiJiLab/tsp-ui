@@ -81,15 +81,15 @@ class ScanTaskList extends Component {
             case 'READY':
                 return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faPlayCircle}/>;
             case 'RUNNING':
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faSpinner}/>;
+                return <FontAwesomeIcon style={{color: 'green', fontSize: '2em'}} icon={faSpinner}/>;
             case 'DONE':
                 return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faCheckCircle}/>;
             case 'FAILED':
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faTimesCircle}/>;
+                return <FontAwesomeIcon style={{color: 'red', fontSize: '2em'}} icon={faTimesCircle}/>;
             case 'ABORT':
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faStopCircle}/>;
+                return <FontAwesomeIcon style={{color: 'gray', fontSize: '2em'}} icon={faStopCircle}/>;
             default:
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faEject}/>;
+                return <FontAwesomeIcon style={{color: 'gray', fontSize: '2em'}} icon={faEject}/>;
         }
     }
 }
