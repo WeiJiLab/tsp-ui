@@ -9,7 +9,7 @@ import {
     faDownload,
     faEject,
     faFileSignature,
-    faPlayCircle,
+    faPlayCircle, faQuestion,
     faShieldAlt,
     faSpinner,
     faStopCircle,
@@ -34,7 +34,7 @@ class Task extends React.Component {
                 <Card title={'扫描状态'} w={6}>
                     <Container>
                         {this.renderStatus(this.props.task.status)}
-                        <span style={{fontSize: '1em', float: 'right'}}>{this.renderTime()}</span>
+                        <span style={{fontSize: '1em', float: 'right'}}>{this.getTime()}</span>
                         <ProgressBar style={{marginTop: '1em'}} variant={this.getVariant()} animated now={this.getProgressCount()}/>
                     </Container>
                 </Card>
@@ -47,32 +47,32 @@ class Task extends React.Component {
         </Container>
     }
 
-    renderTime() {
+    getTime() {
         switch (this.props.task.status) {
             case 'READY':
-                return <span style={{fontSize: '0.77em'}}>未开始</span>;
+                return <span style={{fontSize: '1em'}}>未开始</span>;
             case 'RUNNING':
-                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-未结束'}</span>;
+                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + '---->未结束'}</span>;
             case 'DONE':
-                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + '---->' + this.props.task.endTime}</span>;
             case 'FAILED':
-                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + '---->' + this.props.task.endTime}</span>;
             case 'ABORT':
-                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + '---->' + this.props.task.endTime}</span>;
             default:
-                return <span style={{fontSize: '0.77em'}}>{this.props.task.startTime + '-' + this.props.task.endTime}</span>;
+                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + '---->' + this.props.task.endTime}</span>;
         }
     }
 
 
     getVariant() {
-        if (this.props.status === 'READY' || this.props.status === 'RUNNING') {
+        if (this.props.task.status === 'READY' || this.props.task.status === 'RUNNING') {
             return "";
-        } else if (this.props.status === 'DONE') {
+        } else if (this.props.task.status === 'DONE') {
             return 'success'
-        } else if (this.props.status === 'ABORT') {
+        } else if (this.props.task.status === 'ABORT') {
             return 'warning';
-        } else if (this.props.status === 'FAILED') {
+        } else if (this.props.task.status === 'FAILED') {
             return 'danger';
         } else {
             return "";
@@ -99,17 +99,19 @@ class Task extends React.Component {
     renderStatus(status) {
         switch (status) {
             case 'READY':
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faPlayCircle}/>;
+                return <span style={{color: 'rgb(36, 66, 164)'}}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}}
+                                                                                  icon={faPlayCircle}/>准备中</span>;
             case 'RUNNING':
-                return <FontAwesomeIcon style={{color: 'green', fontSize: '2em'}} icon={faSpinner}/>;
+                return <span style={{color: 'green'}}><FontAwesomeIcon style={{color: 'green', fontSize: '2em'}} icon={faSpinner}/>扫描中</span>;
             case 'DONE':
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faCheckCircle}/>;
+                return <span style={{color: 'rgb(36, 66, 164)'}}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}}
+                                                                                  icon={faCheckCircle}/>扫描完成</span>;
             case 'FAILED':
-                return <FontAwesomeIcon style={{color: 'red', fontSize: '2em'}} icon={faTimesCircle}/>;
+                return <span style={{color: 'red'}}><FontAwesomeIcon style={{color: 'red', fontSize: '2em'}} icon={faTimesCircle}/>扫描失败</span>;
             case 'ABORT':
-                return <FontAwesomeIcon style={{color: 'gray', fontSize: '2em'}} icon={faStopCircle}/>;
+                return <span style={{color: 'gray'}}><FontAwesomeIcon style={{color: 'gray', fontSize: '2em'}} icon={faStopCircle}/>终止</span>;
             default:
-                return <FontAwesomeIcon style={{color: 'gray', fontSize: '2em'}} icon={faEject}/>;
+                return <span style={{color: 'gray'}}><FontAwesomeIcon style={{color: 'gray', fontSize: '2em'}} icon={faQuestion}/>未知状态</span>;
         }
     }
 
