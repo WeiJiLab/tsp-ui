@@ -171,7 +171,9 @@ class Case extends React.Component {
 
     componentDidMount() {
         this.props.getCase(this.props.match.params.caseId);
-        this.props.getTool(this.props.cas.securityToolId);
+        if(this.props.cas.securityToolId) {
+            this.props.getTool(this.props.cas.securityToolId);
+        }
         this.props.getScanTasks({
             useCaseId: this.props.match.params.caseId
         });
