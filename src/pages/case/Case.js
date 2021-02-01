@@ -156,9 +156,6 @@ class Case extends React.Component {
 
     componentDidMount() {
         this.props.getCase(this.props.match.params.caseId);
-        this.props.getScanTasks({
-            useCaseId: this.props.match.params.caseId
-        });
         this.props.setBreadCrumbMenu([
             {
                 title: 'Cases',

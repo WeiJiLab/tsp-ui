@@ -155,7 +155,7 @@ class DashBoard extends React.Component {
                     <Container>
                         <Row>
                             {
-                                (this.props.tasks && this.props.tasks.length !== 0) ? this.props.tasks.map((task, index) => {
+                                (this.props.tasks && this.props.tasks.length !== 0) ? this.tasksFilterNotReady().map((task, index) => {
                                     return <ScanTaskList task={task} key={index}/>;
                                 }) : <span style={{color: '#668'}}>无</span>
                             }
@@ -166,7 +166,7 @@ class DashBoard extends React.Component {
                     <Container>
                         <Row>
                             {
-                                (this.props.tasks && this.tasksFilterByStatus('READY').length !== 0) ? this.props.tasks.map((task, index) => {
+                                (this.props.tasks && this.tasksFilterByStatus('READY').length !== 0) ? this.tasksFilterByStatus('READY').map((task, index) => {
                                     return <ScanTaskList task={task} key={index}/>;
                                 }) : <span style={{color: '#668'}}>无</span>
                             }
@@ -175,6 +175,16 @@ class DashBoard extends React.Component {
                 </Card>
             </Row>
         </Container>
+    }
+
+    tasksFilterNotReady(){
+        let data = [];
+        for (let i = 0; i < this.props.tasks.length; i++) {
+            if (this.props.tasks[i].status !== 'READY') {
+                data.push(this.props.tasks[i]);
+            }
+        }
+        return data;
     }
 
     tasksFilterByStatus(status) {
@@ -209,7 +219,6 @@ class DashBoard extends React.Component {
         ]);
     }
 }
-
 
 
 const mapStateToProps = state => ({
