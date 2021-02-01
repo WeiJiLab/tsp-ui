@@ -26,3 +26,19 @@
     opacity: 0;
     transition: opacity 618ms ease-in;
 }
+
+
+.Icon {
+    float: right;
+    border: solid 1px #fff;
+    border-radius: 10em;
+    width: 2em;
+    margin-top: -0.5em;
+    height: 2em;
+    box-shadow: 0 0 10px 3px #d3d3d3;
+}
+
+.Icon:hover {
+    transform: scale(1.2);
+    transition: all 0.3s;
+}

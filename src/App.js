@@ -1,13 +1,11 @@
 import './App.css';
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Image, Row} from "react-bootstrap";
 import LeftMenu from "./components/left-menu/LeftMenu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import DashBoard from "./pages/dashboard/DashBoard";
 import {
-    faBars,
-    faCubes,
-    faFileImport,
+    faBars, faBell, faCubes, faFileImport,
     faFileSignature,
     faHome,
     faListAlt,
@@ -184,7 +182,14 @@ class App extends Component {
                                 borderTopLeftRadius: '2em',
                                 borderTopRightRadius: '2em',
                             }}>
-                                <BreadCrumbMenu data={this.props.breadCrumbMenus}/>
+                                <Row style={{padding: 0, margin: 0}}>
+                                    <Col md={8} style={{padding: 0, margin: 0}}>
+                                        <BreadCrumbMenu data={this.props.breadCrumbMenus}/>
+                                    </Col>
+                                    <Col md={4} style={{padding: 0, margin: 0}}>
+                                        <Image className={'Icon'} src={'http://midone.left4code.com/dist/images/profile-12.jpg'}/>
+                                    </Col>
+                                </Row>
                             </Container>
                             <Container
                                 style={{
