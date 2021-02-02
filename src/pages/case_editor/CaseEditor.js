@@ -69,7 +69,7 @@ class CaseEditor extends React.Component {
                             value={value}
                             options={{
                                 mode: {name: 'text/css'},
-                                theme: 'solarized dark',
+                                theme: 'solarized light',
                                 autofocus: true,
                                 styleActiveLine: true,
                                 lineNumbers: true,
