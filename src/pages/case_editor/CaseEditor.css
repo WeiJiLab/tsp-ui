@@ -10,8 +10,10 @@
 
 .react-codemirror2 > .CodeMirror {
     height: 50em;
+    border-radius: 0.618em;
 }
 
 .react-codemirror2 > .CodeMirror-wrap {
     height: 50em;
+    border-radius: 0.618em;
 }
