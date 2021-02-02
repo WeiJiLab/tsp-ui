@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faCheckCircle,
-    faChevronRight,
+    faChevronRight, faClock,
     faCubes,
     faEject,
     faFileSignature,
@@ -79,7 +79,7 @@ class ScanTaskList extends Component {
     renderStatus(status) {
         switch (status) {
             case 'READY':
-                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faPlayCircle}/>;
+                return <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faClock}/>;
             case 'RUNNING':
                 return <FontAwesomeIcon style={{color: 'green', fontSize: '2em'}} icon={faSpinner}/>;
             case 'DONE':

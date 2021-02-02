@@ -4,7 +4,7 @@ import './Task.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faCheckCircle,
+    faCheckCircle, faClock,
     faCube,
     faDownload,
     faFileSignature,
@@ -106,7 +106,7 @@ class Task extends React.Component {
         switch (status) {
             case 'READY':
                 return <Container style={{padding: 0}}>
-                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faPlayCircle}/>
+                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faClock}/>
                     <h3 style={{color: 'rgb(36, 66, 164)', display: 'inline-block'}}>&nbsp;准备中</h3>
                 </Container>;
             case 'RUNNING':
