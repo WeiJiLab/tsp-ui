@@ -192,7 +192,7 @@ class Task extends React.Component {
             this.props.getCase(nextProps.task.useCase.id);
             this.props.getApp(nextProps.task.application.projectId, nextProps.task.application.id);
             this.props.getProject(nextProps.task.application.projectId);
-            this.props.getTool(nextProps.cas.securityToolId);
+            this.props.getTool(nextProps.task.toolId);
         }
     }
 }
