@@ -16,6 +16,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import 'codemirror/lib/codemirror.js'
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
+import 'codemirror/theme/eclipse.css';
 import 'codemirror/mode/clike/clike';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/ruby/ruby';
@@ -69,7 +70,7 @@ class CaseEditor extends React.Component {
                             value={value}
                             options={{
                                 mode: {name: 'text/css'},
-                                theme: 'solarized light',
+                                theme: 'eclipse',
                                 autofocus: true,
                                 styleActiveLine: true,
                                 lineNumbers: true,
