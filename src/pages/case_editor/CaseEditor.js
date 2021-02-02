@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './CaseEditor.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDownload, faFileSignature, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
+import {faDownload, faFileSignature, faShieldAlt, faUpload} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
@@ -30,6 +30,7 @@ import 'codemirror/addon/fold/foldgutter.js';
 import 'codemirror/addon/fold/brace-fold.js';
 import 'codemirror/addon/fold/comment-fold.js';
 import 'codemirror/addon/edit/closebrackets';
+import PushButton from "../../components/button/PushButton";
 
 class CaseEditor extends React.Component {
     constructor(props) {
@@ -57,10 +58,6 @@ class CaseEditor extends React.Component {
             'end\n';
         return <Container className={'CaseEditor'}>
             <Row style={{padding: 0, margin: 0}}>
-                <Col md={3} style={{padding: 0, margin: 0}}>
-                    {this.renderCaseCard()}
-                    {this.renderToolCard()}
-                </Col>
                 <Col md={9} style={{padding: 0, margin: 0}}>
                     <Card title={'用例编辑器'} w={12}>
                         <CodeMirror
@@ -101,6 +98,11 @@ class CaseEditor extends React.Component {
                         />
                     </Card>
                 </Col>
+                <Col md={3} style={{padding: 0, margin: 0}}>
+                    {this.operatePanel()}
+                    {this.renderCaseCard()}
+                    {this.renderToolCard()}
+                </Col>
             </Row>
         </Container>
     }
@@ -111,6 +113,18 @@ class CaseEditor extends React.Component {
 
     codeOnBlur() {
 
+    }
+
+    operatePanel() {
+        return <Card title={'用例操作'} w={12}>
+            <Container style={{padding: 0, margin: 0}}>
+                <Row style={{padding: 0, margin: 0}}>
+                    <Col md={12} style={{padding: 0, margin: 0}}>
+                        <PushButton><FontAwesomeIcon icon={faUpload}/>&nbsp;保存</PushButton>
+                    </Col>
+                </Row>
+            </Container>
+        </Card>;
     }
 
     renderCaseCard() {
