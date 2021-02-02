@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Case.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDownload, faFileSignature, faPlay, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
+import {faDownload, faEdit, faFileSignature, faPlay, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
@@ -82,7 +82,11 @@ class Case extends React.Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;{this.props.cas.name}</h3>
+                        <h3>
+                            <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;{this.props.cas.name}
+                            <Link to={'/case-editor/' + this.props.cas.id}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', float: 'right'}}
+                                                                                            icon={faEdit}/></Link>
+                        </h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -104,7 +108,8 @@ class Case extends React.Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;<Link to={'/tool/'+this.props.tool.id}>{this.props.tool.name}</Link></h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;<Link
+                            to={'/tool/' + this.props.tool.id}>{this.props.tool.name}</Link></h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>

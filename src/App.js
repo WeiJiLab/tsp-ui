@@ -35,6 +35,7 @@ import TaskCreate from "./pages/task_create/TaskCreate";
 import Task from "./pages/task/Task";
 import NoMatch from "./pages/no-match/NoMatch";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import CaseEditor from "./pages/case_editor/CaseEditor";
 
 const menuData = [
     {
@@ -212,6 +213,7 @@ class App extends Component {
                                     <Route exact path={'/tool/case/:toolId'} component={CaseCreate}/>
                                     <Route exact path={'/cases'} component={Cases}/>
                                     <Route exact path={'/case/:caseId'} component={Case}/>
+                                    <Route exact path={'/case-editor/:caseId'} component={CaseEditor}/>
                                     <Route exact path={'/case-groups'} component={CaseGroups}/>
                                     <Route exact path={'/case-groups/create'} component={CaseGroupCreate}/>
 
