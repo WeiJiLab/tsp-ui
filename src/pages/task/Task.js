@@ -4,11 +4,11 @@ import './Task.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faCheckCircle, faClock,
+    faCheckCircle,
+    faClock,
     faCube,
     faDownload,
     faFileSignature,
-    faPlayCircle,
     faQuestion,
     faShieldAlt,
     faSpinner,
@@ -22,6 +22,7 @@ import {getCase} from "../../actions/CasesAction";
 import {getScanTask} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
 import {getApp, getProject} from "../../actions/ProjectsAction";
+import {Link} from "react-router-dom";
 
 class Task extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class Task extends React.Component {
                                 {this.renderStatus(this.props.task.status)}
                             </Col>
                             <Col md={8}>
-                                <p style={{fontSize: '1em', marginTop:'0.6em',float: 'right'}}>{this.getTime()}</p>
+                                <p style={{fontSize: '1em', marginTop: '0.6em', float: 'right'}}>{this.getTime()}</p>
                             </Col>
                         </Row>
                         <ProgressBar style={{margin: 0}} variant={this.getVariant()} animated now={this.getProgressCount()}/>
@@ -142,7 +143,8 @@ class Task extends React.Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;{this.props.cas.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;<Link
+                            to={'/case/' + this.props.cas.id}>{this.props.cas.name}</Link></h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -164,7 +166,8 @@ class Task extends React.Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;{this.props.tool.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;<Link
+                            to={'/tool/' + this.props.tool.id}>{this.props.tool.name}</Link></h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -182,7 +185,9 @@ class Task extends React.Component {
                 <Row>
                     <Col md={12}>
                         <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}}
-                                             icon={faCube}/>&nbsp;{this.props.project.name} &nbsp;/&nbsp; {this.props.app.name}</h3>
+                                             icon={faCube}/>&nbsp;<Link
+                            to={'/project/' + this.props.project.id}>{this.props.project.name}</Link> &nbsp;/&nbsp; <Link
+                            to={"/project/" + this.props.project.id + '/' + this.props.app.id}>{this.props.app.name}</Link></h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>

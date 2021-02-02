@@ -11,6 +11,7 @@ import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getScanTasks} from "../../actions/TasksAction";
 import ScanTaskList from "../../components/task-list/ScanTaskList";
+import {Link} from "react-router-dom";
 
 class Application extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class Application extends React.Component {
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                 {this.renderAppCard()}
+                {this.renderProjectCard()}
             </Row>
             <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                 <Card title={'扫描记录'} w={6}>
@@ -85,6 +87,24 @@ class Application extends React.Component {
                 <Row style={{marginTop: '1em'}}>
                     <Col md={12}>
                         <span style={{fontSize: '1.1em'}}>{this.props.app.description}</span>
+                    </Col>
+                </Row>
+            </Container>
+        </Card>;
+    }
+
+    renderProjectCard() {
+        return <Card title={'项目信息'} w={3}>
+            <Container>
+                <Row>
+                    <Col md={12}>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCube}/>&nbsp;<Link
+                            to={'/project/' + this.props.project.id}>{this.props.project.name}</Link></h3>
+                    </Col>
+                </Row>
+                <Row style={{marginTop: '1em'}}>
+                    <Col md={12}>
+                        <span style={{fontSize: '1.1em'}}>{this.props.project.description}</span>
                     </Col>
                 </Row>
             </Container>

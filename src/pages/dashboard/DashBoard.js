@@ -202,7 +202,7 @@ class DashBoard extends React.Component {
         this.props.getTools();
         this.props.getCases();
 
-        this.props.getScanTasks(1);
+        this.props.getScanTasks({});
         this.props.getScanResults(1);
 
         this.props.setBreadCrumbMenu([

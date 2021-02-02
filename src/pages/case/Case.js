@@ -1,18 +1,18 @@
 import React from "react";
-import {Col, Container, Dropdown, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import './Case.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faDownload, faEllipsisH, faFileSignature, faPlay, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
+import {faDownload, faFileSignature, faPlay, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import PushButton from "../../components/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
-import {Link} from "react-router-dom";
 import {getCase} from "../../actions/CasesAction";
 import {getScanTasks} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
 import ScanTaskList from "../../components/task-list/ScanTaskList";
+import {Link} from "react-router-dom";
 
 class Case extends React.Component {
     constructor(props) {
@@ -77,43 +77,6 @@ class Case extends React.Component {
         });
     }
 
-    renderAppRow(app, index) {
-        return <Container className={'AppItem'} key={index}>
-            <Row style={{marginTop: '0.5em'}}>
-                <Col md={1}>
-                    <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em', marginTop: '0.5em'}} icon={faCube}/>
-                </Col>
-                <Col md={11}>
-                    <Row>
-                        <Col md={6}>
-                            <h3>{app.name}</h3>
-                        </Col>
-                        <Col md={6} style={{textAlign: 'right'}}>
-                            <Dropdown>
-                                <Dropdown.Toggle variant="none" id="dropdown-basic">
-                                    <FontAwesomeIcon
-                                        icon={faEllipsisH}/>
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item onClick={this.deleteApp.bind(this, app.id)}>删除</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={10}>
-                            <h6>{app.description}</h6>
-                        </Col>
-                        <Col md={2} style={{textAlign: 'right'}}>
-                            <Link to={'/project/' + this.props.project.id + '/' + app.id}><FontAwesomeIcon icon={faChevronRight}/></Link>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        </Container>;
-    }
-
     renderCaseCard() {
         return <Card title={'用例信息'} w={4}>
             <Container>
@@ -141,7 +104,7 @@ class Case extends React.Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;{this.props.tool.name}</h3>
+                        <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;<Link to={'/tool/'+this.props.tool.id}>{this.props.tool.name}</Link></h3>
                     </Col>
                 </Row>
                 <Row style={{marginTop: '1em'}}>
@@ -156,6 +119,9 @@ class Case extends React.Component {
 
     componentDidMount() {
         this.props.getCase(this.props.match.params.caseId);
+        this.props.getScanTasks({
+            useCaseId: this.props.match.params.caseId,
+        });
         this.props.setBreadCrumbMenu([
             {
                 title: 'Cases',
