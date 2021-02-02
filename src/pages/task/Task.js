@@ -23,6 +23,7 @@ import {getScanTask} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
 import {getApp, getProject} from "../../actions/ProjectsAction";
 import {Link} from "react-router-dom";
+import moment from "moment-timezone";
 
 class Task extends React.Component {
     constructor(props) {
@@ -55,19 +56,24 @@ class Task extends React.Component {
     }
 
     getTime() {
+        let timeDuring = moment(this.props.task.startTime).tz('Asia/ShangHai').fromNow() + '-' + moment(this.props.task.endTime).tz('Asia/ShangHai').fromNow();
         switch (this.props.task.status) {
             case 'READY':
-                return <span style={{fontSize: '1em'}}>未开始</span>;
+                return <span style={{fontSize: '0.77em'}}>未开始</span>;
             case 'RUNNING':
-                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + ' -> 未结束'}</span>;
+                return <span style={{fontSize: '0.77em'}}>{moment(this.props.task.startTime).tz('Asia/ShangHai').fromNow() + '-未结束'}</span>;
             case 'DONE':
-                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + ' -> ' + this.props.task.endTime}</span>;
+                return <span
+                    style={{fontSize: '0.77em'}}>{timeDuring}</span>;
             case 'FAILED':
-                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + ' -> ' + this.props.task.endTime}</span>;
+                return <span
+                    style={{fontSize: '0.77em'}}>{timeDuring}</span>;
             case 'ABORT':
-                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + ' -> ' + this.props.task.endTime}</span>;
+                return <span
+                    style={{fontSize: '0.77em'}}>{timeDuring}</span>;
             default:
-                return <span style={{fontSize: '1em'}}>{this.props.task.startTime + ' -> ' + this.props.task.endTime}</span>;
+                return <span
+                    style={{fontSize: '0.77em'}}>{timeDuring}</span>;
         }
     }
 
