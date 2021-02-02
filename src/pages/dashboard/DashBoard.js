@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import './DashBoard.css'
 import Card from "../../components/card/Card";
 import {bindActionCreators} from "redux";
@@ -118,66 +118,76 @@ class DashBoard extends React.Component {
             ],
         };
         return <Container className={'DashBoard'}>
-            <Row style={{padding: 0, margin: 0}}>
-                <Card title={'项目'} w={2}>
-                    <Container>
-                        <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
-                        <Link to={'/projects'}><h1
-                            style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.projects.length}</h1></Link>
-                    </Container>
-                </Card>
-                <Card title={'应用'} w={2}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
-                    <Link to={'/projects'}><h1
-                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
-                </Card>
-                <Card title={'扫描记录'} w={2}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faHistory}/>
-                    <Link to={'/dashboard'}><h1
-                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.tasks.length}</h1></Link>
-                </Card>
-                <Card title={'扫描结果'} w={2}>
-                    <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileArchive}/>
-                    <Link to={'/dashboard'}><h1
-                        style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.scanResults.length}</h1></Link>
-                </Card>
-            </Row>
-            <Row style={{padding: 0, margin: 0}}>
-                <Card title={'安全工具'} w={3}>
-                    <Pie style={{height: '12em'}} {...toolsConfig} />
-                </Card>
-                <Card title={'用例'} w={5}>
-                    <Pie style={{height: '12em'}} {...casesConfig} />
-                </Card>
-            </Row>
-            <Row style={{padding: 0, margin: 0, marginTop: '2em'}}>
-                <Card title={'最近的扫描'} w={6}>
-                    <Container>
-                        <Row>
-                            {
-                                (this.props.tasks && this.props.tasks.length !== 0) ? this.tasksFilterNotReady().map((task, index) => {
-                                    return <ScanTaskList task={task} key={index}/>;
-                                }) : <span style={{color: '#668'}}>无</span>
-                            }
-                        </Row>
-                    </Container>
-                </Card>
-                <Card title={'待扫描的任务'} w={6}>
-                    <Container>
-                        <Row>
-                            {
-                                (this.props.tasks && this.tasksFilterByStatus('READY').length !== 0) ? this.tasksFilterByStatus('READY').map((task, index) => {
-                                    return <ScanTaskList task={task} key={index}/>;
-                                }) : <span style={{color: '#668'}}>无</span>
-                            }
-                        </Row>
-                    </Container>
-                </Card>
+            <Row>
+                <Col md={8}>
+                    <Row style={{padding: 0, margin: 0}}>
+                        <Card title={'项目'} w={3}>
+                            <Container>
+                                <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCube}/>
+                                <Link to={'/projects'}><h1
+                                    style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.projects.length}</h1>
+                                </Link>
+                            </Container>
+                        </Card>
+                        <Card title={'应用'} w={3}>
+                            <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faCubes}/>
+                            <Link to={'/projects'}><h1
+                                style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.apps.length}</h1></Link>
+                        </Card>
+                        <Card title={'扫描记录'} w={3}>
+                            <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faHistory}/>
+                            <Link to={'/dashboard'}><h1
+                                style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.tasks.length}</h1></Link>
+                        </Card>
+                        <Card title={'扫描结果'} w={3}>
+                            <FontAwesomeIcon style={{fontSize: '2em', color: 'rgb(36, 66, 164)'}} icon={faFileArchive}/>
+                            <Link to={'/dashboard'}><h1
+                                style={{display: 'inline-block', padding: 0, margin: 0, marginLeft: '0.5em'}}>{this.props.scanResults.length}</h1>
+                            </Link>
+                        </Card>
+                    </Row>
+                    <Row style={{padding: 0, margin: 0}}>
+                        <Card title={'安全工具'} w={6}>
+                            <Pie style={{height: '12em'}} {...toolsConfig} />
+                        </Card>
+                        <Card title={'用例'} w={6}>
+                            <Pie style={{height: '12em'}} {...casesConfig} />
+                        </Card>
+                    </Row>
+                    <Row style={{padding: 0, margin: 0}}>
+                        <Card title={'最近的扫描'} w={12}>
+                            <Container>
+                                <Row>
+                                    {
+                                        (this.props.tasks && this.props.tasks.length !== 0) ? this.tasksFilterNotReady().map((task, index) => {
+                                            return <ScanTaskList task={task} key={index}/>;
+                                        }) : <span style={{color: '#668'}}>无</span>
+                                    }
+                                </Row>
+                            </Container>
+                        </Card>
+                    </Row>
+                </Col>
+                <Col md={4} style={{padding: 0, margin: 0,paddingRight:'1em'}}>
+                    <Row style={{padding: 0, margin: 0}}>
+                        <Card title={'待扫描的任务'} w={12}>
+                            <Container>
+                                <Row>
+                                    {
+                                        (this.props.tasks && this.tasksFilterByStatus('READY').length !== 0) ? this.tasksFilterByStatus('READY').map((task, index) => {
+                                            return <ScanTaskList task={task} key={index}/>;
+                                        }) : <span style={{color: '#668'}}>无</span>
+                                    }
+                                </Row>
+                            </Container>
+                        </Card>
+                    </Row>
+                </Col>
             </Row>
         </Container>
     }
 
-    tasksFilterNotReady(){
+    tasksFilterNotReady() {
         let data = [];
         for (let i = 0; i < this.props.tasks.length; i++) {
             if (this.props.tasks[i].status !== 'READY') {

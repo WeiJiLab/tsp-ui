@@ -27,9 +27,9 @@ class ScanTaskList extends Component {
                 <Col md={10}>
                     <Row>
                         <Col md={6}>
-                            <h3><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;
+                            <h4><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;
                                 <Link to={'/project/' + task.application.projectId + '/' + task.application.id}>{task.application.name}</Link>
-                            </h3>
+                            </h4>
                         </Col>
                     </Row>
                     <Row>
