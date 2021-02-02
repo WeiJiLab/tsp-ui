@@ -18,6 +18,7 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
 import 'codemirror/mode/clike/clike';
 import 'codemirror/mode/css/css';
+import 'codemirror/mode/ruby/ruby';
 import 'codemirror/addon/hint/show-hint.css';
 import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/anyword-hint.js';
@@ -35,6 +36,24 @@ class CaseEditor extends React.Component {
     }
 
     render() {
+        let value = '# copyright: 2018, The Authors\n' +
+            '\n' +
+            'title "sample section"\n' +
+            '\n' +
+            '# you can also use plain tests\n' +
+            'describe file("/tmp") do\n' +
+            '  it { should be_directory }\n' +
+            'end\n' +
+            '\n' +
+            '# you add controls here\n' +
+            'control "tmp-1.0" do                        # A unique ID for this control\n' +
+            '  impact 0.7                                # The criticality, if this control fails.\n' +
+            '  title "Create /tmp directory"             # A human-readable title\n' +
+            '  desc "An optional description..."\n' +
+            '  describe file("/tmp") do                  # The actual test\n' +
+            '    it { should be_directory }\n' +
+            '  end\n' +
+            'end\n';
         return <Container className={'CaseEditor'}>
             <Row style={{padding: 0, margin: 0}}>
                 <Col md={3} style={{padding: 0, margin: 0}}>
@@ -47,7 +66,7 @@ class CaseEditor extends React.Component {
                             editorDidMount={editor => {
                                 this.instance = editor
                             }}
-                            value={'// here should be case script'}
+                            value={value}
                             options={{
                                 mode: {name: 'text/css'},
                                 theme: 'solarized dark',
