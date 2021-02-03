@@ -10,6 +10,52 @@ export function deleteFromApi(url, ok, failed, data, dispatch) {
     ajaxApi('DELETE', url, ok, failed, data, dispatch, false);
 }
 
+export function putFromApi(url, ok, failed, data, dispatch) {
+    fetch(url, {
+        method: 'PUT',
+        body: data,
+    })
+        .then(response => {
+            if (!response.ok) {
+                response.json().then(data => {
+                    console.log("!ok:", data);
+                    dispatch({
+                        type: failed,
+                        payload: {
+                            status: false,
+                            message: data.message,
+                            data: []
+                        }
+                    });
+                });
+            } else {
+
+                response.json().then(data => {
+                    console.log("ok:", data);
+                    dispatch({
+                        type: ok,
+                        payload: {
+                            status: true,
+                            message: data.message,
+                            data: data
+                        }
+                    });
+                });
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            dispatch({
+                type: failed,
+                payload: {
+                    status: false,
+                    message: error.message,
+                    data: []
+                }
+            })
+        });
+}
+
 
 function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
     fetch(url, {
