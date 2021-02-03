@@ -122,11 +122,11 @@ class CaseCreate extends React.Component {
     }
 
     changeName(e) {
-        this.createCaseRequest.append('name', e.currentTarget.value);
+        this.createCaseRequest.set('name', e.currentTarget.value);
     }
 
     changeDesc(e) {
-        this.createCaseRequest.append('description', e.currentTarget.value);
+        this.createCaseRequest.set('description', e.currentTarget.value);
     }
 
     createCase() {
