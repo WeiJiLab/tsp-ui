@@ -19,7 +19,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getCase} from "../../actions/CasesAction";
-import {getScanTask} from "../../actions/TasksAction";
+import {getScanResultByTaskId, getScanTask} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
 import {getApp, getProject} from "../../actions/ProjectsAction";
 import {Link} from "react-router-dom";
@@ -51,6 +51,9 @@ class Task extends React.Component {
                 {this.renderAppCard()}
                 {this.renderCaseCard()}
                 {this.renderToolCard()}
+            </Row>
+            <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                {this.renderResultCard()}
             </Row>
         </Container>
     }
@@ -208,9 +211,27 @@ class Task extends React.Component {
         </Card>;
     }
 
+    renderResultCard(){
+        return <Card title={'扫描结果'} w={4}>
+            <Container>
+                <Row>
+                    <Col md={12}>
+                        <h3>{this.props.result.result}</h3>
+                    </Col>
+                </Row>
+                <Row style={{marginTop: '1em'}}>
+                    <Col md={12}>
+                        <span style={{fontSize: '1.1em'}}>{this.props.result.resultPath} </span> <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'} } icon={faDownload}/>
+                    </Col>
+                </Row>
+            </Container>
+        </Card>;
+    }
+
 
     componentDidMount() {
         this.props.getScanTask(this.props.match.params.taskId);
+        this.props.getScanResultByTaskId(this.props.match.params.taskId);
         this.props.setBreadCrumbMenu([
             {
                 title: 'Task',
@@ -236,6 +257,7 @@ const mapStateToProps = state => ({
     app: state.reduxResult.app.data,
     project: state.reduxResult.project.data,
     tool: state.reduxResult.tool.data,
+    result: state.reduxResult.result.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -244,7 +266,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     getScanTask,
     getApp,
     getProject,
-    setBreadCrumbMenu
+    setBreadCrumbMenu,
+    getScanResultByTaskId,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);

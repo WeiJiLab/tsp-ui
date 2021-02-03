@@ -10,8 +10,13 @@ export const TasksActions = {
     API_TASKS_START_FAILED: 'API_TASKS_START_FAILED',
     API_TASK_SUCCESS: 'API_TASK_SUCCESS',
     API_TASK_FAILED: 'API_TASK_FAILED',
+    API_RESULT_SUCCESS: 'API_RESULT_SUCCESS',
+    API_RESULT_FAILED: 'API_RESULT_FAILED'
 };
 
+export const getScanResultByTaskId = (id, data) => (dispatch) => {
+    getFromApi(API_SCAN_RESULT + '/taskId/' + id, TasksActions.API_RESULT_SUCCESS, TasksActions.API_RESULT_FAILED, data, dispatch);
+};
 export const getScanResults = (appId, data) => (dispatch) => {
     getFromApi(API_SCAN_RESULT + '/' + appId, TasksActions.API_TASKS_RESULT_SUCCESS, TasksActions.API_TASKS_RESULT_FAILED, data, dispatch);
 };
