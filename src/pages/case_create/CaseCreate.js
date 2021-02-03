@@ -161,7 +161,7 @@ class CaseCreate extends React.Component {
             if (!nextProps.createCaseResult.status) {
                 this.showModal(nextProps.createCaseResult.message);
             } else {
-                this.props.history.push('/tool/' + nextProps.createCaseResult.data.toolId);
+                this.props.history.push('/tool/' + nextProps.createCaseResult.data.securityToolId);
             }
         }
     }
