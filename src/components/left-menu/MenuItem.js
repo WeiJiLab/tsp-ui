@@ -41,6 +41,7 @@ class MenuItem extends React.Component {
     showItemClick() {
         this.props.onClick(this.props.index);
         this.props.closeAll(this.props.index);
+        this.props.openItem(this.props.index);
     }
 
     showMenu() {
