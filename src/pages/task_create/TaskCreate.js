@@ -102,7 +102,7 @@ class TaskCreate extends React.Component {
     }
 
     selectTool(event) {
-        if(event.target.value!=='请选择') {
+        if (event.target.value !== '请选择') {
             for (let i = 0; i < this.props.tools.length; i++) {
                 if (this.props.tools[i].name === event.target.value) {
                     this.props.getCasesByToolId(this.props.tools[i].id);
@@ -112,7 +112,7 @@ class TaskCreate extends React.Component {
     }
 
     selectCase(event) {
-        if(event.target.value!=='请选择') {
+        if (event.target.value !== '请选择') {
             let caseList = [];
             for (let i = 0; i < this.props.toolCases.length; i++) {
                 if (this.props.toolCases[i].name === event.target.value) {
@@ -143,8 +143,8 @@ class TaskCreate extends React.Component {
                 <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                     <FormLabel style={{color: 'rgb(36, 66, 84)'}}>应用</FormLabel>
                     <FormControl onChange={this.selectApp.bind(this)} as="select">
-                        {this.props.selectedProject.applications.length !== 0 ? <option>请选择</option> : null}
-                        {this.state.selectedProject.applications.length !== 0 ? this.state.selectedProject.applications.map((ap, index) => {
+                        {this.state.selectedProject && this.state.selectedProject.applications.length !== 0 ? <option>请选择</option> : null}
+                        {this.state.selectedProject && this.state.selectedProject.applications.length !== 0 ? this.state.selectedProject.applications.map((ap, index) => {
                             return <option>{ap.name}</option>
                         }) : <option>无</option>}
                     </FormControl>
@@ -154,7 +154,7 @@ class TaskCreate extends React.Component {
     }
 
     selectProject(event) {
-        if(event.target.value!=='请选择') {
+        if (event.target.value !== '请选择') {
             for (let i = 0; i < this.props.projects.length; i++) {
                 if (this.props.projects[i].name === event.target.value) {
                     this.setState({
@@ -166,7 +166,7 @@ class TaskCreate extends React.Component {
     }
 
     selectApp(event) {
-        if(event.target.value!=='请选择') {
+        if (event.target.value !== '请选择') {
             for (let i = 0; i < this.state.selectedProject.applications.length; i++) {
                 if (this.state.selectedProject.applications[i].name === event.target.value) {
                     this.createTaskRequest.appId = this.state.selectedProject.applications[i].id;
