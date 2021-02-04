@@ -3,7 +3,7 @@ import {Col, Container, Dropdown, Row} from "react-bootstrap";
 import './Projects.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faCubes, faEllipsisH, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faCube, faCubes, faEllipsisH, faPlus, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {deleteProject, getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
@@ -44,12 +44,45 @@ class Projects extends React.Component {
             {
                 this.state.layout === 'list' ?
                     <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                        <Card w={12}>
+                            <Container>
+                                <Row style={{textAlign: 'center'}}>
+                                    <Link style={{
+                                        marginLeft: 'auto',
+                                        marginRight: 'auto',
+                                    }} to={'/project/create'}><h2 style={{
+                                        color: 'rgb(36, 66, 164)',
+                                        textAlign: 'center',
+                                        marginLeft: 'auto',
+                                        marginRight: 'auto',
+                                    }}>
+                                        <FontAwesomeIcon icon={faPlus}/>&nbsp;创建项目</h2></Link>
+                                </Row>
+                            </Container>
+                        </Card>
                         {this.props.projects.map((project, index) => {
                             return this.renderProjectRow(project, index);
                         })}
                     </Row>
                     :
                     <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
+                        <Card w={3}>
+                            <Container style={{minHeight: '8em', maxHeight: '8em', textAlign: 'center'}}>
+                                <Row style={{textAlign: 'center'}}>
+                                    <Link style={{
+                                        marginLeft: 'auto',
+                                        marginRight: 'auto',
+                                    }} to={'/project/create'}><h2 style={{
+                                        color: 'rgb(36, 66, 164)',
+                                        textAlign: 'center',
+                                        marginLeft: 'auto',
+                                        marginRight: 'auto',
+                                        marginTop: '1.5em'
+                                    }}>
+                                        <FontAwesomeIcon icon={faPlus}/>&nbsp;创建项目</h2></Link>
+                                </Row>
+                            </Container>
+                        </Card>
                         {this.props.projects.map((project, index) => {
                             return this.renderProjectCard(project, index);
                         })}
@@ -63,7 +96,7 @@ class Projects extends React.Component {
             <Container>
                 <Row style={{marginTop: '0.5em'}}>
                     <Col md={1}>
-                        <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em',marginTop:'0.1em'}} icon={faCube}/>
+                        <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '3em', marginTop: '0.1em'}} icon={faCube}/>
                     </Col>
                     <Col md={11}>
                         <Row>
@@ -92,7 +125,7 @@ class Projects extends React.Component {
                             <Col md={10}>
                                 <FontAwesomeIcon style={{color: '#668'}} icon={faCubes}/>&nbsp;
                                 <span>{project.applications.length}</span>&nbsp;&nbsp;&nbsp;
-                                <span style={{fontSize:'1.1em'}}>{project.description}</span>
+                                <span style={{fontSize: '1.1em'}}>{project.description}</span>
                             </Col>
                             <Col md={2} style={{textAlign: 'right'}}>
                                 <Link to={'project/' + project.id}> <FontAwesomeIcon icon={faChevronRight}/></Link>
@@ -107,7 +140,7 @@ class Projects extends React.Component {
 
     renderProjectCard(project, index) {
         return <Card w={3} key={index}>
-            <Container>
+            <Container style={{minHeight: '8em', maxHeight: '8em'}}>
                 <Row>
                     <Col md={8}>
                         <h3 style={{

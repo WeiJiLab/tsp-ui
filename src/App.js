@@ -64,12 +64,12 @@ const menuData = [
                 icon: faListAlt,
                 routable: true,
             },
-            {
-                title: '创建项目',
-                route: '/project/create',
-                icon: faFileImport,
-                routable: true,
-            }
+            // {
+            //     title: '创建项目',
+            //     route: '/project/create',
+            //     icon: faFileImport,
+            //     routable: true,
+            // }
         ]
     },
     {
