@@ -24,6 +24,7 @@ import {getTool} from "../../actions/ToolsAction";
 import {getApp, getProject} from "../../actions/ProjectsAction";
 import {Link} from "react-router-dom";
 import moment from "moment-timezone";
+import {AWS_S3_BUCKET} from "../../api/ScpApi";
 
 class Task extends React.Component {
     constructor(props) {
@@ -163,7 +164,9 @@ class Task extends React.Component {
                 </Row>
                 <Row style={{marginTop: '1em'}}>
                     <Col md={12}>
-                        <h6>{this.props.cas.scriptPath}&nbsp;&nbsp;<FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faDownload}/></h6>
+                        <h6>{this.props.cas.scriptPath}&nbsp;&nbsp;
+                            <a href={AWS_S3_BUCKET + this.props.cas.scriptPath}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}}
+                                                                                                 icon={faDownload}/></a></h6>
                     </Col>
                 </Row>
             </Container>
@@ -211,7 +214,7 @@ class Task extends React.Component {
         </Card>;
     }
 
-    renderResultCard(){
+    renderResultCard() {
         return <Card title={'扫描结果'} w={4}>
             <Container>
                 <Row>
@@ -219,9 +222,14 @@ class Task extends React.Component {
                         <h3>{this.props.result.result}</h3>
                     </Col>
                 </Row>
+
                 <Row style={{marginTop: '1em'}}>
                     <Col md={12}>
-                        <span style={{fontSize: '1.1em'}}>{this.props.result.resultPath} </span> <FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'} } icon={faDownload}/>
+                        <span style={{fontSize: '1.1em'}}>{this.props.result.resultPath} </span>
+                        {this.props.result.resultPath && this.props.result.resultPath !== '' ?
+                            <a href={AWS_S3_BUCKET + this.props.result.resultPath}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}}
+                                                                                                    icon={faDownload}/></a>
+                            : null}
                     </Col>
                 </Row>
             </Container>

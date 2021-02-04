@@ -13,6 +13,7 @@ import {getScanTasks} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
 import ScanTaskList from "../../components/task-list/ScanTaskList";
 import {Link} from "react-router-dom";
+import {AWS_S3_BUCKET} from "../../api/ScpApi";
 
 class Case extends React.Component {
     constructor(props) {
@@ -96,7 +97,9 @@ class Case extends React.Component {
                 </Row>
                 <Row style={{marginTop: '1em'}}>
                     <Col md={12}>
-                        <h6>{this.props.cas.scriptPath}&nbsp;&nbsp;<FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faDownload}/></h6>
+                        <h6>{this.props.cas.scriptPath}&nbsp;&nbsp;
+                            <a href={AWS_S3_BUCKET + this.props.cas.scriptPath}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}}
+                                                                                                 icon={faDownload}/></a></h6>
                     </Col>
                 </Row>
             </Container>
