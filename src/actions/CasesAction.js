@@ -27,7 +27,7 @@ export const CasesActions = {
 
 export const createCase = (data) => (dispatch) => {
     console.log('case:',data);
-    postFromApi(API_CASES, CasesActions.API_CASE_CREATE_SUCCESS, CasesActions.API_CASE_CREATE_FAILED, data, dispatch);
+    putFromApi(API_CASES, CasesActions.API_CASE_CREATE_SUCCESS, CasesActions.API_CASE_CREATE_FAILED, data, dispatch);
 };
 
 export const getCases = (data) => (dispatch) => {
