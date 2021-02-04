@@ -29,7 +29,6 @@ export function putFromApi(url, ok, failed, data, dispatch) {
                     });
                 });
             } else {
-
                 response.json().then(data => {
                     console.log("ok:", data);
                     dispatch({
