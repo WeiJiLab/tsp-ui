@@ -101,7 +101,6 @@ class AppCreate extends React.Component {
                     text: '创建应用'
                 }
             });
-            console.log(9999,nextProps.createAppResult);
             if (!nextProps.createAppResult.status) {
                 this.showModal(nextProps.createAppResult.message);
             } else {

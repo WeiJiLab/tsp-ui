@@ -5,8 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
 import DashBoard from "./pages/dashboard/DashBoard";
 import {
-    faBars, faBell, faCubes, faFileImport,
-    faFileSignature,
+    faBars, faCubes, faFileSignature,
     faHome,
     faListAlt,
     faShieldAlt,
@@ -133,7 +132,6 @@ const AnimatedSwitch = props => {
 };
 
 class App extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -219,6 +217,7 @@ class App extends Component {
 
                                     <Route exact path={'/task/create'} component={TaskCreate}/>
                                     <Route exact path={'/task/:taskId'} component={Task}/>
+
                                     <Route path="*" component={NoMatch}/>
                                 </AnimatedSwitch>
                             </Container>

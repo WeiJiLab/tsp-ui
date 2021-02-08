@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import './Tools.css';
 import Card from "../../components/card/Card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faCube, faEllipsisH, faShieldVirus, faTags, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faEllipsisH, faShieldVirus, faTags, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";

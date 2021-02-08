@@ -6,7 +6,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import Card from "../../components/card/Card";
 import {bindActionCreators} from "redux";
-import {createProject} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
 import ModalWrapper from "../../components/modal/ModalWrapper";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
