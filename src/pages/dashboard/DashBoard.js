@@ -226,6 +226,8 @@ class DashBoard extends React.Component {
         //const query = this.props.match.location.search;
         const token = this.getQueryVariable('token');
 
+        console.log('token:'+token);
+
         let cookieJwtToken = cookie.load('jwt_token');
 
         if((token===undefined || token==='') && (cookieJwtToken===undefined || cookieJwtToken==='')){

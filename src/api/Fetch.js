@@ -1,4 +1,5 @@
 import cookie from "react-cookies";
+import {DIA_LOGIN_PAGE} from "./ScpApi";
 
 export function getFromApi(url, ok, failed, data, dispatch) {
     ajaxApi('GET', url, ok, failed, data, dispatch, true);
@@ -23,6 +24,9 @@ export function putFromApi(url, ok, failed, data, dispatch) {
     })
         .then(response => {
             if (!response.ok) {
+                if(response.status===401){
+                    window.location.href = DIA_LOGIN_PAGE;
+                }
                 response.json().then(data => {
                     console.log("!ok:", data);
                     dispatch({
@@ -74,6 +78,9 @@ function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
     })
         .then(response => {
             if (!response.ok) {
+                if(response.status===401){
+                    window.location.href = DIA_LOGIN_PAGE;
+                }
                 if (haveContent) {
                     response.json().then(data => {
                         console.log("!ok:", data);
