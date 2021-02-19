@@ -1,3 +1,5 @@
+import cookie from "react-cookies";
+
 export function getFromApi(url, ok, failed, data, dispatch) {
     ajaxApi('GET', url, ok, failed, data, dispatch, true);
 }
@@ -11,9 +13,13 @@ export function deleteFromApi(url, ok, failed, data, dispatch) {
 }
 
 export function putFromApi(url, ok, failed, data, dispatch) {
+    const token = cookie.load('jwt_token');
     fetch(url, {
         method: 'PUT',
         body: data,
+        headers:{
+            'Authorization':token,
+        }
     })
         .then(response => {
             if (!response.ok) {
@@ -57,9 +63,11 @@ export function putFromApi(url, ok, failed, data, dispatch) {
 
 
 function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
+    const token = cookie.load('jwt_token');
     fetch(url, {
         method: METHOD,
         headers: {
+            'Authorization':token,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),

@@ -199,7 +199,7 @@ class App extends Component {
                                     borderBottomRightRadius: '2em'
                                 }}>
                                 <AnimatedSwitch>
-                                    <Route exact path={'/'} component={DashBoard}/>
+
                                     <Route exact path={'/dashboard'} component={DashBoard}/>
                                     <Route exact path={'/projects'} component={Projects}/>
                                     <Route exact path={'/project/create'} component={ProjectCreate}/>
@@ -217,7 +217,8 @@ class App extends Component {
 
                                     <Route exact path={'/task/create'} component={TaskCreate}/>
                                     <Route exact path={'/task/:taskId'} component={Task}/>
-
+                                    <Route exact path={'/:token'} component={DashBoard}/>
+                                    <Route exact path={'/'} component={DashBoard}/>
                                     <Route path="*" component={NoMatch}/>
                                 </AnimatedSwitch>
                             </Container>

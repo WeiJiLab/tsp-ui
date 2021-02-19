@@ -14,6 +14,9 @@ import {Pie} from "@ant-design/charts";
 import {getScanResults, getScanTasks} from "../../actions/TasksAction";
 import {getCases} from "../../actions/CasesAction";
 import ScanTaskList from "../../components/task-list/ScanTaskList";
+import {useParams} from "react-router-dom";
+import cookie from "react-cookies";
+import {DIA_LOGIN_PAGE} from "../../api/ScpApi";
 
 class DashBoard extends React.Component {
 
@@ -207,7 +210,31 @@ class DashBoard extends React.Component {
         return data;
     }
 
+    getQueryVariable(variable) {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i=0;i<vars.length;i++) {
+            let pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+
     componentDidMount() {
+
+        // 1. read token from url
+        //const query = this.props.match.location.search;
+        const token = this.getQueryVariable('token');
+
+        let cookieJwtToken = cookie.load('jwt_token');
+
+        if((token===undefined || token==='') && (cookieJwtToken===undefined || cookieJwtToken==='')){
+            window.location.href= DIA_LOGIN_PAGE;
+        }
+            // 2. save token to cookie
+            cookie.save('jwt_token',token);
+
+
         this.props.getProjects();
         this.props.getTools();
         this.props.getCases();
