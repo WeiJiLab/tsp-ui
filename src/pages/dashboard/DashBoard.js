@@ -230,7 +230,7 @@ class DashBoard extends React.Component {
 
         let cookieJwtToken = cookie.load('jwt_token');
 
-        if(token===undefined || token===''){
+        if(!token){
             if(cookieJwtToken===undefined || cookieJwtToken==='') {
                 window.location.href = DIA_LOGIN_PAGE;
             }
