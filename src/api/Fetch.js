@@ -19,7 +19,7 @@ export function putFromApi(url, ok, failed, data, dispatch) {
         method: 'PUT',
         body: data,
         headers:{
-            'Authorization':token,
+            'Authorization':decodeURI(token),
         }
     })
         .then(response => {
@@ -71,7 +71,7 @@ function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
     fetch(url, {
         method: METHOD,
         headers: {
-            'Authorization':token,
+            'Authorization':decodeURI(token),
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),

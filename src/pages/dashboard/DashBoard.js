@@ -226,7 +226,7 @@ class DashBoard extends React.Component {
         //const query = this.props.match.location.search;
         const token = this.getQueryVariable('token');
 
-        console.log('token:'+token);
+        console.log('token:'+decodeURI(token));
 
         let cookieJwtToken = cookie.load('jwt_token');
 
@@ -234,7 +234,7 @@ class DashBoard extends React.Component {
             window.location.href= DIA_LOGIN_PAGE;
         }
             // 2. save token to cookie
-            cookie.save('jwt_token',token);
+        cookie.save('jwt_token',token);
 
 
         this.props.getProjects();
