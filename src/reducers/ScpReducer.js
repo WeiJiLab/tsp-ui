@@ -141,10 +141,7 @@ export function reduxResult(state = initialState, action) {
                 apps: applications,
             });
         case ProjectsActions.API_PROJECTS_FAILED:
-            return Object.assign({}, state, {
-                projects: action.payload,
-                apps: [],
-            });
+            return state;
         case ToolsActions.API_TOOLS_SUCCESS:
             return Object.assign({}, state, {
                 tools: action.payload,
@@ -162,63 +159,49 @@ export function reduxResult(state = initialState, action) {
                 project: action.payload,
             });
         case ProjectActions.API_PROJECT_FAILED:
-            return Object.assign({}, state, {
-                project: action.payload,
-            });
+            return state;
 
         case AppActions.API_APP_SUCCESS:
             return Object.assign({}, state, {
                 app: action.payload,
             });
         case AppActions.API_APP_FAILED:
-            return Object.assign({}, state, {
-                app: action.payload,
-            });
+            return state;
 
         case ProjectsActions.API_PROJECT_CREATE_SUCCESS:
             return Object.assign({}, state, {
                 createProjectResult: action.payload,
             });
         case ProjectsActions.API_PROJECT_CREATE_FAILED:
-            return Object.assign({}, state, {
-                createProjectResult: action.payload,
-            });
+            return state;
 
         case AppActions.API_APP_CREATE_SUCCESS:
             return Object.assign({}, state, {
                 createAppResult: action.payload,
             });
         case AppActions.API_APP_CREATE_FAILED:
-            return Object.assign({}, state, {
-                createAppResult: action.payload,
-            });
+            return state;
 
         case CasesActions.API_CASE_CREATE_SUCCESS:
             return Object.assign({}, state, {
                 createCaseResult: action.payload,
             });
         case CasesActions.API_CASE_CREATE_FAILED:
-            return Object.assign({}, state, {
-                createCaseResult: action.payload,
-            });
+            return state;
 
         case AppActions.API_APP_DELETE_SUCCESS:
             return Object.assign({}, state, {
                 deleteAppResult: action.payload,
             });
         case AppActions.API_APP_DELETE_FAILED:
-            return Object.assign({}, state, {
-                deleteAppResult: action.payload,
-            });
+            return state;
 
         case AppActions.API_PROJECT_DELETE_SUCCESS:
             return Object.assign({}, state, {
                 deleteProjectResult: action.payload,
             });
         case AppActions.API_PROJECT_DELETE_FAILED:
-            return Object.assign({}, state, {
-                deleteProjectResult: action.payload,
-            });
+            return state;
         case BreadCrumbMenuActions.SET_BREAD_CRUMB_MEU:
             return Object.assign({}, state, {
                 breadCrumbMenus: action.payload,
@@ -230,110 +213,84 @@ export function reduxResult(state = initialState, action) {
                 deleteCaseResult: action.payload,
             });
         case CasesActions.API_CASE_DELETE_FAILED:
-            return Object.assign({}, state, {
-                deleteCaseResult: action.payload,
-            });
+            return state;
         case CasesActions.API_CASE_SUCCESS:
             return Object.assign({}, state, {
                 cas: action.payload,
             });
         case CasesActions.API_CASE_FAILED:
-            return Object.assign({}, state, {
-                cas: action.payload,
-            });
+            return state;
         case CasesActions.API_CASES_SUCCESS:
             return Object.assign({}, state, {
                 cases: action.payload,
             });
         case CasesActions.API_CASES_FAILED:
-            return Object.assign({}, state, {
-                cases: action.payload,
-            });
+            return state;
         case CasesActions.API_CASE_GROUP_DELETE_SUCCESS:
             return Object.assign({}, state, {
                 deleteCaseGroupResult: action.payload,
             });
         case CasesActions.API_CASE_GROUP_DELETE_FAILED:
-            return Object.assign({}, state, {
-                deleteCaseGroupResult: action.payload,
-            });
+            return state;
         case CasesActions.API_CASE_GROUP_SUCCESS:
             return Object.assign({}, state, {
                 caseGroup: action.payload,
             });
         case CasesActions.API_CASE_GROUP_FAILED:
-            return Object.assign({}, state, {
-                caseGroup: action.payload,
-            });
+            return state;
         case CasesActions.API_CASE_GROUPS_SUCCESS:
             return Object.assign({}, state, {
                 caseGroups: action.payload,
             });
         case CasesActions.API_CASE_GROUPS_FAILED:
-            return Object.assign({}, state, {
-                caseGroups: action.payload,
-            });
+            return state;
 
         case CasesActions.API_CASE_CREATE_GROUPS_SUCCESS:
             return Object.assign({}, state, {
                 createCaseGroupResult: action.payload,
             });
         case CasesActions.API_CASE_CREATE_GROUPS_FAILED:
-            return Object.assign({}, state, {
-                createCaseGroupResult: action.payload,
-            });
+            return state;
 
         case TasksActions.API_TASKS_SUCCESS:
             return Object.assign({}, state, {
                 tasks: action.payload,
             });
         case TasksActions.API_TASKS_FAILED:
-            return Object.assign({}, state, {
-                tasks: action.payload,
-            });
+            return state;
 
         case TasksActions.API_TASK_SUCCESS:
             return Object.assign({}, state, {
                 task: action.payload,
             });
         case TasksActions.API_TASK_FAILED:
-            return Object.assign({}, state, {
-                task: action.payload,
-            });
+            return state;
 
         case TasksActions.API_TASKS_RESULT_SUCCESS:
             return Object.assign({}, state, {
                 scanResults: action.payload,
             });
         case TasksActions.API_TASKS_RESULT_FAILED:
-            return Object.assign({}, state, {
-                scanResults: action.payload,
-            });
+            return state;
         case TasksActions.API_TASKS_START_SUCCESS:
             return Object.assign({}, state, {
                 taskStartResult: action.payload,
             });
         case TasksActions.API_TASKS_START_FAILED:
-            return Object.assign({}, state, {
-                taskStartResult: action.payload,
-            })
+            return state;
 
         case CasesActions.API_TOOL_CASES_SUCCESS:
             return Object.assign({}, state, {
                 toolCases: action.payload,
             });
         case CasesActions.API_TOOL_CASES_FAILED:
-            return Object.assign({}, state, {
-                toolCases: action.payload,
-            });
+            return state;
         case TasksActions.API_RESULT_SUCCESS:
             return Object.assign({}, state, {
                 result: action.payload,
             });
         case TasksActions.API_RESULT_FAILED:
-            return Object.assign({}, state, {
-                result: action.payload,
-            });
+            return state;
         default:
             return state;
     }
