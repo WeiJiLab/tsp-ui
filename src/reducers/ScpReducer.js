@@ -150,17 +150,13 @@ export function reduxResult(state = initialState, action) {
                 tools: action.payload,
             });
         case ToolsActions.API_TOOLS_FAILED:
-            return Object.assign({}, state, {
-                tools: action.payload,
-            });
+            return state;
         case ToolsActions.API_TOOL_SUCCESS:
             return Object.assign({}, state, {
                 tool: action.payload,
             });
         case ToolsActions.API_TOOL_FAILED:
-            return Object.assign({}, state, {
-                tool: action.payload,
-            });
+            return state;
         case ProjectActions.API_PROJECT_SUCCESS:
             return Object.assign({}, state, {
                 project: action.payload,
