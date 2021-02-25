@@ -81,6 +81,11 @@ function ajaxApi(METHOD, url, ok, failed, data, dispatch, haveContent) {
                 if(response.status===401){
                     window.location.href = DIA_LOGIN_PAGE;
                 }
+
+                if (response.status===404) {
+                    return;
+                }
+                
                 if (haveContent) {
                     response.json().then(data => {
                         console.log("!ok:", data);
