@@ -22,26 +22,53 @@ class ScanTaskList extends Component {
     render() {
         const task = this.props.task;
         const index = this.props.key;
+
+        let projectColume = <h4><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;
+            None
+        </h4>;
+        if (task.application && task.application.projectId) {
+            projectColume = <h4><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;
+                <Link to={'/project/' + task.application.projectId + '/' + task.application.id}>{task.application.name}</Link>
+            </h4>;
+        }
+
+        let securityToolColumn = <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;
+            None
+        </h5>;
+        if (task.securityTool && task.securityTool.id) {
+            securityToolColumn = <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;
+                <Link to={'/tool/' + task.securityTool.id}>{task.securityTool.name}</Link>
+            </h5>;
+        }
+
+        let useCaseColumn = <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;
+            None
+        </h5>;
+        if (task.useCase && task.useCase.id) {
+            useCaseColumn = <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;
+                <Link to={'/case/' + task.useCase.id}>{task.useCase.name}</Link>
+            </h5>;
+        }
+
+        let taskColumn = <span>None</span>;
+        if (task.id) {
+            taskColumn = <Link to={'/task/' + task.id}><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)', fontSize: '2em'}} icon={faChevronRight}/></Link>;
+        }
+
         return <Container className={'AppItem'} key={index}>
             <Row style={{paddingTop: '0.5em', paddingBottom: '0.5em', borderBottom: 'solid 1px #f3f3f3'}}>
                 <Col md={10}>
                     <Row>
                         <Col md={6}>
-                            <h4><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faCubes}/>&nbsp;
-                                <Link to={'/project/' + task.application.projectId + '/' + task.application.id}>{task.application.name}</Link>
-                            </h4>
+                            {projectColume}
                         </Col>
                     </Row>
                     <Row>
                         <Col md={6}>
-                            <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faShieldAlt}/>&nbsp;
-                                <Link to={'/tool/' + task.securityTool.id}>{task.securityTool.name}</Link>
-                            </h5>
+                            {securityToolColumn}
                         </Col>
                         <Col md={6}>
-                            <h5><FontAwesomeIcon style={{color: 'rgb(36, 66, 164)'}} icon={faFileSignature}/>&nbsp;
-                                <Link to={'/case/' + task.useCase.id}>{task.useCase.name}</Link>
-                            </h5>
+                            {useCaseColumn}
                         </Col>
                     </Row>
                 </Col>
