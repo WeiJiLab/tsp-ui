@@ -21,6 +21,11 @@ class TaskCreate extends React.Component {
         this.createTaskRequest = {
             appId: -1,
             useCaseIds: [],
+            environmentType: "Local",
+            userName: null,
+            password: null,
+            dockerContainerId: null,
+            addr: null
         };
 
         this.state = {
@@ -41,6 +46,7 @@ class TaskCreate extends React.Component {
                 <Card title={'创建扫描任务'} md={6}>
                     {this.renderApp()}
                     {this.renderCase()}
+                    {this.renderEnvironment()}
                     <Row style={{padding: 0, margin: 0, marginTop: '1em'}}>
                         <ModalWrapper show={this.state.modalShow} closeHook={this.modalClose.bind(this)}
                                       title={'提示'}>{this.state.modalText}</ModalWrapper>
@@ -123,7 +129,78 @@ class TaskCreate extends React.Component {
         }
     }
 
+    changeAddr(e) {
+        this.createTaskRequest.addr = e.currentTarget.value;
+    }
+
+    changeUserName(e) {
+        this.createTaskRequest.userName = e.currentTarget.value;
+    }
+
+    changePassword(e) {
+        this.createTaskRequest.password = e.currentTarget.value;
+    }
+
+    changeContainerId(e) {
+        this.createTaskRequest.dockerContainerId = e.currentTarget.value;
+    }
+    renderEnvironment() {
+        return <Container style={{padding: 0, margin: 0, marginTop: '2em'}}>
+        <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
+            <FormLabel style={{color: 'rgb(36, 66, 84)'}}>目标环境连接方式</FormLabel>
+            <FormControl onChange={this.selectObjEnvironment.bind(this)} as="select">
+                <option value="Local">Local</option>
+                <option value="Windows">Remote(Windows)</option>
+                <option value="Linux">Remote(SSH)</option>
+                <option value="Docker">Remote(Docker Container ID)</option> 
+            </FormControl>
+        </Row>
+        <Row id="address" style={{padding: 0, margin: 0, marginTop: '1em', display: 'none'}}>
+            <FormLabel style={{color: 'rgb(36, 66, 84)'}}>远程扫描机器的IP地址</FormLabel>
+            <FormControl onChange={this.changeAddr.bind(this)} placeHolder={'用户名'}/>
+        </Row>
+        <Row id="userName" style={{padding: 0, margin: 0, marginTop: '1em', display: 'none'}}>
+            <FormLabel style={{color: 'rgb(36, 66, 84)'}}>远程扫描机器的IP地址</FormLabel>
+            <FormControl onChange={this.changeUserName.bind(this)} placeHolder={'输入远程扫描机器的用户名'}/>
+        </Row>
+
+        <Row id="password" style={{padding: 0, margin: 0, marginTop: '1em', display: 'none'}}>
+            <FormLabel style={{color: 'rgb(36, 66, 84)'}}>密码</FormLabel>
+            <FormControl onChange={this.changePassword.bind(this)} placeHolder={'输入远程扫描机器的密码'}/>
+        </Row>
+
+        <Row id="containerId" style={{padding: 0, margin: 0, marginTop: '1em', display: 'none'}}>
+            <FormLabel style={{color: 'rgb(36, 66, 84)'}}>Docker容器的ID</FormLabel>
+            <FormControl onChange={this.changeContainerId.bind(this)} placeHolder={'输入Docker容器的ID'}/>
+        </Row>
+    </Container>;
+    }
+    selectObjEnvironment(event) {
+        this.createTaskRequest.userName = null;
+        this.createTaskRequest.password = null;
+        this.createTaskRequest.addr = null;
+        if ((event.target.value == 'Windows') || (event.target.value == 'Linux')) {
+            document.getElementById('address').style.display = 'block';
+            document.getElementById('userName').style.display = 'block';
+            document.getElementById('password').style.display = 'block';
+            document.getElementById('containerId').style.display = 'none';
+        } else if (event.target.value == 'Docker') {
+            document.getElementById('address').style.display = 'none';
+            document.getElementById('userName').style.display = 'none';
+            document.getElementById('password').style.display = 'none';
+            document.getElementById('containerId').style.display = 'block';
+        } else {
+            document.getElementById('address').style.display = 'none';
+            document.getElementById('userName').style.display = 'none';
+            document.getElementById('password').style.display = 'none';
+            document.getElementById('containerId').style.display = 'none';
+
+        }
+        this.createTaskRequest.environmentType = event.currentTarget.value;
+    }
+
     renderApp() {
+
         if (this.props.location.createInfo.appId && this.props.location.createInfo.projectId) {
             return <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
                 <FormLabel style={{color: 'rgb(36, 66, 84)'}}>应用</FormLabel>
@@ -188,6 +265,19 @@ class TaskCreate extends React.Component {
         });
     }
 
+    dealElement(obj){
+        var param = {};
+        if ( obj === null || obj === undefined || obj === "" ) {
+            return param;
+        }
+        for ( var key in obj ) {
+            if ( obj[key] !== null && obj[key] !== undefined && obj[key] !== "" ){
+                param[key] = obj[key];
+            }
+        }
+        return param;
+    }
+
     createTask() {
         if (this.createTaskRequest.appId === -1 || this.createTaskRequest.useCaseIds.length === 0) {
             this.showModal('信息填写不完整');
@@ -198,7 +288,8 @@ class TaskCreate extends React.Component {
                     text: '启动中...'
                 }
             });
-            this.props.startTask(this.createTaskRequest);
+            var request = this.dealElement(this.createTaskRequest)
+            this.props.startTask(request);
         }
     }
 
