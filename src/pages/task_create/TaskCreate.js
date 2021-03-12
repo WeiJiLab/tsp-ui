@@ -21,7 +21,7 @@ class TaskCreate extends React.Component {
         this.createTaskRequest = {
             appId: -1,
             useCaseIds: [],
-            environmentType: "Local",
+            environmentType: "LOCAL",
             userName: null,
             password: null,
             dockerContainerId: null,
@@ -149,10 +149,10 @@ class TaskCreate extends React.Component {
         <Row style={{padding: 0, margin: 0, marginTop: '0em'}}>
             <FormLabel style={{color: 'rgb(36, 66, 84)'}}>目标环境连接方式</FormLabel>
             <FormControl onChange={this.selectObjEnvironment.bind(this)} as="select">
-                <option value="Local">Local</option>
-                <option value="Windows">Remote(Windows)</option>
-                <option value="Linux">Remote(SSH)</option>
-                <option value="Docker">Remote(Docker Container ID)</option> 
+                <option value="LOCAL">Local</option>
+                <option value="WINDOWS">Remote(Windows)</option>
+                <option value="LINUX">Remote(SSH)</option>
+                <option value="DOCKER">Remote(Docker Container ID)</option> 
             </FormControl>
         </Row>
         <Row id="address" style={{padding: 0, margin: 0, marginTop: '1em', display: 'none'}}>
