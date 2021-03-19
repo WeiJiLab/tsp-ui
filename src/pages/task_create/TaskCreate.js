@@ -179,12 +179,12 @@ class TaskCreate extends React.Component {
         this.createTaskRequest.userName = null;
         this.createTaskRequest.password = null;
         this.createTaskRequest.addr = null;
-        if ((event.target.value == 'Windows') || (event.target.value == 'Linux')) {
+        if ((event.target.value == 'WINDOWS') || (event.target.value == 'LINUX')) {
             document.getElementById('address').style.display = 'block';
             document.getElementById('userName').style.display = 'block';
             document.getElementById('password').style.display = 'block';
             document.getElementById('containerId').style.display = 'none';
-        } else if (event.target.value == 'Docker') {
+        } else if (event.target.value == 'DOCKER') {
             document.getElementById('address').style.display = 'none';
             document.getElementById('userName').style.display = 'none';
             document.getElementById('password').style.display = 'none';
