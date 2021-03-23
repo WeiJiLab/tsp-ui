@@ -176,25 +176,29 @@ class TaskCreate extends React.Component {
     </Container>;
     }
     selectObjEnvironment(event) {
-        this.createTaskRequest.userName = null;
-        this.createTaskRequest.password = null;
-        this.createTaskRequest.addr = null;
         if ((event.target.value == 'WINDOWS') || (event.target.value == 'LINUX')) {
             document.getElementById('address').style.display = 'block';
             document.getElementById('userName').style.display = 'block';
             document.getElementById('password').style.display = 'block';
             document.getElementById('containerId').style.display = 'none';
+            this.createTaskRequest.dockerContainerId = null;
         } else if (event.target.value == 'DOCKER') {
             document.getElementById('address').style.display = 'none';
             document.getElementById('userName').style.display = 'none';
             document.getElementById('password').style.display = 'none';
             document.getElementById('containerId').style.display = 'block';
+            this.createTaskRequest.userName = null;
+            this.createTaskRequest.password = null;
+            this.createTaskRequest.addr = null;
         } else {
             document.getElementById('address').style.display = 'none';
             document.getElementById('userName').style.display = 'none';
             document.getElementById('password').style.display = 'none';
             document.getElementById('containerId').style.display = 'none';
-
+            this.createTaskRequest.dockerContainerId = null;
+            this.createTaskRequest.userName = null;
+            this.createTaskRequest.password = null;
+            this.createTaskRequest.addr = null;
         }
         this.createTaskRequest.environmentType = event.currentTarget.value;
     }
