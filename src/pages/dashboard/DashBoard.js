@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import './DashBoard.css'
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {bindActionCreators} from "redux";
 import {getProjects} from "../../actions/ProjectsAction";
 import {connect} from "react-redux";
@@ -13,7 +13,7 @@ import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {Pie} from "@ant-design/charts";
 import {getScanResults, getScanTasks} from "../../actions/TasksAction";
 import {getCases} from "../../actions/CasesAction";
-import ScanTaskList from "../../components/task-list/ScanTaskList";
+import ScanTaskList from "../../components/business/task-list/ScanTaskList";
 import {useParams} from "react-router-dom";
 import cookie from "react-cookies";
 import {DIA_LOGIN_PAGE} from "../../api/ScpApi";

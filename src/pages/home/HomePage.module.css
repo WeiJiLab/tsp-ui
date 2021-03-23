@@ -1,0 +1,15 @@
+.Resource{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.ResourceItem {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+
+.titleText {
+  margin-left: 10px;
+  margin-top: 10px;
+}

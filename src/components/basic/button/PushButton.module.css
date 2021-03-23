@@ -1,0 +1,8 @@
+.PushButton {
+  background: rgb(35, 67, 164);
+  border: none;
+  border-radius: 0.4em;
+  font-size: 0.9em;
+  color: #fff;
+  font-weight: bolder;
+}

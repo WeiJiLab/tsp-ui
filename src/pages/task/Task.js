@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, ProgressBar, Row} from "react-bootstrap";
 import './Task.css';
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faCheckCircle,

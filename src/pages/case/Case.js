@@ -1,17 +1,17 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import './Case.css';
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDownload, faEdit, faFileSignature, faPlay, faShieldAlt} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import PushButton from "../../components/button/PushButton";
+import PushButton from "../../components/basic/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getCase} from "../../actions/CasesAction";
 import {getScanTasks} from "../../actions/TasksAction";
 import {getTool} from "../../actions/ToolsAction";
-import ScanTaskList from "../../components/task-list/ScanTaskList";
+import ScanTaskList from "../../components/business/task-list/ScanTaskList";
 import {Link} from "react-router-dom";
 import {AWS_S3_BUCKET} from "../../api/ScpApi";
 
