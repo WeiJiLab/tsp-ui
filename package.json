@@ -18,7 +18,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "codemirror": "^5.59.2",
-    "moment-timezone": "^0.5.32",
+    "moment-timezone": "^0.5.35",
     "qs": "^6.9.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
