@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, Dropdown, Row} from "react-bootstrap";
 import './Tool.css';
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faChevronRight,
@@ -12,13 +12,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import PushButton from "../../components/button/PushButton";
+import PushButton from "../../components/basic/button/PushButton";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {getTool} from "../../actions/ToolsAction";
 import {deleteCase, getCasesByToolId} from "../../actions/CasesAction";
 import {Link} from "react-router-dom";
 import {getScanTasks} from "../../actions/TasksAction";
-import ScanTaskList from "../../components/task-list/ScanTaskList";
+import ScanTaskList from "../../components/business/task-list/ScanTaskList";
 
 class Tool extends React.Component {
     constructor(props) {

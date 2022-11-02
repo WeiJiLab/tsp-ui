@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import './CaseEditor.css';
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDownload, faFileSignature, faShieldAlt, faUpload} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
@@ -30,7 +30,7 @@ import 'codemirror/addon/fold/foldgutter.js';
 import 'codemirror/addon/fold/brace-fold.js';
 import 'codemirror/addon/fold/comment-fold.js';
 import 'codemirror/addon/edit/closebrackets';
-import PushButton from "../../components/button/PushButton";
+import PushButton from "../../components/basic/button/PushButton";
 
 class CaseEditor extends React.Component {
     constructor(props) {

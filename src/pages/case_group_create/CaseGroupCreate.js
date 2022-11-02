@@ -1,13 +1,13 @@
 import React from "react";
 import {Container, FormControl, FormLabel, Row} from "react-bootstrap";
 import './CaseGroupCreate.css';
-import PushButton from "../../components/button/PushButton";
+import PushButton from "../../components/basic/button/PushButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import ModalWrapper from "../../components/modal/ModalWrapper";
+import ModalWrapper from "../../components/business/modal/ModalWrapper";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {createCaseGroup} from "../../actions/CasesAction";
 

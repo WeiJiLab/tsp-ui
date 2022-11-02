@@ -1,13 +1,13 @@
 import React from "react";
 import {Container, FormControl, FormLabel, Row} from "react-bootstrap";
 import './TaskCreate.css';
-import PushButton from "../../components/button/PushButton";
+import PushButton from "../../components/basic/button/PushButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import ModalWrapper from "../../components/modal/ModalWrapper";
+import ModalWrapper from "../../components/business/modal/ModalWrapper";
 import {setBreadCrumbMenu} from "../../actions/BreadCrumbMenuAction";
 import {startTask} from "../../actions/TasksAction";
 import {getApp, getProject, getProjects} from "../../actions/ProjectsAction";
@@ -152,7 +152,7 @@ class TaskCreate extends React.Component {
                 <option value="LOCAL">Local</option>
                 <option value="WINDOWS">Remote(Windows)</option>
                 <option value="LINUX">Remote(SSH)</option>
-                <option value="DOCKER">Remote(Docker Container ID)</option> 
+                <option value="DOCKER">Remote(Docker Container ID)</option>
             </FormControl>
         </Row>
         <Row id="address" style={{padding: 0, margin: 0, marginTop: '1em', display: 'none'}}>

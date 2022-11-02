@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import './Tools.css';
-import Card from "../../components/card/Card";
+import Card from "../../components/business/card/ResourceCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faEllipsisH, faShieldVirus, faTags, faTh, faThList} from "@fortawesome/free-solid-svg-icons";
 import {bindActionCreators} from "redux";
