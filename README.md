@@ -1,6 +1,12 @@
 # SCP
 ## RUN
-### `yarn start`
+### `启动项目`
+
+`yarn start`
+
+### `更新依赖`
+
+`yarn upgrade-interactive --latest `
 
 
 ## React toolkit Example
