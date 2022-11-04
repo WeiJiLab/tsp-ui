@@ -5,12 +5,14 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from "redux-persist
 import { authSlice } from "./auth/auth-slice";
 import { actionLog } from "./middlewares/actionLog";
 import { menuSlice } from "./menu/slice";
-import { projectSlice } from "./project/slice";
+import { projectSlice } from "./project/project-slice";
+import { appInfoSlice } from "./appInfo/app-info-slice";
 
 const rootReducer = {
   auth: authSlice.reducer,
   menu: menuSlice.reducer,
   project: projectSlice.reducer,
+  appInfo: appInfoSlice.reducer,
 };
 
 const combinedReducer = combineReducers<typeof rootReducer>(rootReducer);

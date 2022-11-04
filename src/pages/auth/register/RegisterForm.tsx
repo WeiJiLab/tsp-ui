@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "../../../hooks";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-
 const layout = {
   labelCol: {span: 8},
   wrapperCol: {span: 16},

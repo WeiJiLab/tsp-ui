@@ -1,9 +1,9 @@
 import { Popconfirm } from "antd";
 import React from "react";
-import {  deleteProjectById } from "../../../redux/project/projectThunk";
+import {  deleteProjectById } from "../../../redux/project/project-thunks";
 import toast from "react-hot-toast";
 import { useAppDispatch } from "../../../hooks";
-import { projectSlice } from "../../../redux/project/slice";
+import { projectSlice } from "../../../redux/project/project-slice";
 
 interface PropsTypes {
   id: number;

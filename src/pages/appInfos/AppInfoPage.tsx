@@ -1,13 +1,12 @@
 import React from "react";
 
-import styles from "./AppInfoPage.module.scss";
 import { MainLayout } from "../../components";
-
+import { PageAppInfo } from "./pageAppInfo";
 
 export const AppInfoPage: React.FC = () => {
   return (
       <MainLayout>
-        AppInfoPage
+        <PageAppInfo/>
       </MainLayout>
   )
 }

@@ -10,8 +10,8 @@ import { useAppDispatch } from "../../../hooks";
 import { BaseModel } from "../../../@types";
 import toast from "react-hot-toast";
 import { Project } from "../../../models";
-import { updateProject } from "../../../redux/project/projectThunk";
-import { projectSlice } from "../../../redux/project/slice";
+import { updateProject } from "../../../redux/project/project-thunks";
+import { projectSlice } from "../../../redux/project/project-slice";
 
 interface FormTypes extends BaseModel {
   name: string;

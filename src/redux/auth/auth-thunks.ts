@@ -14,7 +14,7 @@ export const register = createAsyncThunk(
            }
     ) => {
       const res = await publicAxios.post(REGISTER_PATH, {
-        username: parameters.email,
+        username: parameters.username,
         email: parameters.email,
         password: parameters.password,
       });

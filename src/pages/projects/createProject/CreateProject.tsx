@@ -9,8 +9,8 @@ import { PlusOutlined } from "@ant-design/icons";
 import { useAppDispatch } from "../../../hooks";
 
 import toast from 'react-hot-toast';
-import { createProject } from "../../../redux/project/projectThunk";
-import { projectSlice } from "../../../redux/project/slice";
+import { createProject } from "../../../redux/project/project-thunks";
+import { projectSlice } from "../../../redux/project/project-slice";
 
 interface FormTypes {
   name: string;

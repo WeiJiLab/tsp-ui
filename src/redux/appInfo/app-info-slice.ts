@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { createProject, deleteProjectById, pageProjects, updateProject } from "./projectThunk";
+import { createAppInfo, deleteAppInfoById, pageAppInfo, updateAppInfo } from "./app-info-thunks";
 
 interface ProjectState {
   isRefresh: boolean;
@@ -14,8 +14,8 @@ const initialState: ProjectState = {
   data: null
 }
 
-export const projectSlice = createSlice({
-  name: "project",
+export const appInfoSlice = createSlice({
+  name: "appInfo",
   initialState,
   reducers: {
     refreshPage: (state) => {
@@ -25,52 +25,51 @@ export const projectSlice = createSlice({
     refreshFinish: (state) => {
       state.isRefresh = false;
     }
-
   },
   extraReducers: (builder) => {
     builder
         // 分页查询
-        .addCase(pageProjects.pending, (state) => {
+        .addCase(pageAppInfo.pending, (state) => {
           state.loading = true;
         })
-        .addCase(pageProjects.fulfilled, (state, action: PayloadAction<any>) => {
+        .addCase(pageAppInfo.fulfilled, (state, action: PayloadAction<any>) => {
           state.data = action.payload;
           state.loading = false;
         })
-        .addCase(pageProjects.rejected, (state, action) => {
+        .addCase(pageAppInfo.rejected, (state, action) => {
           state.loading = false;
         })
         // 创建
-        .addCase(createProject.pending, (state) => {
+        .addCase(createAppInfo.pending, (state) => {
           state.loading = true;
         })
-        .addCase(createProject.fulfilled, (state, action: PayloadAction<any>) => {
+        .addCase(createAppInfo.fulfilled, (state, action: PayloadAction<any>) => {
           state.data = action.payload;
           state.loading = false;
         })
-        .addCase(createProject.rejected, (state, action) => {
+        .addCase(createAppInfo.rejected, (state, action) => {
           state.loading = false;
         })
         // 更新
-        .addCase(updateProject.pending, (state) => {
+        .addCase(updateAppInfo.pending, (state) => {
           state.loading = true;
         })
-        .addCase(updateProject.fulfilled, (state, action: PayloadAction<any>) => {
+        .addCase(updateAppInfo.fulfilled, (state, action: PayloadAction<any>) => {
           state.data = action.payload;
           state.loading = false;
         })
-        .addCase(updateProject.rejected, (state, action) => {
+        .addCase(updateAppInfo.rejected, (state, action) => {
           state.loading = false;
         })
         // 删除
-        .addCase(deleteProjectById.pending, (state) => {
+        .addCase(deleteAppInfoById.pending, (state) => {
           state.loading = true;
         })
-        .addCase(deleteProjectById.fulfilled, (state, action: PayloadAction<any>) => {
+        .addCase(deleteAppInfoById.fulfilled, (state, action: PayloadAction<any>) => {
           state.data = action.payload;
           state.loading = false;
         })
-        .addCase(deleteProjectById.rejected, (state, action) => {
+        .addCase(deleteAppInfoById.rejected, (state, action) => {
           state.loading = false;
         })
 

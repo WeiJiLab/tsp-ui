@@ -1,25 +1,17 @@
-import type { ActionType } from '@ant-design/pro-components';
-import { ProTable } from '@ant-design/pro-components';
-import React, { useEffect, useRef, useState } from 'react';
-import { CreateProject } from "../createProject";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { pageProjects } from "../../../redux/project/project-thunks";
+import React, { useEffect, useRef, useState } from "react";
+import { ActionType, ProTable } from "@ant-design/pro-components";
+import { useAppDispatch, useAppSelector, usePagination } from "../../../hooks";
+import { pageAppInfo } from "../../../redux/appInfo/app-info-thunks";
+import { refreshFinish } from "../../../redux/appInfo/app-info-actions";
 import { columns } from "./config";
-import { projectSlice } from "../../../redux/project/project-slice";
+import { CreateAppInfo } from "../createAppInfo";
 
-import { usePagination } from "../../../hooks";
-
-export const PageProject: React.FC = () => {
+export const PageAppInfo: React.FC = () => {
   const actionRef = useRef<ActionType>();
-
   const dispatch = useAppDispatch();
-
   const [params, setParams] = useState<any>(null);
 
-  const loading = useAppSelector(state => state.project.loading);
-  const data = useAppSelector(state => state.project.data);
-
-  const isRefresh = useAppSelector(state => state.project.isRefresh);
+  const {loading, data, isRefresh} = useAppSelector(state => state.appInfo);
 
   const { currentPage, pageSize, handleChangePagination, resetPagination } = usePagination();
 
@@ -40,7 +32,7 @@ export const PageProject: React.FC = () => {
   }, [pageSize, currentPage, params]);
 
   const fetchData = () => {
-    return dispatch(pageProjects({page: currentPage, pageSize: pageSize, ...params}));
+    return dispatch(pageAppInfo({page: currentPage, pageSize: pageSize, ...params}));
   }
 
   const handleReset = () => {
@@ -52,7 +44,7 @@ export const PageProject: React.FC = () => {
   if (isRefresh) {
     handleReset();
     fetchData();
-    dispatch(projectSlice.actions.refreshFinish())
+    dispatch(refreshFinish())
   }
 
   return (
@@ -89,7 +81,7 @@ export const PageProject: React.FC = () => {
           dateFormatter="string"
           headerTitle="项目"
           toolBarRender={() => [
-            <CreateProject/>
+            <CreateAppInfo/>
           ]}>
       </ProTable>
   );
