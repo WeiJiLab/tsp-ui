@@ -2,10 +2,6 @@ import { AxiosInstance, AxiosPromise } from 'axios';
 import { HttpResponseHandlerImpl } from "./http-response-handler";
 
 import {
-  ParseOptions,
-  ParsedQuery,
-  StringifyOptions,
-  parse,
   stringify
 } from 'query-string';
 

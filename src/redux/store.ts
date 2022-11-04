@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from "redux-persist/es/constants";
-import { authSlice } from "./auth/slice";
+import { authSlice } from "./auth/auth-slice";
 import { actionLog } from "./middlewares/actionLog";
 import { menuSlice } from "./menu/slice";
 import { projectSlice } from "./project/slice";

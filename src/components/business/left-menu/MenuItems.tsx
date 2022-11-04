@@ -41,7 +41,7 @@ function getItem(
 
 export const MENU_ITEMS: MenuItems[] = [
   getItem('首页', 'HOME', faHome),
-  getItem('应用', 'APPLICATION', faHome),
+  getItem('应用', 'APP_INFO', faHome),
   getItem('项目', 'PROJECT', faCubes, [
     getItem('项目列表', 'PROJECT_LIST', faListAlt),
   ]),
@@ -54,5 +54,5 @@ export const MENU_ITEMS: MenuItems[] = [
 export const MENU_NAVIGATE = new Map<string, string>([
   ["HOME", "/"],
   ["PROJECT_LIST", "/projects"],
-  ["APPLICATION", "/applications"],
+  ["APP_INFO", "/app-infos"],
 ]);

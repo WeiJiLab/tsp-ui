@@ -1,13 +1,12 @@
 import styles from "./LoginForm.module.css";
 import { Form, Input, Button, Checkbox } from "antd";
-import { login } from "../../../redux/auth/slice"
+import { login } from "../../../redux/auth/auth-thunks"
 
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 import { EmailUtils } from "../../../common";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-
+import toast from "react-hot-toast";
 
 const layout = {
   labelCol: {span: 8},
@@ -19,24 +18,30 @@ const tailLayout = {
 
 export const LoginForm = () => {
   const loading = useAppSelector(state => state.auth.loading);
-  const jwtToken = useAppSelector(state => state.auth.token);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (jwtToken !== null) {
-      navigate("/");
-    }
-  }, [jwtToken, dispatch]);
+  const onFinish = async (values: any) => {
+
+   await dispatch(login(
+        {
+          email: values.email,
+          password: values.password,
+        }
+    )).unwrap()
+        .then(it => {
+          console.log("it", it);
+          const {accessToken, username} = it;
+
+          if (accessToken) {
+            toast.success(`👏登录成功 !`);
+            toast.success(`👏欢迎回来：${username}`);
+            navigate("/");
+          }
+        });
 
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-    dispatch(login({
-      email: values.email,
-      password: values.password,
-    }));
   };
 
   const onFinishFailed = (errorInfo: any) => {

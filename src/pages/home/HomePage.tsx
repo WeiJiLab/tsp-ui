@@ -15,7 +15,7 @@ export const HomePage: React.FC = () => {
           <h2 className={styles.titleText}>资源</h2>
           <Col className={styles.ResourceItem}>
             <ResourceCard title={'项目'} count={3} icon={faCube} to={"/projects"}/>
-            <ResourceCard title={'应用'} count={3} icon={faCubes} to={'/projects'}/>
+            <ResourceCard title={'应用'} count={3} icon={faCubes} to={'/app-infos'}/>
             <ResourceCard title={'扫描记录'} count={3} icon={faHistory} to={'/dashboard'}/>
             <ResourceCard title={'扫描结果'} count={3} icon={faFileArchive} to={'/dashboard'}/>
           </Col>

@@ -1,8 +1,10 @@
 import { Form, Input, Button } from "antd";
 import styles from "./RegisterForm.module.css";
-import { register } from "../../../redux/auth/slice";
-import { EmailUtils } from "../../../common/utils";
+import { register } from "../../../redux/auth/auth-thunks";
+import { EmailUtils } from "../../../common";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const layout = {
@@ -16,19 +18,19 @@ const tailLayout = {
 export const RegisterForm = () => {
   const loading = useAppSelector(state => state.auth.loading);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
-    console.log("Success:", values);
+    await dispatch(register(
+        {
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        }
+    )).unwrap();
 
-    dispatch(register({
-      username: values.username,
-      email: values.email,
-      password: values.password,
-    }));
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    toast.success(`👏用户注册成功`);
+    navigate("/login");
   };
 
   return (
@@ -37,7 +39,6 @@ export const RegisterForm = () => {
           name="basic"
           initialValues={{remember: true}}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           className={styles["register-form"]}
       >
         <Form.Item

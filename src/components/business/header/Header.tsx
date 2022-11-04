@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css"
 import { Layout, Button, Typography, Tooltip } from "antd";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { JwtUtils } from "../../../common";
 import { useNavigate } from "react-router-dom";
-import { authSlice } from "../../../redux/auth/slice";
 import { ToggleThemeButton } from "./toggle-theme-button";
-import { menuSlice } from "../../../redux/menu/slice";
 
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from '@ant-design/icons';
+
+import { JwtUtils } from "../../../common";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { getToken } from "../../../common";
+import { menuSlice } from "../../../redux/menu/slice";
+import { logOut } from "../../../redux/auth/auth-slice";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export const Header: React.FC = () => {
   }
 
   const onLogout = () => {
-    dispatch(authSlice.actions.logOut())
+    dispatch(logOut())
     navigate("/login")
   };
 

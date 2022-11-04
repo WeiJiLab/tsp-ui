@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ApplicationPage.module.css"
-import { MainLayout } from "../../components/layouts";
+import { MainLayout } from "../../components";
 import { Col, Row } from "antd";
 import PushButton from "../../components/basic/button/PushButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

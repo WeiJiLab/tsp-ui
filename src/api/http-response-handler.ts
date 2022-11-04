@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import toast from 'react-hot-toast';
+import { removeToken } from "../common";
 
 export interface HttpResponseHandler {
   handleSuccess(response: AxiosResponse): AxiosResponse | Promise<AxiosResponse>,
@@ -49,7 +50,12 @@ const handleErrorResponse = (err: any): string => {
     }
 
       // authentication (token related issues)
-    case 401 || 403: {
+    case 401 : {
+      removeToken();
+      return "访问失败";
+    }
+
+    case 403 : {
       return "访问失败" + err.response.data.data;
     }
 

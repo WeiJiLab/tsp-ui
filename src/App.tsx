@@ -9,11 +9,12 @@ import {
   HomePage,
   NoMatchPage,
   DashBoardPage,
-  ApplicationPage, ProjectsPage
+  ProjectsPage
 } from "./pages";
 import { useAppDispatch } from "./hooks";
 import { isAuthenticated } from "./common";
-import { authSlice } from "./redux/auth/slice";
+import { logOut } from "./redux/auth/auth-slice";
+import { AppInfoPage } from "./pages";
 
 const App: React.FC = () => {
 
@@ -21,7 +22,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (!isAuthenticated()) {
-      dispatch(authSlice.actions.logOut())
+      dispatch(logOut())
     }
   }, [dispatch]);
 
@@ -32,7 +33,7 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
-            <Route path="/applications" element={<ApplicationPage/>}/>
+            <Route path="/app-infos" element={<AppInfoPage/>}/>
             <Route path="/dashboard" element={<DashBoardPage/>}/>
             <Route path="/projects" element={<ProjectsPage/>}/>
             <Route path={"*"} element={<NoMatchPage/>}/>
