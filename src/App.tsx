@@ -8,7 +8,6 @@ import {
   RegisterPage,
   HomePage,
   NoMatchPage,
-  DashBoardPage,
   ProjectsPage
 } from "./pages";
 import { useAppDispatch } from "./hooks";
@@ -34,7 +33,6 @@ const App: React.FC = () => {
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/app-infos" element={<AppInfoPage/>}/>
-            <Route path="/dashboard" element={<DashBoardPage/>}/>
             <Route path="/projects" element={<ProjectsPage/>}/>
             <Route path={"*"} element={<NoMatchPage/>}/>
           </Routes>
