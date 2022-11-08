@@ -73,7 +73,7 @@ export const HomePage: React.FC = () => {
                     startTime: "2018-05-01T00:00+08:00",
                     endTime: "2022-05-01T00:00+08:00"
                   }}
-                  key={1}
+
               />
               <TaskItemCard
                   task={{
@@ -95,7 +95,6 @@ export const HomePage: React.FC = () => {
                     startTime: "2018-05-01T00:00+08:00",
                     endTime: "2022-05-01T00:00+08:00"
                   }}
-                  key={1}
               />
               <TaskItemCard
                   task={{
@@ -117,7 +116,6 @@ export const HomePage: React.FC = () => {
                     startTime: "2018-05-01T00:00+08:00",
                     endTime: "2022-05-01T00:00+08:00"
                   }}
-                  key={1}
               />
             </Col>
             <Col span={12}>
@@ -142,7 +140,6 @@ export const HomePage: React.FC = () => {
                     startTime: "2018-05-01T00:00+08:00",
                     endTime: "2022-05-01T00:00+08:00"
                   }}
-                  key={1}
               />
               <TaskItemCard
                   task={{
@@ -164,7 +161,6 @@ export const HomePage: React.FC = () => {
                     startTime: "2018-05-01T00:00+08:00",
                     endTime: "2022-05-01T00:00+08:00"
                   }}
-                  key={1}
               />
               <TaskItemCard
                   task={{
@@ -186,7 +182,6 @@ export const HomePage: React.FC = () => {
                     startTime: "2018-05-01T00:00+08:00",
                     endTime: "2022-05-01T00:00+08:00"
                   }}
-                  key={1}
               />
             </Col>
           </Row>

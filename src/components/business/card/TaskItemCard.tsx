@@ -15,7 +15,6 @@ import moment from "moment-timezone";
 
 interface PropsTypes {
   task: any,
-  key: any
 }
 
 export const TaskItemCard: React.FC<PropsTypes> = (

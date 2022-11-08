@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { authAxios } from "../../api";
+import { AppInfoForm } from "../../models";
 
 const BASE_APP_INFO = "/api/business/app-infos";
 
@@ -16,11 +17,10 @@ export const pageAppInfo = createAsyncThunk(
 
 export const createAppInfo = createAsyncThunk(
     "appInfo/createAppInfo",
-    async (para: { name: string, description: string }) => {
+    async (body: AppInfoForm) => {
       const {data} = await authAxios.post(
           BASE_APP_INFO, {
-            name: para.name,
-            description: para.description
+            ...body
           });
       return data;
     }
@@ -28,11 +28,10 @@ export const createAppInfo = createAsyncThunk(
 
 export const updateAppInfo = createAsyncThunk(
     "appInfo/updateAppInfo:id",
-    async (para: { id: number, name: string, description?: string }) => {
+    async (para: { id: number, body: AppInfoForm }) => {
       const {data} = await authAxios.patch(
           `${BASE_APP_INFO}/${para.id}`, {
-            name: para.name,
-            description: para.description
+            ...para.body
           });
       return data;
     }

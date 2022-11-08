@@ -1,18 +1,13 @@
 import React from "react";
-import { BaseModel } from "../../../@types";
 import { ProColumns } from "@ant-design/pro-components";
 import { DatePicker } from "antd";
+import { UpdateAppInfo } from "../updateAppInfo";
+import { AppInfoModel } from "../../../models";
+import { DeleteAppInfo } from "../deleteAppInfo";
 
 const {RangePicker} = DatePicker;
 
-export interface TableListItem extends BaseModel {
-  name: string;
-  description: string;
-  projectId: number;
-  repoType: string;
-}
-
-export const columns: ProColumns<TableListItem>[] = [
+export const columns: ProColumns<AppInfoModel>[] = [
   {
     title: 'ID',
     dataIndex: 'id',
@@ -23,7 +18,6 @@ export const columns: ProColumns<TableListItem>[] = [
     title: '应用名称',
     dataIndex: 'name',
     ellipsis: true,
-    tip: '项目名称过长会自动收缩',
   },
   {
     title: '应用描述',
@@ -33,12 +27,21 @@ export const columns: ProColumns<TableListItem>[] = [
     tip: '项目描述过长会自动收缩',
   },
   {
-    title: 'OwnerId',
-    dataIndex: 'projectId',
+    title: '用户名',
+    dataIndex: 'username',
   },
   {
     title: '仓库类型',
     dataIndex: 'repoType',
+    valueEnum: {
+      GIT: {text: 'GIT'},
+      LOCAL: {text: 'LOCAL'},
+    },
+  },
+  {
+    title: '代码目录',
+    dataIndex: 'codePath',
+    search: false,
   },
   {
     title: '创建时间',
@@ -64,7 +67,7 @@ export const columns: ProColumns<TableListItem>[] = [
     key: 'option',
     fixed: 'right',
     render: (text, record, index, action) => [
-      // <UpdateProject id={record.id} name={record.name} description={record.description}/>,
+      <UpdateAppInfo {...record}/>,
       <a onClick={() => {
         console.log("text", text);
         console.log("record", record);
@@ -73,7 +76,7 @@ export const columns: ProColumns<TableListItem>[] = [
       }}>
         查看
       </a>,
-      // <DeleteProject id={record.id}/>
+      <DeleteAppInfo id={record.id}/>
     ],
   }
 ]

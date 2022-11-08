@@ -1,32 +1,30 @@
 import React from "react";
-import { Button, Form } from "antd";
+import { Form } from "antd";
 import {
-  ModalForm,
+  ModalForm, ProFormSelect,
   ProFormText,
-  ProFormTextArea,
-  ProFormSelect
+  ProFormTextArea
 } from "@ant-design/pro-components";
-import { PlusOutlined } from "@ant-design/icons";
 import { useAppDispatch } from "../../../hooks";
 
-import toast from 'react-hot-toast';
-import { createAppInfo } from "../../../redux/appInfo/app-info-thunks";
-import { AppInfoForm } from "../../../models";
+import toast from "react-hot-toast";
+import { AppInfoForm, AppInfoModel } from "../../../models";
+import { updateAppInfo } from "../../../redux/appInfo/app-info-thunks";
 import { refreshPage } from "../../../redux/appInfo/app-info-actions";
 
-export const CreateAppInfo: React.FC = () => {
+
+export const UpdateAppInfo: React.FC<AppInfoModel> = (
+    props
+) => {
 
   const dispatch = useAppDispatch();
-  const [form] = Form.useForm<AppInfoForm>();
 
-  const postData = async (values: AppInfoForm) => {
+  const patchData = async (values: AppInfoForm) => {
     try {
-      console.log("values", values);
-      await dispatch(createAppInfo({
-        ...values,
-        projectId: 1,
-      })).unwrap();
-      toast.success(`创建项目成功`);
+      await dispatch(
+          updateAppInfo({id: props.id, body: {...values}})
+      ).unwrap();
+      toast.success(`更新应用信息成功`);
       dispatch(refreshPage());
       return true;
     } catch (err) {
@@ -34,14 +32,15 @@ export const CreateAppInfo: React.FC = () => {
     }
   }
 
+  const [form] = Form.useForm<AppInfoForm>();
+
   return (
       <ModalForm<AppInfoForm>
-          title={`新增应用`}
+          title={`编辑应用信息`}
           trigger={
-            <Button type="primary">
-              <PlusOutlined/>
-              新增应用
-            </Button>
+            <a>
+              编辑
+            </a>
           }
           form={form}
           autoFocusFirstInput
@@ -51,12 +50,10 @@ export const CreateAppInfo: React.FC = () => {
           }}
 
           onFinish={async (values) => {
-            return postData(values);
+            return patchData(values);
           }}
           initialValues={{
-            branch: "master",
-            repoType: "GIT",
-            codePath: "/",
+            ...props
           }}
       >
         <ProFormText
