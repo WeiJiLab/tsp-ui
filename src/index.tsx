@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import 'antd/dist/antd.min.css';
+import 'antd/dist/reset.css';
 import "@ant-design/flowchart/dist/index.css";
 import "./i18n/configs"
 import { Provider } from "react-redux";

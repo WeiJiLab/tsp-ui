@@ -1,7 +1,5 @@
 import React from "react";
-import { Avatar as AvatarComponent } from "antd";
-
-import { AvatarProps } from 'antd/lib/avatar'
+import {Avatar as AvatarComponent, AvatarProps} from "antd";
 
 function handleError() {
   return true
