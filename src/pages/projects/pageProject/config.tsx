@@ -1,15 +1,15 @@
-import React from "react";
-import { BaseModel } from "../../../@types";
-import { ProColumns } from "@ant-design/pro-components";
-import { DatePicker } from "antd";
-import { UpdateProject } from "../updateProject";
-import { DeleteProject } from "../deleteProject";
+import React from 'react'
+import { BaseModel } from '../../../@types'
+import { ProColumns } from '@ant-design/pro-components'
+import { DatePicker } from 'antd'
+import { UpdateProject } from '../updateProject'
+import { DeleteProject } from '../deleteProject'
 
-const {RangePicker} = DatePicker;
+const { RangePicker } = DatePicker
 
 export interface TableListItem extends BaseModel {
-  name: string;
-  description: string;
+  name: string
+  description: string
 }
 
 export const columns: ProColumns<TableListItem>[] = [
@@ -43,7 +43,7 @@ export const columns: ProColumns<TableListItem>[] = [
     valueType: 'date',
     search: false,
     renderFormItem: () => {
-      return <RangePicker/>;
+      return <RangePicker />
     },
   },
   {
@@ -60,17 +60,18 @@ export const columns: ProColumns<TableListItem>[] = [
     key: 'option',
     fixed: 'right',
     render: (text, record, index, action) => [
-      <UpdateProject id={record.id} name={record.name} description={record.description}/>,
-      <a onClick={() => {
-        console.log("text", text);
-        console.log("record", record);
-        console.log("index", index);
-        console.log("action", action);
-      }}>
+      <UpdateProject id={record.id} name={record.name} description={record.description} />,
+      <a
+        onClick={() => {
+          console.log('text', text)
+          console.log('record', record)
+          console.log('index', index)
+          console.log('action', action)
+        }}
+      >
         查看
       </a>,
-      <DeleteProject id={record.id}/>
+      <DeleteProject id={record.id} />,
     ],
-  }
+  },
 ]
-

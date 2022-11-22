@@ -1,6 +1,6 @@
 .userLayoutContainer {
   height: 100vh;
-  background-image: url("https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg") !important;
+  background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg') !important;
   background-size: 100% !important;
   background-repeat: no-repeat;
   background-position: center 110px;

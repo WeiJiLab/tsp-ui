@@ -1,2 +1,2 @@
-export * from "./Projects"
-export * from "./AppInfos"
+export * from './Projects'
+export * from './AppInfos'

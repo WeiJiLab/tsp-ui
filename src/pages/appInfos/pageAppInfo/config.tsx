@@ -1,11 +1,11 @@
-import React from "react";
-import { ProColumns } from "@ant-design/pro-components";
-import { DatePicker } from "antd";
-import { UpdateAppInfo } from "../updateAppInfo";
-import { AppInfoModel } from "../../../models";
-import { DeleteAppInfo } from "../deleteAppInfo";
+import React from 'react'
+import { ProColumns } from '@ant-design/pro-components'
+import { DatePicker } from 'antd'
+import { UpdateAppInfo } from '../updateAppInfo'
+import { AppInfoModel } from '../../../models'
+import { DeleteAppInfo } from '../deleteAppInfo'
 
-const {RangePicker} = DatePicker;
+const { RangePicker } = DatePicker
 
 export const columns: ProColumns<AppInfoModel>[] = [
   {
@@ -34,8 +34,8 @@ export const columns: ProColumns<AppInfoModel>[] = [
     title: '仓库类型',
     dataIndex: 'repoType',
     valueEnum: {
-      GIT: {text: 'GIT'},
-      LOCAL: {text: 'LOCAL'},
+      GIT: { text: 'GIT' },
+      LOCAL: { text: 'LOCAL' },
     },
   },
   {
@@ -50,7 +50,7 @@ export const columns: ProColumns<AppInfoModel>[] = [
     valueType: 'date',
     search: false,
     renderFormItem: () => {
-      return <RangePicker/>;
+      return <RangePicker />
     },
   },
   {
@@ -67,17 +67,18 @@ export const columns: ProColumns<AppInfoModel>[] = [
     key: 'option',
     fixed: 'right',
     render: (text, record, index, action) => [
-      <UpdateAppInfo {...record}/>,
-      <a onClick={() => {
-        console.log("text", text);
-        console.log("record", record);
-        console.log("index", index);
-        console.log("action", action);
-      }}>
+      <UpdateAppInfo {...record} />,
+      <a
+        onClick={() => {
+          console.log('text', text)
+          console.log('record', record)
+          console.log('index', index)
+          console.log('action', action)
+        }}
+      >
         查看
       </a>,
-      <DeleteAppInfo id={record.id}/>
+      <DeleteAppInfo id={record.id} />,
     ],
-  }
+  },
 ]
-

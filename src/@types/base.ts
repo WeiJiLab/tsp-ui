@@ -1,7 +1,5 @@
 export type BaseModel = {
-  id: number;
-  createdAt?: string;
-  updatedAt?: string;
+  id: number
+  createdAt?: string
+  updatedAt?: string
 }
-
-

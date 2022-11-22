@@ -1,1 +1,1 @@
-export * from "./NoMatchPage"
+export * from './NoMatchPage'

@@ -1,1 +1,1 @@
-export * from "./ApplicationPage"
+export * from './ApplicationPage'

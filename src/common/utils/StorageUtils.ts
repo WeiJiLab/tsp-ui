@@ -1,4 +1,4 @@
-import { JsonUtils } from "./json-utils";
+import { JsonUtils } from './json-utils'
 
 export class StorageUtils {
   public static get<T = string>(key: string): T | string | null {

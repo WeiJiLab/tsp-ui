@@ -10,5 +10,4 @@ export class JsonUtils {
     }
     return true
   }
-
 }

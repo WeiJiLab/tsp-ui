@@ -1,7 +1,7 @@
-import jwtDecode, { JwtPayload as DefaultJwtPayload } from "jwt-decode";
+import jwtDecode, { JwtPayload as DefaultJwtPayload } from 'jwt-decode'
 
 interface JwtPayload extends DefaultJwtPayload {
-  username: string,
+  username: string
 }
 
 export class JwtUtils {
@@ -11,11 +11,10 @@ export class JwtUtils {
 
   public static isTokenValid = (jwtToken: string) => {
     try {
-      const payload = JwtUtils.getJwtPayload(jwtToken);
-      return new Date(payload.exp! * 1000) > new Date();
+      const payload = JwtUtils.getJwtPayload(jwtToken)
+      return new Date(payload.exp! * 1000) > new Date()
     } catch {
-      return false;
+      return false
     }
-  };
-
+  }
 }

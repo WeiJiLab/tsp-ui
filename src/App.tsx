@@ -1,44 +1,37 @@
-import styles from "./App.module.scss";
+import styles from './App.module.scss'
 
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
 
-import {
-  LoginPage,
-  RegisterPage,
-  HomePage,
-  NoMatchPage,
-  ProjectsPage
-} from "./pages";
-import { useAppDispatch } from "./hooks";
-import { isAuthenticated } from "./common";
-import { logOut } from "./redux/auth/auth-slice";
-import { AppInfoPage } from "./pages";
+import { LoginPage, RegisterPage, HomePage, NoMatchPage, ProjectsPage } from './pages'
+import { useAppDispatch } from './hooks'
+import { isAuthenticated } from './common'
+import { logOut } from './redux/auth/auth-slice'
+import { AppInfoPage } from './pages'
 
 const App: React.FC = () => {
-
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (!isAuthenticated()) {
       dispatch(logOut())
     }
-  }, [dispatch]);
+  }, [dispatch])
 
   return (
-      <div className={styles.App}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage/>}/>
-            <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/register" element={<RegisterPage/>}/>
-            <Route path="/app-infos" element={<AppInfoPage/>}/>
-            <Route path="/projects" element={<ProjectsPage/>}/>
-            <Route path={"*"} element={<NoMatchPage/>}/>
-          </Routes>
-        </BrowserRouter>
-      </div>
-  );
+    <div className={styles.App}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/app-infos' element={<AppInfoPage />} />
+          <Route path='/projects' element={<ProjectsPage />} />
+          <Route path={'*'} element={<NoMatchPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
-export default App;
+export default App

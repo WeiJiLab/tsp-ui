@@ -1,11 +1,11 @@
-import React from "react";
-import { AuthLayout } from "../../../components";
-import { LoginForm } from "./LoginForm";
+import React from 'react'
+import { AuthLayout } from '../../../components'
+import { LoginForm } from './LoginForm'
 
 export const LoginPage: React.FC = () => {
   return (
-      <AuthLayout>
-        <LoginForm/>
-      </AuthLayout>
-  );
-};
+    <AuthLayout>
+      <LoginForm />
+    </AuthLayout>
+  )
+}
