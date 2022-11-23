@@ -4,7 +4,7 @@ import { defaults } from 'jest-config'
 const config: Config = {
   roots: ['<rootDir>'],
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },

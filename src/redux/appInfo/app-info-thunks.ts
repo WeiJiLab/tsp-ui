@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { authAxios } from '../../api'
 import { AppInfoForm } from '../../models'
 
-const BASE_APP_INFO = '/api/business/app-infos'
+export const BASE_APP_INFO = '/api/business/app-infos'
 
-export const pageAppInfo = createAsyncThunk('appInfos/pageAppInfo', async (params: any) => {
+export const pageAppInfo = createAsyncThunk('appInfo/pageAppInfo', async (params: any) => {
   const { data } = await authAxios.getWithParams(BASE_APP_INFO, params)
   return data
 })

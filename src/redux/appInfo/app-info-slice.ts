@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { createAppInfo, deleteAppInfoById, pageAppInfo, updateAppInfo } from './app-info-thunks'
 
-interface ProjectState {
+export interface AppInfoState {
   isRefresh: boolean
   loading: boolean
   data: any
 }
 
-const initialState: ProjectState = {
+const initialState: AppInfoState = {
   isRefresh: false,
   loading: false,
   data: null,

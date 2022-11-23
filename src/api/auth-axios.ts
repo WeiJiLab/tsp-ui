@@ -2,13 +2,13 @@ import axios, { AxiosRequestConfig } from 'axios'
 import { config, getToken } from '../common'
 import HttpApiService from './http-api-service'
 
-const axiosInstance = axios.create({
+export const axiosAuthInstance = axios.create({
   baseURL: config.api.API_URL,
   timeout: 30000,
 })
 
 const authorizationProvider = () => {
-  axiosInstance.interceptors.request.use((requestConfig: AxiosRequestConfig) => {
+  axiosAuthInstance.interceptors.request.use((requestConfig: AxiosRequestConfig) => {
     const token = getToken()
 
     return {
@@ -23,4 +23,4 @@ const authorizationProvider = () => {
 
 authorizationProvider()
 
-export const authAxios = new HttpApiService(axiosInstance)
+export const authAxios = new HttpApiService(axiosAuthInstance)
