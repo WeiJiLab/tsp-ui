@@ -1,38 +1,38 @@
-import React from 'react'
-import { Button, Form } from 'antd'
-import { ModalForm, ProFormText, ProFormTextArea, ProFormSelect } from '@ant-design/pro-components'
-import { PlusOutlined } from '@ant-design/icons'
-import { useAppDispatch } from '../../../hooks'
+import React from 'react';
+import { Button, Form } from 'antd';
+import { ModalForm, ProFormText, ProFormTextArea, ProFormSelect } from '@ant-design/pro-components';
+import { PlusOutlined } from '@ant-design/icons';
+import { useAppDispatch } from '../../../hooks';
 
-import toast from 'react-hot-toast'
-import { createAppInfo } from '../../../redux/appInfo/app-info-thunks'
-import { AppInfoForm } from '../../../models'
-import { refreshPage } from '../../../redux/appInfo/app-info-actions'
+import toast from 'react-hot-toast';
+import { createAppInfo } from '../../../redux/appInfo/app-info-thunks';
+import { AppInfoForm } from '../../../models';
+import { refreshPage } from '../../../redux/appInfo/app-info-actions';
 
 export const CreateAppInfo: React.FC = () => {
-  const dispatch = useAppDispatch()
-  const [form] = Form.useForm<AppInfoForm>()
+  const dispatch = useAppDispatch();
+  const [form] = Form.useForm<AppInfoForm>();
 
   const postData = async (values: AppInfoForm) => {
     try {
-      console.log('values', values)
+      console.log('values', values);
       await dispatch(
         createAppInfo({
           ...values,
           projectId: 1,
         }),
-      ).unwrap()
-      toast.success(`创建项目成功`)
-      dispatch(refreshPage())
-      return true
+      ).unwrap();
+      toast.success('创建项目成功');
+      dispatch(refreshPage());
+      return true;
     } catch (err) {
-      return true
+      return true;
     }
-  }
+  };
 
   return (
     <ModalForm<AppInfoForm>
-      title={`新增应用`}
+      title={'新增应用'}
       trigger={
         <Button type='primary'>
           <PlusOutlined />
@@ -46,7 +46,7 @@ export const CreateAppInfo: React.FC = () => {
         onCancel: () => console.log('Cancel Edit'),
       }}
       onFinish={async (values) => {
-        return postData(values)
+        return postData(values);
       }}
       initialValues={{
         branch: 'master',
@@ -96,7 +96,7 @@ export const CreateAppInfo: React.FC = () => {
         }}
         fieldProps={{
           optionItemRender(item) {
-            return item.label + ' - ' + item.value
+            return item.label + ' - ' + item.value;
           },
         }}
         name='repoType'
@@ -109,5 +109,5 @@ export const CreateAppInfo: React.FC = () => {
         placeholder='请输入代码路径，默认为根目录'
       />
     </ModalForm>
-  )
-}
+  );
+};

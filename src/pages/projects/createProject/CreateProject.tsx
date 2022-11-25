@@ -1,36 +1,36 @@
-import React from 'react'
-import { Button, Form } from 'antd'
-import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-components'
-import { PlusOutlined } from '@ant-design/icons'
-import { useAppDispatch } from '../../../hooks'
+import React from 'react';
+import { Button, Form } from 'antd';
+import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-components';
+import { PlusOutlined } from '@ant-design/icons';
+import { useAppDispatch } from '../../../hooks';
 
-import toast from 'react-hot-toast'
-import { createProject } from '../../../redux/project/project-thunks'
-import { projectSlice } from '../../../redux/project/project-slice'
+import toast from 'react-hot-toast';
+import { createProject } from '../../../redux/project/project-thunks';
+import { projectSlice } from '../../../redux/project/project-slice';
 
 interface FormTypes {
-  name: string
-  description: string
+  name: string;
+  description: string;
 }
 
 export const CreateProject: React.FC = () => {
-  const dispatch = useAppDispatch()
-  const [form] = Form.useForm<FormTypes>()
+  const dispatch = useAppDispatch();
+  const [form] = Form.useForm<FormTypes>();
 
   const postData = async (values: FormTypes) => {
     try {
-      await dispatch(createProject({ ...values })).unwrap()
-      toast.success(`创建项目成功`)
-      dispatch(projectSlice.actions.refreshPage())
-      return true
+      await dispatch(createProject({ ...values })).unwrap();
+      toast.success('创建项目成功');
+      dispatch(projectSlice.actions.refreshPage());
+      return true;
     } catch (err) {
-      return true
+      return true;
     }
-  }
+  };
 
   return (
     <ModalForm<FormTypes>
-      title={`新增项目`}
+      title={'新增项目'}
       trigger={
         <Button type='primary'>
           <PlusOutlined />
@@ -44,7 +44,7 @@ export const CreateProject: React.FC = () => {
         onCancel: () => console.log('Cancel Edit'),
       }}
       onFinish={async (values) => {
-        return postData(values)
+        return postData(values);
       }}
     >
       <ProFormText
@@ -62,5 +62,5 @@ export const CreateProject: React.FC = () => {
         placeholder='请输入项目描述'
       />
     </ModalForm>
-  )
-}
+  );
+};

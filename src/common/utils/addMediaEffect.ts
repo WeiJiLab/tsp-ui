@@ -1,5 +1,5 @@
-import React from 'react'
-import textPressSoundSrc from '../../assets/audio/text-press.mp3'
+import React from 'react';
+import textPressSoundSrc from '../../assets/audio/text-press.mp3';
 
 const addMediaEffect =
   (
@@ -8,9 +8,9 @@ const addMediaEffect =
     vibrateDuration = 20,
   ) =>
   (event: React.MouseEvent<HTMLElement>) => {
-    callback(event)
-    navigator?.vibrate(vibrateDuration)
-    ;(new Audio(sound).cloneNode(true) as HTMLAudioElement).play()
-  }
+    callback(event);
+    navigator?.vibrate(vibrateDuration);
+    (new Audio(sound).cloneNode(true) as HTMLAudioElement).play();
+  };
 
-export default addMediaEffect
+export default addMediaEffect;

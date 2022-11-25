@@ -1,3 +1,3 @@
-import { appInfoSlice } from './app-info-slice'
+import { appInfoSlice } from './app-info-slice';
 
-export const { refreshPage, refreshFinish } = appInfoSlice.actions
+export const { refreshPage, refreshFinish } = appInfoSlice.actions;

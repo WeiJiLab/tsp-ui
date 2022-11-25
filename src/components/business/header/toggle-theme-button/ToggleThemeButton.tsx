@@ -1,32 +1,32 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../../../hooks'
-import { menuSlice } from '../../../../redux/menu/slice'
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
+import { menuSlice } from '../../../../redux/menu/slice';
 
-import ToggleSoundSrc from '../../../../assets/audio/toggle.mp3'
-import SunIconSrc from '../../../../assets/icons/sun.png'
-import MoonIconSrc from '../../../../assets/icons/moon.png'
+import ToggleSoundSrc from '../../../../assets/audio/toggle.mp3';
+import SunIconSrc from '../../../../assets/icons/sun.png';
+import MoonIconSrc from '../../../../assets/icons/moon.png';
 
-import styles from './ToggleThemeButton.module.css'
+import styles from './ToggleThemeButton.module.css';
 
-import addMediaEffect from '../../../../common/utils/addMediaEffect'
+import addMediaEffect from '../../../../common/utils/addMediaEffect';
 
 export const ToggleThemeButton = () => {
-  const themeMode = useAppSelector((state) => state.menu.themeMode)
-  const dispatch = useAppDispatch()
+  const themeMode = useAppSelector((state) => state.menu.themeMode);
+  const dispatch = useAppDispatch();
 
   const onClick = useMemo(
     () =>
       addMediaEffect(
         (event) => {
-          event.stopPropagation()
-          dispatch(menuSlice.actions.toggleThemeMode())
+          event.stopPropagation();
+          dispatch(menuSlice.actions.toggleThemeMode());
         },
         ToggleSoundSrc,
         20,
       ),
     [dispatch],
-  )
+  );
 
   return (
     <div
@@ -63,5 +63,5 @@ export const ToggleThemeButton = () => {
         className={styles.buttonMarker}
       ></div>
     </div>
-  )
-}
+  );
+};

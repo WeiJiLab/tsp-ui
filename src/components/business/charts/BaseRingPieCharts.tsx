@@ -1,13 +1,13 @@
-import React from 'react'
-import { Pie } from '@ant-design/plots'
-import { Card } from 'antd'
+import React from 'react';
+import { Pie } from '@ant-design/plots';
+import { Card } from 'antd';
 
 interface PropsTypes {
-  title: string
+  title: string;
   date: {
-    type: string
-    value: any
-  }[]
+    type: string;
+    value: any;
+  }[];
 }
 
 export const BaseRingPieCharts: React.FC<PropsTypes> = ({ title, date }) => {
@@ -53,7 +53,7 @@ export const BaseRingPieCharts: React.FC<PropsTypes> = ({ title, date }) => {
         },
       },
     },
-  }
+  };
   return (
     <Card
       hoverable
@@ -65,5 +65,5 @@ export const BaseRingPieCharts: React.FC<PropsTypes> = ({ title, date }) => {
       <h2>{title}</h2>
       <Pie style={{ height: 300 }} {...config} />
     </Card>
-  )
-}
+  );
+};

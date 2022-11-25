@@ -1,7 +1,7 @@
-import React from 'react'
-import { Card, Col, Row } from 'antd'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react';
+import { Card, Col, Row } from 'antd';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheckCircle,
   faChevronRight,
@@ -13,62 +13,62 @@ import {
   faSpinner,
   faStopCircle,
   faTimesCircle,
-} from '@fortawesome/free-solid-svg-icons'
-import moment from 'moment-timezone'
+} from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment-timezone';
 
 interface PropsTypes {
-  task: any
+  task: any;
 }
 
 export const TaskItemCard: React.FC<PropsTypes> = ({ task }) => {
   const renderTime = () => {
-    let timeDuring =
+    const timeDuring =
       moment(task.startTime).tz('Asia/ShangHai').fromNow() +
       '-' +
-      moment(task.endTime).tz('Asia/ShangHai').fromNow()
+      moment(task.endTime).tz('Asia/ShangHai').fromNow();
     switch (task.status) {
       case 'READY':
-        return <span style={{ fontSize: '0.77em' }}>未开始</span>
+        return <span style={{ fontSize: '0.77em' }}>未开始</span>;
       case 'RUNNING':
         return (
           <span style={{ fontSize: '0.77em' }}>
             {moment(task.startTime).tz('Asia/ShangHai').fromNow() + '-未结束'}
           </span>
-        )
+        );
       case 'DONE':
-        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>
+        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>;
       case 'FAILED':
-        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>
+        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>;
       case 'ABORT':
-        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>
+        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>;
       default:
-        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>
+        return <span style={{ fontSize: '0.77em' }}>{timeDuring}</span>;
     }
-  }
+  };
 
   const renderStatus = (statue: any) => {
     switch (statue) {
       case 'READY':
         return (
           <FontAwesomeIcon style={{ color: 'rgb(36, 66, 164)', fontSize: '2em' }} icon={faClock} />
-        )
+        );
       case 'RUNNING':
-        return <FontAwesomeIcon style={{ color: 'green', fontSize: '2em' }} icon={faSpinner} />
+        return <FontAwesomeIcon style={{ color: 'green', fontSize: '2em' }} icon={faSpinner} />;
       case 'DONE':
         return (
           <FontAwesomeIcon
             style={{ color: 'rgb(36, 66, 164)', fontSize: '2em' }}
             icon={faCheckCircle}
           />
-        )
+        );
       case 'FAILED':
-        return <FontAwesomeIcon style={{ color: 'red', fontSize: '2em' }} icon={faTimesCircle} />
+        return <FontAwesomeIcon style={{ color: 'red', fontSize: '2em' }} icon={faTimesCircle} />;
       case 'ABORT':
-        return <FontAwesomeIcon style={{ color: 'gray', fontSize: '2em' }} icon={faStopCircle} />
+        return <FontAwesomeIcon style={{ color: 'gray', fontSize: '2em' }} icon={faStopCircle} />;
       default:
-        return <FontAwesomeIcon style={{ color: 'gray', fontSize: '2em' }} icon={faEject} />
+        return <FontAwesomeIcon style={{ color: 'gray', fontSize: '2em' }} icon={faEject} />;
     }
-  }
+  };
 
   return (
     <Card
@@ -143,5 +143,5 @@ export const TaskItemCard: React.FC<PropsTypes> = ({ task }) => {
         </Col>
       </Row>
     </Card>
-  )
-}
+  );
+};

@@ -1,22 +1,21 @@
-import styles from './App.module.scss'
+import styles from './App.module.scss';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
-import { LoginPage, RegisterPage, HomePage, NoMatchPage, ProjectsPage } from './pages'
-import { useAppDispatch } from './hooks'
-import { isAuthenticated } from './common'
-import { logOut } from './redux/auth/auth-slice'
-import { AppInfoPage } from './pages'
+import { LoginPage, RegisterPage, HomePage, NoMatchPage, ProjectsPage, AppInfoPage } from './pages';
+import { useAppDispatch } from './hooks';
+import { isAuthenticated } from './common';
+import { logOut } from './redux/auth/auth-slice';
 
 const App: React.FC = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!isAuthenticated()) {
-      dispatch(logOut())
+      dispatch(logOut());
     }
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <div className={styles.App}>
@@ -31,7 +30,7 @@ const App: React.FC = () => {
         </Routes>
       </BrowserRouter>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

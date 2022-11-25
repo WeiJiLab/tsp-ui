@@ -1,1 +1,1 @@
-export * from './BaseRingPieCharts'
+export * from './BaseRingPieCharts';

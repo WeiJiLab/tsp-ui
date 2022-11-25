@@ -1,12 +1,11 @@
-import React from 'react'
-import styles from './ApplicationPage.module.css'
-import { MainLayout } from '../../components'
-import { Col, Row } from 'antd'
-import PushButton from '../../components/basic/button/PushButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCube, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
-import { TaskItemCard } from '../../components'
+import React from 'react';
+import styles from './ApplicationPage.module.css';
+import { MainLayout, TaskItemCard } from '../../components';
+import { Col, Row } from 'antd';
+import PushButton from '../../components/basic/button/PushButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCube, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export const ApplicationPage: React.FC = () => {
   const tasks = [
@@ -48,9 +47,11 @@ export const ApplicationPage: React.FC = () => {
       startTime: '2018-05-01T00:00+08:00',
       endTime: '2022-05-01T00:00+08:00',
     },
-  ]
+  ];
 
-  const gotoCreateScan = () => {}
+  const gotoCreateScan = () => {
+    console.log('创建扫描任务');
+  };
 
   const renderAppCard = () => {
     return (
@@ -69,8 +70,8 @@ export const ApplicationPage: React.FC = () => {
           </Col>
         </Row>
       </div>
-    )
-  }
+    );
+  };
 
   const renderProjectCard = () => {
     return (
@@ -89,8 +90,8 @@ export const ApplicationPage: React.FC = () => {
           </Col>
         </Row>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <MainLayout>
@@ -112,7 +113,7 @@ export const ApplicationPage: React.FC = () => {
             <Row>
               {tasks && tasks.length > 0 ? (
                 tasks.map((task, index) => {
-                  return <TaskItemCard task={task} key={index} />
+                  return <TaskItemCard task={task} key={index} />;
                 })
               ) : (
                 <span style={{ color: '#668' }}>无</span>
@@ -124,7 +125,7 @@ export const ApplicationPage: React.FC = () => {
             <Row>
               {tasks && tasks.length > 0 ? (
                 tasks.map((task, index) => {
-                  return <TaskItemCard task={task} key={index} />
+                  return <TaskItemCard task={task} key={index} />;
                 })
               ) : (
                 <span style={{ color: '#668' }}>无</span>
@@ -134,5 +135,5 @@ export const ApplicationPage: React.FC = () => {
         </Row>
       </div>
     </MainLayout>
-  )
-}
+  );
+};

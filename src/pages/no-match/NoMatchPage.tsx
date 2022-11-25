@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from './NoMatchPage.module.css'
-import { faSadCry } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Row } from 'antd'
+import React from 'react';
+import styles from './NoMatchPage.module.css';
+import { faSadCry } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Row } from 'antd';
 
 export const NoMatchPage: React.FC = () => {
   return (
@@ -20,5 +20,5 @@ export const NoMatchPage: React.FC = () => {
         <h3 style={{ textAlign: 'center', width: '100%' }}>Oops, No page matched.</h3>
       </Row>
     </div>
-  )
-}
+  );
+};

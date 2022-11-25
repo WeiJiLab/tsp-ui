@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import styles from './HomePage.module.css'
-import { MainLayout } from '../../components'
-import { Col, Row } from 'antd'
-import { BaseRingPieCharts, ResourceCard, TaskItemCard } from '../../components'
-import { faCube, faCubes, faFileArchive, faHistory } from '@fortawesome/free-solid-svg-icons'
+import styles from './HomePage.module.css';
+import { Col, Row } from 'antd';
+import { MainLayout, BaseRingPieCharts, ResourceCard, TaskItemCard } from '../../components';
+import { faCube, faCubes, faFileArchive, faHistory } from '@fortawesome/free-solid-svg-icons';
 
 export const HomePage: React.FC = () => {
   return (
@@ -183,5 +182,5 @@ export const HomePage: React.FC = () => {
         </Row>
       </div>
     </MainLayout>
-  )
-}
+  );
+};

@@ -1,15 +1,15 @@
-import React from 'react'
-import styles from './AuthLayout.module.css'
-import logo from '../../../assets/logo.svg'
-import { Link } from 'react-router-dom'
-import { CaretDownOutlined } from '@ant-design/icons'
-import { Layout, Menu, Dropdown, Button } from 'antd'
-import { Footer } from '../../index'
+import React from 'react';
+import styles from './AuthLayout.module.css';
+import logo from '../../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+import { CaretDownOutlined } from '@ant-design/icons';
+import { Layout, Menu, Dropdown, Button } from 'antd';
+import { Footer } from '../../index';
 
-const { Header, Content } = Layout
+const { Header, Content } = Layout;
 
 interface PropsTypes {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const AuthLayout: React.FC<PropsTypes> = (props) => {
@@ -18,7 +18,7 @@ export const AuthLayout: React.FC<PropsTypes> = (props) => {
       <Menu.Item>中文</Menu.Item>
       <Menu.Item>English</Menu.Item>
     </Menu>
-  )
+  );
 
   return (
     <Layout className={styles.userLayoutContainer}>
@@ -46,5 +46,5 @@ export const AuthLayout: React.FC<PropsTypes> = (props) => {
       </Content>
       <Footer />
     </Layout>
-  )
-}
+  );
+};

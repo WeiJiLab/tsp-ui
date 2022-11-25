@@ -1,18 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import App from './App'
-import 'antd/dist/reset.css'
-import '@ant-design/flowchart/dist/index.css'
-import './i18n/configs'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import { Spin } from 'antd'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import 'antd/dist/reset.css';
+import '@ant-design/flowchart/dist/index.css';
+import './i18n/configs';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Spin } from 'antd';
 
-import rootStore from './redux/store'
-import { Toaster } from 'react-hot-toast'
+import rootStore from './redux/store';
+import { Toaster } from 'react-hot-toast';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
@@ -23,4 +23,4 @@ root.render(
       </PersistGate>
     </Provider>
   </React.StrictMode>,
-)
+);

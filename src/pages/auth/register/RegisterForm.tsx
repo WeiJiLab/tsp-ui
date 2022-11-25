@@ -1,23 +1,23 @@
-import { Form, Input, Button } from 'antd'
-import styles from './RegisterForm.module.css'
-import { register } from '../../../redux/auth/auth-thunks'
-import { EmailUtils } from '../../../common'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { Form, Input, Button } from 'antd';
+import styles from './RegisterForm.module.css';
+import { register } from '../../../redux/auth/auth-thunks';
+import { EmailUtils } from '../../../common';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
-}
+};
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
-}
+};
 
 export const RegisterForm = () => {
-  const loading = useAppSelector((state) => state.auth.loading)
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
+  const loading = useAppSelector((state) => state.auth.loading);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
     await dispatch(
@@ -26,11 +26,11 @@ export const RegisterForm = () => {
         email: values.email,
         password: values.password,
       }),
-    ).unwrap()
+    ).unwrap();
 
-    toast.success(`👏用户注册成功`)
-    navigate('/login')
-  }
+    toast.success('👏用户注册成功');
+    navigate('/login');
+  };
 
   return (
     <Form
@@ -48,9 +48,9 @@ export const RegisterForm = () => {
           {
             validator: (_, value) => {
               if (EmailUtils.isEmail(value)) {
-                return Promise.resolve()
+                return Promise.resolve();
               } else {
-                return Promise.reject(new Error('请输入正确的邮箱'))
+                return Promise.reject(new Error('请输入正确的邮箱'));
               }
             },
           },
@@ -80,9 +80,9 @@ export const RegisterForm = () => {
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue('password') === value) {
-                return Promise.resolve()
+                return Promise.resolve();
               }
-              return Promise.reject('密码确认不一致！')
+              return Promise.reject('密码确认不一致！');
             },
           }),
         ]}
@@ -96,5 +96,5 @@ export const RegisterForm = () => {
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};

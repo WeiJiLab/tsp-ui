@@ -1,12 +1,12 @@
-import React from 'react'
-import LeftMenu from '../../business/left-menu/LeftMenu'
-import { Layout } from 'antd'
-import { Footer, Header } from '../../index'
+import React from 'react';
+import LeftMenu from '../../business/left-menu/LeftMenu';
+import { Layout } from 'antd';
+import { Footer, Header } from '../../index';
 
-const { Content } = Layout
+const { Content } = Layout;
 
 interface PropsTypes {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const MainLayout: React.FC<PropsTypes> = ({ children }) => {
@@ -24,5 +24,5 @@ export const MainLayout: React.FC<PropsTypes> = ({ children }) => {
         <Footer />
       </Layout>
     </Layout>
-  )
-}
+  );
+};

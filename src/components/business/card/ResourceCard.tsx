@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-import { Card, Col, Row } from 'antd'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { useNavigate } from 'react-router-dom'
+import { Card, Col, Row } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { useNavigate } from 'react-router-dom';
 
 interface PropsTypes {
-  title: string
-  count?: React.ReactNode
-  icon: IconProp
-  to: string
+  title: string;
+  count?: React.ReactNode;
+  icon: IconProp;
+  to: string;
 }
 
 export const ResourceCard: React.FC<PropsTypes> = ({ title, count, icon, to }) => {
-  let navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Card
       hoverable
@@ -44,5 +44,5 @@ export const ResourceCard: React.FC<PropsTypes> = ({ title, count, icon, to }) =
         </Col>
       </Row>
     </Card>
-  )
-}
+  );
+};

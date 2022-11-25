@@ -1,32 +1,32 @@
-import React from 'react'
-import { Form } from 'antd'
-import { ModalForm, ProFormSelect, ProFormText, ProFormTextArea } from '@ant-design/pro-components'
-import { useAppDispatch } from '../../../hooks'
+import React from 'react';
+import { Form } from 'antd';
+import { ModalForm, ProFormSelect, ProFormText, ProFormTextArea } from '@ant-design/pro-components';
+import { useAppDispatch } from '../../../hooks';
 
-import toast from 'react-hot-toast'
-import { AppInfoForm, AppInfoModel } from '../../../models'
-import { updateAppInfo } from '../../../redux/appInfo/app-info-thunks'
-import { refreshPage } from '../../../redux/appInfo/app-info-actions'
+import toast from 'react-hot-toast';
+import { AppInfoForm, AppInfoModel } from '../../../models';
+import { updateAppInfo } from '../../../redux/appInfo/app-info-thunks';
+import { refreshPage } from '../../../redux/appInfo/app-info-actions';
 
 export const UpdateAppInfo: React.FC<AppInfoModel> = (props) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const patchData = async (values: AppInfoForm) => {
     try {
-      await dispatch(updateAppInfo({ id: props.id, body: { ...values } })).unwrap()
-      toast.success(`更新应用信息成功`)
-      dispatch(refreshPage())
-      return true
+      await dispatch(updateAppInfo({ id: props.id, body: { ...values } })).unwrap();
+      toast.success('更新应用信息成功');
+      dispatch(refreshPage());
+      return true;
     } catch (err) {
-      return true
+      return true;
     }
-  }
+  };
 
-  const [form] = Form.useForm<AppInfoForm>()
+  const [form] = Form.useForm<AppInfoForm>();
 
   return (
     <ModalForm<AppInfoForm>
-      title={`编辑应用信息`}
+      title={'编辑应用信息'}
       trigger={<a>编辑</a>}
       form={form}
       autoFocusFirstInput
@@ -35,7 +35,7 @@ export const UpdateAppInfo: React.FC<AppInfoModel> = (props) => {
         onCancel: () => console.log('Cancel Edit'),
       }}
       onFinish={async (values) => {
-        return patchData(values)
+        return patchData(values);
       }}
       initialValues={{
         ...props,
@@ -83,7 +83,7 @@ export const UpdateAppInfo: React.FC<AppInfoModel> = (props) => {
         }}
         fieldProps={{
           optionItemRender(item) {
-            return item.label + ' - ' + item.value
+            return item.label + ' - ' + item.value;
           },
         }}
         name='repoType'
@@ -96,5 +96,5 @@ export const UpdateAppInfo: React.FC<AppInfoModel> = (props) => {
         placeholder='请输入代码路径，默认为根目录'
       />
     </ModalForm>
-  )
-}
+  );
+};

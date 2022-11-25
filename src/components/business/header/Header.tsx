@@ -1,43 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import styles from './Header.module.css'
-import { Layout, Button, Typography, Tooltip } from 'antd'
+import React, { useEffect, useState } from 'react';
+import styles from './Header.module.css';
+import { Layout, Button, Typography, Tooltip } from 'antd';
 
-import { useNavigate } from 'react-router-dom'
-import { ToggleThemeButton } from './toggle-theme-button'
+import { useNavigate } from 'react-router-dom';
+import { ToggleThemeButton } from './toggle-theme-button';
 
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
-import { JwtUtils } from '../../../common'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { getToken } from '../../../common'
-import { menuSlice } from '../../../redux/menu/slice'
-import { logOut } from '../../../redux/auth/auth-slice'
+import { JwtUtils, getToken } from '../../../common';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { menuSlice } from '../../../redux/menu/slice';
+import { logOut } from '../../../redux/auth/auth-slice';
 
 export const Header: React.FC = () => {
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const jwtToken = getToken()
-  const themeMode = useAppSelector((state) => state.menu.themeMode)
-  const collapsed = useAppSelector((state) => state.menu.collapsed)
+  const jwtToken = getToken();
+  const themeMode = useAppSelector((state) => state.menu.themeMode);
+  const collapsed = useAppSelector((state) => state.menu.collapsed);
 
-  const [username, setUsername] = useState<string>('')
+  const [username, setUsername] = useState<string>('');
 
   useEffect(() => {
     if (jwtToken) {
-      const token = JwtUtils.getJwtPayload(jwtToken)
-      setUsername(token.username)
+      const token = JwtUtils.getJwtPayload(jwtToken);
+      setUsername(token.username);
     }
-  }, [jwtToken])
+  }, [jwtToken]);
 
   const switchCollapsed = () => {
-    dispatch(menuSlice.actions.switchCollapsed())
-  }
+    dispatch(menuSlice.actions.switchCollapsed());
+  };
 
   const onLogout = () => {
-    dispatch(logOut())
-    navigate('/login')
-  }
+    dispatch(logOut());
+    navigate('/login');
+  };
 
   return (
     <Layout.Footer
@@ -92,5 +91,5 @@ export const Header: React.FC = () => {
         <ToggleThemeButton />
       </>
     </Layout.Footer>
-  )
-}
+  );
+};

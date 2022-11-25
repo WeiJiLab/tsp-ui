@@ -1,21 +1,21 @@
-import React from 'react'
-import { Form } from 'antd'
-import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-components'
-import { useAppDispatch } from '../../../hooks'
+import React from 'react';
+import { Form } from 'antd';
+import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-components';
+import { useAppDispatch } from '../../../hooks';
 
-import { BaseModel } from '../../../@types'
-import toast from 'react-hot-toast'
-import { Project } from '../../../models'
-import { updateProject } from '../../../redux/project/project-thunks'
-import { projectSlice } from '../../../redux/project/project-slice'
+import { BaseModel } from '../../../@types';
+import toast from 'react-hot-toast';
+import { Project } from '../../../models';
+import { updateProject } from '../../../redux/project/project-thunks';
+import { projectSlice } from '../../../redux/project/project-slice';
 
 interface FormTypes extends BaseModel {
-  name: string
-  description?: string
+  name: string;
+  description?: string;
 }
 
 export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const patchData = async (values: FormTypes) => {
     try {
@@ -25,20 +25,20 @@ export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
           name: values.name,
           description: values.description,
         }),
-      ).unwrap()
-      toast.success(`更新项目信息成功`)
-      dispatch(projectSlice.actions.refreshPage())
-      return true
+      ).unwrap();
+      toast.success('更新项目信息成功');
+      dispatch(projectSlice.actions.refreshPage());
+      return true;
     } catch (err) {
-      return true
+      return true;
     }
-  }
+  };
 
-  const [form] = Form.useForm<FormTypes>()
+  const [form] = Form.useForm<FormTypes>();
 
   return (
     <ModalForm<FormTypes>
-      title={`编辑项目信息`}
+      title={'编辑项目信息'}
       trigger={<a>编辑</a>}
       form={form}
       autoFocusFirstInput
@@ -47,8 +47,8 @@ export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
         onCancel: () => console.log('Cancel Edit'),
       }}
       onFinish={async (values) => {
-        console.log(values.name, values.description)
-        return patchData(values)
+        console.log(values.name, values.description);
+        return patchData(values);
       }}
     >
       <ProFormText
@@ -68,5 +68,5 @@ export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
         initialValue={description}
       />
     </ModalForm>
-  )
-}
+  );
+};

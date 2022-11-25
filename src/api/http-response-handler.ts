@@ -1,84 +1,84 @@
-import { AxiosResponse } from 'axios'
-import toast from 'react-hot-toast'
-import { removeToken } from '../common'
+import { AxiosResponse } from 'axios';
+import toast from 'react-hot-toast';
+import { removeToken } from '../common';
 
 export interface HttpResponseHandler {
-  handleSuccess(response: AxiosResponse): AxiosResponse | Promise<AxiosResponse>
+  handleSuccess(response: AxiosResponse): AxiosResponse | Promise<AxiosResponse>;
 
-  handleError(error: any): Promise<any>
+  handleError(error: any): Promise<any>;
 }
 
 export class HttpResponseHandlerImpl implements HttpResponseHandler {
   handleSuccess(response: AxiosResponse): AxiosResponse | Promise<AxiosResponse> {
-    return handleSuccess(response)
+    return handleSuccess(response);
   }
 
   handleError(error: any): Promise<any> {
-    return handleError(error)
+    return handleError(error);
   }
 }
 
 export const handleSuccess = (response: AxiosResponse): AxiosResponse | Promise<AxiosResponse> => {
-  return response
-}
+  return response;
+};
 
 export const handleError = (err: any): Promise<any> => {
-  let errorStatement: string = ''
+  let errorStatement = '';
   if (!err.response) {
-    console.log(`Network error: ${err}`)
-    errorStatement = '网络错误：' + err.message
+    console.log(`Network error: ${err}`);
+    errorStatement = '网络错误：' + err.message;
   } else {
-    errorStatement = handleErrorResponse(err)
+    errorStatement = handleErrorResponse(err);
   }
 
-  toast.error(errorStatement)
+  toast.error(errorStatement);
 
-  return Promise.reject(errorStatement)
-}
+  return Promise.reject(errorStatement);
+};
 
 const handleErrorResponse = (err: any): string => {
-  const status = err.response?.status || 500
+  const status = err.response?.status || 500;
 
-  console.log(`HttpService::Error(${status}) : `, err.response.data)
+  console.log(`HttpService::Error(${status}) : `, err.response.data);
 
   switch (status) {
     // bad request
     case 400: {
-      return '检查请求参数, ' + err.response.data.data
+      return '检查请求参数, ' + err.response.data.data;
     }
 
     // authentication (token related issues)
     case 401: {
-      removeToken()
-      return '访问失败'
+      removeToken();
+      return '访问失败';
     }
 
     case 403: {
-      return '访问失败' + err.response.data.data
+      return '访问失败' + err.response.data.data;
     }
 
     // not found
     case 404: {
-      return '请求资源不存在' + err.response.data.data
+      return '请求资源不存在' + err.response.data.data;
     }
 
     // conflict
     case 409: {
-      return '该资源冲突' + err.response.data.data
+      return '该资源冲突' + err.response.data.data;
     }
 
     // unprocessable
     case 422: {
-      return '请求格式正确，但由于语义错误而无法遵循' + err.response.data.data
+      return '请求格式正确，但由于语义错误而无法遵循' + err.response.data.data;
     }
 
     case 500: {
-      return '当前服务不可用，请稍后再试'
+      return '当前服务不可用，请稍后再试';
     }
 
     // generic api error (server related) unexpected
     default: {
-      return err.response.data.message
+      return err.response.data.message;
     }
   }
-}
+};

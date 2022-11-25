@@ -1,12 +1,12 @@
-import React, { CSSProperties } from 'react'
-import styles from './PushButton.module.css'
-import { Button } from 'antd'
+import React, { CSSProperties } from 'react';
+import styles from './PushButton.module.css';
+import { Button } from 'antd';
 
 interface PropsTypes {
-  style?: CSSProperties
-  disabled?: boolean
-  onClick?: any
-  children: React.ReactNode
+  style?: CSSProperties;
+  disabled?: boolean;
+  onClick?: any;
+  children: React.ReactNode;
 }
 
 const PushButton: React.FC<PropsTypes> = ({ style, disabled, onClick, children }) => {
@@ -14,7 +14,7 @@ const PushButton: React.FC<PropsTypes> = ({ style, disabled, onClick, children }
     <Button style={style} disabled={disabled} onClick={onClick} className={styles.PushButton}>
       {children}
     </Button>
-  )
-}
+  );
+};
 
-export default PushButton
+export default PushButton;

@@ -1,1 +1,1 @@
-export * from './DeleteAppInfo'
+export * from './DeleteAppInfo';

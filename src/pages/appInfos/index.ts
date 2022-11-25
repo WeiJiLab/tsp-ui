@@ -1,1 +1,1 @@
-export * from './AppInfoPage'
+export * from './AppInfoPage';
