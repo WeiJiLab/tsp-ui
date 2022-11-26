@@ -2,14 +2,16 @@ import React from 'react';
 import LeftMenu from '../../business/left-menu/LeftMenu';
 import { Layout } from 'antd';
 import { Footer, Header } from '../../index';
+import { ScpSpan } from '../../basic/span';
 
 const { Content } = Layout;
 
 interface PropsTypes {
+  loading?: boolean;
   children: React.ReactNode;
 }
 
-export const MainLayout: React.FC<PropsTypes> = ({ children }) => {
+export const MainLayout: React.FC<PropsTypes> = ({ loading = false, children }) => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <LeftMenu />
@@ -18,7 +20,7 @@ export const MainLayout: React.FC<PropsTypes> = ({ children }) => {
         <Content style={{ margin: '0 16px' }}>
           {/* 页面内容 content */}
           <div className='site-layout-background' style={{ padding: 24, minHeight: 360 }}>
-            {children}
+            {loading ? <ScpSpan /> : children}
           </div>
         </Content>
         <Footer />

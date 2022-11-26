@@ -1,4 +1,4 @@
-import { JwtUtils, StorageUtils, ObjectUtils } from '../utils';
+import { JwtUtils, StorageUtils } from '../utils';
 
 const ACCESS_TOKEN_KEY = 'access_token';
 
@@ -16,8 +16,8 @@ export const removeToken = () => {
 
 export const isAuthenticated = () => {
   const token = getToken();
-  if (ObjectUtils.isEmpty(token)) {
+  if (token === null) {
     return false;
   }
-  return JwtUtils.isTokenValid(token!);
+  return JwtUtils.isTokenValid(token);
 };

@@ -36,7 +36,7 @@ export const projectSlice = createSlice({
         state.data = action.payload;
         state.loading = false;
       })
-      .addCase(pageProjects.rejected, (state, action) => {
+      .addCase(pageProjects.rejected, (state) => {
         state.loading = false;
       })
       // 创建
@@ -47,7 +47,7 @@ export const projectSlice = createSlice({
         state.data = action.payload;
         state.loading = false;
       })
-      .addCase(createProject.rejected, (state, action) => {
+      .addCase(createProject.rejected, (state) => {
         state.loading = false;
       })
       // 更新
@@ -58,7 +58,7 @@ export const projectSlice = createSlice({
         state.data = action.payload;
         state.loading = false;
       })
-      .addCase(updateProject.rejected, (state, action) => {
+      .addCase(updateProject.rejected, (state) => {
         state.loading = false;
       })
       // 删除
@@ -69,7 +69,7 @@ export const projectSlice = createSlice({
         state.data = action.payload;
         state.loading = false;
       })
-      .addCase(deleteProjectById.rejected, (state, action) => {
+      .addCase(deleteProjectById.rejected, (state) => {
         state.loading = false;
       });
   },

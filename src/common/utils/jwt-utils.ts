@@ -12,7 +12,10 @@ export class JwtUtils {
   public static isTokenValid = (jwtToken: string) => {
     try {
       const payload = JwtUtils.getJwtPayload(jwtToken);
-      return new Date(payload.exp! * 1000) > new Date();
+      if (payload === null || payload.exp == null) {
+        return false;
+      }
+      return new Date(payload.exp * 1000) > new Date();
     } catch {
       return false;
     }

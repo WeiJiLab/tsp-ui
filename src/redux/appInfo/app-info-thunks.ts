@@ -9,6 +9,14 @@ export const pageAppInfo = createAsyncThunk('appInfo/pageAppInfo', async (params
   return data;
 });
 
+export const findAppInfoById = createAsyncThunk(
+  'appInfo/findAppInfoById',
+  async (appInfoId: string) => {
+    const { data } = await authAxios.get(`${BASE_APP_INFO}/${appInfoId}`);
+    return data;
+  },
+);
+
 export const createAppInfo = createAsyncThunk(
   'appInfo/createAppInfo',
   async (body: AppInfoForm) => {

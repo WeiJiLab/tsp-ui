@@ -14,7 +14,7 @@ import {
   faStopCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import moment from 'moment-timezone';
+import { TimeUtils } from '../../../common/utils/TimeUtils';
 
 interface PropsTypes {
   task: any;
@@ -23,16 +23,14 @@ interface PropsTypes {
 export const TaskItemCard: React.FC<PropsTypes> = ({ task }) => {
   const renderTime = () => {
     const timeDuring =
-      moment(task.startTime).tz('Asia/ShangHai').fromNow() +
-      '-' +
-      moment(task.endTime).tz('Asia/ShangHai').fromNow();
+      TimeUtils.dateFromNow(task.startTime) + '-' + TimeUtils.dateFromNow(task.endTime);
     switch (task.status) {
       case 'READY':
         return <span style={{ fontSize: '0.77em' }}>未开始</span>;
       case 'RUNNING':
         return (
           <span style={{ fontSize: '0.77em' }}>
-            {moment(task.startTime).tz('Asia/ShangHai').fromNow() + '-未结束'}
+            {TimeUtils.dateFromNow(task.startTime) + '-未结束'}
           </span>
         );
       case 'DONE':

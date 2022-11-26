@@ -122,7 +122,7 @@ export const PageAppInfo: React.FC = () => {
             console.log('record', record);
             console.log('index', index);
             console.log('action', action);
-            // navigate(`/app-infos/`);
+            navigate(`/app-infos/${record.id}`);
           }}
         >
           查看
