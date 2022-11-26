@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { EmailUtils } from '../email-utils';
+import { EmailUtils } from '../EmailUtils';
 
 describe('Email Utils Test', () => {
   test('aaa is not email', () => {
