@@ -8,7 +8,7 @@ export const axiosAuthInstance = axios.create({
 });
 
 const authorizationProvider = () => {
-  axiosAuthInstance.interceptors.request.use((requestConfig: AxiosRequestConfig) => {
+  axiosAuthInstance.interceptors.request.use((requestConfig: any) => {
     const token = getToken();
 
     return {

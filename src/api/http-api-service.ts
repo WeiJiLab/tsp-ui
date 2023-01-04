@@ -1,7 +1,7 @@
 import { AxiosInstance, AxiosPromise } from 'axios';
 import { HttpResponseHandlerImpl } from './http-response-handler';
 
-import { stringify } from 'query-string';
+import queryString from 'query-string';
 
 class HttpApiService {
   private readonly _axiosInstance: AxiosInstance;
@@ -35,7 +35,7 @@ class HttpApiService {
   }
 
   public getWithParams(endpoint: string, params: any, conf = {}): AxiosPromise {
-    return this.get(`${endpoint}?${stringify(params)}`, conf);
+    return this.get(`${endpoint}?${queryString.stringify(params)}`, conf);
   }
 
   public create(endpoint: string, data: any, conf = {}): AxiosPromise {
