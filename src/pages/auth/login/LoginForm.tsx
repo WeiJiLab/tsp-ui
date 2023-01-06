@@ -31,7 +31,6 @@ export const LoginForm = () => {
     )
       .unwrap()
       .then((it) => {
-        console.log('it', it);
         const { accessToken, username } = it;
 
         if (accessToken) {

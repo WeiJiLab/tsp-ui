@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { config, getToken } from '../common';
 import HttpApiService from './http-api-service';
 

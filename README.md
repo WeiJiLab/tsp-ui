@@ -1,6 +1,12 @@
-# SCP
+# Scp-Web
 
-## RUN
+## 本地环境
+
+### `安装项目依赖`
+
+`yarn install`
+
+**_如果没有 yarn，Mac 可以使用 `brew install yarn`安装_**
 
 ### `启动项目`
 
@@ -10,42 +16,14 @@
 
 `yarn upgrade-interactive --latest `
 
-## React toolkit Example
+### 开发 IDE
 
-- https://github.com/gdagundaridze/rtk-query-toptal-example
-- https://github.com/yxb94616/life-admin
-- https://github.com/hicmtrex/TypeShop-Frontend
-- https://github.com/SmartWebstar/react-ts
+- WebStorm (推荐)
+- VS Code
 
-## styled-components Example
+## 代码提交规范
 
-- https://github.com/young-trigold/blog
-
-## 动画
-
-- https://github.com/yezihaohao/react-admin
-
-## antd 封装
-
-- https://github.com/viewweiwu/amiya
-
-## config scss
-
-- https://mattermost.com/blog/using-react-with-typescript/
-
-## Test Example
-
-- https://github.com/merikbest/ecommerce-spring-reactjs
-
-## DEPS
-
-chart `https://charts.ant.design/`
-
-bootstrap-react `https://react-bootstrap.github.io/`
-
-font-awesome `https://fontawesome.com/how-to-use/on-the-web/using-with/react`
-
-# 代码提交规范
+代码提交 `git commit -m "[Option]: message"`
 
 - build
 - chore
@@ -58,3 +36,38 @@ font-awesome `https://fontawesome.com/how-to-use/on-the-web/using-with/react`
 - revert
 - style
 - test
+
+## 代码参考
+
+### React toolkit Example
+
+- https://github.com/gdagundaridze/rtk-query-toptal-example
+- https://github.com/yxb94616/life-admin
+- https://github.com/hicmtrex/TypeShop-Frontend
+- https://github.com/SmartWebstar/react-ts
+
+### styled-components Example
+
+- https://github.com/young-trigold/blog
+
+### 动画
+
+- https://github.com/yezihaohao/react-admin
+
+### antd 封装
+
+- https://github.com/viewweiwu/amiya
+
+### config scss
+
+- https://mattermost.com/blog/using-react-with-typescript/
+
+### Test Example
+
+- https://github.com/merikbest/ecommerce-spring-reactjs
+
+### DEPS
+
+- chart `https://charts.ant.design/`
+- bootstrap-react `https://react-bootstrap.github.io/`
+- font-awesome `https://fontawesome.com/how-to-use/on-the-web/using-with/react`

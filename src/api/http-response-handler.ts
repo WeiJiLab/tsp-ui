@@ -1,6 +1,5 @@
 import { AxiosResponse } from 'axios';
 import toast from 'react-hot-toast';
-import { removeToken } from '../common';
 
 export interface HttpResponseHandler {
   handleSuccess(response: AxiosResponse): AxiosResponse | Promise<AxiosResponse>;
@@ -36,49 +35,24 @@ export const handleError = (err: any): Promise<any> => {
   return Promise.reject(errorStatement);
 };
 
+const ErrorResponseMapper = {
+  400: '检查请求参数, ',
+  401: '访问失败，用户未登录',
+  403: '访问失败, ',
+  404: '请求资源不存在, ',
+  409: '该资源冲突, ',
+  422: '请求格式正确，但由于语义错误而无法遵循, ',
+  500: '当前服务不可用，请稍后再试',
+};
+
 const handleErrorResponse = (err: any): string => {
   const status = err.response?.status || 500;
 
   console.log(`HttpService::Error(${status}) : `, err.response.data);
 
-  switch (status) {
-    // bad request
-    case 400: {
-      return '检查请求参数, ' + err.response.data.data;
-    }
-
-    // authentication (token related issues)
-    case 401: {
-      removeToken();
-      return '访问失败';
-    }
-
-    case 403: {
-      return '访问失败' + err.response.data.data;
-    }
-
-    // not found
-    case 404: {
-      return '请求资源不存在' + err.response.data.data;
-    }
-
-    // conflict
-    case 409: {
-      return '该资源冲突' + err.response.data.data;
-    }
-
-    // unprocessable
-    case 422: {
-      return '请求格式正确，但由于语义错误而无法遵循' + err.response.data.data;
-    }
-
-    case 500: {
-      return '当前服务不可用，请稍后再试';
-    }
-
-    // generic api error (server related) unexpected
-    default: {
-      return err.response.data.message;
-    }
+  if (Object.prototype.hasOwnProperty.call(ErrorResponseMapper, status)) {
+    return ErrorResponseMapper[status] + err.response.data;
+  } else {
+    return err.response.data.message;
   }
 };

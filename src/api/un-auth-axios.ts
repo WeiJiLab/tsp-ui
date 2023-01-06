@@ -7,4 +7,4 @@ export const axiosPublicInstance = axios.create({
   timeout: 30000,
 });
 
-export const publicAxios = new HttpApiService(axiosPublicInstance);
+export const unAuthAxios = new HttpApiService(axiosPublicInstance);
