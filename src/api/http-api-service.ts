@@ -1,7 +1,6 @@
 import { AxiosInstance, AxiosPromise } from 'axios';
 import { HttpResponseHandlerImpl } from './http-response-handler';
-
-import queryString from 'query-string';
+import * as queryString from 'querystring';
 
 class HttpApiService {
   private readonly _axiosInstance: AxiosInstance;
