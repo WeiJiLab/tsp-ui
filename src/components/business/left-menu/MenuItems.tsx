@@ -5,6 +5,7 @@ import { MenuProps } from 'antd';
 import {
   faCubes,
   faFileSignature,
+  faHeartCircleMinus,
   faHome,
   faListAlt,
   faShieldAlt,
@@ -40,10 +41,12 @@ export const MENU_ITEMS: MenuItems[] = [
     getItem('工具列表', 'TOOLS_LIST', faListAlt),
   ]),
   getItem('安全用例', 'USE_CASES', faFileSignature),
+  getItem('安全漏扫', 'SECURITY_SCAN', faHeartCircleMinus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([
   ['HOME', '/'],
   ['PROJECT_LIST', '/projects'],
   ['APP_INFO', '/app-infos'],
+  ['SECURITY_SCAN', '/scanning'],
 ]);

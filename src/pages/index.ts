@@ -4,3 +4,4 @@ export * from './no-match';
 export * from './application';
 export * from './projects';
 export * from './appInfos';
+export * from './scanningPage';

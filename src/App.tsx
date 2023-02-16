@@ -11,6 +11,7 @@ import {
   ProjectsPage,
   AppInfoPage,
   DetailAppInfo,
+  ScanningPage
 } from './pages';
 import { useAppDispatch } from './hooks';
 import { isAuthenticated } from './common';
@@ -35,6 +36,7 @@ const App: React.FC = () => {
           <Route path='/app-infos' element={<AppInfoPage />} />
           <Route path='/app-infos/:appInfoId' element={<DetailAppInfo />} />
           <Route path='/projects' element={<ProjectsPage />} />
+          <Route path='/scanning' element={<ScanningPage />} />
           <Route path={'*'} element={<NoMatchPage />} />
         </Routes>
       </BrowserRouter>
