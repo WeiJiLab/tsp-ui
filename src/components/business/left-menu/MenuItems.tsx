@@ -36,12 +36,28 @@ function getItem(
 export const MENU_ITEMS: MenuItems[] = [
   getItem('首页', 'HOME', faHome),
   getItem('应用', 'APP_INFO', faHome),
-  getItem('项目', 'PROJECT', faCubes, [getItem('项目列表', 'PROJECT_LIST', faListAlt)]),
-  getItem('安全工具', 'SECURITY_TOOLS', faShieldAlt, [
-    getItem('工具列表', 'TOOLS_LIST', faListAlt),
+
+  // [
+  // getItem('基本信息/KPI', 'PROJECT_LIST', faListAlt),
+  // getItem('架构安全审核', 'APP_INFO', faListAlt, [
+  //   getItem('上传资料', 'APP_INFO', faListAlt),
+  //   getItem('评论记录', '', faListAlt),
+  //   getItem('安全问题列表', '', faListAlt),
+  // ]),
+  // getItem('渗透测试', '', faListAlt, [
+  //   getItem('预约时间', '', faListAlt),
+  //   getItem('渗透测试漏洞列表', '', faListAlt),
+  // ]),
+  // ]
+  getItem('安全服务', 'SECURITY_TOOLS', faShieldAlt, [
+    getItem('订阅license申请', 'TOOLS_LIST', faListAlt),
   ]),
-  getItem('安全用例', 'USE_CASES', faFileSignature),
-  getItem('安全漏扫', 'SECURITY_SCAN', faHeartCircleMinus),
+  getItem('安全规范', 'USE_CASES', faFileSignature, [
+    getItem('安全开发流程', 'Security Development Process', faListAlt),
+    getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
+    getItem('数据安全规范', 'Data Security Specifications', faListAlt),
+  ]),
+  getItem('KPI总览', 'SECURITY_SCAN', faHeartCircleMinus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([

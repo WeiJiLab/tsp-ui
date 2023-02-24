@@ -20,20 +20,20 @@ export const columns: ProColumns<TableListItem>[] = [
     search: false,
   },
   {
-    title: '项目名称',
+    title: '应用名称',
     dataIndex: 'name',
     ellipsis: true,
-    tip: '项目名称过长会自动收缩',
+    tip: '应用名称过长会自动收缩',
   },
   {
-    title: '项目描述',
+    title: '应用描述',
     dataIndex: 'description',
     ellipsis: true,
     search: false,
-    tip: '项目描述过长会自动收缩',
+    tip: '应用描述过长会自动收缩',
   },
   {
-    title: 'OwnerId',
+    title: '负责人',
     dataIndex: 'ownerId',
   },
   {

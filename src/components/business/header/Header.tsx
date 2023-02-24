@@ -84,12 +84,11 @@ export const Header: React.FC = () => {
             <Button onClick={() => navigate('/login')}>{'登录'}</Button>
           </Button.Group>
         )}
+        <>
+          <div style={{ width: '1em' }} />
+          <ToggleThemeButton />
+        </>
       </div>
-
-      <>
-        <div style={{ width: '1em' }} />
-        <ToggleThemeButton />
-      </>
     </Layout.Footer>
   );
 };

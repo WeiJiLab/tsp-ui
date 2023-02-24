@@ -17,6 +17,7 @@ const LeftMenu: React.FC = () => {
       collapsed={collapsed}
       onCollapse={() => dispatch(menuSlice.actions.switchCollapsed())}
       theme={themeMode}
+      width="250"
     >
       <div className='logo'></div>
       <Menu
