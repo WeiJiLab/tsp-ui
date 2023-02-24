@@ -35,7 +35,7 @@ function getItem(
 
 export const MENU_ITEMS: MenuItems[] = [
   getItem('首页', 'HOME', faHome),
-  getItem('应用', 'APP_INFO', faHome),
+  getItem('应用', 'PROJECT_LIST', faHome),
 
   // [
   // getItem('基本信息/KPI', 'PROJECT_LIST', faListAlt),
