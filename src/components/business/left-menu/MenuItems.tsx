@@ -50,7 +50,7 @@ export const MENU_ITEMS: MenuItems[] = [
   // ]),
   // ]
   getItem('安全服务', 'SECURITY_TOOLS', faShieldAlt, [
-    getItem('订阅license申请', 'TOOLS_LIST', faListAlt),
+    getItem('订阅license申请', 'APP_INFO', faListAlt),
   ]),
   getItem('安全规范', 'USE_CASES', faFileSignature, [
     getItem('安全开发流程', 'Security Development Process', faListAlt),
