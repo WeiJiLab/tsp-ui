@@ -15,9 +15,9 @@ import { InboxOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
 
 export const ScanningPage: React.FC = () => {
-  const fileType = '0';
   const timer = useRef<any>();
   const [percent, setPercent] = useState<number>();
+  const [fileType, setFileType] = useState<string>('0');
   const [stepsData, setStepsData] = useState<string[]>();
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
@@ -87,7 +87,7 @@ export const ScanningPage: React.FC = () => {
   };
 
   const handleChange = (value: string) => {
-    // setFileType(value);
+    setFileType(value);
     console.log(`selected ${value}`);
   };
 
