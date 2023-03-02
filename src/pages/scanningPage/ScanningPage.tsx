@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MainLayout } from '../../components';
 import {
   Select,
@@ -23,26 +22,27 @@ export const ScanningPage: React.FC = () => {
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
   const { Dragger } = Upload;
-  const enterLoading = async (index: number) => {
-    setLoadings((prevLoadings) => {
-      const newLoadings = [...prevLoadings];
-      newLoadings[index] = true;
-      return newLoadings;
-    });
 
-    setTimeout(() => {
+  useEffect(() => {
+    return () => {
+      clearInterval(timer.current);
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
-        newLoadings[index] = false;
+        newLoadings[0] = false;
         return newLoadings;
       });
-    }, 6000);
-  };
+    };
+  }, []);
+
   const startScan = async () => {
-    // enterLoading(0);
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[0] = true;
+      return newLoadings;
+    });
     const { data } = await authAxios.post('/image-scan/start', {
-      type_option: fileType,
-      pj_name: 'ab',
+      typeOption: fileType,
+      pjName: '',
     });
     getDetail(data);
   };
@@ -56,7 +56,14 @@ export const ScanningPage: React.FC = () => {
       });
       setStepsData(steps);
       console.log(percent);
-      if (percent === 100) clearInterval(timer.current);
+      if (percent === 100) {
+        clearInterval(timer.current);
+        setLoadings((prevLoadings) => {
+          const newLoadings = [...prevLoadings];
+          newLoadings[0] = false;
+          return newLoadings;
+        });
+      }
     }, 5000);
   };
   const props: UploadProps = {
@@ -83,6 +90,7 @@ export const ScanningPage: React.FC = () => {
     // setFileType(value);
     console.log(`selected ${value}`);
   };
+
   return (
     <MainLayout>
       <Space>

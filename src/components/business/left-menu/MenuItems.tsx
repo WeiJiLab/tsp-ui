@@ -57,7 +57,8 @@ export const MENU_ITEMS: MenuItems[] = [
     getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
     getItem('数据安全规范', 'Data Security Specifications', faListAlt),
   ]),
-  getItem('KPI总览', 'SECURITY_SCAN', faHeartCircleMinus),
+  getItem('KPI总览', '', faHeartCircleMinus),
+  getItem('安全漏扫', 'SECURITY_SCAN', faHeartCircleMinus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([
