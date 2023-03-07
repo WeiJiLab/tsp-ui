@@ -11,7 +11,7 @@ import {
   List,
   Typography,
 } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { DownloadOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
 
 export const ScanningPage: React.FC = () => {
@@ -19,6 +19,8 @@ export const ScanningPage: React.FC = () => {
   const [percent, setPercent] = useState<number>();
   const [fileType, setFileType] = useState<string>('0');
   const [stepsData, setStepsData] = useState<string[]>();
+  const [projectId, setProjectId] = useState<string[]>();
+
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
   const { Dragger } = Upload;
@@ -42,9 +44,25 @@ export const ScanningPage: React.FC = () => {
     });
     const { data } = await authAxios.post('/image-scan/start', {
       typeOption: fileType,
-      pjName: '',
+      projectName: '',
     });
+    setProjectId(data);
     getDetail(data);
+  };
+  const stopScan = async () => {
+    await authAxios.post('/image-scan/stop', {
+      projectId: projectId,
+      typeOption: fileType,
+    });
+    clearInterval(timer.current);
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[0] = false;
+      return newLoadings;
+    });
+  };
+  const download = () => {
+    authAxios.get(`/image-scan/reports/${projectId}`);
   };
   const getDetail = (projectId: string) => {
     timer.current = setInterval(async () => {
@@ -96,19 +114,23 @@ export const ScanningPage: React.FC = () => {
       <Space>
         <Select
           defaultValue={fileType}
-          style={{ width: 120 }}
+          style={{ width: 150 }}
           onChange={handleChange}
           options={[
-            { value: '0', label: '有源' },
-            { value: '1', label: '无源' },
+            { value: '0', label: '内核源码扫描' },
+            { value: '1', label: '内核镜像扫描' },
             { value: '2', label: '其他' },
           ]}
         />
         <Button type='primary' loading={loadings[0]} onClick={startScan}>
           启动扫描
         </Button>
+        <Button type='primary' onClick={stopScan}>
+          停止扫描
+        </Button>
+        <Button type='primary' icon={<DownloadOutlined />} onClick={download} />
       </Space>
-      <Dragger {...props}>
+      {/* <Dragger {...props}>
         <p className='ant-upload-drag-icon'>
           <InboxOutlined />
         </p>
@@ -117,7 +139,7 @@ export const ScanningPage: React.FC = () => {
           Support for a single or bulk upload. Strictly prohibit from uploading company data or
           other band files
         </p>
-      </Dragger>
+      </Dragger> */}
       <Progress percent={percent} strokeColor={{ '0%': '#108ee9', '100%': '#87d068' }} />
       <List
         header={<div></div>}
