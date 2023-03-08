@@ -13,14 +13,19 @@ import {
 } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
-
+interface detailResult {
+  result: string;
+  timeStamp: string;
+}
 export const ScanningPage: React.FC = () => {
   const timer = useRef<any>();
   const [percent, setPercent] = useState<number>();
   const [fileType, setFileType] = useState<string>('0');
-  const [stepsData, setStepsData] = useState<string[]>();
-  const [projectId, setProjectId] = useState<string[]>();
-
+  const [stepsData, setStepsData] = useState<detailResult[]>();
+  const [projectId, setProjectId] = useState<string>();
+  const [buttonText, setButtonText] = useState<string>('开始扫描');
+  const [scanStatus, setScanStatus] = useState<boolean>(true);
+  const [downloadStatus, setDownloadStatus] = useState<boolean>(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
   const { Dragger } = Upload;
@@ -28,11 +33,11 @@ export const ScanningPage: React.FC = () => {
   useEffect(() => {
     return () => {
       clearInterval(timer.current);
-      setLoadings((prevLoadings) => {
-        const newLoadings = [...prevLoadings];
-        newLoadings[0] = false;
-        return newLoadings;
-      });
+      // setLoadings((prevLoadings) => {
+      //   const newLoadings = [...prevLoadings];
+      //   newLoadings[0] = false;
+      //   return newLoadings;
+      // });
     };
   }, []);
 
@@ -42,6 +47,8 @@ export const ScanningPage: React.FC = () => {
       newLoadings[0] = true;
       return newLoadings;
     });
+    setButtonText('正在扫描');
+    setScanStatus(false);
     const { data } = await authAxios.post('/image-scan/start', {
       typeOption: fileType,
       projectName: '',
@@ -60,6 +67,8 @@ export const ScanningPage: React.FC = () => {
       newLoadings[0] = false;
       return newLoadings;
     });
+    setButtonText('开始扫描');
+    setScanStatus(true);
   };
   const download = () => {
     authAxios.get(`/image-scan/reports/${projectId}`);
@@ -70,7 +79,7 @@ export const ScanningPage: React.FC = () => {
       const percent = Math.round((data.length / 6) * 100);
       setPercent(percent);
       const steps = (await authAxios.get(`/image-scan/steps/${projectId}`))['data'].map((item) => {
-        return item.result;
+        return { result: item.result, timeStamp: item.timeStamp };
       });
       setStepsData(steps);
       console.log(percent);
@@ -81,6 +90,9 @@ export const ScanningPage: React.FC = () => {
           newLoadings[0] = false;
           return newLoadings;
         });
+        setButtonText('开始扫描');
+        setScanStatus(true);
+        setDownloadStatus(true);
       }
     }, 5000);
   };
@@ -121,14 +133,20 @@ export const ScanningPage: React.FC = () => {
             { value: '1', label: '内核镜像扫描' },
             { value: '2', label: '其他' },
           ]}
+          disabled={!scanStatus}
         />
-        <Button type='primary' loading={loadings[0]} onClick={startScan}>
-          启动扫描
+        <Button type='primary' loading={loadings[0]} onClick={startScan} disabled={!scanStatus}>
+          {buttonText}
         </Button>
-        <Button type='primary' onClick={stopScan}>
+        <Button type='primary' onClick={stopScan} disabled={scanStatus}>
           停止扫描
         </Button>
-        <Button type='primary' icon={<DownloadOutlined />} onClick={download} />
+        <Button
+          type='primary'
+          icon={<DownloadOutlined />}
+          onClick={download}
+          disabled={!downloadStatus}
+        />
       </Space>
       {/* <Dragger {...props}>
         <p className='ant-upload-drag-icon'>
@@ -142,13 +160,13 @@ export const ScanningPage: React.FC = () => {
       </Dragger> */}
       <Progress percent={percent} strokeColor={{ '0%': '#108ee9', '100%': '#87d068' }} />
       <List
-        header={<div></div>}
-        footer={<div></div>}
         bordered
+        split={false}
+        size='small'
         dataSource={stepsData}
         renderItem={(item) => (
           <List.Item>
-            <Typography.Text mark></Typography.Text> {item}
+            <Typography.Text mark>{item.timeStamp}</Typography.Text> {item.result}
           </List.Item>
         )}
       />
