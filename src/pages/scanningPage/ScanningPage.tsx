@@ -21,6 +21,8 @@ export const ScanningPage: React.FC = () => {
   const timer = useRef<any>();
   const [percent, setPercent] = useState<number>();
   const [fileType, setFileType] = useState<string>('0');
+  const [statusData, setStatusData] = useState<[]>();
+
   const [stepsData, setStepsData] = useState<detailResult[]>();
   const [projectId, setProjectId] = useState<string>();
   const [buttonText, setButtonText] = useState<string>('开始扫描');
@@ -42,6 +44,9 @@ export const ScanningPage: React.FC = () => {
   }, []);
 
   const startScan = async () => {
+    setStatusData([]);
+    setStepsData([]);
+    setPercent(0);
     setLoadings((prevLoadings) => {
       const newLoadings = [...prevLoadings];
       newLoadings[0] = true;
@@ -76,6 +81,13 @@ export const ScanningPage: React.FC = () => {
   const getDetail = (projectId: string) => {
     timer.current = setInterval(async () => {
       const { data } = await authAxios.get(`/image-scan/stage-status/${projectId}`);
+      const status = data.map((item) => {
+        return `${item.step} ${item.status}`;
+      });
+      setStatusData(status);
+
+      // console.log(status);
+
       const percent = Math.round((data.length / 6) * 100);
       setPercent(percent);
       const steps = (await authAxios.get(`/image-scan/steps/${projectId}`))['data'].map((item) => {
@@ -118,6 +130,10 @@ export const ScanningPage: React.FC = () => {
 
   const handleChange = (value: string) => {
     setFileType(value);
+    setStatusData([]);
+    setStepsData([]);
+    setPercent(0);
+
     console.log(`selected ${value}`);
   };
 
@@ -159,6 +175,11 @@ export const ScanningPage: React.FC = () => {
         </p>
       </Dragger> */}
       <Progress percent={percent} strokeColor={{ '0%': '#108ee9', '100%': '#87d068' }} />
+      <List
+        grid={{ gutter: 0, column: 6 }}
+        dataSource={statusData}
+        renderItem={(item) => <List.Item>{item}</List.Item>}
+      />
       <List
         bordered
         split={false}
