@@ -13,6 +13,8 @@ import {
 } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
+import styles from './ScanningPage.module.css';
+
 interface detailResult {
   result: string;
   timeStamp: string;
@@ -35,15 +37,11 @@ export const ScanningPage: React.FC = () => {
   useEffect(() => {
     return () => {
       clearInterval(timer.current);
-      // setLoadings((prevLoadings) => {
-      //   const newLoadings = [...prevLoadings];
-      //   newLoadings[0] = false;
-      //   return newLoadings;
-      // });
     };
   }, []);
 
   const startScan = async () => {
+    setDownloadStatus(false);
     setStatusData([]);
     setStepsData([]);
     setPercent(0);
@@ -85,9 +83,6 @@ export const ScanningPage: React.FC = () => {
         return `${item.step} ${item.status}`;
       });
       setStatusData(status);
-
-      // console.log(status);
-
       const percent = Math.round((data.length / 6) * 100);
       setPercent(percent);
       const steps = (await authAxios.get(`/image-scan/steps/${projectId}`))['data'].map((item) => {
@@ -186,7 +181,7 @@ export const ScanningPage: React.FC = () => {
         size='small'
         dataSource={stepsData}
         renderItem={(item) => (
-          <List.Item>
+          <List.Item className={styles.item}>
             <Typography.Text mark>{item.timeStamp}</Typography.Text> {item.result}
           </List.Item>
         )}
