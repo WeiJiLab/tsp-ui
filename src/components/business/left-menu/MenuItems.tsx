@@ -9,6 +9,7 @@ import {
   faHome,
   faListAlt,
   faShieldAlt,
+  faShieldVirus
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
@@ -58,7 +59,7 @@ export const MENU_ITEMS: MenuItems[] = [
     getItem('数据安全规范', 'Data Security Specifications', faListAlt),
   ]),
   getItem('KPI总览', '', faHeartCircleMinus),
-  getItem('漏洞扫描', 'SECURITY_SCAN', ),
+  getItem('漏洞扫描', 'SECURITY_SCAN', faShieldVirus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([
