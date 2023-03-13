@@ -72,10 +72,10 @@ export const Header: React.FC = () => {
       <div className={styles.RightContainer}>
         {jwtToken ? (
           <Button.Group className={styles['button-group']}>
-            <span>
+            <div className={styles.text}>
               {'欢迎'}
               <Typography.Text strong>{username}</Typography.Text>
-            </span>
+            </div>
             <Button onClick={onLogout}>{'注销'}</Button>
           </Button.Group>
         ) : (
