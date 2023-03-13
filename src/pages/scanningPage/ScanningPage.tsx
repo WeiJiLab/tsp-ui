@@ -13,6 +13,7 @@ import {
 } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
+import api from '../../api/api';
 import styles from './ScanningPage.module.css';
 
 interface detailResult {
@@ -40,7 +41,7 @@ export const ScanningPage: React.FC = () => {
     };
   }, []);
 
-  const startScan = async () => {
+  const startScaning = async () => {
     setDownloadStatus(false);
     setStatusData([]);
     setStepsData([]);
@@ -52,15 +53,15 @@ export const ScanningPage: React.FC = () => {
     });
     setButtonText('正在扫描');
     setScanStatus(false);
-    const { data } = await authAxios.post('/image-scan/start', {
+    const { data } = await authAxios.post(api.startScaning, {
       typeOption: fileType,
       projectName: '',
     });
     setProjectId(data);
     getDetail(data);
   };
-  const stopScan = async () => {
-    await authAxios.post('/image-scan/stop', {
+  const stopScaning = async () => {
+    await authAxios.post(api.stopScaning, {
       projectId: projectId,
       typeOption: fileType,
     });
@@ -74,22 +75,21 @@ export const ScanningPage: React.FC = () => {
     setScanStatus(true);
   };
   const download = () => {
-    authAxios.get(`/image-scan/reports/${projectId}`);
+    authAxios.get(`${api.getReports}/${projectId}`);
   };
   const getDetail = (projectId: string) => {
     timer.current = setInterval(async () => {
-      const { data } = await authAxios.get(`/image-scan/stage-status/${projectId}`);
+      const { data } = await authAxios.get(`${api.getStageStatus}/${projectId}`);
       const status = data.map((item) => {
         return `${item.step} ${item.status}`;
       });
       setStatusData(status);
       const percent = Math.round((data.length / 6) * 100);
       setPercent(percent);
-      const steps = (await authAxios.get(`/image-scan/steps/${projectId}`))['data'].map((item) => {
+      const steps = (await authAxios.get(`${api.getSteps}/${projectId}`)).data.map((item) => {
         return { result: item.result, timeStamp: item.timeStamp };
       });
       setStepsData(steps);
-      console.log(percent);
       if (percent === 100) {
         clearInterval(timer.current);
         setLoadings((prevLoadings) => {
@@ -128,7 +128,6 @@ export const ScanningPage: React.FC = () => {
     setStatusData([]);
     setStepsData([]);
     setPercent(0);
-
     console.log(`selected ${value}`);
   };
 
@@ -146,10 +145,10 @@ export const ScanningPage: React.FC = () => {
           ]}
           disabled={!scanStatus}
         />
-        <Button type='primary' loading={loadings[0]} onClick={startScan} disabled={!scanStatus}>
+        <Button type='primary' loading={loadings[0]} onClick={startScaning} disabled={!scanStatus}>
           {buttonText}
         </Button>
-        <Button type='primary' onClick={stopScan} disabled={scanStatus}>
+        <Button type='primary' onClick={stopScaning} disabled={scanStatus}>
           停止扫描
         </Button>
         <Button
@@ -182,7 +181,7 @@ export const ScanningPage: React.FC = () => {
         dataSource={stepsData}
         renderItem={(item) => (
           <List.Item className={styles.item}>
-            <Typography.Text mark>{item.timeStamp}</Typography.Text> {item.result}
+            <Typography.Text>{item.timeStamp}</Typography.Text> {item.result}
           </List.Item>
         )}
       />
