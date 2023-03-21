@@ -4,4 +4,5 @@ export default {
   getReports:'/image-scan/reports',
   getStageStatus: '/image-scan/stage-status',
   getSteps: '/image-scan/steps',
+  upload:'/image-scan/upload'
 };

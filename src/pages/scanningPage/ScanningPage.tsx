@@ -11,10 +11,10 @@ import {
   List,
   Typography,
 } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
+import { DownloadOutlined, UploadOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
 import api from '../../api/api';
-import styles from './ScanningPage.module.css';
+import styles from './ScanningPage.module.scss';
 
 interface detailResult {
   result: string;
@@ -32,8 +32,6 @@ export const ScanningPage: React.FC = () => {
   const [scanStatus, setScanStatus] = useState<boolean>(true);
   const [downloadStatus, setDownloadStatus] = useState<boolean>(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
-
-  const { Dragger } = Upload;
 
   useEffect(() => {
     return () => {
@@ -105,21 +103,18 @@ export const ScanningPage: React.FC = () => {
   };
   const props: UploadProps = {
     name: 'file',
-    multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    headers: {
+      authorization: 'authorization-text',
+    },
     onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
+      if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
+      if (info.file.status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
-    },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
     },
   };
 
@@ -145,6 +140,7 @@ export const ScanningPage: React.FC = () => {
           ]}
           disabled={!scanStatus}
         />
+
         <Button type='primary' loading={loadings[0]} onClick={startScaning} disabled={!scanStatus}>
           {buttonText}
         </Button>
@@ -158,16 +154,19 @@ export const ScanningPage: React.FC = () => {
           disabled={!downloadStatus}
         />
       </Space>
-      {/* <Dragger {...props}>
-        <p className='ant-upload-drag-icon'>
-          <InboxOutlined />
-        </p>
-        <p className='ant-upload-text'>Click or drag file to this area to upload</p>
-        <p className='ant-upload-hint'>
-          Support for a single or bulk upload. Strictly prohibit from uploading company data or
-          other band files
-        </p>
-      </Dragger> */}
+      <div className={styles.upload}>
+        <Space direction="vertical">
+          <Upload {...props} maxCount={1} action={`${api.upload}/image`}>
+            <Button icon={<UploadOutlined />}>上传内核镜像 </Button>
+          </Upload>
+          <Upload {...props} maxCount={1} action={`${api.upload}/map`}>
+            <Button icon={<UploadOutlined />}>上传符号 </Button>
+          </Upload>
+          <Upload {...props} maxCount={1} action={`${api.upload}/defconfig`}>
+            <Button icon={<UploadOutlined />}>上传编译参数 </Button>
+          </Upload>
+        </Space>
+      </div>
       <Progress percent={percent} strokeColor={{ '0%': '#108ee9', '100%': '#87d068' }} />
       <List
         grid={{ gutter: 0, column: 6 }}
