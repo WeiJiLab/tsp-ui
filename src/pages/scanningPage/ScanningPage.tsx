@@ -31,6 +31,8 @@ export const ScanningPage: React.FC = () => {
   const [buttonText, setButtonText] = useState<string>('开始扫描');
   const [scanStatus, setScanStatus] = useState<boolean>(true);
   const [downloadStatus, setDownloadStatus] = useState<boolean>(false);
+  const [upload, setUpload] = useState<boolean>(false);
+
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
   useEffect(() => {
@@ -124,6 +126,11 @@ export const ScanningPage: React.FC = () => {
     setStepsData([]);
     setPercent(0);
     console.log(`selected ${value}`);
+    if (value === '1') {
+      setUpload(true);
+    } else {
+      setUpload(false);
+    }
   };
 
   return (
@@ -154,19 +161,21 @@ export const ScanningPage: React.FC = () => {
           disabled={!downloadStatus}
         />
       </Space>
-      <div className={styles.upload}>
-        <Space direction="vertical">
-          <Upload {...props} maxCount={1} action={`${api.upload}/image`}>
-            <Button icon={<UploadOutlined />}>上传内核镜像 </Button>
-          </Upload>
-          <Upload {...props} maxCount={1} action={`${api.upload}/map`}>
-            <Button icon={<UploadOutlined />}>上传符号 </Button>
-          </Upload>
-          <Upload {...props} maxCount={1} action={`${api.upload}/defconfig`}>
-            <Button icon={<UploadOutlined />}>上传编译参数 </Button>
-          </Upload>
-        </Space>
-      </div>
+      {upload && (
+        <div className={styles.upload}>
+          <Space direction='vertical'>
+            <Upload {...props} maxCount={1} action={`${api.upload}/image`}>
+              <Button icon={<UploadOutlined />}>上传内核镜像 </Button>
+            </Upload>
+            <Upload {...props} maxCount={1} action={`${api.upload}/map`}>
+              <Button icon={<UploadOutlined />}>上传符号 </Button>
+            </Upload>
+            <Upload {...props} maxCount={1} action={`${api.upload}/defconfig`}>
+              <Button icon={<UploadOutlined />}>上传编译参数 </Button>
+            </Upload>
+          </Space>
+        </div>
+      )}
       <Progress percent={percent} strokeColor={{ '0%': '#108ee9', '100%': '#87d068' }} />
       <List
         grid={{ gutter: 0, column: 6 }}
