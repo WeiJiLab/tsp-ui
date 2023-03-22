@@ -15,6 +15,7 @@ import { DownloadOutlined, UploadOutlined } from '@ant-design/icons';
 import { authAxios } from '../../api';
 import api from '../../api/api';
 import styles from './ScanningPage.module.scss';
+import { config, getToken } from '../../common';
 
 interface detailResult {
   result: string;
@@ -106,7 +107,7 @@ export const ScanningPage: React.FC = () => {
   const props: UploadProps = {
     name: 'file',
     headers: {
-      authorization: 'authorization-text',
+      authorization: config.api.TOKEN_SUFFIX + getToken(),
     },
     onChange(info) {
       if (info.file.status !== 'uploading') {
