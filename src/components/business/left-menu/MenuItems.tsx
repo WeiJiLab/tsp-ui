@@ -3,13 +3,12 @@ import React from 'react';
 import { MenuProps } from 'antd';
 
 import {
-  faCubes,
   faFileSignature,
   faHeartCircleMinus,
   faHome,
   faListAlt,
   faShieldAlt,
-  faShieldVirus
+  faShieldVirus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';

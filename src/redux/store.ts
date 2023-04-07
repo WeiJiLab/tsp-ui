@@ -19,7 +19,7 @@ const combinedReducer = combineReducers<typeof rootReducer>(rootReducer);
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'menu'],
 };
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
