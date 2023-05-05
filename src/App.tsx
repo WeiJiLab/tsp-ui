@@ -11,7 +11,8 @@ import {
   ProjectsPage,
   AppInfoPage,
   DetailAppInfo,
-  ScanningPage
+  ScanningPage,
+  GuidePage,
 } from './pages';
 import { useAppDispatch } from './hooks';
 import { isAuthenticated } from './common';
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/guide' element={<GuidePage />} />
           <Route path='/app-infos' element={<AppInfoPage />} />
           <Route path='/app-infos/:appInfoId' element={<DetailAppInfo />} />
           <Route path='/projects' element={<ProjectsPage />} />
