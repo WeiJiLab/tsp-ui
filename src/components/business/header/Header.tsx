@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { Layout, Button, Typography, Tooltip } from 'antd';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ToggleThemeButton } from './toggle-theme-button';
 
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';

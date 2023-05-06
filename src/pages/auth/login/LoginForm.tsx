@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { EmailUtils } from '../../../common';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { loginSuccess } from '../../../redux/auth/auth-slice';
+
 import toast from 'react-hot-toast';
 
 const layout = {
@@ -13,7 +15,7 @@ const layout = {
   wrapperCol: { span: 16 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 6, span: 16 },
 };
 
 export const LoginForm = () => {
@@ -34,6 +36,7 @@ export const LoginForm = () => {
         const { accessToken, username } = it;
 
         if (accessToken) {
+          dispatch(loginSuccess(accessToken));
           toast.success('👏登录成功 !');
           toast.success(`👏欢迎回来：${username}`);
           navigate('/');
@@ -86,9 +89,13 @@ export const LoginForm = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type='primary' htmlType='submit' loading={loading}>
+        <Button type='primary' htmlType='submit' className='login-form-button' loading={loading}>
           登录
         </Button>
+      </Form.Item>
+
+      <Form.Item {...tailLayout}>
+        或者 <a href='/register'>现在注册 !</a>
       </Form.Item>
     </Form>
   );

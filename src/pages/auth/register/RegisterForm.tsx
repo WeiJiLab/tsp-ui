@@ -95,6 +95,10 @@ export const RegisterForm = () => {
           注册
         </Button>
       </Form.Item>
+
+      <Form.Item {...tailLayout}>
+        已有账号 ？ <a href='/login'>立即登录</a>
+      </Form.Item>
     </Form>
   );
 };
