@@ -1,11 +1,10 @@
 import jwtDecode, { JwtPayload as DefaultJwtPayload } from 'jwt-decode';
+import { User } from '../../@types/User';
 
-interface JwtPayload extends DefaultJwtPayload {
-  username: string;
-}
+interface JwtPayload extends DefaultJwtPayload, User {}
 
 export class JwtUtils {
-  public static getJwtPayload = (jwtToken: string) => {
+  public static getJwtPayload = (jwtToken: string | any) => {
     return jwtDecode<JwtPayload>(jwtToken);
   };
 
