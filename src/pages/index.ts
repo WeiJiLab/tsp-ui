@@ -5,3 +5,4 @@ export * from './application';
 export * from './projects';
 export * from './appInfos';
 export * from './scanningPage';
+export * from './guide';
