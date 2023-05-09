@@ -11,7 +11,8 @@ import {
   ProjectsPage,
   AppInfoPage,
   DetailAppInfo,
-  ScanningPage, GuidePage,
+  ScanningPage,
+  GuidePage,
 } from './pages';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { logOut } from './redux/auth/auth-slice';
@@ -49,15 +50,10 @@ const App: React.FC = () => {
           <Route element={<RequireUser allowedRoles={['user', 'admin']} />}>
             <Route path='/app-infos/:appInfoId' element={<DetailAppInfo />} />
           </Route>
-
-          <Route element={<RequireUser allowedRoles={['user', 'admin']} />}>
-            <Route path='/guide' element={<GuidePage />} />
-          </Route>
-
           <Route path='unauthorized' element={<UnAuthorizePage />} />
-
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/guide' element={<GuidePage />} />
           <Route path={'*'} element={<NoMatchPage />} />
         </Routes>
       </BrowserRouter>
