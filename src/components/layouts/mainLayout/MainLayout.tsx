@@ -15,17 +15,17 @@ interface PropsTypes {
 export const MainLayout: React.FC<PropsTypes> = ({ loading = false, children }) => {
   return (
     <>
-      <Layout style={{ minHeight: '100vh' }}>
-        <LeftMenu />
+      <Layout style={{ maxHeight: '100vh' }}>
+        <Header />
         <Layout className='site-layout'>
-          <Header />
-          <Content style={{ margin: '0 16px' }}>
+          <LeftMenu />
+          <Content style={{ overflow: 'auto' }}>
             {/* 页面内容 content */}
             <div className='site-layout-background' style={{ padding: 24, minHeight: 360 }}>
               {loading ? <ScpSpan /> : children}
             </div>
+            {/* <Footer /> */}
           </Content>
-          <Footer />
         </Layout>
       </Layout>
 

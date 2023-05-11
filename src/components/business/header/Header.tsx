@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import { Layout, Button, Typography, Tooltip } from 'antd';
+import logo from '../../../assets/new-header-logo.png';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToggleThemeButton } from './toggle-theme-button';
 
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
@@ -39,7 +40,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <Layout.Footer
+    <Layout.Header
       style={
         themeMode === 'dark'
           ? {
@@ -47,27 +48,33 @@ export const Header: React.FC = () => {
               boxShadow: '0 0 2px rgb(0 0 0/0.4)',
             }
           : {
-              backgroundColor: '#ffffff',
+              backgroundColor: '#001528',
               boxShadow: '0 0 2px rgb(0 0 0 / 0.1)',
+              paddingInline: 20,
             }
       }
       className={styles.HeaderContainer}
     >
-      <Tooltip>
+      <div className={styles.logo}>
+        <img src={logo} alt='' height='30px' />
+        <h1>OneSec</h1>
+      </div>
+
+      {/* <Tooltip>
         {collapsed ? (
           <MenuUnfoldOutlined
             className={styles.menuIcon}
             onClick={switchCollapsed}
-            style={themeMode === 'dark' ? { color: '#ffffff' } : { color: '#242526' }}
+            style={themeMode === 'dark' ? { color: '#001528' } : { color: '#242526' }}
           />
         ) : (
           <MenuFoldOutlined
             className={styles.menuIcon}
             onClick={switchCollapsed}
-            style={themeMode === 'dark' ? { color: '#ffffff' } : { color: '#242526' }}
+            style={themeMode === 'dark' ? { color: '#001528' } : { color: '#242526' }}
           />
         )}
-      </Tooltip>
+      </Tooltip> */}
 
       <div className={styles.RightContainer}>
         {jwtToken ? (
@@ -80,15 +87,15 @@ export const Header: React.FC = () => {
           </Button.Group>
         ) : (
           <Button.Group className={styles['button-group']}>
-            <Button onClick={() => navigate('/register')}>{'注册'}</Button>
-            <Button onClick={() => navigate('/login')}>{'登录'}</Button>
+            {/* <Button onClick={() => navigate('/register')}>{'注册'}</Button> */}
+            <Button size='small' onClick={() => navigate('/login')}>{'登录'}</Button>
           </Button.Group>
         )}
         <>
-          <div style={{ width: '1em' }} />
-          <ToggleThemeButton />
+          {/* <div style={{ width: '1em' }} /> */}
+          {/* <ToggleThemeButton /> */}
         </>
       </div>
-    </Layout.Footer>
+    </Layout.Header>
   );
 };

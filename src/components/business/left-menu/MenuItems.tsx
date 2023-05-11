@@ -3,12 +3,13 @@ import React from 'react';
 import { MenuProps } from 'antd';
 
 import {
-  faFileSignature,
-  faHeartCircleMinus,
+  faInfo,
+  faList,
   faHome,
   faListAlt,
   faShieldAlt,
-  faShieldVirus,
+  faAppleAlt
+  
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
@@ -34,8 +35,14 @@ function getItem(
 }
 
 export const MENU_ITEMS: MenuItems[] = [
-  getItem('首页', 'HOME', faHome),
-  getItem('应用', 'PROJECT_LIST', faHome),
+  getItem('HOME', 'HOME', faHome),
+  getItem('My Apps', 'APPS_LIST', faList),
+  getItem('How-To', 'HOW_TO', faShieldAlt),
+  getItem('REPORT', 'REPORT', faListAlt),
+  getItem('DataSec', 'APPS_LIST', ),
+  getItem('CodeSec', 'APPS_LIST', ),
+
+
 
   // [
   // getItem('基本信息/KPI', 'PROJECT_LIST', faListAlt),
@@ -49,21 +56,21 @@ export const MENU_ITEMS: MenuItems[] = [
   //   getItem('渗透测试漏洞列表', '', faListAlt),
   // ]),
   // ]
-  getItem('安全服务', 'SECURITY_TOOLS', faShieldAlt, [
-    getItem('订阅license申请', 'APP_INFO', faListAlt),
-  ]),
-  getItem('安全规范', 'USE_CASES', faFileSignature, [
-    getItem('安全开发流程', 'Security Development Process', faListAlt),
-    getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
-    getItem('数据安全规范', 'Data Security Specifications', faListAlt),
-  ]),
-  getItem('KPI总览', '', faHeartCircleMinus),
-  getItem('漏洞扫描', 'SECURITY_SCAN', faShieldVirus),
+  // getItem('安全服务', 'SECURITY_TOOLS', faShieldAlt, [
+  //   getItem('订阅license申请', 'APP_INFO', faListAlt),
+  // ]),
+  // getItem('安全规范', 'USE_CASES', faFileSignature, [
+  //   getItem('安全开发流程', 'Security Development Process', faListAlt),
+  //   getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
+  //   getItem('数据安全规范', 'Data Security Specifications', faListAlt),
+  // ]),
+  // getItem('KPI总览', '', faHeartCircleMinus),
+  // getItem('漏洞扫描', 'SECURITY_SCAN', faShieldVirus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([
   ['HOME', '/'],
-  ['PROJECT_LIST', '/projects'],
-  ['APP_INFO', '/app-infos'],
-  ['SECURITY_SCAN', '/scanning'],
+  ['APPS_LIST', '/my_apps'],
+  ['HOW_TO', '/app-infos'],
+  ['REPORT', '/scanning'],
 ]);
