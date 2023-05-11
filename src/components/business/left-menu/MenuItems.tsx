@@ -71,6 +71,6 @@ export const MENU_ITEMS: MenuItems[] = [
 export const MENU_NAVIGATE = new Map<string, string>([
   ['HOME', '/'],
   ['APPS_LIST', '/my_apps'],
-  ['HOW_TO', '/app-infos'],
+  ['HOW_TO', '/guide'],
   ['REPORT', '/scanning'],
 ]);

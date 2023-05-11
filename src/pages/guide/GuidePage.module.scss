@@ -1,11 +1,11 @@
-.list{
-    padding: 50px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.list {
+  padding: 30px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
-.item{
-    width: 30%;
-    height: 100px;
-    margin: 50px 0;
+.item {
+  width: 250px;
+  height: 100px;
+  margin: 50px;
 }
