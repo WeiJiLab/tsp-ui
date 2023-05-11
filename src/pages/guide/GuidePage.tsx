@@ -42,7 +42,6 @@ export const GuidePage: React.FC = () => {
         onSearch={onSearch}
       />
       <div className={styles.list}>
-        {/* <Space style={{ width: '30%' }}> */}
         <Dropdown
           menu={{ items }}
           placement='bottomLeft'
@@ -67,52 +66,45 @@ export const GuidePage: React.FC = () => {
         >
           <Button>Compliance</Button>
         </Dropdown>
-        {/* </Space> */}
-        {/* <Space style={{ width: '30%' }}> */}
         <Dropdown
           menu={{ items }}
-          placement='bottom'
+          placement='bottomLeft'
           arrow={{ pointAtCenter: true }}
           className={styles.item}
         >
-          <Button>Security Policy</Button>
-        </Dropdown>
-        {/* </Space> */}
-
-        {/* <Space style={{ width: '30%' }}> */}
-        <Dropdown
-          menu={{ items }}
-          placement='bottomRight'
-          arrow={{ pointAtCenter: true }}
-          className={styles.item}
-        >
-          <Button>bottomRight</Button>
-        </Dropdown>
-        {/* </Space> */}
-
-        <Dropdown
-          menu={{ items }}
-          placement='topLeft'
-          arrow={{ pointAtCenter: true }}
-          className={styles.item}
-        >
-          <Button>topLeft</Button>
+          <Button>Compliance</Button>
         </Dropdown>
         <Dropdown
           menu={{ items }}
-          placement='top'
+          placement='bottomLeft'
           arrow={{ pointAtCenter: true }}
           className={styles.item}
         >
-          <Button>top</Button>
+          <Button>Compliance</Button>
         </Dropdown>
         <Dropdown
           menu={{ items }}
-          placement='topRight'
+          placement='bottomLeft'
           arrow={{ pointAtCenter: true }}
           className={styles.item}
         >
-          <Button>topRight</Button>
+          <Button>Compliance</Button>
+        </Dropdown>
+        <Dropdown
+          menu={{ items }}
+          placement='bottomLeft'
+          arrow={{ pointAtCenter: true }}
+          className={styles.item}
+        >
+          <Button>Compliance</Button>
+        </Dropdown>
+        <Dropdown
+          menu={{ items }}
+          placement='bottomLeft'
+          arrow={{ pointAtCenter: true }}
+          className={styles.item}
+        >
+          <Button>Compliance</Button>
         </Dropdown>
       </div>
     </MainLayout>
