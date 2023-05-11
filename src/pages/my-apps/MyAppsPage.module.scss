@@ -1,0 +1,74 @@
+$MyAppPageMinWidth: 700px;
+$MyAppPageMaxWidth: 1600px;
+
+.MyAppsPage {
+  border: none;
+  border-radius: 0.4em;
+  font-size: 0.9em;
+  background: #EDF1F3;
+  font-weight: bolder;
+}
+
+.MyAppHeader {
+  min-width: $MyAppPageMinWidth;
+  max-width: $MyAppPageMaxWidth;
+
+  background: #FFFFFF;
+
+  border: 1px;
+  border-radius: 0.4em;
+  font-size: 0.9em;
+  font-weight: bolder;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.3), 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px 20px 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+
+  %CardCountFontWeight {
+    font-weight: 700;
+  }
+
+  .HeaderNameFount {
+    @extend %CardCountFontWeight;
+    color: #000000;
+  }
+
+  .VulnerabilityHigh {
+    @extend %CardCountFontWeight;
+    color: #F2617A;
+  }
+
+  .VulnerabilityMedium {
+    @extend %CardCountFontWeight;
+    color: #CC8508;
+  }
+
+  .VulnerabilityLow {
+    @extend %CardCountFontWeight;
+    color: #6B9E78;
+  }
+
+}
+
+.MyAppList {
+  min-width: $MyAppPageMinWidth;
+  max-width: $MyAppPageMaxWidth;
+
+  border: none;
+  border-radius: 0.4em;
+  font-size: 0.9em;
+  background: #EDF1F3;
+  font-weight: bolder;
+
+  .MyApps {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    //justify-content: center;
+  }
+}
+
+
+
+

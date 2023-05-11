@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from './hooks';
 import { logOut } from './redux/auth/auth-slice';
 import { UnAuthorizePage } from './pages/unauthorized';
 import RequireUser from './route/RequireUser';
+import MyAppsPage from './pages/my-apps/MyAppsPage';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +37,9 @@ const App: React.FC = () => {
           {/* Private Route */}
           <Route element={<RequireUser allowedRoles={['*', 'admin']} />}>
             <Route path='/' element={<HomePage />} />
+          </Route>
+          <Route element={<RequireUser allowedRoles={['*']} />}>
+            <Route path='/my-apps' element={<MyAppsPage />} />
           </Route>
 
           <Route element={<RequireUser allowedRoles={['user', 'admin']} />}>

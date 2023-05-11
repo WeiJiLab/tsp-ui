@@ -1,0 +1,55 @@
+.AppCard {
+  border: none;
+  border-radius: 0.4em;
+  margin-right: 10px;
+  margin-bottom: 2px;
+
+  .SecuritySubCard {
+    border: 1px;
+    border-radius: 0.4em;
+    font-size: 0.9em;
+    font-weight: bolder;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.6), 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 5px;
+    margin-bottom: 10px;
+  }
+
+  .AppName {
+    color: #000000;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+  }
+
+  .StatisticalTitleStyle {
+    color: #000000;
+    text-align: left;
+  }
+
+  %CardCountFontWeight {
+    font-weight: 700;
+  }
+
+  .SecurityToDoCount {
+    @extend %CardCountFontWeight;
+    color: #000000;
+  }
+
+  .VulnerabilityHigh {
+    @extend %CardCountFontWeight;
+    color: #F2617A;
+  }
+
+  .VulnerabilityMedium {
+    @extend %CardCountFontWeight;
+    color: #CC8508;
+  }
+
+  .VulnerabilityLow {
+    @extend %CardCountFontWeight;
+    color: #6B9E78;
+  }
+}
