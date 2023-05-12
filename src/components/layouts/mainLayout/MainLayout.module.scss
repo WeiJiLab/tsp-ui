@@ -1,4 +1,9 @@
-.content{
-    padding: 25px;
-    min-height: calc(100vh - 45px);
+@import "../../../styles/common";
+
+.layout {
+  max-height: 100vh;
+
+  .content {
+    min-height: calc(100vh - $primary-header-height);
+  }
 }

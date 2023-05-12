@@ -1,98 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Header.module.scss';
-import { Layout, Button, Typography } from 'antd';
+import {Layout, Typography} from 'antd';
 import logo from '../../../assets/new-header-logo.png';
 
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-import { JwtUtils, getToken } from '../../../common';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { menuSlice } from '../../../redux/menu/slice';
-import { logOut } from '../../../redux/auth/auth-slice';
+import {JwtUtils, getToken} from '../../../common';
+import {useAppDispatch} from '../../../hooks';
+import {logOut} from '../../../redux/auth/auth-slice';
+import LinkButton from '../../basic/button/LinkButton';
+
 
 export const Header: React.FC = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
-  const jwtToken = getToken();
-  const themeMode = useAppSelector((state) => state.menu.themeMode);
-  const collapsed = useAppSelector((state) => state.menu.collapsed);
+    const jwtToken = getToken();
 
-  const [username, setUsername] = useState<string>('');
+    const [username, setUsername] = useState<string>('');
 
-  useEffect(() => {
-    if (jwtToken) {
-      const token = JwtUtils.getJwtPayload(jwtToken);
-      setUsername(token.username);
-    }
-  }, [jwtToken]);
+    useEffect(() => {
+        if (jwtToken) {
+            const token = JwtUtils.getJwtPayload(jwtToken);
+            setUsername(token.username);
+        }
+    }, [jwtToken]);
+    const onLogout = () => {
+        dispatch(logOut());
+        navigate('/login');
+    };
 
-  const switchCollapsed = () => {
-    dispatch(menuSlice.actions.switchCollapsed());
-  };
-
-  const onLogout = () => {
-    dispatch(logOut());
-    navigate('/login');
-  };
-
-  return (
-    <Layout.Header
-      style={
-        themeMode === 'dark'
-          ? {
-              backgroundColor: '#242526',
-              boxShadow: '0 0 2px rgb(0 0 0/0.4)',
-            }
-          : {
-              backgroundColor: '#001528',
-              boxShadow: '0 0 2px rgb(0 0 0 / 0.1)',
-              paddingInline: 20,
-            }
-      }
-      className={styles.HeaderContainer}
-    >
-      <div className={styles.logo}>
-        <img src={logo} alt='' height='30px' />
-        <h1>OneSec</h1>
-      </div>
-
-      {/* <Tooltip>
-        {collapsed ? (
-          <MenuUnfoldOutlined
-            className={styles.menuIcon}
-            onClick={switchCollapsed}
-            style={themeMode === 'dark' ? { color: '#001528' } : { color: '#242526' }}
-          />
-        ) : (
-          <MenuFoldOutlined
-            className={styles.menuIcon}
-            onClick={switchCollapsed}
-            style={themeMode === 'dark' ? { color: '#001528' } : { color: '#242526' }}
-          />
-        )}
-      </Tooltip> */}
-
-      <div className={styles.RightContainer}>
-        {jwtToken ? (
-          <Button.Group className={styles['button-group']}>
-            <div className={styles.text}>
-              {'欢迎'}
-              <Typography.Text strong>{username}</Typography.Text>
+    return (
+        <Layout.Header
+            className={styles['HeaderContainer']}
+        >
+            <div className={styles.logo}>
+                <img src={logo} alt='' height='40px'/>
+                <h1>One Security</h1>
             </div>
-            <Button onClick={onLogout}>{'注销'}</Button>
-          </Button.Group>
-        ) : (
-          <Button.Group className={styles['button-group']}>
-            {/* <Button onClick={() => navigate('/register')}>{'注册'}</Button> */}
-            <Button size='small' onClick={() => navigate('/login')}>{'登录'}</Button>
-          </Button.Group>
-        )}
-        <>
-          {/* <div style={{ width: '1em' }} /> */}
-          {/* <ToggleThemeButton /> */}
-        </>
-      </div>
-    </Layout.Header>
-  );
+
+            <div className={styles.RightContainer}>
+                {jwtToken ? (
+                    <>
+                        <div>
+                            {'欢迎'}
+                            <Typography.Text strong>{username}</Typography.Text>
+                        </div>
+
+                        <LinkButton onClick={onLogout}>
+                            {'Logout'}
+                        </LinkButton>
+                    </>
+                ) : (
+
+                    <LinkButton onClick={() => navigate('/login')}>
+                        {'Login'}
+                    </LinkButton>
+                )}
+            </div>
+        </Layout.Header>
+    );
 };
