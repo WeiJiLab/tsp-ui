@@ -1,26 +1,23 @@
-@import "../../../styles/common";
+@import '../../../styles/common';
 
 .HeaderContainer {
   background: $primary-page-background-color;
-  height: $primary-header-height;
-
-  width: 100%;
+  max-height: $primary-header-height;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s cubic-bezier(0.34, 0.69, 0.1, 1);
-  padding: 0 20px 0 20px;
+  padding-inline: 20px !important;
 
   .logo {
-    color: #fff;
+    color: $white;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     h1 {
-      color: #013D4F;
       margin: 0 0 0 10px;
-      font-size: 30px;
+      font-size: 25px;
     }
   }
 
@@ -30,12 +27,14 @@
     margin-right: 10px;
   }
 
-
   .text {
-    color: #A7A7A7;
-    font-size: 25px;
+    color: $link-gray;
+    font-size: 15px;
     padding: 0 5px 0 5px;
-    text-decoration: none;
-    border-bottom: 2px solid;
+    display: flex;
+    align-items: center;
+    span {
+      color: $link-gray;
+    }
   }
 }

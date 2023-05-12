@@ -35,14 +35,14 @@ export const Header: React.FC = () => {
             className={styles['HeaderContainer']}
         >
             <div className={styles.logo}>
-                <img src={logo} alt='' height='40px'/>
+                <img src={logo} alt='' height='30px'/>
                 <h1>One Security</h1>
             </div>
 
             <div className={styles.RightContainer}>
                 {jwtToken ? (
                     <>
-                        <div>
+                        <div className={styles.text}>
                             {'欢迎'}
                             <Typography.Text strong>{username}</Typography.Text>
                         </div>

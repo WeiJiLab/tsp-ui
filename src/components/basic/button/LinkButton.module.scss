@@ -1,10 +1,11 @@
+@import '../../../styles/common';
 .LinkButton {
   padding: 0 5px 0 5px;
 }
 
 .link {
-    color: #A7A7A7;
-    font-size: 25px;
-    text-decoration: none;
-    border-bottom: 2px solid;
+  color: $link-gray;
+  font-size: 15px;
+  text-decoration: none;
+  border-bottom: 2px solid;
 }
