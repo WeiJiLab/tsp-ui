@@ -3,12 +3,10 @@ import React from 'react';
 import { MenuProps } from 'antd';
 
 import {
-  faInfo,
   faList,
   faHome,
   faListAlt,
-  faShieldAlt,
-  faAppleAlt
+  faShieldAlt
   
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,8 +37,8 @@ export const MENU_ITEMS: MenuItems[] = [
   getItem('My Apps', 'APPS_LIST', faList),
   getItem('How-To', 'HOW_TO', faShieldAlt),
   getItem('REPORT', 'REPORT', faListAlt),
-  getItem('DataSec', 'APPS_LIST', ),
-  getItem('CodeSec', 'APPS_LIST', ),
+  getItem('DataSec', 'DATA_SEC', ),
+  getItem('CodeSec', 'CODE_SEC', ),
 
 
 
@@ -70,7 +68,9 @@ export const MENU_ITEMS: MenuItems[] = [
 
 export const MENU_NAVIGATE = new Map<string, string>([
   ['HOME', '/'],
-  ['APPS_LIST', '/my_apps'],
+  ['APPS_LIST', '/my-apps'],
   ['HOW_TO', '/guide'],
   ['REPORT', '/scanning'],
+  ['DATA_SEC', '/'],
+  ['CODE_SEC', '/code-sec'],
 ]);

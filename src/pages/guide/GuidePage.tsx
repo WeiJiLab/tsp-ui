@@ -1,10 +1,8 @@
 import React from 'react';
-import { Header, MainLayout } from '../../components';
-import { Layout, Input, Button, Dropdown, MenuProps, Space } from 'antd';
+import { MainLayout } from '../../components';
+import { Input, Button, Dropdown, MenuProps } from 'antd';
 import styles from './GuidePage.module.scss';
 const { Search } = Input;
-const { Content } = Layout;
-
 const onSearch = (value: string) => console.log(value);
 const items: MenuProps['items'] = [
   {

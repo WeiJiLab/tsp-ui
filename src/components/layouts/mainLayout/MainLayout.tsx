@@ -1,7 +1,7 @@
 import React from 'react';
 import LeftMenu from '../../business/left-menu/LeftMenu';
 import { Layout } from 'antd';
-import { Footer, Header } from '../../index';
+import { Header } from '../../index';
 import { ScpSpan } from '../../basic';
 import { Outlet } from 'react-router-dom';
 import styles from './MainLayout.module.scss'

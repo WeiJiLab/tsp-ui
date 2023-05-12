@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
-import { Layout, Button, Typography, Tooltip } from 'antd';
+import { Layout, Button, Typography } from 'antd';
 import logo from '../../../assets/new-header-logo.png';
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ToggleThemeButton } from './toggle-theme-button';
-
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 import { JwtUtils, getToken } from '../../../common';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
