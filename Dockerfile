@@ -1,32 +1,32 @@
-FROM node:alpine as builder
+FROM nginx:1.19.9
 
-WORKDIR /home
-ADD . /home
+# Dockerfile Describe
+LABEL MAINTAINER="TSP Platform" \
+			RUNTIME=NGINX \
+      TECHSTACK=WEB \
+      OS=ALPINE
 
-#############################################
-# for production build
-# RUN yarn install && yarn build
+WORKDIR /app
 
-#############################################
-# for development build
-RUN yarn install \
-    && sed -i 's/'\''build'\''/'\''dist'\''/g' ./node_modules/react-scripts/config/paths.js \
-    && sed -i 's/'\''..\/..\/build'\''/'\''..\/..\/dist'\''/g' ./node_modules/react-scripts/config/paths.js \
-    && sed -i 's/'\''production'\''/'\''development'\''/g' ./node_modules/react-scripts/scripts/build.js \
-    && yarn build
+COPY ./vhost.conf /etc/nginx/conf.d/vhost.conf
+COPY ./build/ ./
 
+# RUN chown -R 1000:1000 /app && chmod -R 755 /app && \
+#         chown -R 1000:1000 /var/cache/nginx && \
+#         chown -R 1000:1000 /var/log/nginx && \
+#         chown -R 1000:1000 /etc/nginx/conf.d
+# RUN touch /var/run/nginx.pid && \
+#         chown -R 1000:1000 /var/run/nginx.pid
+# USER 1000
 
-FROM nginx
+EXPOSE 8000
 
-RUN rm -rf /usr/share/nginx/html/*
+# USER root
+# RUN apk add --no-cache tzdata \
+#     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-#############################################
-# for production build
-# COPY --from=builder /home/build/ /usr/share/nginx/html/
+# User must be uid is 1000
+# USER 1000
 
-#############################################
-# for development build
-COPY --from=builder /home/dist/ /usr/share/nginx/html/
-
-EXPOSE 80
-ENTRYPOINT nginx & tail -f /dev/null
+# Mast Modify this CMD with you own
+# CMD ["nginx", "-g", "daemon off;"]
