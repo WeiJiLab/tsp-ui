@@ -8,16 +8,16 @@ LABEL MAINTAINER="TSP Platform" \
 
 WORKDIR /app
 
-COPY ./vhost.conf /etc/nginx/conf.d/vhost.conf
-COPY ./build/ ./
+COPY --chown=1000:1000 ./vhost.conf /etc/nginx/conf.d/vhost.conf
+COPY --chown=1000:1000 ./build/ ./
 
-# RUN chown -R 1000:1000 /app && chmod -R 755 /app && \
-#         chown -R 1000:1000 /var/cache/nginx && \
-#         chown -R 1000:1000 /var/log/nginx && \
-#         chown -R 1000:1000 /etc/nginx/conf.d
-# RUN touch /var/run/nginx.pid && \
-#         chown -R 1000:1000 /var/run/nginx.pid
-# USER 1000
+RUN chown -R 1000:1000 /app && chmod -R 755 /app && \
+        chown -R 1000:1000 /var/cache/nginx && \
+        chown -R 1000:1000 /var/log/nginx && \
+        chown -R 1000:1000 /etc/nginx/conf.d
+RUN touch /var/run/nginx.pid && \
+        chown -R 1000:1000 /var/run/nginx.pid
+USER 1000
 
 EXPOSE 8000
 
