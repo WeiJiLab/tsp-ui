@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  tsp-ui:
+    build:
+      dockerfile: Dockerfile
+    networks:
+      - tsp-net
+    ports:
+      - "8000:8000"
+
+networks:
+  tsp-net:
+    driver: bridge
