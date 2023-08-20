@@ -65,7 +65,7 @@ jobs:
 
       - uses: convictional/trigger-workflow-and-wait@v1.3.0
         with:
-          owner: WeiJiLib
+          owner: WeiJiLab
           repo: tsp-docker-compose-file
           github_token: ${{ secrets.ZHU_TOKEN }}
           workflow_file_name: action.yml
