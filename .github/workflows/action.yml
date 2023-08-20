@@ -111,9 +111,14 @@ jobs:
           # 启动 Session Manager 会话
           unbuffer aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
 
-          sudo su - 
+          unbuffer aws ssm start-session \
+                   --document-name 'AWS-StartNonInteractiveCommand' \
+                   --parameters '{"command": ["sudo sh -c \"cd tsp-ui/ && ls -al\""]}' \
+                   --target ${{ secrets.AWS_INSTANCE_ID }}
 
-          whoami
+          # sudo su - 
+
+          # whoami
 
           # cd tsp-ui/
 
