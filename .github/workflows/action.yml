@@ -70,6 +70,9 @@ jobs:
       contents: write
 
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
       # - name: Generate Temporary Credentials
       #   env:
       #     AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
@@ -117,9 +120,9 @@ jobs:
           #          --target ${{ secrets.AWS_INSTANCE_ID }}
 
           aws ssm send-command \
-                   --document-name 'AWS-RunShellScript' \
-                   --parameters '{"commands":["#!/bin/bash","sudo su -","cd tsp-ui/","docker-compose down"]}' \
-                   --targets '[{"Key":"InstanceIds","Values":["${{ secrets.AWS_INSTANCE_ID }}"]}]'
+              --document-name 'AWS-RunShellScript' \
+              --targets '[{"Key":"InstanceIds","Values":["${{ secrets.AWS_INSTANCE_ID }}"]}]' \
+              --cli-input-json file://installCodeDeployAgent.json
 
           # curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
           # sudo dpkg -i session-manager-plugin.deb
