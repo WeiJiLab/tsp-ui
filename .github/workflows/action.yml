@@ -106,7 +106,7 @@ jobs:
           # echo "[default]" > ~/.aws/config
           # echo "region = us-east-1" >> ~/.aws/config
 
-          # sudo apt install -y expect
+          sudo apt install -y expect
 
           # 启动 Session Manager 会话
           # unbuffer aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
@@ -116,24 +116,16 @@ jobs:
           #          --parameters '{"command": ["sudo sh -c \"cd tsp-ui/ && ls -al\""]}' \
           #          --target ${{ secrets.AWS_INSTANCE_ID }}
 
-          curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-          sudo dpkg -i session-manager-plugin.deb
-          sudo apt-get update
-          sudo apt-get install -y session-manager-plugin
-          sudo apt-get install -y expect
-          session-manager-plugin --version
+          unbuffer aws ssm start-session \
+                   --document-name 'AWS-StartNonInteractiveCommand' \
+                   --parameters '{"command": ["sudo sh -c \"cd tsp-ui/ && ls -al\""]}' \
+                   --target ${{ secrets.AWS_INSTANCE_ID }}
 
-      - name: Create Start SSH Session
-        shell : sh
-        run: |
-          aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
-
-          sudo su - 
-
-          whoami
-
-          # cd tsp-ui/
-
-          # ls -al
+          # curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+          # sudo dpkg -i session-manager-plugin.deb
+          # sudo apt-get update
+          # sudo apt-get install -y session-manager-plugin
+          # sudo apt-get install -y expect
+          # session-manager-plugin --version
 
 
