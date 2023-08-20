@@ -106,6 +106,8 @@ jobs:
           # echo "[default]" > ~/.aws/config
           # echo "region = us-east-1" >> ~/.aws/config
 
+          apt install -y expect
+
           # 启动 Session Manager 会话
           aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
 
