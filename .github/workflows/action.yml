@@ -65,10 +65,9 @@ jobs:
 
   connect-to-ec2:
     runs-on: ubuntu-latest
-    # permissions:
-    #   id-token: write
-    #   statuses: write
-    #   contents: read
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       # - name: Generate Temporary Credentials
