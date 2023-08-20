@@ -99,7 +99,7 @@ jobs:
       - name: Connect to EC2 using Session Manager
         run: |
 
-          aws sts get-caller-identity
+          # aws sts get-caller-identity
 
           # # 设置 AWS 配置文件
           # mkdir -p ~/.aws
@@ -108,3 +108,11 @@ jobs:
 
           # 启动 Session Manager 会话
           aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
+
+          sudo su - 
+
+          cd /tsp-ui
+
+          ls -al
+
+
