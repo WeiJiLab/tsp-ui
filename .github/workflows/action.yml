@@ -118,7 +118,7 @@ jobs:
 
           unbuffer aws ssm start-session \
                    --document-name 'AWS-StartNonInteractiveCommand' \
-                   --parameters '{"command": ["sudo sh -c \"cd tsp-ui/ && ls -al\""]}' \
+                   --parameters '{"command": ["sudo su - \"cd tsp-ui/ && ls -al\""]}' \
                    --target ${{ secrets.AWS_INSTANCE_ID }}
 
           # curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
