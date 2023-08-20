@@ -67,7 +67,7 @@ jobs:
         with:
           owner: WeiJiLib
           repo: tsp-docker-compose-file
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ZHU_TOKEN }}
           workflow_file_name: action.yml
           ref: master
           wait_interval: 5
