@@ -126,7 +126,7 @@ jobs:
       - name: Create Start SSH Session
         shell : sh
         run: |
-          aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }} --document-name AWS-StartSSHSession
+          aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
 
           sudo su - 
 
