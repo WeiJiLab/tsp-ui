@@ -65,37 +65,45 @@ jobs:
 
   connect-to-ec2:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      statuses: write
-      contents: read
+    # permissions:
+    #   id-token: write
+    #   statuses: write
+    #   contents: read
 
     steps:
-      - name: Generate Temporary Credentials
-        env:
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
-        run: |
-          # 使用 AWS CLI 获取临时凭证
-          CREDENTIALS=$(aws sts assume-role --role-arn $AWS_ROLE_ARN --role-session-name GitHubAction)
+      # - name: Generate Temporary Credentials
+      #   env:
+      #     AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+      #     AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      #   run: |
+      #     # 使用 AWS CLI 获取临时凭证
+      #     CREDENTIALS=$(aws sts assume-role --role-arn $AWS_ROLE_ARN --role-session-name GitHubAction)
           
-          # 解析临时凭证中的凭证信息
-          AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId')
-          AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey')
-          AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.Credentials.SessionToken')
+      #     # 解析临时凭证中的凭证信息
+      #     AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId')
+      #     AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey')
+      #     AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.Credentials.SessionToken')
           
-          # 设置临时凭证为 GitHub Actions 环境变量
-          echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
-          echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" >> $GITHUB_ENV
+      #     # 设置临时凭证为 GitHub Actions 环境变量
+      #     echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
+      #     echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
+      #     echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" >> $GITHUB_ENV
+
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-session-name: GithubSession
+          # role-chaining: true
 
       - name: Connect to EC2 using Session Manager
         run: |
 
-          # 设置 AWS 配置文件
-          mkdir -p ~/.aws
-          echo "[default]" > ~/.aws/config
-          echo "region = us-east-1" >> ~/.aws/config
+          # # 设置 AWS 配置文件
+          # mkdir -p ~/.aws
+          # echo "[default]" > ~/.aws/config
+          # echo "region = us-east-1" >> ~/.aws/config
 
           # 启动 Session Manager 会话
           aws ssm start-session --target ${{ secrets.AWS_INSTANCE_ID }}
