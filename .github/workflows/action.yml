@@ -116,7 +116,7 @@ jobs:
 
           unbuffer aws ssm start-session \
                    --document-name 'AWS-StartNonInteractiveCommand' \
-                   --parameters '{"command": ["sudo sh -c \" sudo su - && cd /root/tsp-ui && ls -al && docker-compose ps -a \""]}' \
+                   --parameters '{"command": ["sudo sh -c \"cd /root/tsp-ui && ls -al && sudo docker-compose ps -a \""]}' \
                    --target ${{ secrets.AWS_INSTANCE_ID }}
 
           # aws ssm send-command \
