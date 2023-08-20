@@ -1,4 +1,4 @@
-name: Build and Upload tsp-ui && Deploy to AWS ec2 with docker-compose
+name: Build && Deploy tsp-ui
 
 on:
   push:
@@ -20,6 +20,9 @@ jobs:
 
       - name: Install yarn dependencies
         run: yarn install
+
+      - name: Build frontend
+        run: yarn build
 
       - name: Build and tag Docker image
         run: |
