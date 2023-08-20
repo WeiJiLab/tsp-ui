@@ -1,1 +1,36 @@
-test
+name: Build and Upload tsp-ui && Deploy to AWS ec2 with docker-compose
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install yarn dependencies
+        run: yarn install
+
+      - name: Build and tag Docker image
+        run: |
+          IMAGE_TAG=${{ github.sha }}
+          docker build -t tsp-ui .
+          docker tag tsp-ui:latest docker.pkg.github.com/${{ github.repository }}/tsp-ui:${IMAGE_TAG}
+
+      - name: Log in to GitHub Packages
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Push Docker image to GitHub Packages
+        run: |
+          IMAGE_TAG=${{ github.sha }}
+          docker push docker.pkg.github.com/${{ github.repository }}/tsp-ui:${IMAGE_TAG}
