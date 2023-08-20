@@ -111,8 +111,10 @@ jobs:
 
           sudo su - 
 
-          cd tsp-ui/
+          whoami
 
-          ls -al
+          # cd tsp-ui/
+
+          # ls -al
 
 
