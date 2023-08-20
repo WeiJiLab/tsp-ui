@@ -12,84 +12,80 @@ env:
   GIT_TAG: ${{ github.sha }}
 
 jobs:
-  # build-and-upload:
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: read
-  #     packages: write
+  build-and-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  #     - name: Cache Node modules
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-yarn-
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: '16'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-  #     - name: Install yarn dependencies
-  #       run: yarn install
+      - name: Install yarn dependencies
+        run: yarn install
 
-  #     - name: Build tsp-ui
-  #       run: yarn build
+      - name: Build tsp-ui
+        run: yarn build
 
-  #     - name: Log in to the Container registry
-  #       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-  #       with:
-  #         registry: ${{ env.REGISTRY }}
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-  #     - name: Extract metadata (tags, labels) for Docker
-  #       id: meta
-  #       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-  #       with:
-  #         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-  #         tags: ${{ env.GIT_TAG }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: ${{ env.GIT_TAG }}
       
-  #     - name: Build and push Docker image
-  #       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-  #       with:
-  #         context: .
-  #         push: true
-  #         tags: ${{ steps.meta.outputs.tags }}
-  #         labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+          owner: WeiJiLib
+          repo: tsp-docker-compose-file
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: action.yml
+          ref: master
+          wait_interval: 5
+          inputs: '{"image_tag": "${{ env.GIT_TAG }}"}'
+          propagate_failure: true
+          trigger_workflow: true
+          wait_workflow: true
 
   connect-to-ec2:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
-
+    needs: build-and-upload
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v2
-      # - name: Generate Temporary Credentials
-      #   env:
-      #     AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-      #     AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
-      #   run: |
-      #     # 使用 AWS CLI 获取临时凭证
-      #     CREDENTIALS=$(aws sts assume-role --role-arn $AWS_ROLE_ARN --role-session-name GitHubAction)
-          
-      #     # 解析临时凭证中的凭证信息
-      #     AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId')
-      #     AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey')
-      #     AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.Credentials.SessionToken')
-          
-      #     # 设置临时凭证为 GitHub Actions 环境变量
-      #     echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
-      #     echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
-      #     echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" >> $GITHUB_ENV
 
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@master
@@ -102,13 +98,6 @@ jobs:
       - name: Connect to EC2 using Session Manager
         run: |
 
-          # aws sts get-caller-identity
-
-          # # 设置 AWS 配置文件
-          # mkdir -p ~/.aws
-          # echo "[default]" > ~/.aws/config
-          # echo "region = us-east-1" >> ~/.aws/config
-
           sudo apt install -y expect
 
           # 启动 Session Manager 会话
@@ -116,19 +105,8 @@ jobs:
 
           unbuffer aws ssm start-session \
                    --document-name 'AWS-StartNonInteractiveCommand' \
-                   --parameters '{"command": ["sudo sh -c \"cd /root/tsp-ui && ls -al && sudo docker-compose ps -a \""]}' \
+                   --parameters '{"command": ["sudo sh -c \"cd /root/tsp-docker-compose-file && git pull && cd /tsp-ui && ls -al && sudo docker-compose down &&  sudo docker-compose up -d \""]}' \
                    --target ${{ secrets.AWS_INSTANCE_ID }}
 
-          # aws ssm send-command \
-          #     --document-name 'AWS-RunShellScript' \
-          #     --targets '[{"Key":"InstanceIds","Values":["${{ secrets.AWS_INSTANCE_ID }}"]}]' \
-          #     --cli-input-json file://installCodeDeployAgent.json
-
-          # curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-          # sudo dpkg -i session-manager-plugin.deb
-          # sudo apt-get update
-          # sudo apt-get install -y session-manager-plugin
-          # sudo apt-get install -y expect
-          # session-manager-plugin --version
 
 
