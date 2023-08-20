@@ -118,7 +118,7 @@ jobs:
 
           aws ssm send-command \
                    --document-name 'AWS-RunShellScript' \
-                   --parameters '{"commands":["#!/bin/bash","sudo su -","cd tsp-ui/","ls -al"]}' \
+                   --parameters '{"commands":["#!/bin/bash","sudo su -","cd tsp-ui/","docker-compose down"]}' \
                    --targets '[{"Key":"InstanceIds","Values":["${{ secrets.AWS_INSTANCE_ID }}"]}]'
 
           # curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
