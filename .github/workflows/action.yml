@@ -99,6 +99,8 @@ jobs:
       - name: Connect to EC2 using Session Manager
         run: |
 
+          aws sts get-caller-identity
+
           # # 设置 AWS 配置文件
           # mkdir -p ~/.aws
           # echo "[default]" > ~/.aws/config
