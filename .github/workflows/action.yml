@@ -112,7 +112,7 @@ jobs:
 
           unbuffer aws ssm start-session \
                    --document-name 'AWS-StartNonInteractiveCommand' \
-                   --parameters '{"command": ["sudo sh -c \"cd /root && rm -rf tsp-docker-compose-file/ && git clone git@github.com:WeiJiLab/tsp-docker-compose-file.git && ls -al \""]}' \
+                   --parameters '{"command": ["sudo sh -c \"cd /root && rm -rf tsp-docker-compose-file/ && git clone git@github.com:WeiJiLab/tsp-docker-compose-file.git && ls -al && cd /tsp-docker-compose-file && ls -al \""]}' \
                    --target ${{ secrets.AWS_INSTANCE_ID }}
 
 
