@@ -87,13 +87,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@master
         with:
@@ -101,6 +94,14 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: GithubSession
           # role-chaining: true
+
+      - name: Cache package directory
+        uses: actions/cache@v2
+        with:
+          path: /var/cache/apt/archives
+          key: apt-cache-key-${{ runner.os }}-${{ hashFiles('**/*.txt') }}
+          restore-keys: |
+            apt-cache-key-${{ runner.os }}-
 
       - name: Connect to EC2 using Session Manager
         run: |
