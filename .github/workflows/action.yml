@@ -95,14 +95,6 @@ jobs:
           role-session-name: GithubSession
           # role-chaining: true
 
-      # - name: Cache package directory
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: /var/cache/apt/archives
-      #     key: apt-cache-key-${{ runner.os }}-${{ hashFiles('**/*.txt') }}
-      #     restore-keys: |
-      #       apt-cache-key-${{ runner.os }}-
-
       - name: Connect to EC2 using Session Manager
         run: |
 
