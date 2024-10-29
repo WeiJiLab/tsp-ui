@@ -29,7 +29,7 @@ export const ScanningPage: React.FC = () => {
 
   const [stepsData, setStepsData] = useState<detailResult[]>();
   const [projectId, setProjectId] = useState<string>();
-  const [buttonText, setButtonText] = useState<string>('开始扫描');
+  const [buttonText, setButtonText] = useState<string>('Start Scanning');
   const [scanStatus, setScanStatus] = useState<boolean>(true);
   const [downloadStatus, setDownloadStatus] = useState<boolean>(false);
   const [upload, setUpload] = useState<boolean>(false);
@@ -72,7 +72,7 @@ export const ScanningPage: React.FC = () => {
       newLoadings[0] = false;
       return newLoadings;
     });
-    setButtonText('开始扫描');
+    setButtonText('Start Scanning');
     setScanStatus(true);
   };
   const download = () => {
@@ -98,7 +98,7 @@ export const ScanningPage: React.FC = () => {
           newLoadings[0] = false;
           return newLoadings;
         });
-        setButtonText('开始扫描');
+        setButtonText('Start Scanning');
         setScanStatus(true);
         setDownloadStatus(true);
       }

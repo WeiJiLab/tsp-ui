@@ -8,23 +8,23 @@ import { faCube, faCubes, faFileArchive, faHistory } from '@fortawesome/free-sol
 export const HomePage: React.FC = () => {
   return (
     <MainLayout>
-      {/* 资源 */}
+      {/* Resources */}
       <div className={styles.Resource}>
-        <h2 className={styles.titleText}>资源</h2>
+        <h2 className={styles.titleText}>Resources</h2>
         <Col className={styles.ResourceItem}>
-          <ResourceCard title={'项目'} count={3} icon={faCube} to={'/projects'} />
-          <ResourceCard title={'应用'} count={3} icon={faCubes} to={'/app-infos'} />
-          <ResourceCard title={'扫描记录'} count={3} icon={faHistory} to={'/dashboard'} />
-          <ResourceCard title={'扫描结果'} count={3} icon={faFileArchive} to={'/dashboard'} />
+          <ResourceCard title={'Resources'} count={3} icon={faCube} to={'/projects'} />
+          <ResourceCard title={'Application'} count={3} icon={faCubes} to={'/app-infos'} />
+          <ResourceCard title={'Scan Records'} count={3} icon={faHistory} to={'/dashboard'} />
+          <ResourceCard title={'Scan Results'} count={3} icon={faFileArchive} to={'/dashboard'} />
         </Col>
       </div>
 
       {/* 统计 */}
       <div className={styles.Resource}>
-        <h2 className={styles.titleText}>统计</h2>
+        <h2 className={styles.titleText}>Statistics</h2>
         <Col className={styles.ResourceItem}>
           <BaseRingPieCharts
-            title={'安全工具'}
+            title={'Security Tools'}
             date={[
               { type: 'SCA', value: 27 },
               { type: 'SAST', value: 25 },
@@ -35,7 +35,7 @@ export const HomePage: React.FC = () => {
             ]}
           />
           <BaseRingPieCharts
-            title={'用例'}
+            title={'Usecases'}
             date={[
               { type: 'Inspec', value: 27 },
               { type: 'Others', value: 19 },
@@ -48,7 +48,7 @@ export const HomePage: React.FC = () => {
       <div className={styles.Resource}>
         <Row>
           <Col span={12}>
-            <h2 className={styles.titleText}>最近的扫描</h2>
+            <h2 className={styles.titleText}>Lastest Scan</h2>
             <TaskItemCard
               task={{
                 id: 1,
@@ -114,7 +114,7 @@ export const HomePage: React.FC = () => {
             />
           </Col>
           <Col span={12}>
-            <h2 className={styles.titleText}>等待扫描的任务</h2>
+            <h2 className={styles.titleText}>Waiting Tasks</h2>
             <TaskItemCard
               task={{
                 id: 1,

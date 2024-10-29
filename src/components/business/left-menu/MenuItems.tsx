@@ -34,8 +34,8 @@ function getItem(
 }
 
 export const MENU_ITEMS: MenuItems[] = [
-  getItem('首页', 'HOME', faHome),
-  getItem('应用', 'PROJECT_LIST', faHome),
+  getItem('Home', 'HOME', faHome),
+  getItem('Application', 'PROJECT_LIST', faHome),
 
   // [
   // getItem('基本信息/KPI', 'PROJECT_LIST', faListAlt),
@@ -49,16 +49,16 @@ export const MENU_ITEMS: MenuItems[] = [
   //   getItem('渗透测试漏洞列表', '', faListAlt),
   // ]),
   // ]
-  getItem('安全服务', 'SECURITY_TOOLS', faShieldAlt, [
+  getItem('Security Service', 'SECURITY_TOOLS', faShieldAlt, [
     getItem('订阅license申请', 'APP_INFO', faListAlt),
   ]),
-  getItem('安全规范', 'USE_CASES', faFileSignature, [
+  getItem('Security Regulations', 'USE_CASES', faFileSignature, [
     getItem('安全开发流程', 'Security Development Process', faListAlt),
     getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
     getItem('数据安全规范', 'Data Security Specifications', faListAlt),
   ]),
-  getItem('KPI总览', '', faHeartCircleMinus),
-  getItem('漏洞扫描', 'SECURITY_SCAN', faShieldVirus),
+  getItem('KPI Overview', '', faHeartCircleMinus),
+  getItem('Vulnerability Scanning', 'SECURITY_SCAN', faShieldVirus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([
