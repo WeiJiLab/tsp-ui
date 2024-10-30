@@ -11,6 +11,7 @@ import { JwtUtils, getToken } from '../../../common';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { menuSlice } from '../../../redux/menu/slice';
 import { logOut } from '../../../redux/auth/auth-slice';
+import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export const Header: React.FC = () => {
   const collapsed = useAppSelector((state) => state.menu.collapsed);
 
   const [username, setUsername] = useState<string>('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (jwtToken) {
@@ -73,15 +75,15 @@ export const Header: React.FC = () => {
         {jwtToken ? (
           <Button.Group className={styles['button-group']}>
             <div className={styles.text}>
-              {'欢迎'}
+              {t('header.welcome')}
               <Typography.Text strong>{username}</Typography.Text>
             </div>
-            <Button onClick={onLogout}>{'注销'}</Button>
+            <Button onClick={onLogout}>{t('header.logout')}</Button>
           </Button.Group>
         ) : (
           <Button.Group className={styles['button-group']}>
-            <Button onClick={() => navigate('/register')}>{'注册'}</Button>
-            <Button onClick={() => navigate('/login')}>{'登录'}</Button>
+            <Button onClick={() => navigate('/register')}>{t('header.register')}</Button>
+            <Button onClick={() => navigate('/login')}>{t('header.login')}</Button>
           </Button.Group>
         )}
         <>

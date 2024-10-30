@@ -83,7 +83,7 @@ export const PageProject: React.FC = () => {
         onChange: handleChangePagination,
       }}
       dateFormatter='string'
-      headerTitle='项目'
+      headerTitle='Project'
       toolBarRender={() => [<CreateProject key={1} />]}
     ></ProTable>
   );

@@ -8,10 +8,13 @@ import toast from 'react-hot-toast';
 import { createAppInfo } from '../../../redux/appInfo/app-info-thunks';
 import { AppInfoForm } from '../../../models';
 import { refreshPage } from '../../../redux/appInfo/app-info-actions';
+import { useTranslation } from 'react-i18next';
 
 export const CreateAppInfo: React.FC = () => {
   const dispatch = useAppDispatch();
   const [form] = Form.useForm<AppInfoForm>();
+
+  const { t } = useTranslation();
 
   const postData = async (values: AppInfoForm) => {
     try {
@@ -22,7 +25,7 @@ export const CreateAppInfo: React.FC = () => {
           projectId: 1,
         }),
       ).unwrap();
-      toast.success('创建项目成功');
+      toast.success(t('app_page.create.create_project_success'));
       dispatch(refreshPage());
       return true;
     } catch (err) {
@@ -32,11 +35,11 @@ export const CreateAppInfo: React.FC = () => {
 
   return (
     <ModalForm<AppInfoForm>
-      title={'新增应用'}
+      title={t('app_page.create.creat_project')}
       trigger={
         <Button type='primary'>
           <PlusOutlined />
-          新增应用
+          {t('app_page.create.creat_project')}
         </Button>
       }
       form={form}
@@ -54,45 +57,50 @@ export const CreateAppInfo: React.FC = () => {
         codePath: '/',
       }}
     >
-      <ProFormText width='md' name='name' label='项目名称' placeholder='请输入项目名称' />
+      <ProFormText
+        width='md'
+        name='name'
+        label={t('app_page.create.project_name')}
+        placeholder={'' + t('app_page.create.please_project_name')}
+      />
 
       <ProFormTextArea
         width='xl'
         name='description'
-        label='项目描述'
-        placeholder='请输入项目描述'
+        label={t('app_page.create.project_description')}
+        placeholder={'' + t('app_page.create.please_project_description')}
       />
 
       <ProFormTextArea
         width='xl'
         name='repo'
-        label='项目仓库'
-        placeholder='请输入项目git仓库地址或者代码地址'
+        label={t('app_page.create.project_repo')}
+        placeholder={'' + t('app_page.create.please_project_repo')}
       />
       <ProFormText
         width='xl'
         name='branch'
-        label='项目分支'
-        placeholder='请输入项目git分支，默认为master'
+        label={t('app_page.create.project_branch')}
+        placeholder={'' + t('app_page.create.please_project_branch')}
       />
       <ProFormText
         width='xl'
         name='username'
-        label='连接仓库用户名'
-        placeholder='请输入连接仓库用户名'
+        label={t('app_page.create.connect_repo_by_username')}
+        placeholder={'' + t('app_page.create.please_connect_repo_by_username')}
       />
       <ProFormText.Password
         width='xl'
         name='password'
-        label='连接仓库密码'
-        placeholder='请输入连接仓库密码'
+        label={t('app_page.create.connect_repo_by_password')}
+        placeholder={'' + t('app_page.create.please_connect_repo_by_password')}
       />
 
       <ProFormSelect
         width='md'
         valueEnum={{
-          GIT: '远程仓库',
-          LOCAL: '本地地址',
+          GIT: t('app_page.create.remote_repo'),
+          LOCAL: t('app_page.create.local_url'),
         }}
         fieldProps={{
           optionItemRender(item) {
@@ -100,13 +108,13 @@ export const CreateAppInfo: React.FC = () => {
           },
         }}
         name='repoType'
-        label='合同约定生效方式'
+        label={t('app_page.create.How_the_contract_takes_effect')}
       />
       <ProFormText
         width='xl'
         name='codePath'
-        label='代码路径'
-        placeholder='请输入代码路径，默认为根目录'
+        label={t('app_page.create.code_path')}
+        placeholder={'' + t('app_page.create.please_code_path')}
       />
     </ModalForm>
   );

@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import toast from 'react-hot-toast';
+import i18next from '../config/I18nConfigs'
 
 export interface HttpResponseHandler {
   handleSuccess(response: AxiosResponse): AxiosResponse | Promise<AxiosResponse>;
@@ -25,7 +26,7 @@ export const handleError = (err: any): Promise<any> => {
   let errorStatement = '';
   if (!err.response) {
     console.log(`Network error: ${err}`);
-    errorStatement = '网络错误：' + err.message;
+    errorStatement = i18next.t('api.network_error') + '：' + err.message;
   } else {
     errorStatement = handleErrorResponse(err);
   }
@@ -36,13 +37,13 @@ export const handleError = (err: any): Promise<any> => {
 };
 
 const ErrorResponseMapper = {
-  400: '检查请求参数, ',
-  401: '访问失败，用户未登录',
-  403: '访问失败, ',
-  404: '请求资源不存在, ',
-  409: '该资源冲突, ',
-  422: '请求格式正确，但由于语义错误而无法遵循, ',
-  500: '当前服务不可用，请稍后再试',
+  400: i18next.t('api.400_error'),
+  401: i18next.t('api.401_error'),
+  403: i18next.t('api.403_error'),
+  404: i18next.t('api.404_error'),
+  409: i18next.t('api.409_error'),
+  422: i18next.t('api.422_error'),
+  500: i18next.t('api.500_error'),
 };
 
 const handleErrorResponse = (err: any): string => {

@@ -16,7 +16,7 @@ const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {
   if (isAuthenticated && allowedRoles.includes(user?.role as string)) {
     return <Outlet />;
   } else {
-    toast.error('登录过期或认证失败，请重新登录 !');
+    toast.error('Login expired or authentication failed, please log in again!');
 
     return isAuthenticated && user ? (
       <Navigate to='/unauthorized' state={{ from: location }} replace />

@@ -4,6 +4,7 @@ import { MainLayout } from '../../../components';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { findAppInfoById } from '../../../redux/appInfo/app-info-thunks';
 import { TimeUtils } from '../../../common/utils/TimeUtils';
+import { useTranslation } from 'react-i18next';
 
 type MatchParams = {
   appInfoId: string;
@@ -11,6 +12,7 @@ type MatchParams = {
 
 export const DetailAppInfo: React.FC = () => {
   const { appInfoId } = useParams<MatchParams>();
+  const { t } = useTranslation();
 
   const { loading, data } = useAppSelector((state) => state.appInfo);
 
@@ -26,15 +28,15 @@ export const DetailAppInfo: React.FC = () => {
     <MainLayout loading={loading}>
       {data && (
         <>
-          <h1>应用名称： {data.name}</h1>
-          <h1>应用描述： {data.description}</h1>
-          <h1>应用代码仓库： {data.repo}</h1>
-          <h1>应用代码分支： {data.branch}</h1>
-          <h1>应用代码仓库类型： {data.repoType}</h1>
-          <h1>代码路径： {data.codePath}</h1>
-          <h1>应用创建时间： {data.createdAt}</h1>
-          <h1>时间格式化： {TimeUtils.formatDatetime(data.createdAt)}</h1>
-          <h1>时间范围： {TimeUtils.dateFromNow(data.createdAt)}</h1>
+          <h1>{t('app_page.detail.application_name')}： {data.name}</h1>
+          <h1>{t('app_page.detail.application_description')}： {data.description}</h1>
+          <h1>{t('app_page.detail.application_code_repo')}： {data.repo}</h1>
+          <h1>{t('app_page.detail.application_code_branch')}： {data.branch}</h1>
+          <h1>{t('app_page.detail.application_code_repo_type')}： {data.repoType}</h1>
+          <h1>{t('app_page.detail.code_path')}： {data.codePath}</h1>
+          <h1>{t('app_page.detail.application_create_time')}： {data.createdAt}</h1>
+          <h1>{t('app_page.detail.application_time_format')}： {TimeUtils.formatDatetime(data.createdAt)}</h1>
+          <h1>{t('app_page.detail.time_range')}： {TimeUtils.dateFromNow(data.createdAt)}</h1>
         </>
       )}
     </MainLayout>

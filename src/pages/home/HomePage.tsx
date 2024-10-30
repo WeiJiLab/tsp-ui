@@ -4,27 +4,45 @@ import styles from './HomePage.module.css';
 import { Col, Row } from 'antd';
 import { MainLayout, BaseRingPieCharts, ResourceCard, TaskItemCard } from '../../components';
 import { faCube, faCubes, faFileArchive, faHistory } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <MainLayout>
       {/* 资源 */}
       <div className={styles.Resource}>
-        <h2 className={styles.titleText}>资源</h2>
+        <h2 className={styles.titleText}>{t('home_page.resource')}</h2>
         <Col className={styles.ResourceItem}>
-          <ResourceCard title={'项目'} count={3} icon={faCube} to={'/projects'} />
-          <ResourceCard title={'应用'} count={3} icon={faCubes} to={'/app-infos'} />
-          <ResourceCard title={'扫描记录'} count={3} icon={faHistory} to={'/dashboard'} />
-          <ResourceCard title={'扫描结果'} count={3} icon={faFileArchive} to={'/dashboard'} />
+          <ResourceCard title={t('home_page.project')} count={3} icon={faCube} to={'/projects'} />
+          <ResourceCard
+            title={t('home_page.application')}
+            count={3}
+            icon={faCubes}
+            to={'/app-infos'}
+          />
+          <ResourceCard
+            title={t('home_page.scanning_records')}
+            count={3}
+            icon={faHistory}
+            to={'/dashboard'}
+          />
+          <ResourceCard
+            title={t('home_page.scan_results')}
+            count={3}
+            icon={faFileArchive}
+            to={'/dashboard'}
+          />
         </Col>
       </div>
 
       {/* 统计 */}
       <div className={styles.Resource}>
-        <h2 className={styles.titleText}>统计</h2>
+        <h2 className={styles.titleText}>{t('home_page.statistics')}</h2>
         <Col className={styles.ResourceItem}>
           <BaseRingPieCharts
-            title={'安全工具'}
+            title={t('home_page.security_tools')}
             date={[
               { type: 'SCA', value: 27 },
               { type: 'SAST', value: 25 },
@@ -35,7 +53,7 @@ export const HomePage: React.FC = () => {
             ]}
           />
           <BaseRingPieCharts
-            title={'用例'}
+            title={t('home_page.use_case')}
             date={[
               { type: 'Inspec', value: 27 },
               { type: 'Others', value: 19 },
@@ -48,7 +66,7 @@ export const HomePage: React.FC = () => {
       <div className={styles.Resource}>
         <Row>
           <Col span={12}>
-            <h2 className={styles.titleText}>最近的扫描</h2>
+            <h2 className={styles.titleText}>{t('home_page.recent_scans')}</h2>
             <TaskItemCard
               task={{
                 id: 1,
@@ -114,7 +132,7 @@ export const HomePage: React.FC = () => {
             />
           </Col>
           <Col span={12}>
-            <h2 className={styles.titleText}>等待扫描的任务</h2>
+            <h2 className={styles.titleText}>{t('home_page.tasks_waiting_to_be_scanned')}</h2>
             <TaskItemCard
               task={{
                 id: 1,

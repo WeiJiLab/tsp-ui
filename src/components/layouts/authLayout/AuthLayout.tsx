@@ -5,6 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { CaretDownOutlined } from '@ant-design/icons';
 import { Layout, Menu, Dropdown, Button } from 'antd';
 import { Footer } from '../../index';
+import { useTranslation } from 'react-i18next';
 
 const { Header, Content } = Layout;
 
@@ -13,6 +14,8 @@ interface PropsTypes {
 }
 
 export const AuthLayout: React.FC<PropsTypes> = (props) => {
+   const { t } = useTranslation();
+
   const menu = (
     <Menu>
       <Menu.Item>中文</Menu.Item>
@@ -28,7 +31,7 @@ export const AuthLayout: React.FC<PropsTypes> = (props) => {
             <Dropdown overlay={menu}>
               <Button>
                 {' '}
-                选择语言 <CaretDownOutlined />
+                {t('layout.select_language')} <CaretDownOutlined />
               </Button>
             </Dropdown>
           </div>
@@ -38,10 +41,10 @@ export const AuthLayout: React.FC<PropsTypes> = (props) => {
             <div className={styles.contentHeader}>
               <Link to='/'>
                 <img alt='logo' className={styles.logo} src={logo} />
-                <span className={styles.title}>SCP安全服务平台</span>
+                <span className={styles.title}>{t('layout.scp_security_service_platform')}</span>
               </Link>
             </div>
-            <div className={styles.desc}>SCP安全服务平台， 带你走进安全的世界 !</div>
+            <div className={styles.desc}>{t('layout.scp_security_service_platform_desc')}</div>
             {props.children}
           </div>
         </Content>

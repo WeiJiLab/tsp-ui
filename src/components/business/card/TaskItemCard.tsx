@@ -15,22 +15,24 @@ import {
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { TimeUtils } from '../../../common/utils/TimeUtils';
+import { useTranslation } from 'react-i18next';
 
 interface PropsTypes {
   task: any;
 }
 
 export const TaskItemCard: React.FC<PropsTypes> = ({ task }) => {
+  const { t } = useTranslation();
   const renderTime = () => {
     const timeDuring =
       TimeUtils.dateFromNow(task.startTime) + '-' + TimeUtils.dateFromNow(task.endTime);
     switch (task.status) {
       case 'READY':
-        return <span style={{ fontSize: '0.77em' }}>未开始</span>;
+        return <span style={{ fontSize: '0.77em' }}>{t('card.task.not_started')}</span>;
       case 'RUNNING':
         return (
           <span style={{ fontSize: '0.77em' }}>
-            {TimeUtils.dateFromNow(task.startTime) + '-未结束'}
+            {TimeUtils.dateFromNow(task.startTime) + t('card.task.running')}
           </span>
         );
       case 'DONE':

@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { Project } from '../../../models';
 import { updateProject } from '../../../redux/project/project-thunks';
 import { projectSlice } from '../../../redux/project/project-slice';
+import { useTranslation } from 'react-i18next';
 
 interface FormTypes extends BaseModel {
   name: string;
@@ -16,7 +17,7 @@ interface FormTypes extends BaseModel {
 
 export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
   const dispatch = useAppDispatch();
-
+  const { t } = useTranslation();
   const patchData = async (values: FormTypes) => {
     try {
       await dispatch(
@@ -26,7 +27,8 @@ export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
           description: values.description,
         }),
       ).unwrap();
-      toast.success('更新项目信息成功');
+      toast.success(t('project_page.update.update_project_success'));
+
       dispatch(projectSlice.actions.refreshPage());
       return true;
     } catch (err) {
@@ -38,7 +40,7 @@ export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
 
   return (
     <ModalForm<FormTypes>
-      title={'编辑项目信息'}
+      title={t('project_page.update.update_project_info')}
       trigger={<a>编辑</a>}
       form={form}
       autoFocusFirstInput
@@ -54,17 +56,17 @@ export const UpdateProject: React.FC<Project> = ({ id, name, description }) => {
       <ProFormText
         width='md'
         name='name'
-        label='项目名称'
-        tooltip='最长为 24 位'
-        placeholder='请输入项目名称'
+        label={t('project_page.create.project_name')}
+        tooltip={t('project_page.create.max_24_length')}
+        placeholder={'' + t('project_page.create.please_project_name')}
         initialValue={name}
       />
 
       <ProFormTextArea
         width='xl'
         name='description'
-        label='项目描述'
-        placeholder='请输入项目描述'
+        label={t('project_page.create.project_description')}
+        placeholder={'' + t('project_page.create.please_project_description')}
         initialValue={description}
       />
     </ModalForm>

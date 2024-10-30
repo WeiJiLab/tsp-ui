@@ -4,6 +4,7 @@ import { ProColumns } from '@ant-design/pro-components';
 import { DatePicker } from 'antd';
 import { UpdateProject } from '../updateProject';
 import { DeleteProject } from '../deleteProject';
+import i18n from '../../../config/I18nConfigs';
 
 const { RangePicker } = DatePicker;
 
@@ -20,24 +21,24 @@ export const columns: ProColumns<TableListItem>[] = [
     search: false,
   },
   {
-    title: '应用名称',
+    title: i18n.t('project_page.detail.application_name'),
     dataIndex: 'name',
     ellipsis: true,
-    tip: '应用名称过长会自动收缩',
+    tip: '' + i18n.t('project_page.detail.content_too_long'),
   },
   {
-    title: '应用描述',
+    title: i18n.t('project_page.detail.application_desc'),
     dataIndex: 'description',
     ellipsis: true,
     search: false,
-    tip: '应用描述过长会自动收缩',
+    tip: '' + i18n.t('project_page.detail.content_too_long'),
   },
   {
-    title: '负责人',
+    title: i18n.t('project_page.detail.person_in_charge'),
     dataIndex: 'ownerId',
   },
   {
-    title: '创建时间',
+    title: i18n.t('project_page.detail.create_time'),
     key: 'since',
     dataIndex: 'createdAt',
     valueType: 'date',
@@ -47,7 +48,7 @@ export const columns: ProColumns<TableListItem>[] = [
     },
   },
   {
-    title: '更新时间',
+    title: i18n.t('project_page.detail.update_time'),
     dataIndex: 'updatedAt',
     valueType: 'date',
     search: false,
@@ -55,7 +56,7 @@ export const columns: ProColumns<TableListItem>[] = [
   },
   {
     width: 150,
-    title: '操作',
+    title: i18n.t('project_page.detail.operation'),
     valueType: 'option',
     key: 'option',
     fixed: 'right',
@@ -75,7 +76,7 @@ export const columns: ProColumns<TableListItem>[] = [
           console.log('action', action);
         }}
       >
-        查看
+        {i18n.t('project_page.detail.View')}
       </a>,
       <DeleteProject key={record.id} id={record.id} />,
     ],

@@ -1,38 +1,186 @@
 {
-  "header": {
-    "slogan": "Make travel happier",
-    "add_new_language": "add new language",
-    "title": "React Travel",
-    "register": "Register",
-    "signin": "Sign In",
-    "home_page": "Home",
-    "weekend": "Weekend",
-    "group": "Group",
-    "backpack": "Backpack",
-    "private": "Private",
-    "cruise": "Cruise",
-    "hotel": "Hotel & Attractions",
-    "local": "Local",
-    "theme": "Theme",
-    "custom": "Custom",
-    "study": "Study",
-    "visa": "Visa",
-    "enterprise": "Enterprise",
-    "high_end": "High-end",
-    "outdoor": "Outdoor",
-    "insurance": "Insurance",
-    "shoppingCart": "Shopping Cart",
-    "signOut": "Sign Out",
-    "welcome": "Welcome back "
+  "api": {
+    "network_error": "Network Error",
+    "400_error": "Check request parameters, ",
+    "401_error": "Access failed, user not logged in",
+    "403_error": "Access failed, ",
+    "404_error": "The requested resource does not exist, ",
+    "409_error": "The resource conflicts, ",
+    "422_error": "The request is well-formed, but cannot be followed due to semantic errors, ",
+    "500_error": "Service Error. "
   },
-  "footer": {
-    "detail": "SCP ©2022 Created by Thoughtworks SSR"
+  "header": {
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "register": "Register",
+    "login": "Login"
+  },
+  "menu": {
+    "home": "Home",
+    "application": "Application",
+    "security_services": "Security Services",
+    "application_information": "Application Information",
+    "safety_regulations": "Safety Regulations",
+    "secure_development_process": "Secure Development Process",
+    "architecture_security_specifications": "Architecture Security Specifications",
+    "data_security_regulations": "Data Security Regulations",
+    "kpi_overview": "KPL Overview",
+    "vulnerability_scanning": "Vulnerability Scanning"
   },
   "home_page": {
-    "hot_recommended": "Hot Recommended",
-    "new_arrival": "New arrival",
-    "domestic_travel": "Domestic travel",
-    "joint_venture": "Joint Venture",
-    "start_from": "(start from)"
+    "resource": "Resource",
+    "project": "Project",
+    "application": "Application",
+    "scanning_records": "Scanning Records",
+    "scan_results": "Scan Results",
+    "statistics": "statistics",
+    "security_tools": "Security Tools",
+    "use_case": "Use Cases",
+    "recent_scans": "Recent Scans",
+    "tasks_waiting_to_be_scanned": "Tasks Waiting To Be Scanned"
+  },
+  "card": {
+    "task": {
+      "not_started": "Not Started",
+      "running": " - Running"
+    }
+  },
+  "charts": {
+    "total": "Total"
+  },
+  "footer": {
+    "detail": "SCP ©2024 Created by Thoughtworks SSR"
+  },
+  "layout": {
+    "select_language": "Select Language",
+    "scp_security_service_platform": "SCP Security Service Platform",
+    "scp_security_service_platform_desc": "SCP security service platform takes you into a safe world!"
+  },
+  "app_page": {
+    "create": {
+      "create_project_success": "Created the project successfully!",
+      "creat_project": "Added a new application",
+      "project_name": "Project name",
+      "please_project_name": "Please enter the project name",
+      "project_description": "Project description",
+      "please_project_description": "Please enter the project description",
+      "project_repo": "Project warehouse",
+      "please_project_repo": "Please enter the project git repository address or code address Please enter the project git repository address or code address",
+      "project_branch": "Project branch",
+      "please_project_branch": "Please enter the project git branch, the default is master Please enter the project git branch, the default is master",
+      "connect_repo_by_username": "Connect to the warehouse username",
+      "please_connect_repo_by_username": "Please enter the connection warehouse username",
+      "connect_repo_by_password": "Connect to the warehouse password",
+      "please_connect_repo_by_password": "Please enter the password to connect to the repository",
+      "remote_repo": "Remote repository",
+      "local_url": "Local address",
+      "How_the_contract_takes_effect": "How the contract takes effect",
+      "code_path": "Code path",
+      "please_code_path": "Please enter the code path"
+    },
+    "edit": {
+      "update_project_success": "Update application information successfully!",
+      "edit_project": "Edit application information",
+      "edit_text": "Edit",
+      "project_name": "Project name"
+    },
+    "delete": {
+      "delete_project_success": "Delete application successfully!",
+      "confirm_delete": "Confirm deletion",
+      "yes": "Yes",
+      "no": "No",
+      "delete": "Delete"
+    },
+    "detail": {
+      "application_name": "Application name",
+      "application_description": "Application description",
+      "application_code_repo": "Application code repository",
+      "application_code_branch": "Application code branch",
+      "application_code_repo_type": "Application code repository type",
+      "code_path": "Code path",
+      "application_create_time": "Application creation time",
+      "application_time_format": "Time format",
+      "time_range": "Time range"
+    },
+    "page": {
+      "application_name": "Application name",
+      "application_description": "Application description",
+      "username": "User name",
+      "repo_type": "Repository type",
+      "code_path": "Code directory",
+      "create_time": "Creation time",
+      "update_time": "Update time",
+      "operate": "Operation",
+      "look_over": "View"
+    }
+  },
+  "auth_page": {
+    "login": {
+      "login_success": "Login successful",
+      "welcome": "Welcome back",
+      "email": "Email",
+      "please_email": "Please enter your email!",
+      "please_legal_email": "Please enter a valid email!",
+      "password": "Password",
+      "please_password": "Please enter your password!",
+      "remember_me": "Remember me!",
+      "login": "Login",
+      "or": "Or",
+      "register_now": "Register now !"
+    },
+    "register": {
+      "register_success": "Registration successful",
+      "username": "Username",
+      "please_input_username": "Please enter username!",
+      "confirm_password": "Confirm password",
+      "please_confirm_password": "Please enter password again to confirm!",
+      "password_confirmation_inconsistent": "Please enter password again to confirm!",
+      "register": "Register",
+      "already_have_an_account": "Already have an account ?",
+      "sign_in_now": "Sign in now !"
+    }
+  },
+  "project_page": {
+    "create": {
+      "create_project_success": "Created a project successfully!",
+      "create_project": "Added a new project",
+      "project_name": "Added a new project",
+      "max_24_length": "Up to 24 characters",
+      "please_project_name": "Please enter a project name",
+      "project_description": "Project description",
+      "please_project_description": "Please enter a project description"
+    },
+    "update": {
+      "update_project_success": "Updated project information successfully",
+      "update_project_info": "Edited project information"
+    },
+    "delete": {
+      "delete_project_success": "Deleted a project successfully!",
+      "confirm_delete": "Confirm to delete? ",
+      "yes": "Yes",
+      "no": "No",
+      "delete_text": "Delete"
+    },
+    "detail": {
+      "application_name": "Application name",
+      "content_too_long": "Content is too long, it will shrink automatically",
+      "application_desc": "Application description",
+      "person_in_charge": "Person in charge",
+      "create_time": "Creation time",
+      "update_time": "Update time",
+      "operation": "Operation",
+      "View": "View"
+    }
+  },
+  "scanning_page": {
+    "scanning": "Scanning",
+    "start_scan": "Start scanning",
+    "kernel_source_code_scan": "Kernel source code scanning",
+    "kernel_image_scan": "Kernel image scanning",
+    "other": "Other",
+    "stop_scan": "Stop scanning",
+    "upload_kernel_image": "Upload kernel image",
+    "upload_symbol": "Upload symbol",
+    "upload_compile_parameters": "Upload compilation parameters"
   }
 }

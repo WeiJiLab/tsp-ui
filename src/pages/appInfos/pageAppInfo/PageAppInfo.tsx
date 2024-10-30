@@ -9,6 +9,7 @@ import { AppInfoModel } from '../../../models';
 import { UpdateAppInfo } from '../updateAppInfo';
 import { DeleteAppInfo } from '../deleteAppInfo';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const PageAppInfo: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -23,6 +24,7 @@ export const PageAppInfo: React.FC = () => {
   // 设置页码
   const [totalCount, setTotalCount] = useState(0);
   const [dataSource, setDataSource] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (data) {
@@ -62,23 +64,23 @@ export const PageAppInfo: React.FC = () => {
       search: false,
     },
     {
-      title: '应用名称',
+      title: t('app_page.page.application_name'),
       dataIndex: 'name',
       ellipsis: true,
     },
     {
-      title: '应用描述',
+      title: t('app_page.page.application_description'),
       dataIndex: 'description',
       ellipsis: true,
       search: false,
-      tip: '项目描述过长会自动收缩',
+      tip: 'If the content is too long, it will shrink automatically.',
     },
     {
-      title: '用户名',
+      title: t('app_page.page.username'),
       dataIndex: 'username',
     },
     {
-      title: '仓库类型',
+      title: t('app_page.page.repo_type'),
       dataIndex: 'repoType',
       valueEnum: {
         GIT: { text: 'GIT' },
@@ -86,12 +88,12 @@ export const PageAppInfo: React.FC = () => {
       },
     },
     {
-      title: '代码目录',
+      title: t('app_page.page.code_path'),
       dataIndex: 'codePath',
       search: false,
     },
     {
-      title: '创建时间',
+      title: t('app_page.page.create_time'),
       key: 'since',
       dataIndex: 'createdAt',
       valueType: 'date',
@@ -101,7 +103,7 @@ export const PageAppInfo: React.FC = () => {
       },
     },
     {
-      title: '更新时间',
+      title: t('app_page.page.update_time'),
       dataIndex: 'updatedAt',
       valueType: 'date',
       search: false,
@@ -109,7 +111,7 @@ export const PageAppInfo: React.FC = () => {
     },
     {
       width: 150,
-      title: '操作',
+      title: t('app_page.page.operate'),
       valueType: 'option',
       key: 'option',
       fixed: 'right',
@@ -125,7 +127,7 @@ export const PageAppInfo: React.FC = () => {
             navigate(`/app-infos/${record.id}`);
           }}
         >
-          查看
+          {t('app_page.page.look_over')}
         </a>,
         <DeleteAppInfo key={record.id} id={record.id} />,
       ],
@@ -163,7 +165,7 @@ export const PageAppInfo: React.FC = () => {
         onChange: handleChangePagination,
       }}
       dateFormatter='string'
-      headerTitle='项目'
+      headerTitle='Project'
       toolBarRender={() => [<CreateAppInfo key={1} />]}
     ></ProTable>
   );

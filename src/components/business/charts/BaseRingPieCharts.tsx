@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pie } from '@ant-design/plots';
 import { Card } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 interface PropsTypes {
   title: string;
@@ -11,6 +12,9 @@ interface PropsTypes {
 }
 
 export const BaseRingPieCharts: React.FC<PropsTypes> = ({ title, date }) => {
+
+  const { t } = useTranslation();
+
   const config = {
     appendPadding: 1,
     data: date,
@@ -43,7 +47,7 @@ export const BaseRingPieCharts: React.FC<PropsTypes> = ({ title, date }) => {
           textOverflow: 'ellipsis',
           fontWeight: 'bold',
         },
-        content: '总计',
+        content: t('charts.total'),
       },
       content: {
         style: {

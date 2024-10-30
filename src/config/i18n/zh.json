@@ -1,38 +1,186 @@
 {
-  "header": {
-    "slogan": "让旅行更幸福",
-    "add_new_language": "添加新语言",
-    "title": "React 旅游网",
-    "register": "注册",
-    "signin": "登陆",
-    "home_page": "旅游首页",
-    "weekend": "周末游",
-    "group": "跟团游",
-    "backpack": "自由行",
-    "private": "私家团",
-    "cruise": "邮轮",
-    "hotel": "酒店+景点",
-    "local": "当地玩乐",
-    "theme": "主题游",
-    "custom": "定制游",
-    "study": "游学",
-    "visa": "签证",
-    "enterprise": "企业游",
-    "high_end": "高端游",
-    "outdoor": "爱玩户外",
-    "insurance": "保险",
-    "shoppingCart": "购物车",
-    "signOut": "注销",
-    "welcome": "欢迎回来 "
+  "api": {
+    "network_error": "Network Error",
+    "400_error": "检查请求参数, ",
+    "401_error": "访问失败，用户未登录",
+    "403_error": "访问失败, ",
+    "404_error": "请求资源不存在, ",
+    "409_error": "该资源冲突, ",
+    "422_error": "请求格式正确，但由于语义错误而无法遵循, ",
+    "500_error": "服务器错误"
   },
-  "footer": {
-    "detail": "SCP ©2022 Created by Thoughtworks SSR"
+  "header": {
+    "welcome": "欢迎",
+    "logout": "注销",
+    "register": "注册",
+    "login": "登录"
+  },
+  "menu": {
+    "home": "首页",
+    "application": "应用",
+    "security_services": "安全服务",
+    "application_information": "应用信息",
+    "safety_regulations": "安全规范",
+    "secure_development_process": "安全开发流程",
+    "architecture_security_specifications": "架构安全规范",
+    "data_security_regulations": "数据安全规范",
+    "kpi_overview": "KPI总览",
+    "vulnerability_scanning": "漏洞扫描"
   },
   "home_page": {
-    "hot_recommended": "爆款推荐",
-    "new_arrival": "新品上市",
-    "domestic_travel": "国内游推荐",
-    "joint_venture": "合作企业",
-    "start_from": "(起)"
+    "resource": "资源",
+    "project": "项目",
+    "application": "应用",
+    "scanning_records": "扫描记录",
+    "scan_results": "扫描结果",
+    "statistics": "统计",
+    "security_tools": "安全工具",
+    "use_case": "用例",
+    "recent_scans": "最近的扫描",
+    "tasks_waiting_to_be_scanned": "等待扫描的任务"
+  },
+  "card": {
+    "task": {
+      "not_started": "未开始",
+      "running": " - 运行中"
+    }
+  },
+  "charts": {
+    "total": "总计"
+  },
+  "footer": {
+    "detail": "SCP ©2024 Created by Thoughtworks SSR"
+  },
+  "layout": {
+    "select_language": "选择语言",
+    "scp_security_service_platform": "SCP安全服务平台",
+    "scp_security_service_platform_desc": "SCP安全服务平台， 带你走进安全的世界 !"
+  },
+  "app_page": {
+    "create": {
+      "create_project_success": "创建项目成功!",
+      "creat_project": "新增应用",
+      "project_name": "项目名称",
+      "please_project_name": "请输入项目名称",
+      "project_description": "项目描述",
+      "please_project_description": "请输入项目描述",
+      "project_repo": "项目仓库",
+      "please_project_repo": "请输入项目git仓库地址或者代码地址 Please enter the project git repository address or code address",
+      "project_branch": "项目分支",
+      "please_project_branch": "请输入项目git分支，默认为master Please enter the project git branch, the default is master",
+      "connect_repo_by_username": "连接仓库用户名",
+      "please_connect_repo_by_username": "请输入连接仓库用户名",
+      "connect_repo_by_password": "连接仓库密码",
+      "please_connect_repo_by_password": "请输入连接仓库密码",
+      "remote_repo": "远程仓库",
+      "local_url": "本地地址",
+      "How_the_contract_takes_effect": "合同约定生效方式",
+      "code_path": "代码路径",
+      "please_code_path": "请输入代码路径"
+    },
+    "edit": {
+      "update_project_success": "更新应用信息成功!",
+      "edit_project": "编辑应用信息",
+      "edit_text": "编辑",
+      "project_name": "项目名称"
+    },
+    "delete": {
+      "delete_project_success": "删除应用成功!",
+      "confirm_delete": "确认删除",
+      "yes": "是",
+      "no": "否",
+      "delete": "删除"
+    },
+    "detail": {
+      "application_name": "应用名称",
+      "application_description": "应用描述",
+      "application_code_repo": "应用代码仓库",
+      "application_code_branch": "应用代码分支",
+      "application_code_repo_type": "应用代码仓库类型",
+      "code_path": "代码路径",
+      "application_create_time": "应用创建时间",
+      "application_time_format": "时间格式化",
+      "time_range": "时间范围"
+    },
+    "page": {
+      "application_name": "应用名称",
+      "application_description": "应用描述",
+      "username": "用户名",
+      "repo_type": "仓库类型",
+      "code_path": "代码目录",
+      "create_time": "创建时间",
+      "update_time": "更新时间",
+      "operate": "操作",
+      "look_over": "查看"
+    }
+  },
+  "auth_page": {
+    "login": {
+      "login_success": "登录成功",
+      "welcome": "欢迎回来",
+      "email": "邮箱",
+      "please_email": "请输入你的邮箱！",
+      "please_legal_email": "请输入正确的邮箱！",
+      "password": "密码",
+      "please_password": "请输入你的密码!",
+      "remember_me": "记住我!",
+      "login": "登录",
+      "or": "或者",
+      "register_now": "现在注册 !"
+    },
+    "register": {
+      "register_success": "注册成功",
+      "username": "用户名",
+      "please_input_username": "请输入用户名!",
+      "confirm_password": "确认密码",
+      "please_confirm_password": "请再次输入密码确认!",
+      "password_confirmation_inconsistent": "请再次输入密码确认!",
+      "register": "注册",
+      "already_have_an_account": "已有账号 ？",
+      "sign_in_now": "立即登录 !"
+    }
+  },
+  "project_page": {
+    "create": {
+      "create_project_success": "创建项目成功 !",
+      "create_project": "新增项目",
+      "project_name": "新增项目",
+      "max_24_length": "最长为 24 位",
+      "please_project_name": "请输入项目名称",
+      "project_description": "项目描述",
+      "please_project_description": "请输入项目描述"
+    },
+    "update": {
+      "update_project_success": "更新项目信息成功",
+      "update_project_info": "编辑项目信息"
+    },
+    "delete": {
+      "delete_project_success": "删除项目成功 !",
+      "confirm_delete": "确定删除 ? ",
+      "yes": "是",
+      "no": "否",
+      "delete_text": "删除"
+    },
+    "detail": {
+      "application_name": "应用名称",
+      "content_too_long": "内容过长过长会自动收缩",
+      "application_desc": "应用描述",
+      "person_in_charge": "负责人",
+      "create_time": "创建时间",
+      "update_time": "更新时间",
+      "operation": "操作",
+      "View": "查看"
+    }
+  },
+  "scanning_page": {
+    "scanning": "正在扫描",
+    "start_scan": "开始扫描",
+    "kernel_source_code_scan": "内核源码扫描",
+    "kernel_image_scan": "内核镜像扫描",
+    "other": "其他",
+    "stop_scan": "停止扫描",
+    "upload_kernel_image": "上传内核镜像",
+    "upload_symbol": "上传符号",
+    "upload_compile_parameters": "上传编译参数"
   }
 }

@@ -5,6 +5,7 @@ import { EmailUtils } from '../../../common';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const layout = {
   labelCol: { span: 8 },
@@ -18,6 +19,7 @@ export const RegisterForm = () => {
   const loading = useAppSelector((state) => state.auth.loading);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onFinish = async (values: any) => {
     await dispatch(
@@ -28,7 +30,7 @@ export const RegisterForm = () => {
       }),
     ).unwrap();
 
-    toast.success('👏用户注册成功');
+    toast.success('👏 ' + t('auth_page.register.register_success') + ' !');
     navigate('/login');
   };
 
@@ -41,16 +43,16 @@ export const RegisterForm = () => {
       className={styles['register-form']}
     >
       <Form.Item
-        label='邮箱'
+        label={t('auth_page.login.email')}
         name='email'
         rules={[
-          { required: true, message: '请输入你的邮箱' },
+          { required: true, message: '' + t('auth_page.login.please_email') },
           {
             validator: (_, value) => {
               if (EmailUtils.isEmail(value)) {
                 return Promise.resolve();
               } else {
-                return Promise.reject(new Error('请输入正确的邮箱'));
+                return Promise.reject(new Error('' + t('auth_page.login.please_legal_email')));
               }
             },
           },
@@ -60,29 +62,36 @@ export const RegisterForm = () => {
       </Form.Item>
 
       <Form.Item
-        label='用户名'
+        label={t('auth_page.register.username')}
         name='username'
-        rules={[{ required: true, message: '请输入用户名!' }]}
+        rules={[{ required: true, message: '' + t('auth_page.register.please_input_username') }]}
       >
         <Input />
       </Form.Item>
 
-      <Form.Item label='密码' name='password' rules={[{ required: true, message: '请输入密码!' }]}>
+      <Form.Item
+        label={t('auth_page.login.password')}
+        name='password'
+        rules={[{ required: true, message: '' + t('auth_page.login.please_password') }]}
+      >
         <Input.Password />
       </Form.Item>
 
       <Form.Item
-        label='确认密码'
+        label={t('auth_page.register.confirm_password')}
         name='confirm'
         hasFeedback
         rules={[
-          { required: true, message: '请再次输入密码确认!' },
+          {
+            required: true,
+            message: '' + t('auth_page.register.please_confirm_password'),
+          },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
-              return Promise.reject('密码确认不一致！');
+              return Promise.reject(t('auth_page.register.password_confirmation_inconsistent'));
             },
           }),
         ]}
@@ -92,12 +101,13 @@ export const RegisterForm = () => {
 
       <Form.Item {...tailLayout}>
         <Button type='primary' htmlType='submit' loading={loading}>
-          注册
+          {t('auth_page.register.register')}
         </Button>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        已有账号 ？ <a href='/login'>立即登录</a>
+        {t('auth_page.register.already_have_an_account')}{' '}
+        <a href='/login'>{t('auth_page.register.sign_in_now')}</a>
       </Form.Item>
     </Form>
   );

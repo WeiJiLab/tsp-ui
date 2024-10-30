@@ -44,8 +44,8 @@ export const ToggleThemeButton = () => {
       className={styles.buttonContainer}
       onClick={onClick}
     >
-      <img src={SunIconSrc} width='24' alt='太阳' />
-      <img src={MoonIconSrc} width='24' alt='月亮' />
+      <img src={SunIconSrc} width='24' alt='sun' />
+      <img src={MoonIconSrc} width='24' alt='moon' />
       <div
         style={
           themeMode === 'dark'

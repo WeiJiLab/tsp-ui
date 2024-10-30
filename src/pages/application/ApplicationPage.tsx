@@ -50,7 +50,7 @@ export const ApplicationPage: React.FC = () => {
   ];
 
   const gotoCreateScan = () => {
-    console.log('创建扫描任务');
+    console.log('Create Scan Task');
   };
 
   const renderAppCard = () => {

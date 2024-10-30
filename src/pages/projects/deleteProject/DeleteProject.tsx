@@ -4,6 +4,7 @@ import { deleteProjectById } from '../../../redux/project/project-thunks';
 import toast from 'react-hot-toast';
 import { useAppDispatch } from '../../../hooks';
 import { projectSlice } from '../../../redux/project/project-slice';
+import { useTranslation } from 'react-i18next';
 
 interface PropsTypes {
   id: number;
@@ -12,10 +13,11 @@ interface PropsTypes {
 export const DeleteProject: React.FC<PropsTypes> = ({ id }) => {
   const dispatch = useAppDispatch();
 
+  const { t } = useTranslation();
   const deleteData = async (id: number) => {
     try {
       await dispatch(deleteProjectById({ id })).unwrap();
-      toast.success('删除项目成功');
+      toast.success(t('app_page.delete.delete_project_success'));
       dispatch(projectSlice.actions.refreshPage());
       return true;
     } catch (err) {
@@ -25,14 +27,14 @@ export const DeleteProject: React.FC<PropsTypes> = ({ id }) => {
 
   return (
     <Popconfirm
-      title='确定删除?'
+      title={t('app_page.delete.confirm_delete')}
       onConfirm={async () => {
         await deleteData(id);
       }}
-      okText='是'
-      cancelText='否'
+      okText={t('app_page.delete.yes')}
+      cancelText={t('app_page.delete.no')}
     >
-      <a href='#'>删除</a>
+      <a href='#'>{t('app_page.delete.delete_text')}</a>
     </Popconfirm>
   );
 };

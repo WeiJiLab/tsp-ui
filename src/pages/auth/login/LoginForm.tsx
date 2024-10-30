@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { loginSuccess } from '../../../redux/auth/auth-slice';
 
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const layout = {
   labelCol: { span: 8 },
@@ -24,6 +25,7 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const { t } = useTranslation();
   const onFinish = async (values: any) => {
     await dispatch(
       login({
@@ -37,8 +39,8 @@ export const LoginForm = () => {
 
         if (accessToken) {
           dispatch(loginSuccess(accessToken));
-          toast.success('👏登录成功 !');
-          toast.success(`👏欢迎回来：${username}`);
+          toast.success('👏 ' + t('auth_page.login.login_success') + ' !');
+          toast.success(`👏 ${t('auth_page.login.welcome')}：${username}`);
           navigate('/');
         }
       });
@@ -58,16 +60,16 @@ export const LoginForm = () => {
       className={styles['register-form']}
     >
       <Form.Item
-        label='邮箱'
+        label={t('auth_page.login.email')}
         name='email'
         rules={[
-          { required: true, message: '请输入你的用户名!' },
+          { required: true, message: '' + t('auth_page.login.please_email') },
           {
             validator: (_, value) => {
               if (EmailUtils.isEmail(value)) {
                 return Promise.resolve();
               } else {
-                return Promise.reject(new Error('请输入正确的邮箱'));
+                return Promise.reject(new Error('' + t('auth_page.login.please_legal_email')));
               }
             },
           },
@@ -77,25 +79,25 @@ export const LoginForm = () => {
       </Form.Item>
 
       <Form.Item
-        label='密码'
+        label={t('auth_page.login.password')}
         name='password'
-        rules={[{ required: true, message: '请输入你的密码!' }]}
+        rules={[{ required: true, message: '' + t('auth_page.login.please_password') }]}
       >
         <Input.Password />
       </Form.Item>
 
       <Form.Item {...tailLayout} name='remember' valuePropName='checked'>
-        <Checkbox>记住我</Checkbox>
+        <Checkbox>{t('auth_page.login.remember_me')}</Checkbox>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
         <Button type='primary' htmlType='submit' className='login-form-button' loading={loading}>
-          登录
+          {t('auth_page.login.login')}
         </Button>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        或者 <a href='/register'>现在注册 !</a>
+        {t('auth_page.login.or')} <a href='/register'>{t('auth_page.login.register_now')}</a>
       </Form.Item>
     </Form>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { MenuProps } from 'antd';
+import i18next from '../../../config/I18nConfigs'
 
 import {
   faFileSignature,
@@ -34,8 +35,8 @@ function getItem(
 }
 
 export const MENU_ITEMS: MenuItems[] = [
-  getItem('首页', 'HOME', faHome),
-  getItem('应用', 'PROJECT_LIST', faHome),
+  getItem(i18next.t('menu.home'), 'HOME', faHome),
+  getItem(i18next.t('menu.application'), 'PROJECT_LIST', faHome),
 
   // [
   // getItem('基本信息/KPI', 'PROJECT_LIST', faListAlt),
@@ -49,16 +50,16 @@ export const MENU_ITEMS: MenuItems[] = [
   //   getItem('渗透测试漏洞列表', '', faListAlt),
   // ]),
   // ]
-  getItem('安全服务', 'SECURITY_TOOLS', faShieldAlt, [
-    getItem('订阅license申请', 'APP_INFO', faListAlt),
+  getItem(i18next.t('menu.security_services'), 'SECURITY_TOOLS', faShieldAlt, [
+    getItem(i18next.t('menu.application_information'), 'APP_INFO', faListAlt),
   ]),
-  getItem('安全规范', 'USE_CASES', faFileSignature, [
-    getItem('安全开发流程', 'Security Development Process', faListAlt),
-    getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
-    getItem('数据安全规范', 'Data Security Specifications', faListAlt),
+  getItem(i18next.t('menu.safety_regulations'), 'USE_CASES', faFileSignature, [
+    getItem(i18next.t('menu.secure_development_process'), 'Security Development Process', faListAlt),
+    getItem(i18next.t('menu.architecture_security_specifications'), 'Architecture Security Specifications', faListAlt),
+    getItem(i18next.t('menu.data_security_regulations'), 'Data Security Specifications', faListAlt),
   ]),
-  getItem('KPI总览', '', faHeartCircleMinus),
-  getItem('漏洞扫描', 'SECURITY_SCAN', faShieldVirus),
+  getItem(i18next.t('menu.kpi_overview'), '', faHeartCircleMinus),
+  getItem(i18next.t('menu.vulnerability_scanning'), 'SECURITY_SCAN', faShieldVirus),
 ];
 
 export const MENU_NAVIGATE = new Map<string, string>([

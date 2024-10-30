@@ -14,6 +14,6 @@ export class TimeUtils {
     if (ObjectUtils.isEmpty(data)) {
       return null;
     }
-    return dayjs(data).tz('Asia/ShangHai').locale('zh-cn').fromNow();
+    return dayjs(data).tz('Asia/ShangHai').locale('en-us').fromNow();
   };
 }

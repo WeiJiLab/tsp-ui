@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useAppDispatch } from '../../../hooks';
 import { refreshPage } from '../../../redux/appInfo/app-info-actions';
 import { deleteAppInfoById } from '../../../redux/appInfo/app-info-thunks';
+import { useTranslation } from 'react-i18next';
 
 interface PropsTypes {
   id: number;
@@ -11,11 +12,11 @@ interface PropsTypes {
 
 export const DeleteAppInfo: React.FC<PropsTypes> = ({ id }) => {
   const dispatch = useAppDispatch();
-
+  const { t } = useTranslation();
   const deleteData = async (id: number) => {
     try {
       await dispatch(deleteAppInfoById({ id })).unwrap();
-      toast.success('删除应用成功');
+      toast.success(t('app_page.delete.delete_project_success'));
       dispatch(refreshPage());
       return true;
     } catch (err) {
@@ -25,14 +26,14 @@ export const DeleteAppInfo: React.FC<PropsTypes> = ({ id }) => {
 
   return (
     <Popconfirm
-      title='确定删除?'
+      title={t('app_page.delete.confirm_delete') + '?'}
       onConfirm={async () => {
         await deleteData(id);
       }}
-      okText='是'
-      cancelText='否'
+      okText={t('app_page.delete.yes')}
+      cancelText={t('app_page.delete.no')}
     >
-      <a href='src/pages/appInfos/deleteAppInfo/DeleteAppInfo#'>删除</a>
+      <a href='src/pages/appInfos/deleteAppInfo/DeleteAppInfo#'>{t('app_page.delete.delete')}</a>
     </Popconfirm>
   );
 };
