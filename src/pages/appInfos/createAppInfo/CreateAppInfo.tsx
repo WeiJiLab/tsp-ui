@@ -36,7 +36,7 @@ export const CreateAppInfo: React.FC = () => {
       trigger={
         <Button type='primary'>
           <PlusOutlined />
-          新增应用
+          Add Application
         </Button>
       }
       form={form}

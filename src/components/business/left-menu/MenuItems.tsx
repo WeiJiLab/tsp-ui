@@ -50,12 +50,12 @@ export const MENU_ITEMS: MenuItems[] = [
   // ]),
   // ]
   getItem('Security Service', 'SECURITY_TOOLS', faShieldAlt, [
-    getItem('订阅license申请', 'APP_INFO', faListAlt),
+    getItem('Request License Subscription', 'APP_INFO', faListAlt),
   ]),
   getItem('Security Regulations', 'USE_CASES', faFileSignature, [
-    getItem('安全开发流程', 'Security Development Process', faListAlt),
-    getItem('架构安全规范', 'Architecture Security Specifications', faListAlt),
-    getItem('数据安全规范', 'Data Security Specifications', faListAlt),
+    getItem('Secure Development Workflow', 'Security Development Process', faListAlt),
+    getItem('Architecture Security Standards', 'Architecture Security Specifications', faListAlt),
+    getItem('Data Security Standards', 'Data Security Specifications', faListAlt),
   ]),
   getItem('KPI Overview', '', faHeartCircleMinus),
   getItem('Vulnerability Scanning', 'SECURITY_SCAN', faShieldVirus),

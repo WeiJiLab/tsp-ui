@@ -34,7 +34,7 @@ export const CreateProject: React.FC = () => {
       trigger={
         <Button type='primary'>
           <PlusOutlined />
-          新增项目
+          Add Application
         </Button>
       }
       form={form}

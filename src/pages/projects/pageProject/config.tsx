@@ -20,24 +20,24 @@ export const columns: ProColumns<TableListItem>[] = [
     search: false,
   },
   {
-    title: '应用名称',
+    title: 'Application',
     dataIndex: 'name',
     ellipsis: true,
     tip: '应用名称过长会自动收缩',
   },
   {
-    title: '应用描述',
+    title: 'Application Description',
     dataIndex: 'description',
     ellipsis: true,
     search: false,
     tip: '应用描述过长会自动收缩',
   },
   {
-    title: '负责人',
+    title: 'Owner',
     dataIndex: 'ownerId',
   },
   {
-    title: '创建时间',
+    title: 'Create At',
     key: 'since',
     dataIndex: 'createdAt',
     valueType: 'date',
@@ -47,7 +47,7 @@ export const columns: ProColumns<TableListItem>[] = [
     },
   },
   {
-    title: '更新时间',
+    title: 'Update At',
     dataIndex: 'updatedAt',
     valueType: 'date',
     search: false,
@@ -55,7 +55,7 @@ export const columns: ProColumns<TableListItem>[] = [
   },
   {
     width: 150,
-    title: '操作',
+    title: 'Options',
     valueType: 'option',
     key: 'option',
     fixed: 'right',

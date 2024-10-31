@@ -73,15 +73,15 @@ export const Header: React.FC = () => {
         {jwtToken ? (
           <Button.Group className={styles['button-group']}>
             <div className={styles.text}>
-              {'欢迎'}
+              {'Welcome'}
               <Typography.Text strong>{username}</Typography.Text>
             </div>
-            <Button onClick={onLogout}>{'注销'}</Button>
+            <Button onClick={onLogout}>{'Log out'}</Button>
           </Button.Group>
         ) : (
           <Button.Group className={styles['button-group']}>
-            <Button onClick={() => navigate('/register')}>{'注册'}</Button>
-            <Button onClick={() => navigate('/login')}>{'登录'}</Button>
+            <Button onClick={() => navigate('/register')}>{'Register'}</Button>
+            <Button onClick={() => navigate('/login')}>{'Login'}</Button>
           </Button.Group>
         )}
         <>

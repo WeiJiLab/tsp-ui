@@ -142,9 +142,9 @@ export const ScanningPage: React.FC = () => {
           style={{ width: 150 }}
           onChange={handleChange}
           options={[
-            { value: '0', label: '内核源码扫描' },
-            { value: '1', label: '内核镜像扫描' },
-            { value: '2', label: '其他' },
+            { value: '0', label: 'Kernel SourceCode Scanning' },
+            { value: '1', label: 'Kernel Image Scanning' },
+            { value: '2', label: 'Others' },
           ]}
           disabled={!scanStatus}
         />
@@ -153,7 +153,7 @@ export const ScanningPage: React.FC = () => {
           {buttonText}
         </Button>
         <Button type='primary' onClick={stopScaning} disabled={scanStatus}>
-          停止扫描
+          Stop Scanning
         </Button>
         <Button
           type='primary'

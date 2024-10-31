@@ -62,23 +62,23 @@ export const PageAppInfo: React.FC = () => {
       search: false,
     },
     {
-      title: '应用名称',
+      title: 'Application',
       dataIndex: 'name',
       ellipsis: true,
     },
     {
-      title: '应用描述',
+      title: 'Application Description',
       dataIndex: 'description',
       ellipsis: true,
       search: false,
       tip: '项目描述过长会自动收缩',
     },
     {
-      title: '用户名',
+      title: 'Username',
       dataIndex: 'username',
     },
     {
-      title: '仓库类型',
+      title: 'Repo Type',
       dataIndex: 'repoType',
       valueEnum: {
         GIT: { text: 'GIT' },
@@ -86,12 +86,12 @@ export const PageAppInfo: React.FC = () => {
       },
     },
     {
-      title: '代码目录',
+      title: 'Code Path',
       dataIndex: 'codePath',
       search: false,
     },
     {
-      title: '创建时间',
+      title: 'Create At',
       key: 'since',
       dataIndex: 'createdAt',
       valueType: 'date',
@@ -101,7 +101,7 @@ export const PageAppInfo: React.FC = () => {
       },
     },
     {
-      title: '更新时间',
+      title: 'Update At',
       dataIndex: 'updatedAt',
       valueType: 'date',
       search: false,
@@ -109,7 +109,7 @@ export const PageAppInfo: React.FC = () => {
     },
     {
       width: 150,
-      title: '操作',
+      title: 'Option',
       valueType: 'option',
       key: 'option',
       fixed: 'right',
@@ -163,7 +163,7 @@ export const PageAppInfo: React.FC = () => {
         onChange: handleChangePagination,
       }}
       dateFormatter='string'
-      headerTitle='项目'
+      headerTitle='Projects'
       toolBarRender={() => [<CreateAppInfo key={1} />]}
     ></ProTable>
   );

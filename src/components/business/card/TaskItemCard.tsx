@@ -26,11 +26,11 @@ export const TaskItemCard: React.FC<PropsTypes> = ({ task }) => {
       TimeUtils.dateFromNow(task.startTime) + '-' + TimeUtils.dateFromNow(task.endTime);
     switch (task.status) {
       case 'READY':
-        return <span style={{ fontSize: '0.77em' }}>未开始</span>;
+        return <span style={{ fontSize: '0.77em' }}>Not Started</span>;
       case 'RUNNING':
         return (
           <span style={{ fontSize: '0.77em' }}>
-            {TimeUtils.dateFromNow(task.startTime) + '-未结束'}
+            {TimeUtils.dateFromNow(task.startTime) + '-Still Running'}
           </span>
         );
       case 'DONE':
